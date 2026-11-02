@@ -34,6 +34,13 @@ def fill(text: str, sheet: FactsSheet) -> str:
     return PLACEHOLDER.sub(sub, text)
 
 
+def sentence(text: str, sheet: FactsSheet) -> str:
+    """Fill a line of copy and capitalize its first letter, since a line may open with a
+    placeholder whose display string starts lowercase ("nearly all of the cash...")."""
+    out = fill(text, sheet)
+    return out[:1].upper() + out[1:]
+
+
 def _env() -> Environment:
     return Environment(loader=FileSystemLoader(REPO / "templates"), undefined=StrictUndefined,
                        keep_trailing_newline=True, trim_blocks=True, lstrip_blocks=True)
@@ -41,7 +48,7 @@ def _env() -> Environment:
 
 def context(copy: RecapCopy, sheet: FactsSheet) -> dict:
     facts = {f.id: f for f in sheet.facts}
-    f = lambda t: fill(t, sheet)
+    f = lambda t: sentence(t, sheet)
     tiles = []
     for fid in copy.glance_tiles:
         if fid not in facts:

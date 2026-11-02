@@ -146,6 +146,16 @@ def test_render_rejects_unknown_placeholder(sheets):
         render_text(bad, sheets["p04"])
 
 
+def test_render_capitalizes_a_line_that_opens_with_a_placeholder(sheets):
+    sheet = sheets["p09"]
+    fact = next(f for f in sheet.facts if f.display[:1].islower())
+    copy, _ = validate(EXAMPLES["p09"], sheet)
+    line = f"{{{{{fact.id}}}}} stayed with your winning trades."
+    text = render_text(copy.model_copy(update={"what_changed": line}), sheet)
+    assert fact.display[:1].upper() + fact.display[1:] + " stayed with" in text
+    assert fact.display + " stayed with" not in text
+
+
 # ---------------------------------------------------------------------------
 # Retry once, then review
 # ---------------------------------------------------------------------------
