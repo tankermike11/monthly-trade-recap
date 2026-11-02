@@ -140,7 +140,7 @@ FACTS: dict[str, tuple[str, str]] = {
     "median_price_level_at_entry": ("getting_in", "where option prices usually sat, compared with their past year, when you started a trade"),
     "median_opening_credit_per_contract": ("getting_in", "cash you usually collected per contract when you started a trade"),
     "median_opening_debit_per_contract": ("getting_in", "cash you usually paid per contract when you started a trade"),
-    "scaling_in": ("getting_in", "contracts you traded 3 or more times at the same price level and end date"),
+    "scaling_in": ("getting_in", "contracts you traded three or more times at the same price level and end date"),
     # managing
     "adjust_to_close_ratio": ("managing", "times you adjusted a trade for every time you closed one"),
     "rolls_total": ("managing", "times you moved a trade to a new price or end date"),
@@ -177,7 +177,7 @@ FACTS: dict[str, tuple[str, str]] = {
     "vs_last_month.outside_hours_share": ("what_changed", "share of orders outside regular market hours, this month and last"),
     "vs_last_month.median_days_held": ("what_changed", "how long you usually kept a trade, this month and last"),
     # context
-    "spy_move": ("context", "how a fund that tracks the 500 largest US companies moved this month"),
+    "spy_move": ("context", "how a fund that tracks the broad US market moved this month"),
     "qqq_move": ("context", "how a fund that tracks large technology companies moved this month"),
 }
 

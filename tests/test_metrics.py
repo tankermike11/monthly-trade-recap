@@ -124,6 +124,13 @@ def test_plain_phrases_pass_copy_rules():
         _copy_ok(plain, fid)
 
 
+def test_plain_phrases_have_no_digits():
+    """The model reads these phrases and may reuse them, but may not type a digit
+    (validate_copy's no_raw_numbers), so a digit here invites a rejected draft."""
+    bad = {fid: plain for fid, (_, plain) in FACTS.items() if any(c.isdigit() for c in plain)}
+    assert not bad, bad
+
+
 def test_display_strings_pass_copy_rules(sheets):
     for case, (_, sheet) in sheets.items():
         for f in sheet.facts:
