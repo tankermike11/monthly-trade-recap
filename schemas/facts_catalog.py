@@ -86,4 +86,10 @@ DATA_QUALITY_ISSUES: dict[str, str] = {
     "fees_missing": "A fill whose commission or fees field is None.",
     "order_partially_filled": "An order whose filled_units < requested_units.",
     "split_adjusted_positions": "A split changed open positions without any order.",
+    "positions_do_not_reconcile": "Replaying the month's fills and events from the start "
+                                  "snapshot does not reach the end snapshot (quantity or cost).",
+    "fill_exceeds_position": "A closing fill for more than the position held; it is read as "
+                             "a close to flat plus a new position for the rest.",
+    "event_without_position": "An expiration, assignment, exercise or dividend names a "
+                              "position the account did not hold; the event is skipped.",
 }

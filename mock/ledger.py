@@ -60,6 +60,7 @@ class StoryMonth:
     opening_dte: int | None = None
     open_pnl_start: Decimal = ZERO
     start_opened_date: date | None = None
+    asset_class: str | None = None    # carried in: from the month-start snapshot
 
 
 @dataclass
@@ -93,6 +94,7 @@ class Ledger:
         self.fees_missing_next = False
         self.insts: dict[str, Instrument] = {}
         self.clock: datetime | None = None           # ledger-scheduled items processed up to here
+        self.labeler = None                          # optional: underlying -> label, after events
 
     # ------------------------------------------------------------------ month framing
 
@@ -112,11 +114,18 @@ class Ledger:
             self.clock = self.start_valued_at["exchange"]
         self.start_snapshot = self.snapshot("start", self.start_valued_at)
         self.start_value = self.value(self.start_snapshot)
-        for st in sorted(self.stories.values(), key=lambda s: (s.opened_date, s.underlying)):
+        def oldest(st):
+            return min(l["opened_date"] for l in self.start_snapshot["lines"] if l["underlying"] == st.underlying)
+        for st in sorted(self.stories.values(), key=lambda s: (oldest(s), s.underlying)):
             sm = self._story_month(st)
             sm.carried_in = True
             sm.label_open = st.label
             lines = [l for l in self.start_snapshot["lines"] if l["underlying"] == st.underlying]
+            # Carried in: the story's first instrument is not in this month's data, so its
+            # asset class is that of the oldest month-start line (shares, futures and
+            # coins before options on the same day, then by symbol).
+            first = min(lines, key=lambda l: (l["opened_date"], l["asset_class"] not in ("stock_etf", "future", "crypto"), l["symbol"]))
+            sm.asset_class = first["asset_class"]
             sm.open_pnl_start = sum((l["qty"] * l["mark"] * l["multiplier"] - l["cost_basis"] for l in lines), ZERO)
             sm.opening_cash = -sum((l["cost_basis"] for l in lines if l["asset_class"] != "future"), ZERO)
             sm.start_opened_date = min(l["opened_date"] for l in lines)
@@ -349,7 +358,8 @@ class Ledger:
               order_type: str = "limit", pieces: list[tuple[datetime, Decimal]] | None = None,
               at_mid: bool = False) -> str:
         """Place one order. `label` is the story's strategy label after this order
-        (ignored on a closing order). `at_mid` fills option legs at the tick nearest
+        (ignored on a closing order); a callable is evaluated after the fills, so a label
+        that depends on the cash balance sees it after the order. `at_mid` fills option legs at the tick nearest
         the mid instead of somewhere between mid and the far side. `pieces` executes a single-leg order as several
         fills at the given times and sizes; if the pieces add up to less than the leg's
         qty, the rest never fills (a partially filled order)."""
@@ -359,7 +369,8 @@ class Ledger:
             assert len(legs) == 1 and pieces[0][0] == ts
         for l in legs:
             self._check_tradable(l.inst, ts)
-        st = self._story_for(legs[0].inst, ts, label)
+        st = self._story_for(legs[0].inst, ts, None if callable(label) else label)
+        self._refresh_label(st)
         sm = self._story_month(st)
         before = self._story_positions(st.underlying)
         was_new = not before
@@ -391,6 +402,8 @@ class Ledger:
             "requested_units": requested, "filled_units": filled,
         })
         after = self._story_positions(st.underlying)
+        if callable(label):
+            label = label() if after else None
         cash_flow = sum(((1 if f["side"] == "sell" else -1) * f["price"] * f["qty"] * f["multiplier"]
                          for f in fills if f["asset_class"] != "future"), ZERO)
         self._record_effect(st, sm, order_id, ts, before, after, fills, cash_flow, was_new, label)
@@ -552,8 +565,8 @@ class Ledger:
         if sc and sp:
             return min(sc) - max(sp)
         for pc in ("P", "C"):
-            sh = [insts[s].strike for s, q in pos.items() if q < 0 and insts[s].is_option and insts[s].put_call == pc]
-            lg = [insts[s].strike for s, q in pos.items() if q > 0 and insts[s].is_option and insts[s].put_call == pc]
+            sh = sorted(insts[s].strike for s, q in pos.items() if q < 0 and insts[s].is_option and insts[s].put_call == pc)
+            lg = sorted(insts[s].strike for s, q in pos.items() if q > 0 and insts[s].is_option and insts[s].put_call == pc)
             if sh and lg:
                 return abs(sh[0] - lg[0])
         return None
@@ -598,6 +611,9 @@ class Ledger:
 
     def expirations(self, day: date) -> None:
         """Settle every option expiring today, after the close."""
+        for und in sorted({p.inst.underlying for p in self.positions.values()
+                           if p.inst.is_option and p.inst.expiration == day}):
+            self._refresh_label(self.stories[und])
         for sym in sorted(self.positions):
             pos = self.positions.get(sym)
             if pos is None or not pos.inst.is_option or pos.inst.expiration != day:
@@ -627,6 +643,7 @@ class Ledger:
         self._check_time(ts)
         pos = self.positions[symbol]
         st = self.stories[pos.inst.underlying]
+        self._refresh_label(st)
         self._deliver(pos, ts, st, self._story_month(st), early=True)
 
     def _deliver(self, pos: Position, ts: datetime, st: Story, sm: StoryMonth, early: bool) -> None:
@@ -655,9 +672,17 @@ class Ledger:
         st.last_order = None
         self._after_event(st, ts, "assigned")
 
+    def _refresh_label(self, st: Story) -> None:
+        """Labels that depend on the cash balance (cash-secured puts) are re-judged
+        just before each order or event on the story and at month end."""
+        if self.labeler is not None and self._story_positions(st.underlying):
+            st.label = self.labeler(st.underlying) or st.label
+
     def _after_event(self, st: Story, ts: datetime, status: str) -> None:
         if not self._story_positions(st.underlying):
             self._close_story(st, ts, status, [])
+        elif status == "assigned" and self.labeler is not None:
+            st.label = self.labeler(st.underlying) or st.label
 
     def corporate_actions(self, day: date) -> None:
         ts = cal.at_ny(day, 4)
@@ -731,6 +756,8 @@ class Ledger:
     def end_month(self) -> dict:
         at = self.valuation_time(self.month)
         self.advance(max(at["exchange"], at["crypto"]))
+        for st in self.stories.values():
+            self._refresh_label(st)
         end_snap = self.snapshot("end", at)
         end_value = self.value(end_snap)
         flows = sum(((f["amount"] if f["kind"] == "deposit" else -f["amount"]) for f in self.month_flows), ZERO)
@@ -758,7 +785,7 @@ class Ledger:
         closed_ts = st.closed_ts if ended else None
         time_order = {f["exec_id"]: (f["ts_utc"], f["exec_id"]) for f in self.fills}
         return {
-            "story_id": sm.sid, "underlying": st.underlying, "asset_class": st.asset_class,
+            "story_id": sm.sid, "underlying": st.underlying, "asset_class": sm.asset_class or st.asset_class,
             "carried_in": sm.carried_in, "label_open": sm.label_open,
             "label_end": st.label_before_close if ended else st.label,
             "orders": [{"order_id": o[0], "effect": o[1]} for o in sm.orders],

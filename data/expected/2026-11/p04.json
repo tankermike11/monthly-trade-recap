@@ -61,7 +61,7 @@
     {
       "id": "stories_ended",
       "sources": [
-        "story:p04-0002",
+        "story:p04-0001",
         "story:p04-0004",
         "story:p04-0007",
         "story:p04-0009"
@@ -71,7 +71,7 @@
     {
       "id": "stories_open_at_end",
       "sources": [
-        "story:p04-0001",
+        "story:p04-0002",
         "story:p04-0003",
         "story:p04-0005",
         "story:p04-0006",
@@ -137,7 +137,7 @@
     {
       "id": "rolls_total",
       "sources": [
-        "story:p04-0001",
+        "story:p04-0002",
         "story:p04-0003",
         "story:p04-0005",
         "story:p04-0006",
@@ -148,7 +148,7 @@
     {
       "id": "rolls_by_type",
       "sources": [
-        "story:p04-0001",
+        "story:p04-0002",
         "story:p04-0003",
         "story:p04-0005",
         "story:p04-0006",
@@ -167,7 +167,7 @@
     {
       "id": "credit_roll_share",
       "sources": [
-        "story:p04-0001",
+        "story:p04-0002",
         "story:p04-0003",
         "story:p04-0005",
         "story:p04-0006",
@@ -193,7 +193,7 @@
     {
       "id": "wins",
       "sources": [
-        "story:p04-0002",
+        "story:p04-0001",
         "story:p04-0004",
         "story:p04-0007",
         "story:p04-0009"
@@ -883,98 +883,6 @@
     {
       "asset_class": "equity_option",
       "carried_in": true,
-      "closed_ts": null,
-      "days_held": null,
-      "days_left_at_close": null,
-      "end_positions": {
-        "AMD   270115C00395000": "-1",
-        "AMD   270115P00265000": "-1"
-      },
-      "event_ids": [],
-      "exec_ids": [
-        "p04-202611-F00031",
-        "p04-202611-F00032",
-        "p04-202611-F00041",
-        "p04-202611-F00042",
-        "p04-202611-F00059",
-        "p04-202611-F00060",
-        "p04-202611-F00061",
-        "p04-202611-F00062"
-      ],
-      "fees": "5.07",
-      "label_end": "short_strangle",
-      "label_open": "short_strangle",
-      "open_pnl_end": "-15.2600",
-      "open_pnl_start": "-12.0300",
-      "opened_date": "2026-10-30",
-      "opening_cash": "745.0000",
-      "opening_dte": null,
-      "orders": [
-        {
-          "effect": "roll",
-          "order_id": "p04-202611-O00016"
-        },
-        {
-          "effect": "roll",
-          "order_id": "p04-202611-O00021"
-        },
-        {
-          "effect": "roll",
-          "order_id": "p04-202611-O00028"
-        }
-      ],
-      "realized_pnl": "-554.0700",
-      "rolls": [
-        {
-          "credit": false,
-          "net_cash": "-605.00",
-          "order_ids": [
-            "p04-202611-O00016"
-          ],
-          "ts_utc": "2026-11-16T16:27:00Z",
-          "types": [
-            "tested_away_from_money",
-            "up",
-            "widened"
-          ]
-        },
-        {
-          "credit": true,
-          "net_cash": "771.00",
-          "order_ids": [
-            "p04-202611-O00021"
-          ],
-          "ts_utc": "2026-11-24T14:59:00Z",
-          "types": [
-            "narrowed",
-            "untested_toward_money",
-            "up"
-          ]
-        },
-        {
-          "credit": false,
-          "net_cash": "-375.00",
-          "order_ids": [
-            "p04-202611-O00028"
-          ],
-          "ts_utc": "2026-11-27T15:56:00Z",
-          "types": [
-            "down",
-            "out_in_time",
-            "tested_away_from_money",
-            "up",
-            "widened"
-          ]
-        }
-      ],
-      "status": "open",
-      "story_id": "p04-0001",
-      "underlying": "AMD",
-      "upfront_cash": "745.0000"
-    },
-    {
-      "asset_class": "equity_option",
-      "carried_in": true,
       "closed_ts": "2026-11-03T16:22:00Z",
       "days_held": 6,
       "days_left_at_close": 45,
@@ -1001,7 +909,7 @@
       "realized_pnl": "64.7600",
       "rolls": [],
       "status": "closed",
-      "story_id": "p04-0002",
+      "story_id": "p04-0001",
       "underlying": "INTC",
       "upfront_cash": "138.0000"
     },
@@ -1112,9 +1020,101 @@
         }
       ],
       "status": "open",
-      "story_id": "p04-0003",
+      "story_id": "p04-0002",
       "underlying": "DELL",
       "upfront_cash": "555.0000"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": true,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "AMD   270115C00395000": "-1",
+        "AMD   270115P00265000": "-1"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00031",
+        "p04-202611-F00032",
+        "p04-202611-F00041",
+        "p04-202611-F00042",
+        "p04-202611-F00059",
+        "p04-202611-F00060",
+        "p04-202611-F00061",
+        "p04-202611-F00062"
+      ],
+      "fees": "5.07",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "-15.2600",
+      "open_pnl_start": "-12.0300",
+      "opened_date": "2026-10-30",
+      "opening_cash": "745.0000",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00016"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00021"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00028"
+        }
+      ],
+      "realized_pnl": "-554.0700",
+      "rolls": [
+        {
+          "credit": false,
+          "net_cash": "-605.00",
+          "order_ids": [
+            "p04-202611-O00016"
+          ],
+          "ts_utc": "2026-11-16T16:27:00Z",
+          "types": [
+            "tested_away_from_money",
+            "up",
+            "widened"
+          ]
+        },
+        {
+          "credit": true,
+          "net_cash": "771.00",
+          "order_ids": [
+            "p04-202611-O00021"
+          ],
+          "ts_utc": "2026-11-24T14:59:00Z",
+          "types": [
+            "narrowed",
+            "untested_toward_money",
+            "up"
+          ]
+        },
+        {
+          "credit": false,
+          "net_cash": "-375.00",
+          "order_ids": [
+            "p04-202611-O00028"
+          ],
+          "ts_utc": "2026-11-27T15:56:00Z",
+          "types": [
+            "down",
+            "out_in_time",
+            "tested_away_from_money",
+            "up",
+            "widened"
+          ]
+        }
+      ],
+      "status": "open",
+      "story_id": "p04-0003",
+      "underlying": "AMD",
+      "upfront_cash": "745.0000"
     },
     {
       "asset_class": "equity_option",

@@ -5,7 +5,30 @@ Definitions (the generator's ledger and the Phase 2 pipeline must both follow th
 Trade story
     All orders and events on one underlying from the moment the customer's net position
     on that underlying stops being empty until it is empty again. Two positions on the
-    same underlying at the same time are one story.
+    same underlying at the same time are one story. An assignment or exercise keeps
+    its shares (or future) in the same story, so a wheel is one story.
+
+Replay order
+    Events come before orders at the same instant; events in event-ID order, orders in
+    order-ID order. An order is applied whole at its own timestamp, even when its legs
+    filled in pieces later.
+
+Story IDs and asset class
+    <customer>-<NNNN>, numbered per month: carried-in stories first, ordered by their
+    oldest month-start line's opened date, then underlying; then new stories in the
+    order of their opening orders. asset_class is the first leg of the opening order;
+    for a carried-in story, the oldest month-start line (shares, futures and coins
+    before options on the same day, then by symbol).
+
+Labels (pipeline/classify.py holds the rules)
+    label_open   the whole position just after the opening order (carried in: at
+                 month start, with month-start cash)
+    label_end    the whole position at month end (with month-end cash), or just before
+                 the order or event that closed the story
+    A lone short stock or ETF put is a cash_secured_put when the account's cash at that
+    moment covers strike x multiplier x contracts, otherwise short_put; index and
+    futures puts are always short_put. Cash-dependent labels are re-judged just before
+    every order or event on the story.
 
 Order effect (per order, judged on the story's position just before and after it)
     open           the story had no position before this order
@@ -21,7 +44,8 @@ Order effect (per order, judged on the story's position just before and after it
 
 Roll types (one roll may carry several; each is counted separately)
     Closed legs are paired with opened legs of the same put/call type and the same
-    side (short with short, long with long).
+    side (short with short, long with long), each list in (strike, expiration) order.
+    The underlying price is the one recorded with the roll's first fill.
     out_in_time            a new leg expires later than the leg it replaces
     up / down              a new leg's strike is above / below the leg it replaces
     untested_toward_money  the position held a short put and a short call; the
@@ -31,9 +55,11 @@ Roll types (one roll may carry several; each is counted separately)
                            replaced by one farther from it
     widened / narrowed     width grew / shrank. Width = lowest short call strike minus
                            highest short put strike when both are short; otherwise the
-                           strike distance between the short and long leg of one type.
+                           strike distance between the short and long leg of one type
+                           (puts first; the lowest strike of each if there are several).
 
-Realized P&L uses average cost per instrument. Fees and commissions are subtracted
+Realized P&L uses average cost per instrument; the cost removed by a partial close is
+rounded to 8 decimal places, and any residue when an instrument goes flat is realized. Fees and commissions are subtracted
 from the story they belong to when they are paid. Dividends count toward the story
 that holds the shares. An assigned, exercised or worthless option closes at 0; a
 cash-settled option closes at its settlement value.

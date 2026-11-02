@@ -27,6 +27,7 @@ class PutSeller(Engine):
             for c in self.p.get("already_open_on_oct_1", [])}
         self.adds: dict[str, int] = {}
         self.assigned_on: dict[str, date] = {}
+        self.ledger.labeler = self._structure_label
 
     # ------------------------------------------------------------------ labels
 
@@ -83,9 +84,7 @@ class PutSeller(Engine):
         k = self.strike_by_delta(sym, exp, "P", float(rule["how_far_from_price"]), ts)
         inst = self.opt(sym, exp, "P", k)
         n = Decimal(int(rule["contracts"]))
-        need = n * k * 100
-        label = "cash_secured_put" if self.ledger.cash >= need else "short_put"
-        self.ledger.trade(ts, [LegReq(inst, "sell", n)], label)
+        self.ledger.trade(ts, [LegReq(inst, "sell", n)], lambda: self._put_label(sym))
         self.last_sale_px[sym] = self.spot(sym, ts)
         self.adds[sym] = 0
 
@@ -105,7 +104,7 @@ class PutSeller(Engine):
             if now <= last * (1 - pct(drop)):
                 p = max(puts, key=lambda x: -x.qty)
                 self.ledger.trade(ts, [LegReq(p.inst, "sell", Decimal(int(rule["contracts"])))],
-                                  self._put_label(sym))
+                                  lambda: self._put_label(sym))
                 self.last_sale_px[sym] = now
                 self.adds[sym] = self.adds.get(sym, 0) + 1
 

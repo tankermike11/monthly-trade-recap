@@ -281,7 +281,7 @@
   "seed": 42,
   "stories": [
     {
-      "asset_class": "equity_option",
+      "asset_class": "stock_etf",
       "carried_in": true,
       "closed_ts": null,
       "days_held": null,
