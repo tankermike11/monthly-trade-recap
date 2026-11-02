@@ -93,3 +93,95 @@ DATA_QUALITY_ISSUES: dict[str, str] = {
     "event_without_position": "An expiration, assignment, exercise or dividend names a "
                               "position the account did not hold; the event is skipped.",
 }
+
+
+# ---------------------------------------------------------------------------
+# The full facts-sheet catalog (SPEC 3.1). Phase 3's metrics layer may emit only these
+# fact IDs. `plain` is the fixed phrase shown with each fact. It is drafted here for
+# review and must be approved by a person; the model never writes or changes it.
+# ---------------------------------------------------------------------------
+
+CATALOG_VERSION = "1.0.0-draft"
+
+ROLL_TYPE_PLAIN = {
+    "out_in_time": "times you moved a trade to a later end date",
+    "up": "times you moved part of a trade to a higher price",
+    "down": "times you moved part of a trade to a lower price",
+    "untested_toward_money": "times you slid the other half of a trade closer to the price",
+    "tested_away_from_money": "times you moved the half under pressure further from the price",
+    "widened": "times a move made the trade wider",
+    "narrowed": "times a move made the trade narrower",
+}
+
+ASSET_PLAIN = {
+    "stock_etf": "share of your orders that were stocks and funds",
+    "equity_option": "share of your orders that were options on stocks and funds",
+    "index_option": "share of your orders that were index options",
+    "future": "share of your orders that were futures",
+    "future_option": "share of your orders that were options on futures",
+    "crypto": "share of your orders that were crypto",
+    "event_contract": "share of your orders that were event contracts",
+}
+
+# id -> (section, plain phrase)
+FACTS: dict[str, tuple[str, str]] = {
+    # at a glance
+    "active_days": ("at_a_glance", "days you placed at least one trade"),
+    "stories_touched": ("at_a_glance", "trades you placed an order on this month"),
+    "stories_opened": ("at_a_glance", "new trades you started"),
+    "stories_ended": ("at_a_glance", "trades that ended this month"),
+    "stories_open_at_end": ("at_a_glance", "trades still open at the end of the month"),
+    "asset_mix": ("at_a_glance", "how your orders split across what you traded"),
+    **{f"asset_mix.{k}": ("at_a_glance", v) for k, v in ASSET_PLAIN.items()},
+    "outside_hours_share": ("at_a_glance", "share of your orders placed outside regular market hours"),
+    # getting in
+    "median_entry_dte": ("getting_in", "how far away the end dates usually were when you started an options trade"),
+    "entry_dte_by_half": ("getting_in", "how far away your end dates usually were in the first and second half of the month"),
+    "median_price_level_at_entry": ("getting_in", "where option prices usually sat, compared with their past year, when you started a trade"),
+    "median_opening_credit_per_contract": ("getting_in", "cash you usually collected per contract when you started a trade"),
+    "median_opening_debit_per_contract": ("getting_in", "cash you usually paid per contract when you started a trade"),
+    "scaling_in": ("getting_in", "contracts you traded 3 or more times at the same price level and end date"),
+    # managing
+    "adjust_to_close_ratio": ("managing", "times you adjusted a trade for every time you closed one"),
+    "rolls_total": ("managing", "times you moved a trade to a new price or end date"),
+    "rolls_by_type": ("managing", "the kinds of moves you made"),
+    **{f"rolls.{k}": ("managing", v) for k, v in ROLL_TYPE_PLAIN.items()},
+    "credit_roll_share": ("managing", "share of those moves that brought in cash"),
+    "most_adjusted_stories": ("managing", "the trades you changed most often"),
+    # getting out
+    "median_days_held": ("getting_out", "how long you usually kept a trade"),
+    "median_days_left_at_close": ("getting_out", "how much time was usually left when you ended an options trade"),
+    "median_upfront_kept_on_winners": ("getting_out", "how much of the cash collected upfront your winning trades usually kept"),
+    "fastest_winners": ("getting_out", "your quickest trades that ended with a gain"),
+    "losers_closed_early": ("getting_out", "trades that ended with a loss that you closed before their end date"),
+    # results
+    "wins": ("results", "trades that ended with a gain"),
+    "losses": ("results", "trades that ended with a loss"),
+    "net_realized_pnl": ("results", "gains and losses locked in this month, after fees"),
+    "total_fees": ("results", "fees and commissions you paid"),
+    "biggest_win": ("results", "your largest gain on a single trade"),
+    "biggest_loss": ("results", "your largest loss on a single trade"),
+    "biggest_win_vs_upfront": ("results", "how your largest gain compared with the cash collected when that trade started"),
+    "biggest_loss_vs_upfront": ("results", "how your largest loss compared with the cash collected when that trade started"),
+    "month_pnl": ("results", "change in your account value, not counting deposits or withdrawals"),
+    "month_return": ("results", "change in your account value as a share of where it started"),
+    # still open
+    "open_stories": ("still_open", "trades still open going into next month"),
+    "open_moved_to_later_date": ("still_open", "open trades you moved to a later end date this month"),
+    # what changed
+    "rolls_by_half": ("what_changed", "moves you made in the first and second half of the month"),
+    "stories_opened_by_half": ("what_changed", "new trades you started in the first and second half of the month"),
+    "vs_last_month.median_entry_dte": ("what_changed", "how far away your end dates usually were, this month and last"),
+    "vs_last_month.adjust_to_close_ratio": ("what_changed", "adjustments for every close, this month and last"),
+    "vs_last_month.credit_roll_share": ("what_changed", "share of moves that brought in cash, this month and last"),
+    "vs_last_month.outside_hours_share": ("what_changed", "share of orders outside regular market hours, this month and last"),
+    "vs_last_month.median_days_held": ("what_changed", "how long you usually kept a trade, this month and last"),
+    # context
+    "spy_move": ("context", "how a fund that tracks the 500 largest US companies moved this month"),
+    "qqq_move": ("context", "how a fund that tracks large technology companies moved this month"),
+}
+
+# SPEC 3.4: fact types that must never exist. The metrics layer may emit only IDs in
+# FACTS, and no ID in FACTS may match these.
+FORBIDDEN_FACT_WORDS = ("streak", "record", "most_trades", "milestone", "volume", "percentile",
+                        "rank_vs", "leaderboard", "best_ever", "personal_best", "trade_count_change")
