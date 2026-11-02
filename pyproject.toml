@@ -1,7 +1,7 @@
 [project]
 name = "monthly-trade-recap"
 version = "0.1.0"
-description = "Monthly 'Your month' trade recap pipeline (Phase 1: schemas and mock data)"
+description = "Monthly 'Your month' trade recap pipeline (schemas, mock data, pipeline, demo site)"
 requires-python = ">=3.12"
 dependencies = [
   "pydantic==2.14.2",
@@ -11,6 +11,7 @@ dependencies = [
   "numpy==2.5.4",
   "scipy==1.18.1",
   "pyyaml==6.0.3",
+  "openpyxl==3.1.5",
 ]
 
 [project.optional-dependencies]

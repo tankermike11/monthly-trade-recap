@@ -39,10 +39,16 @@ Build a monthly pipeline that turns each customer's normalized trade data into a
 
 ## Engineering rules
 
-- Python 3.12-compatible code (the dev venv runs 3.14). Approved dependencies only: pydantic, pytest, polars, jinja2, anthropic, numpy, scipy, pyyaml. Ask before adding anything else.
+- Python 3.12-compatible code (the dev venv runs 3.14). Approved dependencies only: pydantic, pytest, polars, jinja2, anthropic, numpy, scipy, pyyaml, openpyxl (demo-site template). Ask before adding anything else.
 - `pricing_reference.py` is the validated pricer, copied unchanged from `../pricing_engine_demo/`. Import it; never edit or rewrite it.
 - The mock data's answer keys (`data/expected/`) are the source of truth for tests. They come from the generator's own ledger, never from pipeline code.
 - Same seed, same output, byte for byte. No wall-clock times, no unordered iteration in anything written to disk.
 - No Anthropic API calls before Phase 4. Read the key from `ANTHROPIC_API_KEY`; never hard-code it.
 - Build one phase at a time; stop at each phase's acceptance gate for review.
 - Out of scope: real customer data, sending email, scheduling.
+
+## Demo site (site/, api/)
+
+- A team-only explainer on Vercel, behind a password (SITE_PASSWORD). Sample or made-up trades only: the upload page says so, and real account data must never be uploaded.
+- Uploaded workbooks are processed in memory and never stored or logged (counts only).
+- Secrets (ANTHROPIC_API_KEY, SITE_PASSWORD) live in Vercel project settings, never in the repo.

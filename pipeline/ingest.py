@@ -10,8 +10,6 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-import polars as pl
-
 from schemas.raw import (Account, Event, Fill, FillContext, IndexLevel, MarketContext, Order,
                          PositionSnapshot, RawMonth)
 
@@ -21,6 +19,8 @@ def _json(path: Path):
 
 
 def _rows(path: Path) -> list[dict]:
+    import polars as pl     # only the parquet reader needs polars (the demo site does not)
+
     rows = pl.read_parquet(path).to_dicts()
     for r in rows:
         for k, v in r.items():
