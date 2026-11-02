@@ -1,0 +1,18 @@
+[
+  {
+    "adjusted_symbols": null,
+    "cash_amount": "-36000",
+    "early": false,
+    "event_id": "p09-202610-V0001",
+    "qty": "-6",
+    "resulting_exec_ids": [
+      "p09-202610-F00005"
+    ],
+    "settlement_price": null,
+    "split_ratio": null,
+    "symbol": "NKE   261016P00060000",
+    "ts_utc": "2026-10-16T20:00:00Z",
+    "type": "assignment",
+    "underlying": "NKE"
+  }
+]

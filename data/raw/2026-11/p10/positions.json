@@ -1,0 +1,86 @@
+{
+  "end": {
+    "as_of": "end",
+    "cash": "61193.5100",
+    "lines": [
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "7833.5000",
+        "expiration": null,
+        "mark": "81.05",
+        "multiplier": 1,
+        "opened_date": "2026-08-20",
+        "put_call": null,
+        "qty": "100",
+        "strike": null,
+        "symbol": "SHOP",
+        "underlying": "SHOP"
+      },
+      {
+        "asset_class": "equity_option",
+        "contract_month": null,
+        "cost_basis": "-490.0000",
+        "expiration": "2026-12-18",
+        "mark": "2.6126",
+        "multiplier": 100,
+        "opened_date": "2026-10-26",
+        "put_call": "P",
+        "qty": "-2",
+        "strike": "80",
+        "symbol": "SHOP  261218P00080000",
+        "underlying": "SHOP"
+      }
+    ],
+    "valued_at_utc": "2026-11-30T21:00:00Z"
+  },
+  "start": {
+    "as_of": "start",
+    "cash": "57908.6300",
+    "lines": [
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "3124.0000",
+        "expiration": null,
+        "mark": "10.75",
+        "multiplier": 1,
+        "opened_date": "2026-10-22",
+        "put_call": null,
+        "qty": "300",
+        "strike": null,
+        "symbol": "F",
+        "underlying": "F"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "7833.5000",
+        "expiration": null,
+        "mark": "85.52",
+        "multiplier": 1,
+        "opened_date": "2026-08-20",
+        "put_call": null,
+        "qty": "100",
+        "strike": null,
+        "symbol": "SHOP",
+        "underlying": "SHOP"
+      },
+      {
+        "asset_class": "equity_option",
+        "contract_month": null,
+        "cost_basis": "-490.0000",
+        "expiration": "2026-12-18",
+        "mark": "4.9806",
+        "multiplier": 100,
+        "opened_date": "2026-10-26",
+        "put_call": "P",
+        "qty": "-2",
+        "strike": "80",
+        "symbol": "SHOP  261218P00080000",
+        "underlying": "SHOP"
+      }
+    ],
+    "valued_at_utc": "2026-10-30T20:00:00Z"
+  }
+}

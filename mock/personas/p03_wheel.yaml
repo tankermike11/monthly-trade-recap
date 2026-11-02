@@ -1,0 +1,37 @@
+# Persona 3: The wheel
+id: p03
+first_name: Casey
+time_zone: America/Denver
+style: wheel
+
+account:
+  starting_value: 50000
+  options_level: 2          # can sell puts backed by cash and calls backed by shares
+  futures: no
+  crypto: no
+
+summary: >
+  Sells puts on three low-priced stocks with enough cash set aside to buy the
+  shares. When a put ends with the stock below the strike, takes the shares
+  and then sells calls against them. Buys trades back early once half the
+  upfront cash is kept.
+
+stocks: [F, SOFI, INTC]
+
+already_open_on_oct_1:
+  - {stock: F, how_far_from_price: 0.45, opened: 2026-09-21, end_date: 2026-10-16, contracts: 5}
+
+selling_puts:
+  how_far_from_price: 0.30       # delta of the put
+  end_date: monthly
+  days_until_end: {aim: 35, at_least: 25, at_most: 50}
+  contracts: 5
+
+selling_calls:                   # only after being given shares
+  how_far_from_price: 0.30
+  days_until_end: {aim: 30, at_least: 21, at_most: 45}
+  never_below_cost: yes          # call strike at or above what the shares cost
+
+take_profit_at: 50%
+wait_trading_days_after_close: 2
+trading_hours: "08:00-10:00"     # Mountain time

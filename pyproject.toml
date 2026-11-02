@@ -1,0 +1,30 @@
+[project]
+name = "monthly-trade-recap"
+version = "0.1.0"
+description = "Monthly 'Your month' trade recap pipeline (Phase 1: schemas and mock data)"
+requires-python = ">=3.12"
+dependencies = [
+  "pydantic==2.14.2",
+  "polars==2.1.0",
+  "jinja2==3.1.6",
+  "anthropic==2.3.0",
+  "numpy==2.5.4",
+  "scipy==1.18.1",
+  "pyyaml==6.0.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["pricing_reference"]
+packages = ["schemas", "mock", "mock.market", "mock.behaviors"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = ["slow: regenerates the full mock data set"]

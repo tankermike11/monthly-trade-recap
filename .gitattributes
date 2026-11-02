@@ -1,0 +1,2 @@
+# Store every file byte for byte: the data must stay identical to a fresh run and the pricer must keep its hash.
+* -text

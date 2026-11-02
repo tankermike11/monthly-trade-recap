@@ -1,0 +1,28 @@
+# Persona 1: Steady investor
+id: p01
+first_name: Robin
+time_zone: America/New_York
+style: steady_investor
+
+account:
+  starting_value: 60000
+  options_level: 0          # no options
+  futures: no
+  crypto: no
+
+summary: >
+  Already owns three broad funds and one company's stock. Adds a few shares
+  of two of them early each month and otherwise leaves everything alone.
+  The bond fund pays a small cash dividend at the start of each month.
+
+already_owned_on_oct_1:
+  - {symbol: VTI,  shares: 60,  bought_on: 2026-08-04}
+  - {symbol: VXUS, shares: 150, bought_on: 2026-08-04}
+  - {symbol: BND,  shares: 200, bought_on: 2026-08-17}
+  - {symbol: AAPL, shares: 25,  bought_on: 2026-09-14}
+
+monthly_buys:               # "on_trading_day: 2" means the 2nd market day of the month
+  - {symbol: VTI,  shares: 5, on_trading_day: 2}
+  - {symbol: AAPL, shares: 3, on_trading_day: 4}
+
+trading_hours: "10:00-11:00"   # New York time

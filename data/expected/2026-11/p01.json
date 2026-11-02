@@ -1,0 +1,303 @@
+{
+  "customer_id": "p01",
+  "data_quality_issues": [],
+  "flags": [
+    "green_month",
+    "has_open_positions",
+    "low_activity",
+    "no_futures",
+    "no_options"
+  ],
+  "generator_version": "1.0.0",
+  "headline_facts": [
+    {
+      "id": "active_days",
+      "sources": [
+        "story:p01-0001",
+        "story:p01-0004"
+      ],
+      "value": 2
+    },
+    {
+      "id": "stories_touched",
+      "sources": [
+        "story:p01-0001",
+        "story:p01-0004"
+      ],
+      "value": 2
+    },
+    {
+      "id": "stories_opened",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "stories_ended",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "stories_open_at_end",
+      "sources": [
+        "story:p01-0001",
+        "story:p01-0002",
+        "story:p01-0003",
+        "story:p01-0004"
+      ],
+      "value": 4
+    },
+    {
+      "id": "asset_mix",
+      "sources": [
+        "story:p01-0001",
+        "story:p01-0004"
+      ],
+      "value": {
+        "stock_etf": 1.0
+      }
+    },
+    {
+      "id": "outside_hours_share",
+      "sources": [
+        "story:p01-0001",
+        "story:p01-0004"
+      ],
+      "value": 0.0
+    },
+    {
+      "id": "median_entry_dte",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "rolls_total",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "rolls_by_type",
+      "sources": [],
+      "value": {
+        "down": 0,
+        "narrowed": 0,
+        "out_in_time": 0,
+        "tested_away_from_money": 0,
+        "untested_toward_money": 0,
+        "up": 0,
+        "widened": 0
+      }
+    },
+    {
+      "id": "credit_roll_share",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "adjust_to_close_ratio",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "wins",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "losses",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "net_realized_pnl",
+      "sources": [
+        "story:p01-0001",
+        "story:p01-0002",
+        "story:p01-0003",
+        "story:p01-0004"
+      ],
+      "value": "52.37"
+    },
+    {
+      "id": "total_fees",
+      "sources": [
+        "story:p01-0001",
+        "story:p01-0004"
+      ],
+      "value": "0.00"
+    },
+    {
+      "id": "biggest_win",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "biggest_loss",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "month_pnl",
+      "sources": [
+        "story:p01-0001",
+        "story:p01-0002",
+        "story:p01-0003",
+        "story:p01-0004"
+      ],
+      "value": "258.66"
+    },
+    {
+      "id": "spy_move",
+      "sources": [
+        "market:SPY"
+      ],
+      "value": -0.0297
+    },
+    {
+      "id": "qqq_move",
+      "sources": [
+        "market:QQQ"
+      ],
+      "value": 0.0358
+    }
+  ],
+  "month": "2026-11",
+  "option_quotes": {},
+  "persona": "steady_investor",
+  "reconciliation": {
+    "difference": "0.0000",
+    "end_value": "59004.19",
+    "net_cash_flows": "0",
+    "open_pnl_change": "206.2900",
+    "realized_pnl": "52.3700",
+    "start_value": "58745.53"
+  },
+  "seed": 42,
+  "stories": [
+    {
+      "asset_class": "stock_etf",
+      "carried_in": true,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "VTI": "70"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p01-202611-F00001"
+      ],
+      "fees": "0.00",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "-697.9000",
+      "open_pnl_start": "-1026.8000",
+      "opened_date": "2026-08-04",
+      "opening_cash": "-21532.3500",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "add",
+          "order_id": "p01-202611-O00001"
+        }
+      ],
+      "realized_pnl": "0.0000",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p01-0001",
+      "underlying": "VTI",
+      "upfront_cash": "-23144.8000"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": true,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "VXUS": "150"
+      },
+      "event_ids": [],
+      "exec_ids": [],
+      "fees": "0",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "-1054.5000",
+      "open_pnl_start": "-960.0000",
+      "opened_date": "2026-08-04",
+      "opening_cash": "-11026.5000",
+      "opening_dte": null,
+      "orders": [],
+      "realized_pnl": "0.0000",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p01-0002",
+      "underlying": "VXUS",
+      "upfront_cash": "-11026.5000"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": true,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "BND": "200"
+      },
+      "event_ids": [
+        "p01-202611-V0001"
+      ],
+      "exec_ids": [],
+      "fees": "0",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "-6.0000",
+      "open_pnl_start": "-134.0000",
+      "opened_date": "2026-08-17",
+      "opening_cash": "-14746.0000",
+      "opening_dte": null,
+      "orders": [],
+      "realized_pnl": "44.0000",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p01-0003",
+      "underlying": "BND",
+      "upfront_cash": "-14746.0000"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": true,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "AAPL": "31"
+      },
+      "event_ids": [
+        "p01-202611-V0002"
+      ],
+      "exec_ids": [
+        "p01-202611-F00002"
+      ],
+      "fees": "0.00",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "666.2200",
+      "open_pnl_start": "822.3300",
+      "opened_date": "2026-09-14",
+      "opening_cash": "-6675.7900",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "add",
+          "order_id": "p01-202611-O00002"
+        }
+      ],
+      "realized_pnl": "8.3700",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p01-0004",
+      "underlying": "AAPL",
+      "upfront_cash": "-7436.5600"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "end": {
+    "as_of": "end",
+    "cash": "47133.1700",
+    "lines": [
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "6250.0000",
+        "expiration": null,
+        "mark": "12.49",
+        "multiplier": 1,
+        "opened_date": "2026-10-16",
+        "put_call": null,
+        "qty": "500",
+        "strike": null,
+        "symbol": "F",
+        "underlying": "F"
+      },
+      {
+        "asset_class": "equity_option",
+        "contract_month": null,
+        "cost_basis": "-110.0000",
+        "expiration": "2026-12-18",
+        "mark": "0.3115",
+        "multiplier": 100,
+        "opened_date": "2026-11-23",
+        "put_call": "C",
+        "qty": "-5",
+        "strike": "13.0",
+        "symbol": "F     261218C00013000",
+        "underlying": "F"
+      },
+      {
+        "asset_class": "equity_option",
+        "contract_month": null,
+        "cost_basis": "-695.0000",
+        "expiration": "2026-12-18",
+        "mark": "4.9023",
+        "multiplier": 100,
+        "opened_date": "2026-11-02",
+        "put_call": "P",
+        "qty": "-5",
+        "strike": "35",
+        "symbol": "INTC  261218P00035000",
+        "underlying": "INTC"
+      }
+    ],
+    "valued_at_utc": "2026-11-30T21:00:00Z"
+  },
+  "start": {
+    "as_of": "start",
+    "cash": "45013.1600",
+    "lines": [
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "6250.0000",
+        "expiration": null,
+        "mark": "10.75",
+        "multiplier": 1,
+        "opened_date": "2026-10-16",
+        "put_call": null,
+        "qty": "500",
+        "strike": null,
+        "symbol": "F",
+        "underlying": "F"
+      },
+      {
+        "asset_class": "equity_option",
+        "contract_month": null,
+        "cost_basis": "-5.0000",
+        "expiration": "2026-11-20",
+        "mark": "0.0232",
+        "multiplier": 100,
+        "opened_date": "2026-10-19",
+        "put_call": "C",
+        "qty": "-5",
+        "strike": "12.5",
+        "symbol": "F     261120C00012500",
+        "underlying": "F"
+      }
+    ],
+    "valued_at_utc": "2026-10-30T20:00:00Z"
+  }
+}

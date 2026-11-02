@@ -1,0 +1,15 @@
+{
+  "cash_flows": [],
+  "customer_id": "p04",
+  "end_value": "258867.89",
+  "first_name": "Jordan",
+  "month": "2026-10",
+  "products": {
+    "crypto": false,
+    "event_contracts": false,
+    "futures": false,
+    "options_level": 4
+  },
+  "start_value": "250439.34",
+  "time_zone": "America/Chicago"
+}

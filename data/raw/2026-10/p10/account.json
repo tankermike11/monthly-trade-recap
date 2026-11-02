@@ -1,0 +1,21 @@
+{
+  "cash_flows": [
+    {
+      "amount": "2000",
+      "date": "2026-10-22",
+      "kind": "withdrawal"
+    }
+  ],
+  "customer_id": "p10",
+  "end_value": "68689.51",
+  "first_name": "Drew",
+  "month": "2026-10",
+  "products": {
+    "crypto": false,
+    "event_contracts": false,
+    "futures": false,
+    "options_level": 3
+  },
+  "start_value": "71285.07",
+  "time_zone": "America/New_York"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "adjusted_symbols": null,
+    "cash_amount": "-6250.0",
+    "early": false,
+    "event_id": "p03-202610-V0001",
+    "qty": "-5",
+    "resulting_exec_ids": [
+      "p03-202610-F00004"
+    ],
+    "settlement_price": null,
+    "split_ratio": null,
+    "symbol": "F     261016P00012500",
+    "ts_utc": "2026-10-16T20:00:00Z",
+    "type": "assignment",
+    "underlying": "F"
+  }
+]

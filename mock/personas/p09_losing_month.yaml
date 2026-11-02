@@ -1,0 +1,36 @@
+# Persona 9: Losing month
+id: p09
+first_name: Riley
+time_zone: America/New_York
+style: put_seller
+
+account:
+  starting_value: 45000
+  options_level: 2
+  futures: no
+  crypto: no
+
+summary: >
+  Sells puts on two retail stocks with cash set aside. Sells more of the
+  same put each time the stock drops 3%. In October one of the stocks fell
+  12% overnight, the puts ended with the stock well below the strike, the
+  shares were bought at the strike, and a few days later they were sold
+  for much less. A red month.
+
+stocks: [NKE, SBUX]
+
+already_open_on_oct_1:
+  - {stock: NKE, how_far_from_price: 0.45, opened: 2026-09-21, end_date: 2026-10-16, contracts: 2}
+
+selling_puts:
+  how_far_from_price: 0.25
+  end_date: any
+  days_until_end: {aim: 28, at_least: 14, at_most: 45}
+  contracts: 2
+  add_more_when_stock_falls: 3%  # sell more of the same put after each 3% drop
+  most_adds: 2
+
+take_profit_at: 75%           # usually holds until most of the cash is kept
+if_assigned: {sell_shares_after_trading_days: 3}
+wait_trading_days_after_close: 5
+trading_hours: "11:00-13:00"     # New York time

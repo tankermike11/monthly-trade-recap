@@ -1,0 +1,48 @@
+# Persona 4: Premium seller
+id: p04
+first_name: Jordan
+time_zone: America/Chicago
+style: premium_seller
+
+account:
+  starting_value: 250000
+  options_level: 4          # can sell options without owning the stock
+  futures: no
+  crypto: no
+
+summary: >
+  Sells a put below the price and a call above it on big, well-known stocks,
+  usually ending about 6 weeks out. When a stock moves hard one way, slides the
+  other half of the trade closer to the price instead of closing. With about 3
+  weeks left, moves the whole trade out to the next month. Many trades are
+  still open when the month ends.
+
+stocks: [AAPL, MSFT, AMD, INTC, DELL, META, NVDA, CRWD]
+
+already_open_on_oct_1:      # trades that started in September
+  - {stock: AMD,  opened: 2026-09-08, end_date: 2026-10-16, contracts: 2}
+  - {stock: INTC, opened: 2026-09-08, end_date: 2026-10-16, contracts: 3}
+  - {stock: MSFT, opened: 2026-09-21, end_date: 2026-11-20, contracts: 1}
+
+opening_a_trade:
+  shape: short strangle     # sell one put and one call, same end date
+  end_date: monthly         # third Friday only
+  days_until_end: {aim: 45, at_least: 38, at_most: 52}
+  how_far_from_price: 0.16  # delta of each half
+  contracts: {from: 1, to: 3}
+  new_trades_per_week: 3
+  trading_hours: "08:45-10:30"   # Central time, regular session only
+
+adjusting:
+  slide_other_half_when: 0.30    # when one half's delta reaches this
+  slide_it_to: 0.25              # move the other half to this delta, same end date
+  for_cash_only: yes             # only slide if it brings in cash
+  sometimes_widen_instead: 0.2   # 1 in 5 times: push the tested half further out
+
+moving_to_next_month:
+  when_days_left: 21
+  new_days_until_end: {aim: 49, at_least: 42, at_most: 56}
+
+closing:
+  take_profit_at: 40%       # close once 40% of the upfront cash is kept
+  stop_loss: none           # defends by adjusting, not closing

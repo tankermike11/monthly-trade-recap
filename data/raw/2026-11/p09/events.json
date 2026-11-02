@@ -1,0 +1,16 @@
+[
+  {
+    "adjusted_symbols": null,
+    "cash_amount": "0",
+    "early": false,
+    "event_id": "p09-202611-V0001",
+    "qty": "-4",
+    "resulting_exec_ids": [],
+    "settlement_price": "97.4284",
+    "split_ratio": null,
+    "symbol": "SBUX  261120P00094000",
+    "ts_utc": "2026-11-20T21:00:00Z",
+    "type": "expiration_worthless",
+    "underlying": "SBUX"
+  }
+]

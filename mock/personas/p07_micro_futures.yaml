@@ -1,0 +1,33 @@
+# Persona 7: Micro futures
+id: p07
+first_name: Morgan
+time_zone: America/Chicago
+style: futures_day_trader
+
+account:
+  starting_value: 20000
+  options_level: 0
+  futures: yes
+  crypto: no
+
+summary: >
+  Trades small stock-index futures (the micro S&P 500 and micro Nasdaq),
+  betting both up and down. Many trades start in the evening session after
+  the stock market has closed. Each trade lasts minutes to a few hours.
+
+contracts: [/MES, /MNQ]
+round_trips_per_day: {from: 2, to: 4}
+size: {from: 1, to: 2}           # contracts per trade
+short_share: 0.5                 # half the trades bet on a fall
+
+overnight_share: 0.4             # 4 in 10 trades start in the evening session
+overnight_hours: "17:30-22:30"   # Central time
+regular_hours: "08:45-14:30"
+
+take_profit: 0.3%
+stop_loss: 0.25%
+max_hold_hours: 6
+
+planted:                         # Sunday evening trades either side of the clock change
+  - {date: 2026-10-25, overnight_trade_at: "18:30"}
+  - {date: 2026-11-01, overnight_trade_at: "18:30"}

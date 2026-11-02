@@ -1,0 +1,35 @@
+[
+  {
+    "adjusted_symbols": null,
+    "cash_amount": "12400",
+    "early": true,
+    "event_id": "p10-202610-V0001",
+    "qty": "-2",
+    "resulting_exec_ids": [
+      "p10-202610-F00004"
+    ],
+    "settlement_price": null,
+    "split_ratio": null,
+    "symbol": "KO    261120C00062000",
+    "ts_utc": "2026-10-14T23:30:00Z",
+    "type": "assignment",
+    "underlying": "KO"
+  },
+  {
+    "adjusted_symbols": {
+      "SHOP": "SHOP",
+      "SHOP  261120P00170000": "SHOP  261120P00085000"
+    },
+    "cash_amount": "0",
+    "early": false,
+    "event_id": "p10-202610-V0002",
+    "qty": "100",
+    "resulting_exec_ids": [],
+    "settlement_price": null,
+    "split_ratio": "2",
+    "symbol": "SHOP",
+    "ts_utc": "2026-10-21T08:00:00Z",
+    "type": "split",
+    "underlying": "SHOP"
+  }
+]

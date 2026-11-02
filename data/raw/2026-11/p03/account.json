@@ -1,0 +1,15 @@
+{
+  "cash_flows": [],
+  "customer_id": "p03",
+  "end_value": "50771.27",
+  "first_name": "Casey",
+  "month": "2026-11",
+  "products": {
+    "crypto": false,
+    "event_contracts": false,
+    "futures": false,
+    "options_level": 2
+  },
+  "start_value": "50376.56",
+  "time_zone": "America/Denver"
+}

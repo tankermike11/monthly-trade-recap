@@ -1,0 +1,21 @@
+{
+  "cash_flows": [
+    {
+      "amount": "5000",
+      "date": "2026-10-15",
+      "kind": "deposit"
+    }
+  ],
+  "customer_id": "p08",
+  "end_value": "82741.56",
+  "first_name": "Jamie",
+  "month": "2026-10",
+  "products": {
+    "crypto": true,
+    "event_contracts": false,
+    "futures": true,
+    "options_level": 3
+  },
+  "start_value": "80000.00",
+  "time_zone": "America/Los_Angeles"
+}

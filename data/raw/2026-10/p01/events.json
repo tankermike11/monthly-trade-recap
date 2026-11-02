@@ -1,0 +1,16 @@
+[
+  {
+    "adjusted_symbols": null,
+    "cash_amount": "44.00",
+    "early": false,
+    "event_id": "p01-202610-V0001",
+    "qty": "200",
+    "resulting_exec_ids": [],
+    "settlement_price": null,
+    "split_ratio": null,
+    "symbol": "BND",
+    "ts_utc": "2026-10-01T08:00:00Z",
+    "type": "dividend",
+    "underlying": "BND"
+  }
+]

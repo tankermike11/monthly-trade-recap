@@ -1,0 +1,43 @@
+{
+  "end": {
+    "as_of": "end",
+    "cash": "63083.4635",
+    "lines": [
+      {
+        "asset_class": "crypto",
+        "contract_month": null,
+        "cost_basis": "16013.2265",
+        "expiration": null,
+        "mark": "98245.99",
+        "multiplier": 1,
+        "opened_date": "2026-10-03",
+        "put_call": null,
+        "qty": "0.15",
+        "strike": null,
+        "symbol": "BTC-USD",
+        "underlying": "BTC"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "4434.9000",
+        "expiration": null,
+        "mark": "492.12",
+        "multiplier": 1,
+        "opened_date": "2026-10-12",
+        "put_call": null,
+        "qty": "10",
+        "strike": null,
+        "symbol": "MSFT",
+        "underlying": "MSFT"
+      }
+    ],
+    "valued_at_utc": "2026-10-30T20:00:00Z"
+  },
+  "start": {
+    "as_of": "start",
+    "cash": "80000.0000",
+    "lines": [],
+    "valued_at_utc": "2026-09-30T20:00:00Z"
+  }
+}

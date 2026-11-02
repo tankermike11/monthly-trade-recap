@@ -1,0 +1,1690 @@
+{
+  "customer_id": "p04",
+  "data_quality_issues": [],
+  "flags": [
+    "flat_month",
+    "has_open_positions",
+    "no_futures"
+  ],
+  "generator_version": "1.0.0",
+  "headline_facts": [
+    {
+      "id": "active_days",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0002",
+        "story:p04-0003",
+        "story:p04-0004",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": 18
+    },
+    {
+      "id": "stories_touched",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0002",
+        "story:p04-0003",
+        "story:p04-0004",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": 12
+    },
+    {
+      "id": "stories_opened",
+      "sources": [
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": 8
+    },
+    {
+      "id": "stories_ended",
+      "sources": [
+        "story:p04-0002",
+        "story:p04-0004",
+        "story:p04-0007",
+        "story:p04-0009"
+      ],
+      "value": 4
+    },
+    {
+      "id": "stories_open_at_end",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0003",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0008",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": 8
+    },
+    {
+      "id": "asset_mix",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0002",
+        "story:p04-0003",
+        "story:p04-0004",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": {
+        "equity_option": 1.0
+      }
+    },
+    {
+      "id": "outside_hours_share",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0002",
+        "story:p04-0003",
+        "story:p04-0004",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": 0.0
+    },
+    {
+      "id": "median_entry_dte",
+      "sources": [
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": 45.0
+    },
+    {
+      "id": "rolls_total",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0003",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0008"
+      ],
+      "value": 19
+    },
+    {
+      "id": "rolls_by_type",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0003",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0008"
+      ],
+      "value": {
+        "down": 11,
+        "narrowed": 11,
+        "out_in_time": 5,
+        "tested_away_from_money": 11,
+        "untested_toward_money": 11,
+        "up": 10,
+        "widened": 8
+      }
+    },
+    {
+      "id": "credit_roll_share",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0003",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0008"
+      ],
+      "value": 0.5263
+    },
+    {
+      "id": "adjust_to_close_ratio",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0002",
+        "story:p04-0003",
+        "story:p04-0004",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009"
+      ],
+      "value": 4.75
+    },
+    {
+      "id": "wins",
+      "sources": [
+        "story:p04-0002",
+        "story:p04-0004",
+        "story:p04-0007",
+        "story:p04-0009"
+      ],
+      "value": 4
+    },
+    {
+      "id": "losses",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "net_realized_pnl",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0002",
+        "story:p04-0003",
+        "story:p04-0004",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": "861.64"
+    },
+    {
+      "id": "total_fees",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0002",
+        "story:p04-0003",
+        "story:p04-0004",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": "97.36"
+    },
+    {
+      "id": "biggest_win",
+      "sources": [
+        "story:p04-0009"
+      ],
+      "value": {
+        "multiple_of_upfront": 0.5243,
+        "pnl": "2422.43",
+        "story_id": "p04-0009"
+      }
+    },
+    {
+      "id": "biggest_loss",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "month_pnl",
+      "sources": [
+        "story:p04-0001",
+        "story:p04-0002",
+        "story:p04-0003",
+        "story:p04-0004",
+        "story:p04-0005",
+        "story:p04-0006",
+        "story:p04-0007",
+        "story:p04-0008",
+        "story:p04-0009",
+        "story:p04-0010",
+        "story:p04-0011",
+        "story:p04-0012"
+      ],
+      "value": "74.62"
+    },
+    {
+      "id": "spy_move",
+      "sources": [
+        "market:SPY"
+      ],
+      "value": -0.0297
+    },
+    {
+      "id": "qqq_move",
+      "sources": [
+        "market:QQQ"
+      ],
+      "value": 0.0358
+    }
+  ],
+  "month": "2026-11",
+  "option_quotes": {
+    "p04-202611-F00001": {
+      "ask": "9.05",
+      "bid": "8.65",
+      "iv": "0.449488",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "8.8640",
+      "underlying_price": "642.0851"
+    },
+    "p04-202611-F00002": {
+      "ask": "8.45",
+      "bid": "8.05",
+      "iv": "0.449488",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "8.2390",
+      "underlying_price": "642.0851"
+    },
+    "p04-202611-F00003": {
+      "ask": "0.51",
+      "bid": "0.48",
+      "iv": "0.459745",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.4938",
+      "underlying_price": "38.4995"
+    },
+    "p04-202611-F00004": {
+      "ask": "0.23",
+      "bid": "0.20",
+      "iv": "0.459745",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.2184",
+      "underlying_price": "38.4995"
+    },
+    "p04-202611-F00005": {
+      "ask": "2.73",
+      "bid": "2.61",
+      "iv": "0.325945",
+      "model_id": "CRR-1000-discrete-div",
+      "theo": "2.6674",
+      "underlying_price": "254.2821"
+    },
+    "p04-202611-F00006": {
+      "ask": "2.05",
+      "bid": "1.96",
+      "iv": "0.325945",
+      "model_id": "CRR-1000-discrete-div",
+      "theo": "2.0018",
+      "underlying_price": "254.2821"
+    },
+    "p04-202611-F00007": {
+      "ask": "3.70",
+      "bid": "3.40",
+      "iv": "0.762078",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "3.5481",
+      "underlying_price": "169.3624"
+    },
+    "p04-202611-F00008": {
+      "ask": "8.00",
+      "bid": "7.20",
+      "iv": "0.762078",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "7.6028",
+      "underlying_price": "169.3624"
+    },
+    "p04-202611-F00009": {
+      "ask": "3.95",
+      "bid": "3.75",
+      "iv": "0.721324",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "3.8518",
+      "underlying_price": "153.0970"
+    },
+    "p04-202611-F00010": {
+      "ask": "2.99",
+      "bid": "2.87",
+      "iv": "0.721324",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.9307",
+      "underlying_price": "153.0970"
+    },
+    "p04-202611-F00011": {
+      "ask": "8.15",
+      "bid": "7.80",
+      "iv": "0.558394",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "7.9684",
+      "underlying_price": "680.9208"
+    },
+    "p04-202611-F00012": {
+      "ask": "22.55",
+      "bid": "21.60",
+      "iv": "0.558394",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "22.0732",
+      "underlying_price": "680.9208"
+    },
+    "p04-202611-F00013": {
+      "ask": "0.68",
+      "bid": "0.64",
+      "iv": "0.493146",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.6599",
+      "underlying_price": "36.5750"
+    },
+    "p04-202611-F00014": {
+      "ask": "0.50",
+      "bid": "0.47",
+      "iv": "0.493146",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.4831",
+      "underlying_price": "36.5750"
+    },
+    "p04-202611-F00015": {
+      "ask": "8.70",
+      "bid": "7.90",
+      "iv": "0.505888",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "8.3246",
+      "underlying_price": "550.0846"
+    },
+    "p04-202611-F00016": {
+      "ask": "7.50",
+      "bid": "6.90",
+      "iv": "0.505888",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "7.2042",
+      "underlying_price": "550.0846"
+    },
+    "p04-202611-F00017": {
+      "ask": "15.35",
+      "bid": "14.70",
+      "iv": "0.609535",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "15.0193",
+      "underlying_price": "643.6115"
+    },
+    "p04-202611-F00018": {
+      "ask": "17.15",
+      "bid": "16.45",
+      "iv": "0.609535",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "16.8033",
+      "underlying_price": "643.6115"
+    },
+    "p04-202611-F00019": {
+      "ask": "1.64",
+      "bid": "1.57",
+      "iv": "0.596196",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.6058",
+      "underlying_price": "157.3457"
+    },
+    "p04-202611-F00020": {
+      "ask": "1.50",
+      "bid": "1.43",
+      "iv": "0.596196",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.4672",
+      "underlying_price": "157.3457"
+    },
+    "p04-202611-F00021": {
+      "ask": "35.85",
+      "bid": "34.40",
+      "iv": "0.607812",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "35.1208",
+      "underlying_price": "642.4322"
+    },
+    "p04-202611-F00022": {
+      "ask": "11.35",
+      "bid": "10.90",
+      "iv": "0.607812",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "11.1234",
+      "underlying_price": "642.4322"
+    },
+    "p04-202611-F00023": {
+      "ask": "1.04",
+      "bid": "0.99",
+      "iv": "0.444222",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.0120",
+      "underlying_price": "33.9316"
+    },
+    "p04-202611-F00024": {
+      "ask": "0.47",
+      "bid": "0.44",
+      "iv": "0.444222",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.4570",
+      "underlying_price": "33.9316"
+    },
+    "p04-202611-F00025": {
+      "ask": "3.50",
+      "bid": "3.10",
+      "iv": "0.756838",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "3.3255",
+      "underlying_price": "156.0413"
+    },
+    "p04-202611-F00026": {
+      "ask": "5.10",
+      "bid": "4.60",
+      "iv": "0.756838",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "4.8186",
+      "underlying_price": "156.0413"
+    },
+    "p04-202611-F00027": {
+      "ask": "16.60",
+      "bid": "15.20",
+      "iv": "0.760467",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "15.8901",
+      "underlying_price": "142.6810"
+    },
+    "p04-202611-F00028": {
+      "ask": "3.60",
+      "bid": "3.20",
+      "iv": "0.760467",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "3.4179",
+      "underlying_price": "142.6810"
+    },
+    "p04-202611-F00029": {
+      "ask": "1.05",
+      "bid": "0.90",
+      "iv": "0.405370",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.9548",
+      "underlying_price": "528.0266"
+    },
+    "p04-202611-F00030": {
+      "ask": "6.30",
+      "bid": "5.70",
+      "iv": "0.405370",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "5.9728",
+      "underlying_price": "528.0266"
+    },
+    "p04-202611-F00031": {
+      "ask": "10.15",
+      "bid": "9.70",
+      "iv": "0.572478",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "9.9360",
+      "underlying_price": "283.7272"
+    },
+    "p04-202611-F00032": {
+      "ask": "4.15",
+      "bid": "3.90",
+      "iv": "0.572478",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "4.0295",
+      "underlying_price": "283.7272"
+    },
+    "p04-202611-F00033": {
+      "ask": "0.05",
+      "bid": "0.02",
+      "iv": "0.276726",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.0317",
+      "underlying_price": "234.3255"
+    },
+    "p04-202611-F00034": {
+      "ask": "2.59",
+      "bid": "2.48",
+      "iv": "0.276726",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.5339",
+      "underlying_price": "234.3255"
+    },
+    "p04-202611-F00035": {
+      "ask": "1.79",
+      "bid": "1.71",
+      "iv": "0.352754",
+      "model_id": "CRR-1000-discrete-div",
+      "theo": "1.7528",
+      "underlying_price": "481.4588"
+    },
+    "p04-202611-F00036": {
+      "ask": "4.05",
+      "bid": "3.85",
+      "iv": "0.352754",
+      "model_id": "CRR-1000-discrete-div",
+      "theo": "3.9480",
+      "underlying_price": "481.4588"
+    },
+    "p04-202611-F00037": {
+      "ask": "1.70",
+      "bid": "1.62",
+      "iv": "0.266302",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.6570",
+      "underlying_price": "245.7527"
+    },
+    "p04-202611-F00038": {
+      "ask": "2.85",
+      "bid": "2.73",
+      "iv": "0.266302",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.7938",
+      "underlying_price": "245.7527"
+    },
+    "p04-202611-F00039": {
+      "ask": "1.30",
+      "bid": "1.24",
+      "iv": "0.258593",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.2662",
+      "underlying_price": "251.6227"
+    },
+    "p04-202611-F00040": {
+      "ask": "2.30",
+      "bid": "2.20",
+      "iv": "0.258593",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.2530",
+      "underlying_price": "251.6227"
+    },
+    "p04-202611-F00041": {
+      "ask": "0.14",
+      "bid": "0.11",
+      "iv": "0.610220",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.1223",
+      "underlying_price": "318.6741"
+    },
+    "p04-202611-F00042": {
+      "ask": "8.05",
+      "bid": "7.65",
+      "iv": "0.610220",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "7.8482",
+      "underlying_price": "318.6741"
+    },
+    "p04-202611-F00043": {
+      "ask": "6.35",
+      "bid": "6.05",
+      "iv": "0.266450",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "6.1945",
+      "underlying_price": "248.0735"
+    },
+    "p04-202611-F00044": {
+      "ask": "1.73",
+      "bid": "1.65",
+      "iv": "0.266450",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.6903",
+      "underlying_price": "248.0735"
+    },
+    "p04-202611-F00045": {
+      "ask": "5.55",
+      "bid": "5.30",
+      "iv": "0.799969",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "5.4115",
+      "underlying_price": "175.1923"
+    },
+    "p04-202611-F00046": {
+      "ask": "3.95",
+      "bid": "3.75",
+      "iv": "0.799969",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "3.8409",
+      "underlying_price": "175.1923"
+    },
+    "p04-202611-F00047": {
+      "ask": "18.55",
+      "bid": "17.75",
+      "iv": "0.553551",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "18.1400",
+      "underlying_price": "568.6289"
+    },
+    "p04-202611-F00048": {
+      "ask": "7.10",
+      "bid": "6.80",
+      "iv": "0.553551",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "6.9467",
+      "underlying_price": "568.6289"
+    },
+    "p04-202611-F00049": {
+      "ask": "4.85",
+      "bid": "4.65",
+      "iv": "0.297093",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "4.7532",
+      "underlying_price": "503.7796"
+    },
+    "p04-202611-F00050": {
+      "ask": "4.55",
+      "bid": "4.30",
+      "iv": "0.297093",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "4.4176",
+      "underlying_price": "503.7796"
+    },
+    "p04-202611-F00051": {
+      "ask": "1.31",
+      "bid": "1.25",
+      "iv": "0.271254",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.2789",
+      "underlying_price": "256.1433"
+    },
+    "p04-202611-F00052": {
+      "ask": "3.55",
+      "bid": "3.35",
+      "iv": "0.271254",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "3.4534",
+      "underlying_price": "256.1433"
+    },
+    "p04-202611-F00053": {
+      "ask": "2.43",
+      "bid": "2.33",
+      "iv": "0.271254",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.3810",
+      "underlying_price": "256.1433"
+    },
+    "p04-202611-F00054": {
+      "ask": "2.21",
+      "bid": "2.11",
+      "iv": "0.271254",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.1609",
+      "underlying_price": "256.1433"
+    },
+    "p04-202611-F00055": {
+      "ask": "5.65",
+      "bid": "5.35",
+      "iv": "0.573985",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "5.5097",
+      "underlying_price": "577.7595"
+    },
+    "p04-202611-F00056": {
+      "ask": "0.99",
+      "bid": "0.94",
+      "iv": "0.573985",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.9666",
+      "underlying_price": "577.7595"
+    },
+    "p04-202611-F00057": {
+      "ask": "11.25",
+      "bid": "10.75",
+      "iv": "0.573985",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "11.0110",
+      "underlying_price": "577.7595"
+    },
+    "p04-202611-F00058": {
+      "ask": "9.85",
+      "bid": "9.40",
+      "iv": "0.573985",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "9.6407",
+      "underlying_price": "577.7595"
+    },
+    "p04-202611-F00059": {
+      "ask": "6.30",
+      "bid": "6.00",
+      "iv": "0.552011",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "6.1395",
+      "underlying_price": "315.9406"
+    },
+    "p04-202611-F00060": {
+      "ask": "8.35",
+      "bid": "7.95",
+      "iv": "0.552011",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "8.1603",
+      "underlying_price": "315.9406"
+    },
+    "p04-202611-F00061": {
+      "ask": "6.10",
+      "bid": "5.80",
+      "iv": "0.552011",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "5.9402",
+      "underlying_price": "315.9406"
+    },
+    "p04-202611-F00062": {
+      "ask": "5.25",
+      "bid": "5.00",
+      "iv": "0.552011",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "5.1299",
+      "underlying_price": "315.9406"
+    },
+    "p04-202611-F00063": {
+      "ask": "1.45",
+      "bid": "1.38",
+      "iv": "0.431568",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.4177",
+      "underlying_price": "29.5888"
+    },
+    "p04-202611-F00064": {
+      "ask": "0.02",
+      "bid": "0",
+      "iv": "0.431568",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.0001",
+      "underlying_price": "29.5888"
+    },
+    "p04-202611-F00065": {
+      "ask": "0.50",
+      "bid": "0.47",
+      "iv": "0.431568",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.4830",
+      "underlying_price": "29.5888"
+    },
+    "p04-202611-F00066": {
+      "ask": "0.42",
+      "bid": "0.39",
+      "iv": "0.431568",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.4024",
+      "underlying_price": "29.5888"
+    },
+    "p04-202611-F00067": {
+      "ask": "0.15",
+      "bid": "0",
+      "iv": "0.524627",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.0617",
+      "underlying_price": "156.8725"
+    },
+    "p04-202611-F00068": {
+      "ask": "0.70",
+      "bid": "0.55",
+      "iv": "0.524627",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.6410",
+      "underlying_price": "156.8725"
+    },
+    "p04-202611-F00069": {
+      "ask": "2.90",
+      "bid": "2.60",
+      "iv": "0.524627",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.7583",
+      "underlying_price": "156.8725"
+    },
+    "p04-202611-F00070": {
+      "ask": "2.40",
+      "bid": "2.15",
+      "iv": "0.524627",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.2900",
+      "underlying_price": "156.8725"
+    },
+    "p04-202611-F00071": {
+      "ask": "5.50",
+      "bid": "5.00",
+      "iv": "0.412995",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "5.2417",
+      "underlying_price": "417.6347"
+    },
+    "p04-202611-F00072": {
+      "ask": "5.20",
+      "bid": "4.70",
+      "iv": "0.412995",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "4.9779",
+      "underlying_price": "417.6347"
+    }
+  },
+  "persona": "premium_seller",
+  "reconciliation": {
+    "difference": "0.0000",
+    "end_value": "258942.51",
+    "net_cash_flows": "0",
+    "open_pnl_change": "-787.0200",
+    "realized_pnl": "861.6400",
+    "start_value": "258867.89"
+  },
+  "seed": 42,
+  "stories": [
+    {
+      "asset_class": "equity_option",
+      "carried_in": true,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "AMD   270115C00395000": "-1",
+        "AMD   270115P00265000": "-1"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00031",
+        "p04-202611-F00032",
+        "p04-202611-F00041",
+        "p04-202611-F00042",
+        "p04-202611-F00059",
+        "p04-202611-F00060",
+        "p04-202611-F00061",
+        "p04-202611-F00062"
+      ],
+      "fees": "5.07",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "-15.2600",
+      "open_pnl_start": "-12.0300",
+      "opened_date": "2026-10-30",
+      "opening_cash": "745.0000",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00016"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00021"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00028"
+        }
+      ],
+      "realized_pnl": "-554.0700",
+      "rolls": [
+        {
+          "credit": false,
+          "net_cash": "-605.00",
+          "order_ids": [
+            "p04-202611-O00016"
+          ],
+          "ts_utc": "2026-11-16T16:27:00Z",
+          "types": [
+            "tested_away_from_money",
+            "up",
+            "widened"
+          ]
+        },
+        {
+          "credit": true,
+          "net_cash": "771.00",
+          "order_ids": [
+            "p04-202611-O00021"
+          ],
+          "ts_utc": "2026-11-24T14:59:00Z",
+          "types": [
+            "narrowed",
+            "untested_toward_money",
+            "up"
+          ]
+        },
+        {
+          "credit": false,
+          "net_cash": "-375.00",
+          "order_ids": [
+            "p04-202611-O00028"
+          ],
+          "ts_utc": "2026-11-27T15:56:00Z",
+          "types": [
+            "down",
+            "out_in_time",
+            "tested_away_from_money",
+            "up",
+            "widened"
+          ]
+        }
+      ],
+      "status": "open",
+      "story_id": "p04-0001",
+      "underlying": "AMD",
+      "upfront_cash": "745.0000"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": true,
+      "closed_ts": "2026-11-03T16:22:00Z",
+      "days_held": 6,
+      "days_left_at_close": 45,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00003",
+        "p04-202611-F00004"
+      ],
+      "fees": "0.24",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "0",
+      "open_pnl_start": "22.7000",
+      "opened_date": "2026-10-28",
+      "opening_cash": "138.0000",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "close",
+          "order_id": "p04-202611-O00002"
+        }
+      ],
+      "realized_pnl": "64.7600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p04-0002",
+      "underlying": "INTC",
+      "upfront_cash": "138.0000"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": true,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "DELL  270115C00195000": "-1",
+        "DELL  270115P00132500": "-1"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00007",
+        "p04-202611-F00008",
+        "p04-202611-F00025",
+        "p04-202611-F00026",
+        "p04-202611-F00027",
+        "p04-202611-F00028",
+        "p04-202611-F00067",
+        "p04-202611-F00068",
+        "p04-202611-F00069",
+        "p04-202611-F00070"
+      ],
+      "fees": "6.31",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "-67.3700",
+      "open_pnl_start": "-26.5300",
+      "opened_date": "2026-10-29",
+      "opening_cash": "555.0000",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00004"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00013"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00014"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00030"
+        }
+      ],
+      "realized_pnl": "-306.3100",
+      "rolls": [
+        {
+          "credit": true,
+          "net_cash": "390.00",
+          "order_ids": [
+            "p04-202611-O00004"
+          ],
+          "ts_utc": "2026-11-05T15:54:00Z",
+          "types": [
+            "narrowed",
+            "untested_toward_money",
+            "up"
+          ]
+        },
+        {
+          "credit": true,
+          "net_cash": "140.00",
+          "order_ids": [
+            "p04-202611-O00013"
+          ],
+          "ts_utc": "2026-11-12T16:18:00Z",
+          "types": [
+            "down",
+            "narrowed",
+            "untested_toward_money"
+          ]
+        },
+        {
+          "credit": false,
+          "net_cash": "-1310.00",
+          "order_ids": [
+            "p04-202611-O00014"
+          ],
+          "ts_utc": "2026-11-13T15:41:00Z",
+          "types": [
+            "down",
+            "tested_away_from_money",
+            "widened"
+          ]
+        },
+        {
+          "credit": true,
+          "net_cash": "415.00",
+          "order_ids": [
+            "p04-202611-O00030"
+          ],
+          "ts_utc": "2026-11-27T16:22:00Z",
+          "types": [
+            "narrowed",
+            "out_in_time",
+            "tested_away_from_money",
+            "untested_toward_money",
+            "up"
+          ]
+        }
+      ],
+      "status": "open",
+      "story_id": "p04-0003",
+      "underlying": "DELL",
+      "upfront_cash": "555.0000"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": true,
+      "closed_ts": "2026-11-17T15:35:00Z",
+      "days_held": 18,
+      "days_left_at_close": 31,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00035",
+        "p04-202611-F00036"
+      ],
+      "fees": "0.24",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "0",
+      "open_pnl_start": "-11.5800",
+      "opened_date": "2026-10-30",
+      "opening_cash": "970.0000",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "close",
+          "order_id": "p04-202611-O00018"
+        }
+      ],
+      "realized_pnl": "390.7600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p04-0004",
+      "underlying": "MSFT",
+      "upfront_cash": "970.0000"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "META  270115C00730000": "-1",
+        "META  270115P00480000": "-1"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00001",
+        "p04-202611-F00002",
+        "p04-202611-F00011",
+        "p04-202611-F00012",
+        "p04-202611-F00017",
+        "p04-202611-F00018",
+        "p04-202611-F00021",
+        "p04-202611-F00022",
+        "p04-202611-F00047",
+        "p04-202611-F00048",
+        "p04-202611-F00055",
+        "p04-202611-F00056",
+        "p04-202611-F00057",
+        "p04-202611-F00058"
+      ],
+      "fees": "9.99",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "280.8800",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-02",
+      "opening_cash": "1705.00",
+      "opening_dte": 46,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p04-202611-O00001"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00006"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00009"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00011"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00024"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00027"
+        }
+      ],
+      "realized_pnl": "-1057.9900",
+      "rolls": [
+        {
+          "credit": true,
+          "net_cash": "1350.00",
+          "order_ids": [
+            "p04-202611-O00006"
+          ],
+          "ts_utc": "2026-11-06T15:29:00Z",
+          "types": [
+            "narrowed",
+            "untested_toward_money",
+            "up"
+          ]
+        },
+        {
+          "credit": true,
+          "net_cash": "135.00",
+          "order_ids": [
+            "p04-202611-O00009"
+          ],
+          "ts_utc": "2026-11-10T15:25:00Z",
+          "types": [
+            "down",
+            "narrowed",
+            "untested_toward_money"
+          ]
+        },
+        {
+          "credit": false,
+          "net_cash": "-2420.00",
+          "order_ids": [
+            "p04-202611-O00011"
+          ],
+          "ts_utc": "2026-11-11T15:28:00Z",
+          "types": [
+            "down",
+            "tested_away_from_money",
+            "widened"
+          ]
+        },
+        {
+          "credit": false,
+          "net_cash": "-1160.00",
+          "order_ids": [
+            "p04-202611-O00024"
+          ],
+          "ts_utc": "2026-11-25T15:49:00Z",
+          "types": [
+            "down",
+            "tested_away_from_money",
+            "widened"
+          ]
+        },
+        {
+          "credit": true,
+          "net_cash": "1372.00",
+          "order_ids": [
+            "p04-202611-O00027"
+          ],
+          "ts_utc": "2026-11-27T15:23:00Z",
+          "types": [
+            "down",
+            "narrowed",
+            "out_in_time",
+            "tested_away_from_money",
+            "untested_toward_money"
+          ]
+        }
+      ],
+      "status": "open",
+      "story_id": "p04-0005",
+      "underlying": "META",
+      "upfront_cash": "1705.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "AAPL  270115C00285000": "-3",
+        "AAPL  270115P00235000": "-3"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00005",
+        "p04-202611-F00006",
+        "p04-202611-F00033",
+        "p04-202611-F00034",
+        "p04-202611-F00037",
+        "p04-202611-F00038",
+        "p04-202611-F00039",
+        "p04-202611-F00040",
+        "p04-202611-F00043",
+        "p04-202611-F00044",
+        "p04-202611-F00051",
+        "p04-202611-F00052",
+        "p04-202611-F00053",
+        "p04-202611-F00054"
+      ],
+      "fees": "29.28",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "50.1000",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-04",
+      "opening_cash": "1389.00",
+      "opening_dte": 44,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p04-202611-O00003"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00017"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00019"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00020"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00022"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00026"
+        }
+      ],
+      "realized_pnl": "-137.2800",
+      "rolls": [
+        {
+          "credit": true,
+          "net_cash": "741.00",
+          "order_ids": [
+            "p04-202611-O00017"
+          ],
+          "ts_utc": "2026-11-17T14:52:00Z",
+          "types": [
+            "down",
+            "narrowed",
+            "untested_toward_money"
+          ]
+        },
+        {
+          "credit": true,
+          "net_cash": "324.00",
+          "order_ids": [
+            "p04-202611-O00019"
+          ],
+          "ts_utc": "2026-11-20T15:59:00Z",
+          "types": [
+            "narrowed",
+            "untested_toward_money",
+            "up"
+          ]
+        },
+        {
+          "credit": true,
+          "net_cash": "282.00",
+          "order_ids": [
+            "p04-202611-O00020"
+          ],
+          "ts_utc": "2026-11-23T14:52:00Z",
+          "types": [
+            "narrowed",
+            "untested_toward_money",
+            "up"
+          ]
+        },
+        {
+          "credit": false,
+          "net_cash": "-1389.00",
+          "order_ids": [
+            "p04-202611-O00022"
+          ],
+          "ts_utc": "2026-11-24T15:58:00Z",
+          "types": [
+            "tested_away_from_money",
+            "up",
+            "widened"
+          ]
+        },
+        {
+          "credit": false,
+          "net_cash": "-123.00",
+          "order_ids": [
+            "p04-202611-O00026"
+          ],
+          "ts_utc": "2026-11-27T15:08:00Z",
+          "types": [
+            "down",
+            "out_in_time",
+            "tested_away_from_money",
+            "up",
+            "widened"
+          ]
+        }
+      ],
+      "status": "open",
+      "story_id": "p04-0006",
+      "underlying": "AAPL",
+      "upfront_cash": "1389.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": "2026-11-10T16:00:00Z",
+      "days_held": 5,
+      "days_left_at_close": 38,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00009",
+        "p04-202611-F00010",
+        "p04-202611-F00019",
+        "p04-202611-F00020"
+      ],
+      "fees": "2.52",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-05",
+      "opening_cash": "673.00",
+      "opening_dte": 43,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p04-202611-O00005"
+        },
+        {
+          "effect": "close",
+          "order_id": "p04-202611-O00010"
+        }
+      ],
+      "realized_pnl": "357.4800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p04-0007",
+      "underlying": "NVDA",
+      "upfront_cash": "673.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "INTC  270115C00035000": "-3",
+        "INTC  270115P00026000": "-3"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00013",
+        "p04-202611-F00014",
+        "p04-202611-F00023",
+        "p04-202611-F00024",
+        "p04-202611-F00063",
+        "p04-202611-F00064",
+        "p04-202611-F00065",
+        "p04-202611-F00066"
+      ],
+      "fees": "17.98",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "52.7400",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-06",
+      "opening_cash": "336.00",
+      "opening_dte": 42,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p04-202611-O00007"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00012"
+        },
+        {
+          "effect": "roll",
+          "order_id": "p04-202611-O00029"
+        }
+      ],
+      "realized_pnl": "-299.9800",
+      "rolls": [
+        {
+          "credit": false,
+          "net_cash": "-180.00",
+          "order_ids": [
+            "p04-202611-O00012"
+          ],
+          "ts_utc": "2026-11-11T15:58:00Z",
+          "types": [
+            "down",
+            "tested_away_from_money",
+            "widened"
+          ]
+        },
+        {
+          "credit": false,
+          "net_cash": "-177.00",
+          "order_ids": [
+            "p04-202611-O00029"
+          ],
+          "ts_utc": "2026-11-27T16:04:00Z",
+          "types": [
+            "down",
+            "narrowed",
+            "out_in_time",
+            "tested_away_from_money",
+            "untested_toward_money"
+          ]
+        }
+      ],
+      "status": "open",
+      "story_id": "p04-0008",
+      "underlying": "INTC",
+      "upfront_cash": "336.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": "2026-11-16T15:28:00Z",
+      "days_held": 7,
+      "days_left_at_close": 32,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00015",
+        "p04-202611-F00016",
+        "p04-202611-F00029",
+        "p04-202611-F00030"
+      ],
+      "fees": "7.57",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-09",
+      "opening_cash": "4620.00",
+      "opening_dte": 39,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p04-202611-O00008"
+        },
+        {
+          "effect": "close",
+          "order_id": "p04-202611-O00015"
+        }
+      ],
+      "realized_pnl": "2422.4300",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p04-0009",
+      "underlying": "CRWD",
+      "upfront_cash": "4620.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "NVDA  270115C00250000": "-3",
+        "NVDA  270115P00137500": "-3"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00045",
+        "p04-202611-F00046"
+      ],
+      "fees": "6.81",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "108.4500",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-24",
+      "opening_cash": "2775.00",
+      "opening_dte": 52,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p04-202611-O00023"
+        }
+      ],
+      "realized_pnl": "-6.8100",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p04-0010",
+      "underlying": "NVDA",
+      "upfront_cash": "2775.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "MSFT  270115C00570000": "-3",
+        "MSFT  270115P00455000": "-3"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00049",
+        "p04-202611-F00050"
+      ],
+      "fees": "6.80",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "-1159.3800",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-25",
+      "opening_cash": "2730.00",
+      "opening_dte": 51,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p04-202611-O00025"
+        }
+      ],
+      "realized_pnl": "-6.8000",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p04-0011",
+      "underlying": "MSFT",
+      "upfront_cash": "2730.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "CRWD  270115C00490000": "-2",
+        "CRWD  270115P00365000": "-2"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p04-202611-F00071",
+        "p04-202611-F00072"
+      ],
+      "fees": "4.55",
+      "label_end": "short_strangle",
+      "label_open": "short_strangle",
+      "open_pnl_end": "-64.6200",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-30",
+      "opening_cash": "1980.00",
+      "opening_dte": 46,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p04-202611-O00031"
+        }
+      ],
+      "realized_pnl": "-4.5500",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p04-0012",
+      "underlying": "CRWD",
+      "upfront_cash": "1980.00"
+    }
+  ]
+}

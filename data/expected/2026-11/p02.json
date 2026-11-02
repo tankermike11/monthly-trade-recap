@@ -1,0 +1,2767 @@
+{
+  "customer_id": "p02",
+  "data_quality_issues": [],
+  "flags": [
+    "green_month",
+    "no_futures",
+    "no_options"
+  ],
+  "generator_version": "1.0.0",
+  "headline_facts": [
+    {
+      "id": "active_days",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": 20
+    },
+    {
+      "id": "stories_touched",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": 55
+    },
+    {
+      "id": "stories_opened",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": 55
+    },
+    {
+      "id": "stories_ended",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": 55
+    },
+    {
+      "id": "stories_open_at_end",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "asset_mix",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": {
+        "stock_etf": 1.0
+      }
+    },
+    {
+      "id": "outside_hours_share",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0006",
+        "story:p02-0008",
+        "story:p02-0013",
+        "story:p02-0015",
+        "story:p02-0018",
+        "story:p02-0028",
+        "story:p02-0041",
+        "story:p02-0051",
+        "story:p02-0053"
+      ],
+      "value": 0.2
+    },
+    {
+      "id": "median_entry_dte",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "rolls_total",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "rolls_by_type",
+      "sources": [],
+      "value": {
+        "down": 0,
+        "narrowed": 0,
+        "out_in_time": 0,
+        "tested_away_from_money": 0,
+        "untested_toward_money": 0,
+        "up": 0,
+        "widened": 0
+      }
+    },
+    {
+      "id": "credit_roll_share",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "adjust_to_close_ratio",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": 0.0
+    },
+    {
+      "id": "wins",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0012",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0044",
+        "story:p02-0047",
+        "story:p02-0050",
+        "story:p02-0053",
+        "story:p02-0055"
+      ],
+      "value": 32
+    },
+    {
+      "id": "losses",
+      "sources": [
+        "story:p02-0002",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0011",
+        "story:p02-0013",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0021",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0033",
+        "story:p02-0036",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0043",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0054"
+      ],
+      "value": 23
+    },
+    {
+      "id": "net_realized_pnl",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": "530.94"
+    },
+    {
+      "id": "total_fees",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": "19.86"
+    },
+    {
+      "id": "biggest_win",
+      "sources": [
+        "story:p02-0047"
+      ],
+      "value": {
+        "multiple_of_upfront": null,
+        "pnl": "145.08",
+        "story_id": "p02-0047"
+      }
+    },
+    {
+      "id": "biggest_loss",
+      "sources": [
+        "story:p02-0002"
+      ],
+      "value": {
+        "multiple_of_upfront": null,
+        "pnl": "-107.91",
+        "story_id": "p02-0002"
+      }
+    },
+    {
+      "id": "month_pnl",
+      "sources": [
+        "story:p02-0001",
+        "story:p02-0002",
+        "story:p02-0003",
+        "story:p02-0004",
+        "story:p02-0005",
+        "story:p02-0006",
+        "story:p02-0007",
+        "story:p02-0008",
+        "story:p02-0009",
+        "story:p02-0010",
+        "story:p02-0011",
+        "story:p02-0012",
+        "story:p02-0013",
+        "story:p02-0014",
+        "story:p02-0015",
+        "story:p02-0016",
+        "story:p02-0017",
+        "story:p02-0018",
+        "story:p02-0019",
+        "story:p02-0020",
+        "story:p02-0021",
+        "story:p02-0022",
+        "story:p02-0023",
+        "story:p02-0024",
+        "story:p02-0025",
+        "story:p02-0026",
+        "story:p02-0027",
+        "story:p02-0028",
+        "story:p02-0029",
+        "story:p02-0030",
+        "story:p02-0031",
+        "story:p02-0032",
+        "story:p02-0033",
+        "story:p02-0034",
+        "story:p02-0035",
+        "story:p02-0036",
+        "story:p02-0037",
+        "story:p02-0038",
+        "story:p02-0039",
+        "story:p02-0040",
+        "story:p02-0041",
+        "story:p02-0042",
+        "story:p02-0043",
+        "story:p02-0044",
+        "story:p02-0045",
+        "story:p02-0046",
+        "story:p02-0047",
+        "story:p02-0048",
+        "story:p02-0049",
+        "story:p02-0050",
+        "story:p02-0051",
+        "story:p02-0052",
+        "story:p02-0053",
+        "story:p02-0054",
+        "story:p02-0055"
+      ],
+      "value": "530.94"
+    },
+    {
+      "id": "spy_move",
+      "sources": [
+        "market:SPY"
+      ],
+      "value": -0.0297
+    },
+    {
+      "id": "qqq_move",
+      "sources": [
+        "market:QQQ"
+      ],
+      "value": 0.0358
+    }
+  ],
+  "month": "2026-11",
+  "option_quotes": {},
+  "persona": "day_trader",
+  "reconciliation": {
+    "difference": "0.0000",
+    "end_value": "40214.42",
+    "net_cash_flows": "0",
+    "open_pnl_change": "0",
+    "realized_pnl": "530.9400",
+    "start_value": "39683.48"
+  },
+  "seed": 42,
+  "stories": [
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-02T13:44:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00001",
+        "p02-202611-F00002"
+      ],
+      "fees": "0.46",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-02",
+      "opening_cash": "-16950.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00001"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00002"
+        }
+      ],
+      "realized_pnl": "30.5400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0001",
+      "underlying": "SOFI",
+      "upfront_cash": "-16950.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-02T14:38:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00003",
+        "p02-202611-F00004"
+      ],
+      "fees": "0.31",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-02",
+      "opening_cash": "-14336.40",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00003"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00004"
+        }
+      ],
+      "realized_pnl": "-107.9100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0002",
+      "underlying": "TSLA",
+      "upfront_cash": "-14336.40"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-03T12:52:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00005",
+        "p02-202611-F00006"
+      ],
+      "fees": "0.40",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-03",
+      "opening_cash": "-14563.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00005"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00006"
+        }
+      ],
+      "realized_pnl": "48.2000",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0003",
+      "underlying": "SOFI",
+      "upfront_cash": "-14563.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-03T14:06:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00007",
+        "p02-202611-F00008"
+      ],
+      "fees": "0.34",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-03",
+      "opening_cash": "-15640.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00007"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00008"
+        }
+      ],
+      "realized_pnl": "60.8600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0004",
+      "underlying": "AMD",
+      "upfront_cash": "-15640.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-03T14:50:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00009",
+        "p02-202611-F00010"
+      ],
+      "fees": "0.34",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-03",
+      "opening_cash": "-15744.60",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00009"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00010"
+        }
+      ],
+      "realized_pnl": "66.8600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0005",
+      "underlying": "AMD",
+      "upfront_cash": "-15744.60"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-04T14:17:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00011",
+        "p02-202611-F00012"
+      ],
+      "fees": "0.40",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-04",
+      "opening_cash": "-18730.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00011"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00012"
+        }
+      ],
+      "realized_pnl": "-78.4000",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0006",
+      "underlying": "TSLA",
+      "upfront_cash": "-18730.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-04T19:39:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00013",
+        "p02-202611-F00014"
+      ],
+      "fees": "0.36",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-04",
+      "opening_cash": "-15756.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00013"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00014"
+        }
+      ],
+      "realized_pnl": "-71.8600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0007",
+      "underlying": "PLTR",
+      "upfront_cash": "-15756.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-05T13:33:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00015",
+        "p02-202611-F00016"
+      ],
+      "fees": "0.39",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-05",
+      "opening_cash": "14147.40",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00015"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00016"
+        }
+      ],
+      "realized_pnl": "45.5100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0008",
+      "underlying": "SOFI",
+      "upfront_cash": "14147.40"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-05T15:42:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00017",
+        "p02-202611-F00018"
+      ],
+      "fees": "0.23",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-05",
+      "opening_cash": "9785.60",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00017"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00018"
+        }
+      ],
+      "realized_pnl": "40.5700",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0009",
+      "underlying": "PLTR",
+      "upfront_cash": "9785.60"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-06T15:13:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00019",
+        "p02-202611-F00020"
+      ],
+      "fees": "0.44",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-06",
+      "opening_cash": "-20272.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00019"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00020"
+        }
+      ],
+      "realized_pnl": "87.5600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0010",
+      "underlying": "AMD",
+      "upfront_cash": "-20272.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-06T16:45:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00021",
+        "p02-202611-F00022"
+      ],
+      "fees": "0.33",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-06",
+      "opening_cash": "-15332.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00021"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00022"
+        }
+      ],
+      "realized_pnl": "-63.9300",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0011",
+      "underlying": "TSLA",
+      "upfront_cash": "-15332.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-06T20:27:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00023",
+        "p02-202611-F00024"
+      ],
+      "fees": "0.46",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-06",
+      "opening_cash": "-20404.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00023"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00024"
+        }
+      ],
+      "realized_pnl": "130.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0012",
+      "underlying": "NVDA",
+      "upfront_cash": "-20404.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-09T14:46:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00025",
+        "p02-202611-F00026"
+      ],
+      "fees": "0.40",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-09",
+      "opening_cash": "-18869.50",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00025"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00026"
+        }
+      ],
+      "realized_pnl": "-101.4000",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0013",
+      "underlying": "TSLA",
+      "upfront_cash": "-18869.50"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-09T17:52:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00027",
+        "p02-202611-F00028"
+      ],
+      "fees": "0.40",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-09",
+      "opening_cash": "-17551.50",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00027"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00028"
+        }
+      ],
+      "realized_pnl": "115.1000",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0014",
+      "underlying": "PLTR",
+      "upfront_cash": "-17551.50"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-10T13:58:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00029",
+        "p02-202611-F00030"
+      ],
+      "fees": "0.28",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-10",
+      "opening_cash": "-10264.60",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00029"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00030"
+        }
+      ],
+      "realized_pnl": "40.5200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0015",
+      "underlying": "SOFI",
+      "upfront_cash": "-10264.60"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-10T15:54:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00031",
+        "p02-202611-F00032"
+      ],
+      "fees": "0.46",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-10",
+      "opening_cash": "-20602.40",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00031"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00032"
+        }
+      ],
+      "realized_pnl": "-86.2600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0016",
+      "underlying": "NVDA",
+      "upfront_cash": "-20602.40"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-10T17:10:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00033",
+        "p02-202611-F00034"
+      ],
+      "fees": "0.29",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-10",
+      "opening_cash": "11080.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00033"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00034"
+        }
+      ],
+      "realized_pnl": "-50.6900",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0017",
+      "underlying": "SOFI",
+      "upfront_cash": "11080.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-11T14:35:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00035",
+        "p02-202611-F00036"
+      ],
+      "fees": "0.45",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-11",
+      "opening_cash": "-20027.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00035"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00036"
+        }
+      ],
+      "realized_pnl": "-12.1500",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0018",
+      "underlying": "NVDA",
+      "upfront_cash": "-20027.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-11T14:49:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00037",
+        "p02-202611-F00038"
+      ],
+      "fees": "0.33",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-11",
+      "opening_cash": "-12119.60",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00037"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00038"
+        }
+      ],
+      "realized_pnl": "57.0700",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0019",
+      "underlying": "SOFI",
+      "upfront_cash": "-12119.60"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-11T17:40:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00039",
+        "p02-202611-F00040"
+      ],
+      "fees": "0.37",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-11",
+      "opening_cash": "-16624.30",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00039"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00040"
+        }
+      ],
+      "realized_pnl": "77.7300",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0020",
+      "underlying": "NVDA",
+      "upfront_cash": "-16624.30"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-11T18:14:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00041",
+        "p02-202611-F00042"
+      ],
+      "fees": "0.22",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-11",
+      "opening_cash": "-9917.20",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00041"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00042"
+        }
+      ],
+      "realized_pnl": "-48.2200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0021",
+      "underlying": "AMD",
+      "upfront_cash": "-9917.20"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-12T16:27:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00043",
+        "p02-202611-F00044"
+      ],
+      "fees": "0.36",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-12",
+      "opening_cash": "-16590.50",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00043"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00044"
+        }
+      ],
+      "realized_pnl": "70.6400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0022",
+      "underlying": "TSLA",
+      "upfront_cash": "-16590.50"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-12T17:47:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00045",
+        "p02-202611-F00046"
+      ],
+      "fees": "0.35",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-12",
+      "opening_cash": "-15798.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00045"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00046"
+        }
+      ],
+      "realized_pnl": "77.6500",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0023",
+      "underlying": "NVDA",
+      "upfront_cash": "-15798.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-13T16:33:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00047",
+        "p02-202611-F00048"
+      ],
+      "fees": "0.46",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-13",
+      "opening_cash": "-20480.20",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00047"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00048"
+        }
+      ],
+      "realized_pnl": "-87.5600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0024",
+      "underlying": "NVDA",
+      "upfront_cash": "-20480.20"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-13T16:57:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00049",
+        "p02-202611-F00050"
+      ],
+      "fees": "0.28",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-13",
+      "opening_cash": "-12246.30",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00049"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00050"
+        }
+      ],
+      "realized_pnl": "-60.7800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0025",
+      "underlying": "PLTR",
+      "upfront_cash": "-12246.30"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-13T17:21:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00051",
+        "p02-202611-F00052"
+      ],
+      "fees": "0.22",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-13",
+      "opening_cash": "9909.90",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00051"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00052"
+        }
+      ],
+      "realized_pnl": "64.5800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0026",
+      "underlying": "TSLA",
+      "upfront_cash": "9909.90"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-13T19:38:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00053",
+        "p02-202611-F00054"
+      ],
+      "fees": "0.35",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-13",
+      "opening_cash": "-16390.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00053"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00054"
+        }
+      ],
+      "realized_pnl": "70.1500",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0027",
+      "underlying": "TSLA",
+      "upfront_cash": "-16390.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-16T14:18:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00055",
+        "p02-202611-F00056"
+      ],
+      "fees": "0.26",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-16",
+      "opening_cash": "11191.60",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00055"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00056"
+        }
+      ],
+      "realized_pnl": "43.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0028",
+      "underlying": "NVDA",
+      "upfront_cash": "11191.60"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-16T16:44:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00057",
+        "p02-202611-F00058"
+      ],
+      "fees": "0.49",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-16",
+      "opening_cash": "18672.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00057"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00058"
+        }
+      ],
+      "realized_pnl": "95.5100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0029",
+      "underlying": "SOFI",
+      "upfront_cash": "18672.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-17T14:47:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00059",
+        "p02-202611-F00060"
+      ],
+      "fees": "0.22",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-17",
+      "opening_cash": "-9566.10",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00059"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00060"
+        }
+      ],
+      "realized_pnl": "51.0800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0030",
+      "underlying": "PLTR",
+      "upfront_cash": "-9566.10"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-17T18:39:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00061",
+        "p02-202611-F00062"
+      ],
+      "fees": "0.30",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-17",
+      "opening_cash": "-11602.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00061"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00062"
+        }
+      ],
+      "realized_pnl": "42.9000",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0031",
+      "underlying": "SOFI",
+      "upfront_cash": "-11602.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-18T17:03:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00063",
+        "p02-202611-F00064"
+      ],
+      "fees": "0.31",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-18",
+      "opening_cash": "-12052.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00063"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00064"
+        }
+      ],
+      "realized_pnl": "42.8900",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0032",
+      "underlying": "SOFI",
+      "upfront_cash": "-12052.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-18T18:32:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00065",
+        "p02-202611-F00066"
+      ],
+      "fees": "0.36",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-18",
+      "opening_cash": "-17016.60",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00065"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00066"
+        }
+      ],
+      "realized_pnl": "-92.1600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0033",
+      "underlying": "AMD",
+      "upfront_cash": "-17016.60"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-18T19:03:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00067",
+        "p02-202611-F00068"
+      ],
+      "fees": "0.31",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-18",
+      "opening_cash": "-14031.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00067"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00068"
+        }
+      ],
+      "realized_pnl": "64.1900",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0034",
+      "underlying": "AMD",
+      "upfront_cash": "-14031.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-19T16:03:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00069",
+        "p02-202611-F00070"
+      ],
+      "fees": "0.44",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-19",
+      "opening_cash": "-18899.30",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00069"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00070"
+        }
+      ],
+      "realized_pnl": "85.0600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0035",
+      "underlying": "PLTR",
+      "upfront_cash": "-18899.30"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-19T18:08:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00071",
+        "p02-202611-F00072"
+      ],
+      "fees": "0.40",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-19",
+      "opening_cash": "-15166.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00071"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00072"
+        }
+      ],
+      "realized_pnl": "-92.8000",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0036",
+      "underlying": "SOFI",
+      "upfront_cash": "-15166.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-19T19:37:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00073",
+        "p02-202611-F00074"
+      ],
+      "fees": "0.40",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-19",
+      "opening_cash": "-17622.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00073"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00074"
+        }
+      ],
+      "realized_pnl": "68.0000",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0037",
+      "underlying": "PLTR",
+      "upfront_cash": "-17622.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-20T17:42:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00075",
+        "p02-202611-F00076"
+      ],
+      "fees": "0.37",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-20",
+      "opening_cash": "-16314.90",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00075"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00076"
+        }
+      ],
+      "realized_pnl": "71.0300",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0038",
+      "underlying": "PLTR",
+      "upfront_cash": "-16314.90"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-20T18:00:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00077",
+        "p02-202611-F00078"
+      ],
+      "fees": "0.32",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-20",
+      "opening_cash": "-12260.50",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00077"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00078"
+        }
+      ],
+      "realized_pnl": "-98.3200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0039",
+      "underlying": "SOFI",
+      "upfront_cash": "-12260.50"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-20T18:22:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00079",
+        "p02-202611-F00080"
+      ],
+      "fees": "0.44",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-20",
+      "opening_cash": "-19162.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00079"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00080"
+        }
+      ],
+      "realized_pnl": "-86.4400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0040",
+      "underlying": "PLTR",
+      "upfront_cash": "-19162.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-23T13:11:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00081",
+        "p02-202611-F00082"
+      ],
+      "fees": "0.24",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-23",
+      "opening_cash": "-10812.60",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00081"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00082"
+        }
+      ],
+      "realized_pnl": "44.4600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0041",
+      "underlying": "TSLA",
+      "upfront_cash": "-10812.60"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-23T16:25:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00083",
+        "p02-202611-F00084"
+      ],
+      "fees": "0.43",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-23",
+      "opening_cash": "-18810.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00083"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00084"
+        }
+      ],
+      "realized_pnl": "73.6700",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0042",
+      "underlying": "PLTR",
+      "upfront_cash": "-18810.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-23T17:03:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00085",
+        "p02-202611-F00086"
+      ],
+      "fees": "0.48",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-23",
+      "opening_cash": "18587.10",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00085"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00086"
+        }
+      ],
+      "realized_pnl": "-95.8800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0043",
+      "underlying": "SOFI",
+      "upfront_cash": "18587.10"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-24T17:49:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00087",
+        "p02-202611-F00088"
+      ],
+      "fees": "0.42",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-24",
+      "opening_cash": "-19169.70",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00087"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00088"
+        }
+      ],
+      "realized_pnl": "96.3800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0044",
+      "underlying": "NVDA",
+      "upfront_cash": "-19169.70"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-24T19:23:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00089",
+        "p02-202611-F00090"
+      ],
+      "fees": "0.31",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-24",
+      "opening_cash": "-14394.40",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00089"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00090"
+        }
+      ],
+      "realized_pnl": "-67.1100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0045",
+      "underlying": "TSLA",
+      "upfront_cash": "-14394.40"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-24T19:44:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00091",
+        "p02-202611-F00092"
+      ],
+      "fees": "0.31",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-24",
+      "opening_cash": "-14426.40",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00091"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00092"
+        }
+      ],
+      "realized_pnl": "-59.5100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0046",
+      "underlying": "TSLA",
+      "upfront_cash": "-14426.40"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-25T15:14:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00093",
+        "p02-202611-F00094"
+      ],
+      "fees": "0.52",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-25",
+      "opening_cash": "-20232.80",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00093"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00094"
+        }
+      ],
+      "realized_pnl": "145.0800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0047",
+      "underlying": "SOFI",
+      "upfront_cash": "-20232.80"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-25T15:41:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00095",
+        "p02-202611-F00096"
+      ],
+      "fees": "0.36",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-25",
+      "opening_cash": "16260.30",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00095"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00096"
+        }
+      ],
+      "realized_pnl": "-69.6600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0048",
+      "underlying": "NVDA",
+      "upfront_cash": "16260.30"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-25T15:51:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00097",
+        "p02-202611-F00098"
+      ],
+      "fees": "0.34",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-25",
+      "opening_cash": "-13176.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00097"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00098"
+        }
+      ],
+      "realized_pnl": "-68.7400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0049",
+      "underlying": "SOFI",
+      "upfront_cash": "-13176.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-25T17:24:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00099",
+        "p02-202611-F00100"
+      ],
+      "fees": "0.23",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-25",
+      "opening_cash": "-9990.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00099"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00100"
+        }
+      ],
+      "realized_pnl": "38.7700",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0050",
+      "underlying": "PLTR",
+      "upfront_cash": "-9990.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-27T13:28:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00101",
+        "p02-202611-F00102"
+      ],
+      "fees": "0.25",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-27",
+      "opening_cash": "9672.00",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00101"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00102"
+        }
+      ],
+      "realized_pnl": "-47.0500",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0051",
+      "underlying": "SOFI",
+      "upfront_cash": "9672.00"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-27T16:45:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00103",
+        "p02-202611-F00104"
+      ],
+      "fees": "0.33",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-27",
+      "opening_cash": "-15249.20",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00103"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00104"
+        }
+      ],
+      "realized_pnl": "-91.5300",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0052",
+      "underlying": "TSLA",
+      "upfront_cash": "-15249.20"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-30T14:34:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00105",
+        "p02-202611-F00106"
+      ],
+      "fees": "0.41",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-30",
+      "opening_cash": "18997.20",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00105"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00106"
+        }
+      ],
+      "realized_pnl": "108.1900",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0053",
+      "underlying": "AMD",
+      "upfront_cash": "18997.20"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-30T16:19:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00107",
+        "p02-202611-F00108"
+      ],
+      "fees": "0.53",
+      "label_end": "stock_long",
+      "label_open": "stock_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-30",
+      "opening_cash": "-20725.60",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00107"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00108"
+        }
+      ],
+      "realized_pnl": "-95.7300",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0054",
+      "underlying": "SOFI",
+      "upfront_cash": "-20725.60"
+    },
+    {
+      "asset_class": "stock_etf",
+      "carried_in": false,
+      "closed_ts": "2026-11-30T18:45:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p02-202611-F00109",
+        "p02-202611-F00110"
+      ],
+      "fees": "0.40",
+      "label_end": "stock_short",
+      "label_open": "stock_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-30",
+      "opening_cash": "18538.50",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p02-202611-O00109"
+        },
+        {
+          "effect": "close",
+          "order_id": "p02-202611-O00110"
+        }
+      ],
+      "realized_pnl": "109.6000",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p02-0055",
+      "underlying": "TSLA",
+      "upfront_cash": "18538.50"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+# Persona 10: Messy account
+id: p10
+first_name: Drew
+time_zone: America/New_York
+style: scripted
+
+account:
+  starting_value: 70000
+  options_level: 3
+  futures: no
+  crypto: no
+
+summary: >
+  An account with awkward data. It starts the month already holding shares
+  and options. A call it sold is exercised early, the day before a dividend.
+  One stock splits two-for-one while a put on it is open. One order fills in
+  three pieces and another only partly fills. A roll is done as two separate
+  orders two minutes apart. Half the split shares are sold, and that fill
+  arrives with its fees missing.
+
+already_owned_on_oct_1:
+  - {symbol: KO,   shares: 200, bought_on: 2026-08-10, label: covered_call}
+  - {symbol: KO,   sold_option: {type: C, strike: 62, end_date: 2026-11-20, contracts: 2},
+     bought_on: 2026-09-10, label: covered_call}
+  - {symbol: SHOP, shares: 100, bought_on: 2026-08-20, label: custom}
+  - {symbol: SHOP, sold_option: {type: P, strike: 170, end_date: 2026-11-20, contracts: 1},
+     bought_on: 2026-09-21, label: custom}
+
+timeline:                   # New York time
+  - {date: 2026-10-07, at: "10:02", buy_calls: {stock: INTC, strike: 40, end_date: 2026-11-20, contracts: 5},
+     fills_in_pieces: [2, 2, 1], minutes_apart: 7}
+  - {date: 2026-10-14, at: "19:30", early_assignment: {stock: KO, type: C, strike: 62, end_date: 2026-11-20}}
+  - {date: 2026-10-22, at: "11:15", buy_shares: {stock: F, shares: 500}, only_filled: [200, 100], minutes_apart: 16}
+  - {date: 2026-10-22, withdraw: 2000}
+  - {date: 2026-10-26, at: "10:30", label: custom, roll_in_two_orders: {stock: SHOP, minutes_apart: 2,
+     close: {type: P, strike: 85, end_date: 2026-11-20}, open: {type: P, strike: 80, end_date: 2026-12-18}}}
+  - {date: 2026-10-27, at: "13:40", sell_calls: {stock: INTC, strike: 40, end_date: 2026-11-20, contracts: 5}}
+  - {date: 2026-10-28, at: "11:05", sell_shares: {stock: SHOP, shares: 100}, label: custom, fees_missing: yes}
+  - {date: 2026-11-04, at: "10:45", sell_shares: {stock: F, shares: 300}}

@@ -1,0 +1,114 @@
+{
+  "end": {
+    "as_of": "end",
+    "cash": "57908.6300",
+    "lines": [
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "3124.0000",
+        "expiration": null,
+        "mark": "10.75",
+        "multiplier": 1,
+        "opened_date": "2026-10-22",
+        "put_call": null,
+        "qty": "300",
+        "strike": null,
+        "symbol": "F",
+        "underlying": "F"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "7833.5000",
+        "expiration": null,
+        "mark": "85.52",
+        "multiplier": 1,
+        "opened_date": "2026-08-20",
+        "put_call": null,
+        "qty": "100",
+        "strike": null,
+        "symbol": "SHOP",
+        "underlying": "SHOP"
+      },
+      {
+        "asset_class": "equity_option",
+        "contract_month": null,
+        "cost_basis": "-490.0000",
+        "expiration": "2026-12-18",
+        "mark": "4.9806",
+        "multiplier": 100,
+        "opened_date": "2026-10-26",
+        "put_call": "P",
+        "qty": "-2",
+        "strike": "80",
+        "symbol": "SHOP  261218P00080000",
+        "underlying": "SHOP"
+      }
+    ],
+    "valued_at_utc": "2026-10-30T20:00:00Z"
+  },
+  "start": {
+    "as_of": "start",
+    "cash": "42224.5700",
+    "lines": [
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "13942.0000",
+        "expiration": null,
+        "mark": "72.07",
+        "multiplier": 1,
+        "opened_date": "2026-08-10",
+        "put_call": null,
+        "qty": "200",
+        "strike": null,
+        "symbol": "KO",
+        "underlying": "KO"
+      },
+      {
+        "asset_class": "equity_option",
+        "contract_month": null,
+        "cost_basis": "-941.3800",
+        "expiration": "2026-11-20",
+        "mark": "10.1726",
+        "multiplier": 100,
+        "opened_date": "2026-09-10",
+        "put_call": "C",
+        "qty": "-2",
+        "strike": "62",
+        "symbol": "KO    261120C00062000",
+        "underlying": "KO"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "15667.0000",
+        "expiration": null,
+        "mark": "176.97",
+        "multiplier": 1,
+        "opened_date": "2026-08-20",
+        "put_call": null,
+        "qty": "100",
+        "strike": null,
+        "symbol": "SHOP",
+        "underlying": "SHOP"
+      },
+      {
+        "asset_class": "equity_option",
+        "contract_month": null,
+        "cost_basis": "-892.1900",
+        "expiration": "2026-11-20",
+        "mark": "10.1598",
+        "multiplier": 100,
+        "opened_date": "2026-09-21",
+        "put_call": "P",
+        "qty": "-1",
+        "strike": "170",
+        "symbol": "SHOP  261120P00170000",
+        "underlying": "SHOP"
+      }
+    ],
+    "valued_at_utc": "2026-09-30T20:00:00Z"
+  }
+}

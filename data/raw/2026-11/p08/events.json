@@ -1,0 +1,30 @@
+[
+  {
+    "adjusted_symbols": null,
+    "cash_amount": "5.40",
+    "early": false,
+    "event_id": "p08-202611-V0001",
+    "qty": "20",
+    "resulting_exec_ids": [],
+    "settlement_price": null,
+    "split_ratio": null,
+    "symbol": "AAPL",
+    "ts_utc": "2026-11-09T09:00:00Z",
+    "type": "dividend",
+    "underlying": "AAPL"
+  },
+  {
+    "adjusted_symbols": null,
+    "cash_amount": "18.20",
+    "early": false,
+    "event_id": "p08-202611-V0002",
+    "qty": "20",
+    "resulting_exec_ids": [],
+    "settlement_price": null,
+    "split_ratio": null,
+    "symbol": "MSFT",
+    "ts_utc": "2026-11-19T09:00:00Z",
+    "type": "dividend",
+    "underlying": "MSFT"
+  }
+]

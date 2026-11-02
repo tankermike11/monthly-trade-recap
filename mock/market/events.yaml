@@ -1,0 +1,20 @@
+# Planted market events in the shared simulated world.
+# Every persona that holds these names sees the same moves.
+
+gaps:                        # overnight jump into the 04:00 New York open
+  - {symbol: AMD,  date: 2026-10-07, move: +0.09, why: "earnings-style jump"}
+  - {symbol: F,    date: 2026-10-08, move: -0.06, why: "pushes the wheel's put into the money"}
+  - {symbol: NKE,  date: 2026-10-13, move: -0.12, why: "the losing month's drop (persona 9)"}
+  - {symbol: MSFT, date: 2026-10-28, move: +0.05, why: "earnings-style jump"}
+  - {symbol: META, date: 2026-10-29, move: -0.07, why: "earnings-style drop"}
+  - {symbol: NVDA, date: 2026-11-19, move: +0.06, why: "earnings-style jump"}
+
+splits:
+  - {symbol: SHOP, date: 2026-10-21, ratio: 2}   # 2-for-1 before the open
+
+dividends:                   # cash per share; holders at the ex-date open are paid
+  - {symbol: BND,  ex_date: 2026-10-01, amount: 0.22}
+  - {symbol: KO,   ex_date: 2026-10-15, amount: 0.53}
+  - {symbol: BND,  ex_date: 2026-11-02, amount: 0.22}
+  - {symbol: AAPL, ex_date: 2026-11-09, amount: 0.27}
+  - {symbol: MSFT, ex_date: 2026-11-19, amount: 0.91}

@@ -1,0 +1,128 @@
+{
+  "end": {
+    "as_of": "end",
+    "cash": "6063.3600",
+    "lines": [
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "6675.7900",
+        "expiration": null,
+        "mark": "267.79",
+        "multiplier": 1,
+        "opened_date": "2026-09-14",
+        "put_call": null,
+        "qty": "28",
+        "strike": null,
+        "symbol": "AAPL",
+        "underlying": "AAPL"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "14746.0000",
+        "expiration": null,
+        "mark": "73.06",
+        "multiplier": 1,
+        "opened_date": "2026-08-17",
+        "put_call": null,
+        "qty": "200",
+        "strike": null,
+        "symbol": "BND",
+        "underlying": "BND"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "21532.3500",
+        "expiration": null,
+        "mark": "315.47",
+        "multiplier": 1,
+        "opened_date": "2026-08-04",
+        "put_call": null,
+        "qty": "65",
+        "strike": null,
+        "symbol": "VTI",
+        "underlying": "VTI"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "11026.5000",
+        "expiration": null,
+        "mark": "67.11",
+        "multiplier": 1,
+        "opened_date": "2026-08-04",
+        "put_call": null,
+        "qty": "150",
+        "strike": null,
+        "symbol": "VXUS",
+        "underlying": "VXUS"
+      }
+    ],
+    "valued_at_utc": "2026-10-30T20:00:00Z"
+  },
+  "start": {
+    "as_of": "start",
+    "cash": "8491.3000",
+    "lines": [
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "5923.0000",
+        "expiration": null,
+        "mark": "247.47",
+        "multiplier": 1,
+        "opened_date": "2026-09-14",
+        "put_call": null,
+        "qty": "25",
+        "strike": null,
+        "symbol": "AAPL",
+        "underlying": "AAPL"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "14746.0000",
+        "expiration": null,
+        "mark": "72.08",
+        "multiplier": 1,
+        "opened_date": "2026-08-17",
+        "put_call": null,
+        "qty": "200",
+        "strike": null,
+        "symbol": "BND",
+        "underlying": "BND"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "19813.2000",
+        "expiration": null,
+        "mark": "347.18",
+        "multiplier": 1,
+        "opened_date": "2026-08-04",
+        "put_call": null,
+        "qty": "60",
+        "strike": null,
+        "symbol": "VTI",
+        "underlying": "VTI"
+      },
+      {
+        "asset_class": "stock_etf",
+        "contract_month": null,
+        "cost_basis": "11026.5000",
+        "expiration": null,
+        "mark": "70.98",
+        "multiplier": 1,
+        "opened_date": "2026-08-04",
+        "put_call": null,
+        "qty": "150",
+        "strike": null,
+        "symbol": "VXUS",
+        "underlying": "VXUS"
+      }
+    ],
+    "valued_at_utc": "2026-09-30T20:00:00Z"
+  }
+}

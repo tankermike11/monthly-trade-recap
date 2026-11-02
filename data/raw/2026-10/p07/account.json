@@ -1,0 +1,15 @@
+{
+  "cash_flows": [],
+  "customer_id": "p07",
+  "end_value": "16982.93",
+  "first_name": "Morgan",
+  "month": "2026-10",
+  "products": {
+    "crypto": false,
+    "event_contracts": false,
+    "futures": true,
+    "options_level": 0
+  },
+  "start_value": "20000.00",
+  "time_zone": "America/Chicago"
+}

@@ -1,0 +1,2679 @@
+{
+  "customer_id": "p07",
+  "data_quality_issues": [],
+  "flags": [
+    "first_month",
+    "no_options",
+    "red_month"
+  ],
+  "generator_version": "1.0.0",
+  "headline_facts": [
+    {
+      "id": "active_days",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": 23
+    },
+    {
+      "id": "stories_touched",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": 53
+    },
+    {
+      "id": "stories_opened",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": 53
+    },
+    {
+      "id": "stories_ended",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": 53
+    },
+    {
+      "id": "stories_open_at_end",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "asset_mix",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": {
+        "future": 1.0
+      }
+    },
+    {
+      "id": "outside_hours_share",
+      "sources": [
+        "story:p07-0002",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0009",
+        "story:p07-0011",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0019",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0026",
+        "story:p07-0030",
+        "story:p07-0034",
+        "story:p07-0038",
+        "story:p07-0040",
+        "story:p07-0044",
+        "story:p07-0046",
+        "story:p07-0051"
+      ],
+      "value": 0.3396
+    },
+    {
+      "id": "median_entry_dte",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "rolls_total",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "rolls_by_type",
+      "sources": [],
+      "value": {
+        "down": 0,
+        "narrowed": 0,
+        "out_in_time": 0,
+        "tested_away_from_money": 0,
+        "untested_toward_money": 0,
+        "up": 0,
+        "widened": 0
+      }
+    },
+    {
+      "id": "credit_roll_share",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "adjust_to_close_ratio",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": 0.0
+    },
+    {
+      "id": "wins",
+      "sources": [
+        "story:p07-0006",
+        "story:p07-0009",
+        "story:p07-0012",
+        "story:p07-0016",
+        "story:p07-0021",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0028",
+        "story:p07-0030",
+        "story:p07-0035",
+        "story:p07-0037",
+        "story:p07-0040",
+        "story:p07-0042",
+        "story:p07-0045",
+        "story:p07-0048",
+        "story:p07-0051",
+        "story:p07-0052"
+      ],
+      "value": 17
+    },
+    {
+      "id": "losses",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0029",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0036",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0041",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0053"
+      ],
+      "value": 36
+    },
+    {
+      "id": "net_realized_pnl",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": "-3017.07"
+    },
+    {
+      "id": "total_fees",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": "207.32"
+    },
+    {
+      "id": "biggest_win",
+      "sources": [
+        "story:p07-0024"
+      ],
+      "value": {
+        "multiple_of_upfront": null,
+        "pnl": "346.32",
+        "story_id": "p07-0024"
+      }
+    },
+    {
+      "id": "biggest_loss",
+      "sources": [
+        "story:p07-0050"
+      ],
+      "value": {
+        "multiple_of_upfront": null,
+        "pnl": "-314.68",
+        "story_id": "p07-0050"
+      }
+    },
+    {
+      "id": "month_pnl",
+      "sources": [
+        "story:p07-0001",
+        "story:p07-0002",
+        "story:p07-0003",
+        "story:p07-0004",
+        "story:p07-0005",
+        "story:p07-0006",
+        "story:p07-0007",
+        "story:p07-0008",
+        "story:p07-0009",
+        "story:p07-0010",
+        "story:p07-0011",
+        "story:p07-0012",
+        "story:p07-0013",
+        "story:p07-0014",
+        "story:p07-0015",
+        "story:p07-0016",
+        "story:p07-0017",
+        "story:p07-0018",
+        "story:p07-0019",
+        "story:p07-0020",
+        "story:p07-0021",
+        "story:p07-0022",
+        "story:p07-0023",
+        "story:p07-0024",
+        "story:p07-0025",
+        "story:p07-0026",
+        "story:p07-0027",
+        "story:p07-0028",
+        "story:p07-0029",
+        "story:p07-0030",
+        "story:p07-0031",
+        "story:p07-0032",
+        "story:p07-0033",
+        "story:p07-0034",
+        "story:p07-0035",
+        "story:p07-0036",
+        "story:p07-0037",
+        "story:p07-0038",
+        "story:p07-0039",
+        "story:p07-0040",
+        "story:p07-0041",
+        "story:p07-0042",
+        "story:p07-0043",
+        "story:p07-0044",
+        "story:p07-0045",
+        "story:p07-0046",
+        "story:p07-0047",
+        "story:p07-0048",
+        "story:p07-0049",
+        "story:p07-0050",
+        "story:p07-0051",
+        "story:p07-0052",
+        "story:p07-0053"
+      ],
+      "value": "-3017.07"
+    },
+    {
+      "id": "spy_move",
+      "sources": [
+        "market:SPY"
+      ],
+      "value": 0.0074
+    },
+    {
+      "id": "qqq_move",
+      "sources": [
+        "market:QQQ"
+      ],
+      "value": -0.0675
+    }
+  ],
+  "month": "2026-10",
+  "option_quotes": {},
+  "persona": "futures_day_trader",
+  "reconciliation": {
+    "difference": "0.0000",
+    "end_value": "16982.93",
+    "net_cash_flows": "0",
+    "open_pnl_change": "0",
+    "realized_pnl": "-3017.0700",
+    "start_value": "20000.00"
+  },
+  "seed": 42,
+  "stories": [
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-01T17:16:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00001",
+        "p07-202610-F00002"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-01",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00001"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00002"
+        }
+      ],
+      "realized_pnl": "-141.3400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0001",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-02T02:20:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00003",
+        "p07-202610-F00004"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-01",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00003"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00004"
+        }
+      ],
+      "realized_pnl": "-135.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0002",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-02T19:50:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00005",
+        "p07-202610-F00006"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-02",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00005"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00006"
+        }
+      ],
+      "realized_pnl": "-170.3400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0003",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-06T01:01:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00007",
+        "p07-202610-F00008"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-05",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00007"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00008"
+        }
+      ],
+      "realized_pnl": "-145.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0004",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-06T02:33:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00009",
+        "p07-202610-F00010"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-05",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00009"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00010"
+        }
+      ],
+      "realized_pnl": "-143.3400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0005",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-06T07:44:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00011",
+        "p07-202610-F00012"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-05",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00011"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00012"
+        }
+      ],
+      "realized_pnl": "209.3200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0006",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-06T15:15:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00013",
+        "p07-202610-F00014"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-06",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00013"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00014"
+        }
+      ],
+      "realized_pnl": "-210.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0007",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-06T18:04:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00015",
+        "p07-202610-F00016"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-06",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00015"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00016"
+        }
+      ],
+      "realized_pnl": "-233.1800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0008",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-07T06:42:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00017",
+        "p07-202610-F00018"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-06",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00017"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00018"
+        }
+      ],
+      "realized_pnl": "19.6600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0009",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-07T16:27:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00019",
+        "p07-202610-F00020"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-07",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00019"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00020"
+        }
+      ],
+      "realized_pnl": "-193.1800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0010",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-08T08:01:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00021",
+        "p07-202610-F00022"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-07",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00021"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00022"
+        }
+      ],
+      "realized_pnl": "-111.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0011",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-08T15:56:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00023",
+        "p07-202610-F00024"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-08",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00023"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00024"
+        }
+      ],
+      "realized_pnl": "130.9100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0012",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-09T00:20:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00025",
+        "p07-202610-F00026"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-08",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00025"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00026"
+        }
+      ],
+      "realized_pnl": "-97.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0013",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-09T07:42:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00027",
+        "p07-202610-F00028"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-08",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00027"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00028"
+        }
+      ],
+      "realized_pnl": "-27.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0014",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-09T15:37:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00029",
+        "p07-202610-F00030"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-09",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00029"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00030"
+        }
+      ],
+      "realized_pnl": "-144.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0015",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-12T16:29:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00031",
+        "p07-202610-F00032"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-12",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00031"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00032"
+        }
+      ],
+      "realized_pnl": "112.1600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0016",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-12T16:58:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00033",
+        "p07-202610-F00034"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-12",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00033"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00034"
+        }
+      ],
+      "realized_pnl": "-104.0900",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0017",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-13T14:26:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00035",
+        "p07-202610-F00036"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-13",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00035"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00036"
+        }
+      ],
+      "realized_pnl": "-312.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0018",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-14T06:41:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00037",
+        "p07-202610-F00038"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-13",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00037"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00038"
+        }
+      ],
+      "realized_pnl": "-44.0900",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0019",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-14T14:55:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00039",
+        "p07-202610-F00040"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-14",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00039"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00040"
+        }
+      ],
+      "realized_pnl": "-306.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0020",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-14T17:17:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00041",
+        "p07-202610-F00042"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-14",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00041"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00042"
+        }
+      ],
+      "realized_pnl": "105.9100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0021",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-15T01:37:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00043",
+        "p07-202610-F00044"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-14",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00043"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00044"
+        }
+      ],
+      "realized_pnl": "-294.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0022",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-15T04:20:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00045",
+        "p07-202610-F00046"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-14",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00045"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00046"
+        }
+      ],
+      "realized_pnl": "-283.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0023",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-15T16:46:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00047",
+        "p07-202610-F00048"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-15",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00047"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00048"
+        }
+      ],
+      "realized_pnl": "346.3200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0024",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-15T19:23:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00049",
+        "p07-202610-F00050"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-15",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00049"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00050"
+        }
+      ],
+      "realized_pnl": "108.4100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0025",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-16T05:04:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00051",
+        "p07-202610-F00052"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-15",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00051"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00052"
+        }
+      ],
+      "realized_pnl": "-100.3400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0026",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-16T19:15:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00053",
+        "p07-202610-F00054"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-16",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00053"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00054"
+        }
+      ],
+      "realized_pnl": "-195.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0027",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-19T17:56:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00055",
+        "p07-202610-F00056"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-19",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00055"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00056"
+        }
+      ],
+      "realized_pnl": "219.3200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0028",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-19T19:32:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00057",
+        "p07-202610-F00058"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-19",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00057"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00058"
+        }
+      ],
+      "realized_pnl": "-119.0900",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0029",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-19T20:55:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00059",
+        "p07-202610-F00060"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-19",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00059"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00060"
+        }
+      ],
+      "realized_pnl": "257.3200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0030",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-20T16:14:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00061",
+        "p07-202610-F00062"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-20",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00061"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00062"
+        }
+      ],
+      "realized_pnl": "-311.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0031",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-20T17:01:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00063",
+        "p07-202610-F00064"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-20",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00063"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00064"
+        }
+      ],
+      "realized_pnl": "-148.3400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0032",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-20T18:15:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00065",
+        "p07-202610-F00066"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-20",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00065"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00066"
+        }
+      ],
+      "realized_pnl": "-158.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0033",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-21T07:39:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00067",
+        "p07-202610-F00068"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-20",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00067"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00068"
+        }
+      ],
+      "realized_pnl": "-57.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0034",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-21T15:02:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00069",
+        "p07-202610-F00070"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-21",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00069"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00070"
+        }
+      ],
+      "realized_pnl": "123.4100",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0035",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-21T16:46:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00071",
+        "p07-202610-F00072"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-21",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00071"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00072"
+        }
+      ],
+      "realized_pnl": "-144.3400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0036",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-22T18:10:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00073",
+        "p07-202610-F00074"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-22",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00073"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00074"
+        }
+      ],
+      "realized_pnl": "305.3200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0037",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-23T07:04:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00075",
+        "p07-202610-F00076"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-22",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00075"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00076"
+        }
+      ],
+      "realized_pnl": "-145.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0038",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-23T17:29:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00077",
+        "p07-202610-F00078"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-23",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00077"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00078"
+        }
+      ],
+      "realized_pnl": "-150.3400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0039",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-26T05:30:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00079",
+        "p07-202610-F00080"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-25",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00079"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00080"
+        }
+      ],
+      "realized_pnl": "134.6600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0040",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-26T15:03:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00081",
+        "p07-202610-F00082"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-26",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00081"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00082"
+        }
+      ],
+      "realized_pnl": "-195.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0041",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-26T16:59:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00083",
+        "p07-202610-F00084"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-26",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00083"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00084"
+        }
+      ],
+      "realized_pnl": "327.3200",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0042",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-26T18:07:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00085",
+        "p07-202610-F00086"
+      ],
+      "fees": "5.68",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-26",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00085"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00086"
+        }
+      ],
+      "realized_pnl": "-230.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0043",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-27T03:04:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00087",
+        "p07-202610-F00088"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-26",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00087"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00088"
+        }
+      ],
+      "realized_pnl": "-132.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0044",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-27T17:27:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00089",
+        "p07-202610-F00090"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-27",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00089"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00090"
+        }
+      ],
+      "realized_pnl": "112.1600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0045",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-28T05:17:00Z",
+      "days_held": 1,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00091",
+        "p07-202610-F00092"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-27",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00091"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00092"
+        }
+      ],
+      "realized_pnl": "-195.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0046",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-28T18:20:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00093",
+        "p07-202610-F00094"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-28",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00093"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00094"
+        }
+      ],
+      "realized_pnl": "-97.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0047",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-28T19:25:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00095",
+        "p07-202610-F00096"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-28",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00095"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00096"
+        }
+      ],
+      "realized_pnl": "156.1600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0048",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-29T14:31:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00097",
+        "p07-202610-F00098"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-29",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00097"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00098"
+        }
+      ],
+      "realized_pnl": "-95.3400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0049",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-29T15:31:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00099",
+        "p07-202610-F00100"
+      ],
+      "fees": "5.68",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-29",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00099"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00100"
+        }
+      ],
+      "realized_pnl": "-314.6800",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0050",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-29T20:21:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00101",
+        "p07-202610-F00102"
+      ],
+      "fees": "2.84",
+      "label_end": "future_long",
+      "label_open": "future_long",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-29",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00101"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00102"
+        }
+      ],
+      "realized_pnl": "155.1600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0051",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-30T16:24:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00103",
+        "p07-202610-F00104"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-30",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00103"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00104"
+        }
+      ],
+      "realized_pnl": "154.1600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0052",
+      "underlying": "/MNQ",
+      "upfront_cash": "0"
+    },
+    {
+      "asset_class": "future",
+      "carried_in": false,
+      "closed_ts": "2026-10-30T17:39:00Z",
+      "days_held": 0,
+      "days_left_at_close": null,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p07-202610-F00105",
+        "p07-202610-F00106"
+      ],
+      "fees": "2.84",
+      "label_end": "future_short",
+      "label_open": "future_short",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-10-30",
+      "opening_cash": "0",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p07-202610-O00105"
+        },
+        {
+          "effect": "close",
+          "order_id": "p07-202610-O00106"
+        }
+      ],
+      "realized_pnl": "-97.8400",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p07-0053",
+      "underlying": "/MES",
+      "upfront_cash": "0"
+    }
+  ]
+}

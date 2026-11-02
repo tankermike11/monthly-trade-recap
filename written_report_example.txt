@@ -1,0 +1,42 @@
+TOM SOSNOFF
+
+Overall picture. Tom was very active: about 625 feed rows across 21 trading days, roughly half equity options, a third outright futures (mostly /MNQ and /MES micros, plus /ZB and /ZN), and the rest futures options (/CL, /GC, /ZB, /ZN, /6E, grains). Almost everything on the options side was short premium: short puts, short calls, and short strangles, with only a handful of defined-risk spreads and condors. About a quarter of his rows came outside regular hours, mostly futures and futures-options work between roughly 5 and 7 AM CT.
+
+Entries and strike/DTE choices.
+- Through mid-month, new entries were almost all 30-60 DTE (typically 35-45 days), often a single short put or a short strangle.
+- Starting around Oct 20 the mix shifted noticeably. He began selling short-dated puts at 1-4 DTE (NFLX, IBM, SOFI, and a long string of HOOD 85 puts on Oct 27), and more 15-29 DTE entries appeared. He also added a few 61+ DTE /GC puts.
+- He scales into positions: the same strike was often sold several times over a session or across days (HOOD 85 puts, CBRS 100 puts, BA 165 puts, SLV 47.5 puts, SPY 780 calls), usually at improving credits as the move went his way or against him.
+- IV rank at entry was lower than I expected given the "sell high IV" philosophy: the median was about 25, with plenty of entries under 20. The highest-IVR entries were NFLX (about 73) and WELL (about 71).
+- Median opening credit was about $156 per one-lot, with futures options (/CL, /GC, /ZB, /6E) bringing in much larger credits per contract.
+
+Adjustments and roll triggers.
+- Rolling is the core of his management: about 236 roll rows in the month, versus 73 outright closes.
+- The dominant move is rolling the untested side toward the money. Short calls rolled down (113) and short puts rolled up (81) far outnumber rolls of the tested side away from the money. In other words, when a strangle gets pushed, he tightens the side that is working rather than chasing the side that is being tested, and he does it repeatedly in small steps at the same expiration.
+- About 78% of his rolls were done for a credit. The debit rolls cluster on bigger moves (AMD, DELL, META, /GC, /CL, CRWD) where he widened the strangle, moving the tested strike further out at the cost of some premium.
+- Rolls out in time happened mainly at around 15-24 DTE, moving to the next monthly cycle (around 43-52 DTE). In the last week he rolled several big-cap strangles (MSFT, AAPL, AMD) from November to December at about 24 DTE.
+- The most heavily managed positions were /CL, AMD, INTC, MSFT, DELL and AAPL strangles, each adjusted 16-22 times in the month without being closed.
+
+Exits.
+- Most closes happened in the 21-42 DTE range; very few positions were held anywhere near expiration.
+- On new short-dated and short-hold trades he took profits quickly. Many completed trades were opened and closed within one or two days (NFLX, IBM, META, BE, WELL, NVS), and the 1-4 DTE puts were bought back for a few cents.
+- Losers were closed rather than defended in a few cases: /ZB and /ZN short calls during the rates rally, a CBRS short put, and an SPY short call opened and closed the same day.
+- Some long-running pre-October treasury short puts (/ZB and /ZN, well in the money by then) were bought back around 6:25 AM CT on Oct 15 and replaced in the same minutes with new 36-DTE strangles, which reads as a reset into the next cycle rather than a straight exit.
+
+Campaign-level results (completed trades only). 26 campaigns opened and closed inside the window: 19 winners, 7 losers, net about +$124 per one-lot before fees. The typical winner kept roughly 25-50% of the opening credit; the larger losers were the treasury short calls (-87% and -68% of credit), the CBRS put (-169%), and the SPY call (-27%). This is a small and skewed sample, because his big rolled strangles are still open and are where most of his risk and premium sit.
+
+TONY BATTISTA
+
+Overall picture. Tony was much lighter: 19 rows and 10 new positions, all equity or index options, all during regular hours (entries mostly between about 1:30 and 2:15 PM CT). No rolls appeared in the feed this month; he either held or closed.
+
+Entries and strike/DTE choices.
+- The main structure was the call diagonal paid for as a debit: short front-month call at 7-16 DTE against a long back-month call at 14-37 DTE, usually with the short strike a bit above and the long strike a bit below the market (GOOGL, GLD, NVDA, QQQ, ORCL, IREN).
+- In mid-to-late October he added defined-risk structures at 30-37 DTE: an SPX broken-wing put butterfly and a QQQ iron condor (IVR about 41), both for a credit, and an NFLX broken-wing call butterfly for a small debit.
+- IV rank at entry was low (median about 15), which fits the diagonals, since a long back-month leg benefits from cheap volatility.
+
+Exits. Tony is quick to take profits on diagonals: they were closed after 0-7 days, usually for about $100-120 per one-lot on the winners, roughly 20-33% of the debit paid. No position was held into the final days of the short leg.
+
+Campaign-level results (completed trades only). 5 diagonals completed: 4 winners and 1 small loser, net about +$327 per one-lot before fees. His newer 30-37 DTE structures (SPX, QQQ, NFLX) and two IREN positions were still open as of Oct 27.
+
+HOW THINGS CHANGED
+
+Within October, two shifts stood out: Tom moved from almost exclusively 30-60 DTE entries in the first half of the month to a much heavier use of 1-4 DTE short puts and 15-29 DTE entries in the second half, and Tony moved from short-dated debit diagonals toward 30+ DTE defined-risk structures, mostly opened for a credit.

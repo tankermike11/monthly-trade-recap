@@ -1,0 +1,411 @@
+{
+  "customer_id": "p09",
+  "data_quality_issues": [],
+  "flags": [
+    "green_month",
+    "has_open_positions",
+    "no_futures"
+  ],
+  "generator_version": "1.0.0",
+  "headline_facts": [
+    {
+      "id": "active_days",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": 6
+    },
+    {
+      "id": "stories_touched",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": 4
+    },
+    {
+      "id": "stories_opened",
+      "sources": [
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": 3
+    },
+    {
+      "id": "stories_ended",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002"
+      ],
+      "value": 2
+    },
+    {
+      "id": "stories_open_at_end",
+      "sources": [
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": 2
+    },
+    {
+      "id": "asset_mix",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": {
+        "equity_option": 1.0
+      }
+    },
+    {
+      "id": "outside_hours_share",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": 0.0
+    },
+    {
+      "id": "median_entry_dte",
+      "sources": [
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": 21.0
+    },
+    {
+      "id": "rolls_total",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "rolls_by_type",
+      "sources": [],
+      "value": {
+        "down": 0,
+        "narrowed": 0,
+        "out_in_time": 0,
+        "tested_away_from_money": 0,
+        "untested_toward_money": 0,
+        "up": 0,
+        "widened": 0
+      }
+    },
+    {
+      "id": "credit_roll_share",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "adjust_to_close_ratio",
+      "sources": [
+        "story:p09-0001"
+      ],
+      "value": 0.0
+    },
+    {
+      "id": "wins",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002"
+      ],
+      "value": 2
+    },
+    {
+      "id": "losses",
+      "sources": [],
+      "value": 0
+    },
+    {
+      "id": "net_realized_pnl",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": "985.72"
+    },
+    {
+      "id": "total_fees",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": "14.28"
+    },
+    {
+      "id": "biggest_win",
+      "sources": [
+        "story:p09-0001"
+      ],
+      "value": {
+        "multiple_of_upfront": 0.8035,
+        "pnl": "634.76",
+        "story_id": "p09-0001"
+      }
+    },
+    {
+      "id": "biggest_loss",
+      "sources": [],
+      "value": null
+    },
+    {
+      "id": "month_pnl",
+      "sources": [
+        "story:p09-0001",
+        "story:p09-0002",
+        "story:p09-0003",
+        "story:p09-0004"
+      ],
+      "value": "1227.48"
+    },
+    {
+      "id": "spy_move",
+      "sources": [
+        "market:SPY"
+      ],
+      "value": -0.0297
+    },
+    {
+      "id": "qqq_move",
+      "sources": [
+        "market:QQQ"
+      ],
+      "value": 0.0358
+    }
+  ],
+  "month": "2026-11",
+  "option_quotes": {
+    "p09-202611-F00001": {
+      "ask": "1.15",
+      "bid": "1.00",
+      "iv": "0.384407",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.0932",
+      "underlying_price": "99.0904"
+    },
+    "p09-202611-F00002": {
+      "ask": "1.40",
+      "bid": "1.25",
+      "iv": "0.396538",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.3358",
+      "underlying_price": "49.3406"
+    },
+    "p09-202611-F00003": {
+      "ask": "2.00",
+      "bid": "1.80",
+      "iv": "0.377489",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.8917",
+      "underlying_price": "47.5354"
+    },
+    "p09-202611-F00004": {
+      "ask": "0.25",
+      "bid": "0.10",
+      "iv": "0.548930",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.1953",
+      "underlying_price": "50.2045"
+    },
+    "p09-202611-F00005": {
+      "ask": "1.00",
+      "bid": "0.80",
+      "iv": "0.768055",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "0.9046",
+      "underlying_price": "95.7753"
+    },
+    "p09-202611-F00006": {
+      "ask": "2.50",
+      "bid": "2.25",
+      "iv": "0.570036",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "2.3708",
+      "underlying_price": "98.2010"
+    },
+    "p09-202611-F00007": {
+      "ask": "1.10",
+      "bid": "0.95",
+      "iv": "0.511877",
+      "model_id": "CRR-1000-continuous-q",
+      "theo": "1.0099",
+      "underlying_price": "51.6703"
+    }
+  },
+  "persona": "put_seller",
+  "reconciliation": {
+    "difference": "0.0000",
+    "end_value": "44466.44",
+    "net_cash_flows": "0",
+    "open_pnl_change": "241.7600",
+    "realized_pnl": "985.7200",
+    "start_value": "43238.96"
+  },
+  "seed": 42,
+  "stories": [
+    {
+      "asset_class": "equity_option",
+      "carried_in": true,
+      "closed_ts": "2026-11-19T16:16:00Z",
+      "days_held": 21,
+      "days_left_at_close": 1,
+      "end_positions": {},
+      "event_ids": [],
+      "exec_ids": [
+        "p09-202611-F00002",
+        "p09-202611-F00003",
+        "p09-202611-F00004"
+      ],
+      "fees": "5.24",
+      "label_end": "cash_secured_put",
+      "label_open": "cash_secured_put",
+      "open_pnl_end": "0",
+      "open_pnl_start": "41.4800",
+      "opened_date": "2026-10-29",
+      "opening_cash": "160.0000",
+      "opening_dte": null,
+      "orders": [
+        {
+          "effect": "add",
+          "order_id": "p09-202611-O00002"
+        },
+        {
+          "effect": "add",
+          "order_id": "p09-202611-O00003"
+        },
+        {
+          "effect": "close",
+          "order_id": "p09-202611-O00004"
+        }
+      ],
+      "realized_pnl": "634.7600",
+      "rolls": [],
+      "status": "closed",
+      "story_id": "p09-0001",
+      "underlying": "NKE",
+      "upfront_cash": "790.0000"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": "2026-11-20T21:00:00Z",
+      "days_held": 15,
+      "days_left_at_close": 0,
+      "end_positions": {},
+      "event_ids": [
+        "p09-202611-V0001"
+      ],
+      "exec_ids": [
+        "p09-202611-F00001",
+        "p09-202611-F00005"
+      ],
+      "fees": "4.52",
+      "label_end": "cash_secured_put",
+      "label_open": "cash_secured_put",
+      "open_pnl_end": "0",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-05",
+      "opening_cash": "200.00",
+      "opening_dte": 15,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p09-202611-O00001"
+        },
+        {
+          "effect": "add",
+          "order_id": "p09-202611-O00005"
+        }
+      ],
+      "realized_pnl": "355.4800",
+      "rolls": [],
+      "status": "expired",
+      "story_id": "p09-0002",
+      "underlying": "SBUX",
+      "upfront_cash": "360.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "SBUX  261218P00090000": "-2"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p09-202611-F00006"
+      ],
+      "fees": "2.26",
+      "label_end": "cash_secured_put",
+      "label_open": "cash_secured_put",
+      "open_pnl_end": "315.1000",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-23",
+      "opening_cash": "450.00",
+      "opening_dte": 25,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p09-202611-O00006"
+        }
+      ],
+      "realized_pnl": "-2.2600",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p09-0003",
+      "underlying": "SBUX",
+      "upfront_cash": "450.00"
+    },
+    {
+      "asset_class": "equity_option",
+      "carried_in": false,
+      "closed_ts": null,
+      "days_held": null,
+      "days_left_at_close": null,
+      "end_positions": {
+        "NKE   261218P00048000": "-2"
+      },
+      "event_ids": [],
+      "exec_ids": [
+        "p09-202611-F00007"
+      ],
+      "fees": "2.26",
+      "label_end": "cash_secured_put",
+      "label_open": "cash_secured_put",
+      "open_pnl_end": "-31.8600",
+      "open_pnl_start": "0",
+      "opened_date": "2026-11-27",
+      "opening_cash": "190.00",
+      "opening_dte": 21,
+      "orders": [
+        {
+          "effect": "open",
+          "order_id": "p09-202611-O00007"
+        }
+      ],
+      "realized_pnl": "-2.2600",
+      "rolls": [],
+      "status": "open",
+      "story_id": "p09-0004",
+      "underlying": "NKE",
+      "upfront_cash": "190.00"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "end": {
+    "as_of": "end",
+    "cash": "17764.6700",
+    "lines": [],
+    "valued_at_utc": "2026-11-30T21:00:00Z"
+  },
+  "start": {
+    "as_of": "start",
+    "cash": "16982.9300",
+    "lines": [],
+    "valued_at_utc": "2026-10-30T20:00:00Z"
+  }
+}

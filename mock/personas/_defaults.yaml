@@ -1,0 +1,70 @@
+# Shared settings for every persona. This is not a persona.
+# Prices are simulated. Real ticker names are used for readability only;
+# none of these moves happened in real markets.
+
+interest_rate: 0.04          # yearly, used by the option pricer
+pricer_steps: 1000           # binomial steps for American options
+
+fees:                        # dollars, modeled on tastytrade (tastytrade.com/pricing, read 2026-11-02)
+  commission:                # the broker's own charge, from the published table
+    stock: 0.00
+    equity_option_open: 1.00              # per contract
+    equity_option_open_most_per_leg: 10.00
+    equity_option_close: 0.00
+    index_option_open: 1.00               # SPX
+    index_option_close: 0.00
+    micro_future: 0.75                    # /MES, /MNQ, each side
+    micro_future_option: 0.75             # each side
+    crypto_rate: 0.0075                   # BTC and ETH: share of the trade amount, each side
+  pass_through:              # exchange, clearing and regulatory fees, each side; our estimates
+    option_clearing: 0.10                 # per contract
+    option_regulatory: 0.02               # per contract
+    index_option_exchange: 0.60           # SPX, per contract
+    micro_future_exchange_clearing: 0.67  # per contract
+    micro_future_option_exchange_clearing: 0.52
+    sec_fee_rate_on_sells: 0.0000206      # share of the sale amount, rounded up to the cent
+    taf_per_share_on_sells: 0.000166      # stocks, capped at 8.30, rounded up to the cent
+    taf_per_contract_on_sells: 0.00279    # options, rounded up to the cent
+
+option_spread:               # half the bid-ask gap, as a share of the fair price
+  liquid: 0.02
+  other: 0.04
+  outside_hours_or_last_day_multiplier: 2
+
+# kind: stock, etf, index, future, crypto
+# vol = how much the simulated price moves in a year; iv = typical option price level
+# (iv sits about 20% above vol: option prices usually run a little rich)
+# step = gap between listed strikes; liquid = has weekly expirations and penny prices
+symbols:
+  AAPL: {kind: stock, start: 250, vol: 0.25, iv: 0.30, step: 5,   liquid: yes}
+  MSFT: {kind: stock, start: 480, vol: 0.24, iv: 0.29, step: 5,   liquid: yes}
+  AMD:  {kind: stock, start: 210, vol: 0.48, iv: 0.58, step: 5,   liquid: yes}
+  INTC: {kind: stock, start: 38,  vol: 0.45, iv: 0.54, step: 1,   liquid: yes}
+  DELL: {kind: stock, start: 140, vol: 0.45, iv: 0.54, step: 2.5, liquid: no}
+  META: {kind: stock, start: 720, vol: 0.35, iv: 0.42, step: 5,   liquid: yes}
+  NVDA: {kind: stock, start: 185, vol: 0.45, iv: 0.54, step: 2.5, liquid: yes}
+  CRWD: {kind: stock, start: 470, vol: 0.45, iv: 0.54, step: 5,   liquid: no}
+  TSLA: {kind: stock, start: 420, vol: 0.55, iv: 0.66, step: 5,   liquid: yes}
+  PLTR: {kind: stock, start: 170, vol: 0.60, iv: 0.72, step: 2.5, liquid: yes}
+  SOFI: {kind: stock, start: 26,  vol: 0.55, iv: 0.66, step: 1,   liquid: yes}
+  F:    {kind: stock, start: 12.5, vol: 0.30, iv: 0.36, step: 0.5, liquid: yes}
+  GOOGL: {kind: stock, start: 250, vol: 0.30, iv: 0.36, step: 2.5, liquid: yes}
+  NKE:  {kind: stock, start: 70,  vol: 0.32, iv: 0.38, step: 1,   liquid: no}
+  SBUX: {kind: stock, start: 85,  vol: 0.30, iv: 0.36, step: 1,   liquid: no}
+  KO:   {kind: stock, start: 70,  vol: 0.16, iv: 0.19, step: 1,   liquid: yes}
+  SHOP: {kind: stock, start: 150, vol: 0.50, iv: 0.60, step: 2.5, liquid: no}
+  SPY:  {kind: etf, start: 680, vol: 0.15, iv: 0.18, step: 1, liquid: yes, yield: 0.012}
+  QQQ:  {kind: etf, start: 600, vol: 0.19, iv: 0.23, step: 1, liquid: yes, yield: 0.006}
+  IWM:  {kind: etf, start: 245, vol: 0.21, iv: 0.25, step: 1, liquid: yes, yield: 0.012}
+  VTI:  {kind: etf, start: 330, vol: 0.15, iv: 0.18, step: 1, liquid: no, yield: 0.013}
+  VXUS: {kind: etf, start: 72,  vol: 0.14, iv: 0.17, step: 1, liquid: no, yield: 0.030}
+  BND:  {kind: etf, start: 74,  vol: 0.05, iv: 0.06, step: 1, liquid: no}
+  SPX:  {kind: index, follows: SPY, ratio: 10, step: 5, yield: 0.012}
+  ES:   {kind: future, start: 6850, vol: 0.15, iv: 0.18, tick: 0.25}
+  NQ:   {kind: future, start: 24600, vol: 0.19, iv: 0.23, tick: 0.25}
+  BTC:  {kind: crypto, start: 110000, vol: 0.50}
+  ETH:  {kind: crypto, start: 4000, vol: 0.65}
+
+futures:                     # contract root -> what it tracks
+  /MES: {tracks: ES, multiplier: 5, contract_month: 2026-12, option_step: 25}
+  /MNQ: {tracks: NQ, multiplier: 2, contract_month: 2026-12, option_step: 100}

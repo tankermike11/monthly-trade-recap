@@ -1,0 +1,45 @@
+# Persona 5: Spreads and diagonals
+id: p05
+first_name: Taylor
+time_zone: America/Chicago
+style: spreads
+
+account:
+  starting_value: 50000
+  options_level: 3          # spreads with a known most-you-can-lose
+  futures: no
+  crypto: no
+
+summary: >
+  Trades option spreads where the most that can be lost is known upfront:
+  put spreads and iron condors for cash collected, call spreads and an
+  occasional call diagonal paid for upfront. Takes profits early, usually
+  after a quarter of the possible gain, and rarely holds into the last week.
+
+symbols: [SPY, QQQ, IWM, GOOGL, NVDA]
+new_trades_per_week: 4
+end_date: monthly
+
+trade_mix:                  # share of new trades
+  put_credit_spread: 0.40
+  iron_condor: 0.25
+  call_debit_spread: 0.25
+  call_diagonal: 0.10
+
+credit_trades: {days_until_end: {aim: 35, at_least: 25, at_most: 50}, short_leg: 0.25, width_strikes: 5}
+debit_trades:  {days_until_end: {aim: 30, at_least: 21, at_most: 45}, long_leg: 0.55, width_strikes: 5}
+diagonal:
+  short_days: {aim: 10, at_least: 6, at_most: 16}   # weekly short call
+  long_days:  {aim: 35, at_least: 28, at_most: 50}  # monthly long call
+  short_leg: 0.35
+  long_leg: 0.65
+
+contracts: {from: 1, to: 4}
+take_profit_at: 25%         # of the cash collected (or of the cost, for paid trades)
+stop_loss_at: 100%          # close a cash-collected trade once it has lost that much
+debit_stop_loss_at: 50%     # close a paid trade once half its cost is gone
+close_when_days_left: 7
+trading_hours: "12:30-14:30"   # Central time
+
+planted:                    # November edge case: opened in October, closed in November
+  - {open: put_credit_spread, symbol: IWM, open_on: 2026-10-30, close_on: 2026-11-03}

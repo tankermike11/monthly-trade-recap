@@ -1,0 +1,16 @@
+[
+  {
+    "adjusted_symbols": null,
+    "cash_amount": "0",
+    "early": false,
+    "event_id": "p03-202611-V0001",
+    "qty": "-5",
+    "resulting_exec_ids": [],
+    "settlement_price": "12.0573",
+    "split_ratio": null,
+    "symbol": "F     261120C00012500",
+    "ts_utc": "2026-11-20T21:00:00Z",
+    "type": "expiration_worthless",
+    "underlying": "F"
+  }
+]

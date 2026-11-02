@@ -1,0 +1,48 @@
+# Persona 8: Multi-asset
+id: p08
+first_name: Jamie
+time_zone: America/Los_Angeles
+style: multi_asset
+
+account:
+  starting_value: 80000
+  options_level: 3
+  futures: yes
+  crypto: yes
+
+summary: >
+  Uses a bit of everything: buys shares, buys calls on one chip maker,
+  sells puts on the micro S&P 500 future, and buys bitcoin and ether,
+  sometimes on weekends. Adds money to the account mid-month.
+
+money_moves:
+  - {date: 2026-10-15, deposit: 5000}
+
+stock_trades:               # Nth market day of each month
+  - {symbol: AAPL, shares: 20, buy_on_trading_day: 3, sell_on_trading_day: 15}
+  - {symbol: MSFT, shares: 10, buy_on_trading_day: 8}
+
+call_buying:
+  stock: NVDA
+  how_far_from_price: 0.40
+  days_until_end: {aim: 30, at_least: 21, at_most: 45}
+  contracts: 2
+  buy_on_trading_days: [5, 14]
+  take_profit_at: 40%
+  cut_loss_at: 40%
+  close_when_days_left: 10
+
+futures_put_selling:
+  contract: /MES
+  how_far_from_price: 0.15
+  days_until_end: {aim: 40, at_least: 25, at_most: 60}
+  contracts: 1
+  sell_on_trading_days: [2]
+  take_profit_at: 50%
+  close_when_days_left: 7
+
+crypto:                     # calendar days, so some land on weekends
+  - {coin: BTC, buy: 0.05, buy_on_days: [3, 10, 17], at: "09:00"}
+  - {coin: ETH, buy: 1.0, buy_on_days: [6], sell_on_day: 24, at: "18:30"}
+
+trading_hours: "07:00-12:00"     # Pacific time
