@@ -156,6 +156,18 @@ def test_render_capitalizes_a_line_that_opens_with_a_placeholder(sheets):
     assert fact.display + " stayed with" not in text
 
 
+def test_render_teaser_capitalizes_the_value_not_the_line(sheets):
+    """A teaser reads "<value> <line>", so the line continues the value."""
+    sheet = sheets["p09"]
+    fact = next(f for f in sheet.facts if f.display[:1].islower())
+    d = good("p09")
+    d["teasers"] = [{"fact": fact.id, "line": "of the cash stayed with your winning trades."}]
+    copy, _ = validate(d, sheet)
+    text = render_text(copy, sheet)
+    assert fact.display[:1].upper() + fact.display[1:] + " of the cash stayed" in text
+    assert " Of the cash stayed" not in text
+
+
 # ---------------------------------------------------------------------------
 # Retry once, then review
 # ---------------------------------------------------------------------------

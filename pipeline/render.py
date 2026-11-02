@@ -58,7 +58,10 @@ def context(copy: RecapCopy, sheet: FactsSheet) -> dict:
     for t in copy.teasers:
         if t.fact not in facts:
             raise UnknownPlaceholder(f"teaser fact {t.fact} is not in the facts sheet")
-        teasers.append({"display": facts[t.fact].display, "line": f(t.line)})
+        # The teaser reads "<display> <line>": the line continues the display, so the
+        # display opens the sentence and takes the capital, never the line.
+        display = facts[t.fact].display
+        teasers.append({"display": display[:1].upper() + display[1:], "line": fill(t.line, sheet)})
     month_name = f"{MONTHS[int(sheet.month[5:7]) - 1]} {sheet.month[:4]}"
     tally = None
     if "wins" in facts and "losses" in facts and "stories_ended" in facts:
