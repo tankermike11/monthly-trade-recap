@@ -1,0 +1,55 @@
+{{ subject }}
+
+{{ first_name }}, here is your {{ month_name }}.
+
+{{ one_liner }}
+
+AT A GLANCE
+{% for t in tiles %}
+- {{ t.display }}: {{ t.plain }}
+{% endfor %}
+{% if not short %}
+{% for title, lines in sections %}
+{% if lines %}
+
+{{ title | upper }}
+{% for line in lines %}
+- {{ line }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+HOW IT TURNED OUT
+{% if results_line %}
+{{ results_line }}
+{% endif %}
+{% if tally %}
+{{ tally }}
+{% endif %}
+{% if fees %}
+Fees and commissions: {{ fees }}.
+{% endif %}
+{% if open %}
+
+STILL OPEN
+Going into next month: {{ open }}.
+{% endif %}
+{% if what_changed %}
+
+WHAT CHANGED
+{{ what_changed }}
+{% endif %}
+{% if teasers %}
+
+{% for t in teasers %}
+{{ t.display }} {{ t.line }}
+{% endfor %}
+{% endif %}
+
+FINE PRINT
+This isn't your account statement; if anything here differs, your statement is correct.
+How we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.
+This recap is for education only. It describes what you did and is not advice.
+[Required disclosures]
+[Unsubscribe]

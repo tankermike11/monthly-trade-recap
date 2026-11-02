@@ -22,9 +22,10 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 py-modules = ["pricing_reference"]
-packages = ["schemas", "mock", "mock.market", "mock.behaviors"]
+packages = ["schemas", "mock", "mock.market", "mock.behaviors", "pipeline"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]
-markers = ["slow: regenerates the full mock data set"]
+markers = ["slow: regenerates the full mock data set", "live: calls the Anthropic API (opt in: pytest -m live)"]
+addopts = "-m 'not live'"

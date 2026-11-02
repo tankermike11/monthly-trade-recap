@@ -27,12 +27,10 @@ from schemas.facts_catalog import FACTS, FORBIDDEN_FACT_WORDS, HEADLINE_FACTS
 from tests.conftest import MONTHS, PERSONA_IDS
 
 CASES = [(m, p) for m in MONTHS for p in PERSONA_IDS]
-BANNED = ["annotation", "invalidation", "calibration", "thesis", "immutable", "conviction score",
-          "resolution event", "came due", "dishonesty", "bite", "sharp", "quiet", "expensive"]
-JARGON = ["dte", "ivr", "iv rank", "delta", "untested", "debit diagonal", "theta", "strike",
-          "premium", "otm", "itm", "credit spread", "p&l", "pnl"]
-PRAISE = ["great", "crushed", "record", "streak", "milestone", "best", "congrat", "nice", "well done"]
-ADVICE = ["you should", "consider", "next month you will", "recommend", "guaranteed"]
+from pipeline.validate_copy import copy_rules  # noqa: E402  (shared word lists)
+
+_RULES = copy_rules()
+BANNED, JARGON, PRAISE, ADVICE = _RULES["banned"], _RULES["jargon"], _RULES["praise"], _RULES["advice"]
 
 
 @pytest.fixture(scope="session")

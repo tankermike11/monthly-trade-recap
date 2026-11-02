@@ -1,0 +1,82 @@
+# Copy rules shared by the validator (pipeline/validate_copy.py), the prompt tests and
+# the facts-catalog tests. Matched as whole words or phrases, case-insensitive.
+# Source: CLAUDE.md "Copy rules" and "Guardrails for customer copy".
+
+banned:
+  - annotation
+  - invalidation
+  - calibration
+  - thesis
+  - immutable
+  - conviction score
+  - resolution event
+  - came due
+  - dishonesty
+  - bite
+  - sharp
+  - quiet
+  - expensive
+
+jargon:
+  - dte
+  - ivr
+  - iv rank
+  - implied volatility
+  - delta
+  - theta
+  - untested
+  - debit diagonal
+  - strike
+  - premium
+  - otm
+  - itm
+  - credit spread
+  - p&l
+  - pnl
+  - strangle
+  - iron condor
+
+advice:
+  - you should
+  - you might want
+  - consider
+  - next month you will
+  - next month you'll
+  - recommend
+  - guaranteed
+  - try to
+  - make sure
+  - going forward
+  - will likely
+  - expect
+
+praise:
+  - great job
+  - great
+  - crushed it
+  - crushed
+  - record
+  - streak
+  - milestone
+  - best
+  - congrat
+  - congratulations
+  - nice
+  - well done
+  - impressive
+  - most trades ever
+  - personal best
+  - amazing
+  - fantastic
+
+consolation:   # red months: plain and steady, no cliches
+  - silver lining
+  - it happens
+  - don't worry
+  - better luck
+  - tough month
+  - bounce back
+  - hang in there
+
+characters:
+  forbidden: ["—", "–", "!"]

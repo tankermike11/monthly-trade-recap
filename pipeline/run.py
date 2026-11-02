@@ -1,9 +1,12 @@
-"""CLI for the pipeline stages built so far (ingest -> link -> facts).
+"""CLI for the pipeline stages built so far (ingest -> link -> facts -> write -> render).
 
     python -m pipeline.run --month 2026-10 [--customer p04] [--raw data/raw] [--out out]
+                           [--write [--model claude-sonnet-5-5] [--effort low]]
 
-Writes out/<month>/<customer>/stories.json and facts.json. Each stage's output is a
-pydantic model stored as JSON, so later stages can re-run from it alone.
+Writes out/<month>/<customer>/stories.json and facts.json; with --write also calls
+Claude (ANTHROPIC_API_KEY) and writes recap.json and recap.txt, or
+out/<month>/review/<customer>.json when the copy fails validation twice. Each stage's
+output is a pydantic model stored as JSON, so later stages can re-run from it alone.
 """
 
 from __future__ import annotations
@@ -42,7 +45,20 @@ def _dump(obj) -> str:
     return json.dumps(obj, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
 
 
-def run(month: str, customer: str | None, raw_root: Path, out_root: Path) -> list[Path]:
+def write_stage(sheet: FactsSheet, folder: Path, review_dir: Path, cfg, call=None):
+    from pipeline.render import render_text
+    from pipeline.write import write_recap
+
+    result = write_recap(sheet, cfg, call=call)
+    if result.status == "passed":
+        _write(folder / "recap.json", _dump(result.model_dump(mode="json")))
+        _write(folder / "recap.txt", render_text(result.recap, sheet))
+    else:
+        _write(review_dir / f"{sheet.customer_id}.json", _dump(result.model_dump(mode="json")))
+    return result
+
+
+def run(month: str, customer: str | None, raw_root: Path, out_root: Path, cfg=None, call=None) -> list[Path]:
     written = []
     for cid in ([customer] if customer else customers(raw_root, month)):
         linked, sheet = facts_for(raw_root, month, cid)
@@ -52,6 +68,9 @@ def run(month: str, customer: str | None, raw_root: Path, out_root: Path) -> lis
             "data_quality_issues": [{"issue": d.issue, "refs": list(d.refs)} for d in linked.data_quality_issues],
         }))
         _write(folder / "facts.json", _dump(sheet.model_dump(mode="json")))
+        if cfg is not None:
+            res = write_stage(sheet, folder, out_root / month / "review", cfg, call)
+            print(f"{cid}: {res.status} after {len(res.attempts)} attempt(s)")
         written.append(folder)
     return written
 
@@ -62,8 +81,15 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--customer")
     ap.add_argument("--raw", type=Path, default=REPO / "data" / "raw")
     ap.add_argument("--out", type=Path, default=REPO / "out")
+    ap.add_argument("--write", action="store_true", help="call Claude and render the recap")
+    ap.add_argument("--model")
+    ap.add_argument("--effort")
     a = ap.parse_args(argv)
-    for folder in run(a.month, a.customer, a.raw, a.out):
+    cfg = None
+    if a.write:
+        from pipeline.write import ModelConfig
+        cfg = ModelConfig.load(model=a.model, effort=a.effort)
+    for folder in run(a.month, a.customer, a.raw, a.out, cfg=cfg):
         print(folder)
 
 
