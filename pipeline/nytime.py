@@ -38,6 +38,18 @@ def ny_date(ts_utc: datetime) -> date:
     return ny(ts_utc).date()
 
 
+def ny_to_utc(wall: datetime) -> datetime:
+    """Naive New York wall time -> aware UTC instant. In the repeated hour when clocks
+    go back, the first (daylight-time) instant is used."""
+    if wall.tzinfo is not None:
+        raise ValueError("wall time must be naive New York time")
+    for hours in (_STD + 1, _STD):                  # daylight time first, then standard
+        ts = (wall - timedelta(hours=hours)).replace(tzinfo=UTC)
+        if ny(ts) == wall:
+            return ts
+    raise ValueError(f"{wall} does not exist in New York (clocks went forward)")
+
+
 def ny_midnight_utc(d: date) -> datetime:
     """The UTC instant of 00:00 New York time on day d (never inside a DST switch)."""
     guess = datetime.combine(d, datetime.min.time()).replace(tzinfo=UTC) - timedelta(hours=_STD)

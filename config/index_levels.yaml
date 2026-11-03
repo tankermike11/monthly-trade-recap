@@ -1,0 +1,12 @@
+# SPY, QQQ and /ES closes the demo-site importer uses when a workbook has no Market
+# sheet. Copied from the simulated mock data (data/raw/<month>/*/market.json); these
+# are not real market levels. tests/test_workbook.py checks they match the mock data.
+
+"2026-10":
+  "SPY": {start: "643.48", end: "648.26"}
+  "QQQ": {start: "614.64", end: "573.18"}
+  "/ES": {start: "7185.00", end: "7381.29"}
+"2026-11":
+  "SPY": {start: "648.26", end: "629.01"}
+  "QQQ": {start: "573.18", end: "593.69"}
+  "/ES": {start: "7381.29", end: "7410.11"}
