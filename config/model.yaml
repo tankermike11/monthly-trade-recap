@@ -2,7 +2,7 @@
 # The current Claude models reject temperature/top_p (sampling is fixed), so the
 # repeatable knobs are the model, effort, max_tokens and the prompt version.
 
-model: claude-opus-5-5          # default until the Haiku vs Sonnet test (SPEC 4.4, RC-2) decides
+model: claude-opus-5-5          # decided 2026-11-02 (SPEC 4.4, RC-2): Opus over Sonnet and Haiku
 effort: medium                  # low | medium | high
 max_tokens: 4000
 prompt_version: recap_v2        # prompts/<version>.md (v2: trader terms, no shorthand)

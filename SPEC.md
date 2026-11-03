@@ -287,6 +287,15 @@ Fail once → retry with the failure reasons appended. Fail twice → `out/<mont
 - **Dev:** synchronous calls, one customer at a time, `--customer p09`.
 - **Monthly run:** the Message Batches API, one request per customer, with `custom_id` = customer\_id. Poll until done, then validate and render.
 - **Model choice:** run all 10 personas through Haiku and Sonnet; pick the cheaper one that passes validation on the first try at least 9 times in 10 and reads better in blind review.
+- **Decided 2026-11-02: Claude Opus 5.5** (`config/model.yaml`). Prompt `recap_v2`, effort medium, October 2026 personas, one blind reviewer:
+
+  | Model | First try (of 10) | Blind review: 1st picks | Points on 6 fully ranked (3/2/1) | Per recap | 30K per month, Batch API |
+  | --- | --- | --- | --- | --- | --- |
+  | Opus 5.5 | 10 | 5 | 17 | $0.039 | ~$580 |
+  | Sonnet 5.5 | 7 | 4 | 10 | $0.016 | ~$235 |
+  | Haiku 5.5 | 7 | 1 | 9 | $0.002 | ~$30 |
+
+  Opus is the only model that met the 9-in-10 bar, and the reviewer preferred it. Sonnet was the usual runner-up but close on only 2 of the 5 Opus wins, and 2 of its 4 wins came where the Opus draft had an error the validator now catches (a doubled unit) or a contradiction. Sonnet's misses were mostly the results line running 1 to 2 characters over 160. Haiku led the earlier round on plain wording (`recap_v1`) but fell to last once recaps used trader terms. Revisit with more reviewers, or if cost matters more than the gap in reading quality.
 - Make the model name, temperature and max tokens config values, stored with each output.
 
 ### Acceptance criteria
@@ -365,7 +374,7 @@ Placeholder fill happens only in `render.py`: `{{fact_id}}` → that fact's `dis
 | # | Decision | Recommendation | Owner |
 | --- | --- | --- | --- |
 | RC-1 | Lossdog pilot: is linked-account data complete enough to show results? | If fees or fills are partial, drop the results section and lead with habits | Product |
-| RC-2 | Model for the monthly run | Decide from the Phase 4 Haiku vs Sonnet test | Engineering |
+| RC-2 | Model for the monthly run | Decided 2026-11-02: Claude Opus 5.5 via the Batch API (see 4.4) | Engineering |
 | RC-3 | Review sample size before each send | Human review of every flagged recap plus 5% of the rest for the first 3 months | Compliance |
 | RC-4 | Include "see how Tom handled the same tickers" link | Yes for Lossdog; check with CCO for Stox | Product + CCO |
 | RC-5 | Skip or shorten recaps for very low activity | Short version under 3 stories; skip at zero trades | Product |
