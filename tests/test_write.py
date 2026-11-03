@@ -89,6 +89,10 @@ BAD = {
     "loss named twice": (lambda d: d.__setitem__("what_changed", "Your account changed by {{month_pnl}}."),
                          "red_month", "named 2 times"),
     "not json": (None, "schema_and_lengths", "not a valid RecapCopy"),
+    "doubled unit": (lambda d: d["sections"]["getting_out"].__setitem__(0, "You ended {{stories_ended}} trades this month."),
+                     "no_doubled_units", "repeats 'trades'"),
+    "doubled unit, singular": (lambda d: d["sections"]["getting_out"].__setitem__(0, "Only {{losses}} new trades lost money."),
+                               "no_doubled_units", "repeats 'trades'"),
 }
 
 
@@ -104,6 +108,15 @@ def test_planted_bad_output_fails_with_reason(sheets, name):
         assert any(needle.lower() in r.lower() for r in failed[check]), (name, failed[check])
     else:   # jargon: any of the copy-rule checks names it
         assert any("jargon" in r for rs in failed.values() for r in rs), failed
+
+
+def test_doubled_unit_check_leaves_normal_sentences_alone(sheets):
+    sheet = sheets["p09"]
+    for line in ("Of {{stories_ended}} that ended, {{losses}} ended with a loss.",
+                 "Your largest loss was {{biggest_loss}}, about the same as the premium collected.",
+                 "You usually opened trades expiring {{median_entry_dte}} out.",
+                 "You usually kept a trade for {{median_days_held}}; most trades closed early."):
+        assert validate_copy.doubled_units(line, sheet) == [], line
 
 
 def _length_reasons(line: str, sheet) -> list[str]:

@@ -13,6 +13,8 @@ anything renders. Each rule is a named check that passes or fails with reasons.
 6. no_praise            no praise for activity or wins; no consolation cliches
 7. red_month            if red_month: the results line names one results fact, once
                         in the whole recap, beside at least one market fact
+8. no_doubled_units     a placeholder whose display ends in its unit ("53 trades") is
+                        not followed by that unit again ("53 trades new trades")
 """
 
 from __future__ import annotations
@@ -176,4 +178,33 @@ def validate(raw: str | dict | RecapCopy, sheet: FactsSheet) -> tuple[RecapCopy 
                      "({{spy_move}} or {{qqq_move}})")
     checks.append(_check("red_month", r))
 
+    # 8. no doubled units
+    checks.append(_check("no_doubled_units", [f"{where} {r}" for where, t in texts(copy)
+                                              for r in doubled_units(t, sheet)]))
+
     return copy, ValidationResult(passed=all(c.passed for c in checks), checks=checks)
+
+
+def _unit(word: str) -> str:
+    w = word.lower()
+    return w[:-1] if w.endswith("s") and len(w) > 3 else w
+
+
+def doubled_units(text: str, sheet: FactsSheet, window: int = 2) -> list[str]:
+    """A placeholder whose display already ends in its unit ("53 trades") followed,
+    within `window` words, by that unit again: "{{stories_opened}} new trades" reads
+    "53 trades new trades". Singular and plural count as the same unit."""
+    display = {f.id: f.display for f in sheet.facts}
+    found = []
+    for m in PLACEHOLDER.finditer(text):
+        shown = display.get(m.group(1))
+        if not shown or not re.search(r"\d", shown):
+            continue
+        last = re.search(r"([a-z]+)\s*$", shown)          # lowercase unit word, so tickers never match
+        if not last:
+            continue
+        after = re.findall(r"[A-Za-z]+", filled(text[m.end():], sheet))[:window]
+        hit = next((w for w in after if _unit(w) == _unit(last.group(1))), None)
+        if hit:
+            found.append(f"repeats {hit!r} after {{{{{m.group(1)}}}}}, which already reads {shown!r}")
+    return found
