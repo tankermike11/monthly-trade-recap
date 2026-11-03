@@ -783,13 +783,20 @@ def write_workbook(raw: RawMonth | None = None, month: str = "2026-10") -> bytes
 
 def _stable_zip(data: bytes) -> bytes:
     """Rewrite the .xlsx zip with fixed entry timestamps (zip entries otherwise carry
-    the time of writing)."""
+    the time of writing) and a fixed modified time (openpyxl stamps the save time into
+    docProps/core.xml whatever the workbook's properties say)."""
+    import re
+
+    stamp = FIXED_TIME.strftime("%Y-%m-%dT%H:%M:%SZ").encode()
     src = zipfile.ZipFile(io.BytesIO(data))
     out = io.BytesIO()
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as dst:
         for info in src.infolist():
+            body = src.read(info.filename)
+            if info.filename == "docProps/core.xml":
+                body = re.sub(rb"(<dcterms:(?:created|modified)[^>]*>)[^<]*(</dcterms:)", rb"\g<1>" + stamp + rb"\g<2>", body)
             fixed = zipfile.ZipInfo(info.filename, date_time=(1980, 1, 1, 0, 0, 0))
             fixed.compress_type = zipfile.ZIP_DEFLATED
             fixed.external_attr = info.external_attr
-            dst.writestr(fixed, src.read(info.filename))
+            dst.writestr(fixed, body)
     return out.getvalue()

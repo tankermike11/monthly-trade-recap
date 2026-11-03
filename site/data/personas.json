@@ -1,0 +1,4558 @@
+[
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "active_days",
+    "stories_open_at_end",
+    "asset_mix"
+   ],
+   "one_liner": "You worked only with positions you already held, placing orders on some of them without opening or closing any trade.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [],
+    "getting_out": [],
+    "managing": []
+   },
+   "subject_line": "Your October at a glance",
+   "teasers": [],
+   "what_changed": ""
+  },
+  "cost_usd": 0.0392,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "2 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "2 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "0 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "0 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "4 trades",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "100% stocks and funds",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "none",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "0 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0004"
+    ],
+    "sources": 2,
+    "weight": 0.2
+   },
+   {
+    "display": "no moves",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0004"
+    ],
+    "sources": 2,
+    "weight": 0.2
+   },
+   {
+    "display": "0 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "0 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "$44.00",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "$0.00",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "-$1,826",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.7
+   },
+   {
+    "display": "down 3.0%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "VTI, VXUS, BND and AAPL",
+    "id": "open_stories",
+    "plain": "trades still open going into next month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p01-0001",
+     "story:p01-0002",
+     "story:p01-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   }
+  ],
+  "first_name": "Robin",
+  "flags": [
+   "first month",
+   "trades still open",
+   "few trades",
+   "no futures",
+   "no options",
+   "losing month"
+  ],
+  "id": "p01",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October at a glance\n\nRobin, here is your October 2026.\n\nYou worked only with positions you already held, placing orders on some of them without opening or closing any trade.\n\nAT A GLANCE\n- 2 days: days you placed at least one trade\n- 4 trades: trades still open at the end of the month\n- 100% stocks and funds: how your orders split across what you traded\n\nHOW IT TURNED OUT\nYour account ended the month down 3.0%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 0 trades that ended, 0 ended with a gain and 0 with a loss.\nFees and commissions: $0.00.\n\nSTILL OPEN\nGoing into next month: VTI, VXUS, BND and AAPL.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Already owns three broad funds and one company's stock. Adds a few shares of two of them early each month and otherwise leaves everything alone. The bond fund pays a small cash dividend at the start of each month.",
+  "workbook": "p01_robin_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "median_days_held",
+    "stories_open_at_end",
+    "active_days",
+    "outside_hours_share"
+   ],
+   "one_liner": "You usually opened and closed a stock trade on the same day, and you ended the month with no trades still open.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You placed orders on {{active_days}} this month, all in stocks and funds.",
+     "{{outside_hours_share}} of your orders were placed outside regular market hours."
+    ],
+    "getting_out": [
+     "You usually closed a trade {{median_days_held}} you opened it.",
+     "{{wins}} ended with a gain and {{losses}} ended with a loss.",
+     "Your largest gain was {{biggest_win}} and your largest loss was {{biggest_loss}}."
+    ],
+    "managing": [
+     "You did not adjust any trade once it was open; you held it or closed it."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [
+    {
+     "fact": "outside_hours_share",
+     "line": "of your orders were placed outside regular market hours."
+    }
+   ],
+   "what_changed": "New trades you started: {{stories_opened_by_half}}."
+  },
+  "cost_usd": 0.0376,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "22 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.3
+   },
+   {
+    "display": "70 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.3
+   },
+   {
+    "display": "70 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.3
+   },
+   {
+    "display": "70 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.3
+   },
+   {
+    "display": "0 trades",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.3
+   },
+   {
+    "display": "100% stocks and funds",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.3
+   },
+   {
+    "display": "1 in 5",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0003",
+     "story:p02-0005"
+    ],
+    "sources": 17,
+    "weight": 0.3
+   },
+   {
+    "display": "0 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.2
+   },
+   {
+    "display": "no moves",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.2
+   },
+   {
+    "display": "0 to 1",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.2
+   },
+   {
+    "display": "the same day",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.6
+   },
+   {
+    "display": "PLTR the same day, TSLA the same day and PLTR the same day",
+    "id": "fastest_winners",
+    "plain": "your quickest trades that ended with a gain",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 3,
+    "weight": 0.4
+   },
+   {
+    "display": "0 trades",
+    "id": "losers_closed_early",
+    "plain": "trades that ended with a loss that you closed before expiration",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p02-0004",
+     "story:p02-0005",
+     "story:p02-0007"
+    ],
+    "sources": 34,
+    "weight": 0.6
+   },
+   {
+    "display": "36 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 36,
+    "weight": 0.5
+   },
+   {
+    "display": "34 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p02-0004",
+     "story:p02-0005",
+     "story:p02-0007"
+    ],
+    "sources": 34,
+    "weight": 0.5
+   },
+   {
+    "display": "-$317",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.5
+   },
+   {
+    "display": "$25.22",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.3
+   },
+   {
+    "display": "$153 on PLTR",
+    "id": "biggest_win",
+    "plain": "your largest gain on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p02-0034"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$141 on SOFI",
+    "id": "biggest_loss",
+    "plain": "your largest loss on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p02-0028"
+    ],
+    "sources": 1,
+    "weight": 0.8
+   },
+   {
+    "display": "-$317",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.7
+   },
+   {
+    "display": "down 0.8%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.5
+   },
+   {
+    "display": "31 in the first half of the month, 39 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p02-0001",
+     "story:p02-0002",
+     "story:p02-0003"
+    ],
+    "sources": 70,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   }
+  ],
+  "first_name": "Sam",
+  "flags": [
+   "first month",
+   "no futures",
+   "no options",
+   "losing month"
+  ],
+  "id": "p02",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nSam, here is your October 2026.\n\nYou usually opened and closed a stock trade on the same day, and you ended the month with no trades still open.\n\nAT A GLANCE\n- the same day: how long you usually kept a trade\n- 0 trades: trades still open at the end of the month\n- 22 days: days you placed at least one trade\n- 1 in 5: share of your orders placed outside regular market hours\n\nGETTING IN\n- You placed orders on 22 days this month, all in stocks and funds.\n- 1 in 5 of your orders were placed outside regular market hours.\n\nMANAGING\n- You did not adjust any trade once it was open; you held it or closed it.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it.\n- 36 trades ended with a gain and 34 trades ended with a loss.\n- Your largest gain was $153 on PLTR and your largest loss was $141 on SOFI.\n\nHOW IT TURNED OUT\nYour account ended the month down 0.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 70 trades that ended, 36 ended with a gain and 34 with a loss.\nFees and commissions: $25.22.\n\nWHAT CHANGED\nNew trades you started: 31 in the first half of the month, 39 in the second half.\n\n1 in 5 of your orders were placed outside regular market hours.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Buys and sells the same shares within the same day, about three times a day, in a handful of fast-moving stocks. Some trades start before the market opens. Takes a small gain or a small loss quickly and is always out of every stock before the close.",
+  "workbook": "p02_sam_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "median_entry_dte",
+    "median_opening_credit_per_contract",
+    "median_days_held",
+    "median_days_left_at_close"
+   ],
+   "one_liner": "You sold premium on trades expiring several weeks out and closed them well before expiration, without rolling any of them.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You usually opened trades expiring {{median_entry_dte}} out.",
+     "Implied volatility was usually {{median_price_level_at_entry}} compared with its past year when you opened a trade.",
+     "You usually collected {{median_opening_credit_per_contract}} in premium per contract when you opened a trade."
+    ],
+    "getting_out": [
+     "You usually kept a trade for {{median_days_held}}.",
+     "When you closed a trade, it was usually still {{median_days_left_at_close}} from expiration.",
+     "Your winning trades usually kept {{median_upfront_kept_on_winners}} of the premium you collected."
+    ],
+    "managing": [
+     "You did not roll any of your trades to a new strike or expiration.",
+     "Your adjustments compared with your closes ran {{adjust_to_close_ratio}}."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [
+    {
+     "fact": "median_opening_credit_per_contract",
+     "line": "was the premium you usually collected per contract when you opened a trade."
+    }
+   ],
+   "what_changed": "How far out your expirations were: {{entry_dte_by_half}}."
+  },
+  "cost_usd": 0.0412,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "6 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "4 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "3 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "3 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "1 trade",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p03-0001"
+    ],
+    "sources": 1,
+    "weight": 0.3
+   },
+   {
+    "display": "100% options on stocks and funds",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "none",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "about 7 weeks",
+    "id": "median_entry_dte",
+    "plain": "how far out the expiration usually was when you opened an options trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "about 7 weeks in the first half of the month, about 4 weeks in the second half",
+    "id": "entry_dte_by_half",
+    "plain": "how far out your expirations usually were in the first and second half of the month",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "low",
+    "id": "median_price_level_at_entry",
+    "plain": "where implied volatility usually sat, compared with its past year, when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "$119",
+    "id": "median_opening_credit_per_contract",
+    "plain": "premium you usually collected per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "0 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.2
+   },
+   {
+    "display": "no moves",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.2
+   },
+   {
+    "display": "1 to 3",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.9
+   },
+   {
+    "display": "about 2 weeks",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "about 3 weeks",
+    "id": "median_days_left_at_close",
+    "plain": "how much time was usually left before expiration when you closed an options trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "about half",
+    "id": "median_upfront_kept_on_winners",
+    "plain": "how much of the premium collected your winning trades usually kept",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.75
+   },
+   {
+    "display": "INTC in 9 days, INTC in about 2 weeks and SOFI in about 4 weeks",
+    "id": "fastest_winners",
+    "plain": "your quickest trades that ended with a gain",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.4
+   },
+   {
+    "display": "3 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.5
+   },
+   {
+    "display": "0 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.5
+   },
+   {
+    "display": "$1,258",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "$24.34",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "$399 on SOFI",
+    "id": "biggest_win",
+    "plain": "your largest gain on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p03-0003"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "about half",
+    "id": "biggest_win_vs_upfront",
+    "plain": "how your largest gain compared with the premium collected when that trade was opened",
+    "section": "results",
+    "source_examples": [
+     "story:p03-0003"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$613",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "up 1.2%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p03-0001",
+     "story:p03-0002",
+     "story:p03-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "F",
+    "id": "open_stories",
+    "plain": "trades still open going into next month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p03-0001"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "2 in the first half of the month, 1 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p03-0002",
+     "story:p03-0003",
+     "story:p03-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.4
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.4
+   }
+  ],
+  "first_name": "Casey",
+  "flags": [
+   "first month",
+   "gaining month",
+   "trades still open",
+   "no futures"
+  ],
+  "id": "p03",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nCasey, here is your October 2026.\n\nYou sold premium on trades expiring several weeks out and closed them well before expiration, without rolling any of them.\n\nAT A GLANCE\n- about 7 weeks: how far out the expiration usually was when you opened an options trade\n- $119: premium you usually collected per contract when you opened a trade\n- about 2 weeks: how long you usually kept a trade\n- about 3 weeks: how much time was usually left before expiration when you closed an options trade\n\nGETTING IN\n- You usually opened trades expiring about 7 weeks out.\n- Implied volatility was usually low compared with its past year when you opened a trade.\n- You usually collected $119 in premium per contract when you opened a trade.\n\nMANAGING\n- You did not roll any of your trades to a new strike or expiration.\n- Your adjustments compared with your closes ran 1 to 3.\n\nGETTING OUT\n- You usually kept a trade for about 2 weeks.\n- When you closed a trade, it was usually still about 3 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n\nHOW IT TURNED OUT\nYour account ended the month up 1.2%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 3 trades that ended, 3 ended with a gain and 0 with a loss.\nFees and commissions: $24.34.\n\nSTILL OPEN\nGoing into next month: F.\n\nWHAT CHANGED\nHow far out your expirations were: about 7 weeks in the first half of the month, about 4 weeks in the second half.\n\n$119 was the premium you usually collected per contract when you opened a trade.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Sells puts on three low-priced stocks with enough cash set aside to buy the shares. When a put ends with the stock below the strike, takes the shares and then sells calls against them. Buys trades back early once half the upfront cash is kept.",
+  "workbook": "p03_casey_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "rolls_total",
+    "credit_roll_share",
+    "median_entry_dte",
+    "stories_open_at_end"
+   ],
+   "one_liner": "You sold premium and, when a stock moved hard, you usually rolled or reshaped the trade instead of closing it.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You usually opened trades expiring {{median_entry_dte}} out.",
+     "Implied volatility was usually {{median_price_level_at_entry}} compared with its past year when you opened a trade.",
+     "You usually collected {{median_opening_credit_per_contract}} in premium per contract when you opened a trade."
+    ],
+    "getting_out": [
+     "When you closed a trade, it was usually still {{median_days_left_at_close}} from expiration.",
+     "Your winning trades usually kept {{median_upfront_kept_on_winners}} of the premium you collected.",
+     "You ended the month with {{stories_open_at_end}} still open: {{open_stories}}."
+    ],
+    "managing": [
+     "When a stock moved hard, you rolled the side that was not under pressure toward the stock price {{rolls.untested_toward_money}}.",
+     "{{credit_roll_share}} of your rolls were done for a credit.",
+     "The trades you rolled or adjusted most often were {{most_adjusted_stories}}."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [
+    {
+     "fact": "rolls.untested_toward_money",
+     "line": "you rolled the side that was not under pressure toward the stock price instead of closing the trade."
+    },
+    {
+     "fact": "rolls.narrowed",
+     "line": "a roll narrowed the distance between your strikes."
+    }
+   ],
+   "what_changed": "You started more new trades early in the month than late: {{stories_opened_by_half}}."
+  },
+  "cost_usd": 0.0398,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "18 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 14,
+    "weight": 0.3
+   },
+   {
+    "display": "14 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 14,
+    "weight": 0.3
+   },
+   {
+    "display": "11 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p04-0004",
+     "story:p04-0005",
+     "story:p04-0006"
+    ],
+    "sources": 11,
+    "weight": 0.3
+   },
+   {
+    "display": "10 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 10,
+    "weight": 0.3
+   },
+   {
+    "display": "4 trades",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0012",
+     "story:p04-0013"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "100% options on stocks and funds",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 14,
+    "weight": 0.3
+   },
+   {
+    "display": "none",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 14,
+    "weight": 0.3
+   },
+   {
+    "display": "about 7 weeks",
+    "id": "median_entry_dte",
+    "plain": "how far out the expiration usually was when you opened an options trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p04-0004",
+     "story:p04-0005",
+     "story:p04-0006"
+    ],
+    "sources": 11,
+    "weight": 0.6
+   },
+   {
+    "display": "about 6 weeks in the first half of the month, about 7 weeks in the second half",
+    "id": "entry_dte_by_half",
+    "plain": "how far out your expirations usually were in the first and second half of the month",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p04-0004",
+     "story:p04-0005",
+     "story:p04-0006"
+    ],
+    "sources": 11,
+    "weight": 0.6
+   },
+   {
+    "display": "average",
+    "id": "median_price_level_at_entry",
+    "plain": "where implied volatility usually sat, compared with its past year, when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p04-0004",
+     "story:p04-0005",
+     "story:p04-0006"
+    ],
+    "sources": 11,
+    "weight": 0.6
+   },
+   {
+    "display": "$580",
+    "id": "median_opening_credit_per_contract",
+    "plain": "premium you usually collected per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p04-0004",
+     "story:p04-0005",
+     "story:p04-0006"
+    ],
+    "sources": 11,
+    "weight": 0.6
+   },
+   {
+    "display": "13 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "narrowed the strikes 9 times; rolled the side not under pressure toward the stock price 8 times; rolled a strike down 7 times; rolled a strike up 7 times; widened the strikes 4 times; rolled the side under pressure further away 3 times; rolled out to a later expiration 1 time",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "9 times",
+    "id": "rolls.narrowed",
+    "plain": "times a roll narrowed the distance between your strikes",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "8 times",
+    "id": "rolls.untested_toward_money",
+    "plain": "times you rolled the side that was not under pressure toward the stock price",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.8
+   },
+   {
+    "display": "7 times",
+    "id": "rolls.down",
+    "plain": "times you rolled a strike down",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "7 times",
+    "id": "rolls.up",
+    "plain": "times you rolled a strike up",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "4 times",
+    "id": "rolls.widened",
+    "plain": "times a roll widened the distance between your strikes",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "3 times",
+    "id": "rolls.tested_away_from_money",
+    "plain": "times you rolled the side under pressure further from the stock price",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "1 time",
+    "id": "rolls.out_in_time",
+    "plain": "times you rolled out to a later expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "7 in 10",
+    "id": "credit_roll_share",
+    "plain": "share of your rolls done for a credit",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "1 to 1",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 11,
+    "weight": 0.7
+   },
+   {
+    "display": "AMD (11 times) and META (2 times)",
+    "id": "most_adjusted_stories",
+    "plain": "the trades you changed most often",
+    "section": "managing",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "about 2 weeks",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 10,
+    "weight": 0.6
+   },
+   {
+    "display": "about 4 weeks",
+    "id": "median_days_left_at_close",
+    "plain": "how much time was usually left before expiration when you closed an options trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 10,
+    "weight": 0.6
+   },
+   {
+    "display": "about half",
+    "id": "median_upfront_kept_on_winners",
+    "plain": "how much of the premium collected your winning trades usually kept",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 10,
+    "weight": 0.75
+   },
+   {
+    "display": "META in 3 days, AAPL in 6 days and NVDA in 11 days",
+    "id": "fastest_winners",
+    "plain": "your quickest trades that ended with a gain",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p04-0004",
+     "story:p04-0006",
+     "story:p04-0007"
+    ],
+    "sources": 3,
+    "weight": 0.4
+   },
+   {
+    "display": "10 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 10,
+    "weight": 0.5
+   },
+   {
+    "display": "0 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 10,
+    "weight": 0.5
+   },
+   {
+    "display": "$8,895",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 14,
+    "weight": 0.5
+   },
+   {
+    "display": "$76.15",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 14,
+    "weight": 0.3
+   },
+   {
+    "display": "$2,530 on META",
+    "id": "biggest_win",
+    "plain": "your largest gain on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p04-0006"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "about a third",
+    "id": "biggest_win_vs_upfront",
+    "plain": "how your largest gain compared with the premium collected when that trade was opened",
+    "section": "results",
+    "source_examples": [
+     "story:p04-0006"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$8,429",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 14,
+    "weight": 0.5
+   },
+   {
+    "display": "up 3.4%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p04-0001",
+     "story:p04-0002",
+     "story:p04-0003"
+    ],
+    "sources": 14,
+    "weight": 0.5
+   },
+   {
+    "display": "AMD, INTC, DELL and MSFT",
+    "id": "open_stories",
+    "plain": "trades still open going into next month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0012",
+     "story:p04-0013"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "1 trade",
+    "id": "open_moved_to_later_date",
+    "plain": "open trades you rolled out to a later expiration this month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p04-0005"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "7 in the first half of the month, 6 in the second half",
+    "id": "rolls_by_half",
+    "plain": "rolls you made in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p04-0005",
+     "story:p04-0009"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "8 in the first half of the month, 3 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p04-0004",
+     "story:p04-0005",
+     "story:p04-0006"
+    ],
+    "sources": 11,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.4
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.4
+   }
+  ],
+  "first_name": "Jordan",
+  "flags": [
+   "first month",
+   "gaining month",
+   "trades still open",
+   "no futures"
+  ],
+  "id": "p04",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nJordan, here is your October 2026.\n\nYou sold premium and, when a stock moved hard, you usually rolled or reshaped the trade instead of closing it.\n\nAT A GLANCE\n- 13 times: times you rolled a trade to a new strike or expiration\n- 7 in 10: share of your rolls done for a credit\n- about 7 weeks: how far out the expiration usually was when you opened an options trade\n- 4 trades: trades still open at the end of the month\n\nGETTING IN\n- You usually opened trades expiring about 7 weeks out.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n- You usually collected $580 in premium per contract when you opened a trade.\n\nMANAGING\n- When a stock moved hard, you rolled the side that was not under pressure toward the stock price 8 times.\n- 7 in 10 of your rolls were done for a credit.\n- The trades you rolled or adjusted most often were AMD (11 times) and META (2 times).\n\nGETTING OUT\n- When you closed a trade, it was usually still about 4 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n- You ended the month with 4 trades still open: AMD, INTC, DELL and MSFT.\n\nHOW IT TURNED OUT\nYour account ended the month up 3.4%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 10 trades that ended, 10 ended with a gain and 0 with a loss.\nFees and commissions: $76.15.\n\nSTILL OPEN\nGoing into next month: AMD, INTC, DELL and MSFT.\n\nWHAT CHANGED\nYou started more new trades early in the month than late: 8 in the first half of the month, 3 in the second half.\n\n8 times you rolled the side that was not under pressure toward the stock price instead of closing the trade.\n9 times a roll narrowed the distance between your strikes.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Sells a put below the price and a call above it on big, well-known stocks, usually ending about 6 weeks out. When a stock moves hard one way, slides the other half of the trade closer to the price instead of closing. With about 3 weeks left, moves the whole trade out to the next month. Many trades are still open when the month ends.",
+  "workbook": "p04_jordan_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "median_entry_dte",
+    "median_days_held",
+    "rolls_total",
+    "biggest_loss"
+   ],
+   "one_liner": "You opened spreads and closed them within a few days instead of rolling or adjusting them.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You usually opened trades expiring {{median_entry_dte}} out.",
+     "Implied volatility was usually {{median_price_level_at_entry}} compared with its past year when you opened a trade.",
+     "You usually collected {{median_opening_credit_per_contract}} per contract when you sold premium, and paid {{median_opening_debit_per_contract}} per contract when you paid a debit."
+    ],
+    "getting_out": [
+     "You usually kept a trade for {{median_days_held}}, closing it with {{median_days_left_at_close}} still left before expiration.",
+     "Your winning trades usually kept {{median_upfront_kept_on_winners}} of the premium you collected.",
+     "You closed {{losers_closed_early}} that ended with a loss before expiration; your largest loss was {{biggest_loss}}."
+    ],
+    "managing": [
+     "You held or closed your trades; you did not roll or adjust any of them."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [
+    {
+     "fact": "losers_closed_early",
+     "line": "that ended with a loss were closed before expiration instead of being rolled."
+    }
+   ],
+   "what_changed": "New trades you started: {{stories_opened_by_half}}."
+  },
+  "cost_usd": 0.0416,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "13 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.3
+   },
+   {
+    "display": "10 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.3
+   },
+   {
+    "display": "10 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.3
+   },
+   {
+    "display": "5 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0004",
+     "story:p05-0005"
+    ],
+    "sources": 5,
+    "weight": 0.3
+   },
+   {
+    "display": "5 trades",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p05-0002",
+     "story:p05-0003",
+     "story:p05-0008"
+    ],
+    "sources": 5,
+    "weight": 0.3
+   },
+   {
+    "display": "100% options on stocks and funds",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.3
+   },
+   {
+    "display": "none",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.3
+   },
+   {
+    "display": "about 6 weeks",
+    "id": "median_entry_dte",
+    "plain": "how far out the expiration usually was when you opened an options trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.6
+   },
+   {
+    "display": "about 6 weeks in the first half of the month, about 5 weeks in the second half",
+    "id": "entry_dte_by_half",
+    "plain": "how far out your expirations usually were in the first and second half of the month",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.6
+   },
+   {
+    "display": "average",
+    "id": "median_price_level_at_entry",
+    "plain": "where implied volatility usually sat, compared with its past year, when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.6
+   },
+   {
+    "display": "$113",
+    "id": "median_opening_credit_per_contract",
+    "plain": "premium you usually collected per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p05-0002",
+     "story:p05-0005",
+     "story:p05-0006"
+    ],
+    "sources": 4,
+    "weight": 0.6
+   },
+   {
+    "display": "$400",
+    "id": "median_opening_debit_per_contract",
+    "plain": "debit you usually paid per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0003",
+     "story:p05-0004"
+    ],
+    "sources": 6,
+    "weight": 0.6
+   },
+   {
+    "display": "0 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.2
+   },
+   {
+    "display": "no moves",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.2
+   },
+   {
+    "display": "0 to 1",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0004",
+     "story:p05-0005"
+    ],
+    "sources": 5,
+    "weight": 0.2
+   },
+   {
+    "display": "3 days",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0004",
+     "story:p05-0005"
+    ],
+    "sources": 5,
+    "weight": 0.6
+   },
+   {
+    "display": "about 3 weeks",
+    "id": "median_days_left_at_close",
+    "plain": "how much time was usually left before expiration when you closed an options trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0004",
+     "story:p05-0005"
+    ],
+    "sources": 5,
+    "weight": 0.6
+   },
+   {
+    "display": "about a fifth",
+    "id": "median_upfront_kept_on_winners",
+    "plain": "how much of the premium collected your winning trades usually kept",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p05-0005"
+    ],
+    "sources": 1,
+    "weight": 0.75
+   },
+   {
+    "display": "NVDA in 1 day, IWM in 1 day and SPY in about 3 weeks",
+    "id": "fastest_winners",
+    "plain": "your quickest trades that ended with a gain",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0004",
+     "story:p05-0005"
+    ],
+    "sources": 3,
+    "weight": 0.4
+   },
+   {
+    "display": "2 trades",
+    "id": "losers_closed_early",
+    "plain": "trades that ended with a loss that you closed before expiration",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p05-0006",
+     "story:p05-0007"
+    ],
+    "sources": 2,
+    "weight": 0.6
+   },
+   {
+    "display": "3 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0004",
+     "story:p05-0005"
+    ],
+    "sources": 3,
+    "weight": 0.5
+   },
+   {
+    "display": "2 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p05-0006",
+     "story:p05-0007"
+    ],
+    "sources": 2,
+    "weight": 0.5
+   },
+   {
+    "display": "-$580",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.5
+   },
+   {
+    "display": "$78.62",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.3
+   },
+   {
+    "display": "$111 on IWM",
+    "id": "biggest_win",
+    "plain": "your largest gain on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p05-0004"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$610 on QQQ",
+    "id": "biggest_loss",
+    "plain": "your largest loss on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p05-0007"
+    ],
+    "sources": 1,
+    "weight": 0.8
+   },
+   {
+    "display": "-$966",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.7
+   },
+   {
+    "display": "down 1.9%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.5
+   },
+   {
+    "display": "GOOGL, NVDA, QQQ, SPY and IWM",
+    "id": "open_stories",
+    "plain": "trades still open going into next month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p05-0002",
+     "story:p05-0003",
+     "story:p05-0008"
+    ],
+    "sources": 5,
+    "weight": 0.5
+   },
+   {
+    "display": "7 in the first half of the month, 3 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p05-0001",
+     "story:p05-0002",
+     "story:p05-0003"
+    ],
+    "sources": 10,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   }
+  ],
+  "first_name": "Taylor",
+  "flags": [
+   "first month",
+   "trades still open",
+   "no futures",
+   "losing month"
+  ],
+  "id": "p05",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nTaylor, here is your October 2026.\n\nYou opened spreads and closed them within a few days instead of rolling or adjusting them.\n\nAT A GLANCE\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n- 3 days: how long you usually kept a trade\n- 0 times: times you rolled a trade to a new strike or expiration\n- $610 on QQQ: your largest loss on a single trade\n\nGETTING IN\n- You usually opened trades expiring about 6 weeks out.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n- You usually collected $113 per contract when you sold premium, and paid $400 per contract when you paid a debit.\n\nMANAGING\n- You held or closed your trades; you did not roll or adjust any of them.\n\nGETTING OUT\n- You usually kept a trade for 3 days, closing it with about 3 weeks still left before expiration.\n- Your winning trades usually kept about a fifth of the premium you collected.\n- You closed 2 trades that ended with a loss before expiration; your largest loss was $610 on QQQ.\n\nHOW IT TURNED OUT\nYour account ended the month down 1.9%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 5 trades that ended, 3 ended with a gain and 2 with a loss.\nFees and commissions: $78.62.\n\nSTILL OPEN\nGoing into next month: GOOGL, NVDA, QQQ, SPY and IWM.\n\nWHAT CHANGED\nNew trades you started: 7 in the first half of the month, 3 in the second half.\n\n2 trades that ended with a loss were closed before expiration instead of being rolled.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Trades option spreads where the most that can be lost is known upfront: put spreads and iron condors for cash collected, call spreads and an occasional call diagonal paid for upfront. Takes profits early, usually after a quarter of the possible gain, and rarely holds into the last week.",
+  "workbook": "p05_taylor_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "median_entry_dte",
+    "median_days_held",
+    "median_opening_credit_per_contract",
+    "median_upfront_kept_on_winners"
+   ],
+   "one_liner": "You sold premium on SPX index options with very little time left before expiration, and you usually closed each trade the same day you opened it.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You usually opened trades expiring {{median_entry_dte}} out.",
+     "You usually collected {{median_opening_credit_per_contract}} in premium per contract when you opened a trade.",
+     "Implied volatility was usually {{median_price_level_at_entry}} compared with its past year when you opened a trade."
+    ],
+    "getting_out": [
+     "You usually closed a trade {{median_days_held}} you opened it.",
+     "Your winning trades usually kept {{median_upfront_kept_on_winners}} of the premium you collected.",
+     "Your largest loss was {{biggest_loss}}, {{biggest_loss_vs_upfront}} the premium collected when that trade was opened."
+    ],
+    "managing": [
+     "You held or closed your trades; you did not roll or adjust any of them."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [
+    {
+     "fact": "losers_closed_early",
+     "line": "that ended with a loss were closed before expiration."
+    }
+   ],
+   "what_changed": "How far out your expirations were: {{entry_dte_by_half}}."
+  },
+  "cost_usd": 0.042,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "18 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.3
+   },
+   {
+    "display": "23 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.3
+   },
+   {
+    "display": "23 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.3
+   },
+   {
+    "display": "23 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.3
+   },
+   {
+    "display": "0 trades",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.3
+   },
+   {
+    "display": "100% index options",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.3
+   },
+   {
+    "display": "none",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.3
+   },
+   {
+    "display": "1 day",
+    "id": "median_entry_dte",
+    "plain": "how far out the expiration usually was when you opened an options trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.6
+   },
+   {
+    "display": "1 day in the first half of the month, the same day in the second half",
+    "id": "entry_dte_by_half",
+    "plain": "how far out your expirations usually were in the first and second half of the month",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.6
+   },
+   {
+    "display": "average",
+    "id": "median_price_level_at_entry",
+    "plain": "where implied volatility usually sat, compared with its past year, when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.6
+   },
+   {
+    "display": "$45.00",
+    "id": "median_opening_credit_per_contract",
+    "plain": "premium you usually collected per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.6
+   },
+   {
+    "display": "0 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.2
+   },
+   {
+    "display": "no moves",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.2
+   },
+   {
+    "display": "0 to 1",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0004"
+    ],
+    "sources": 15,
+    "weight": 0.2
+   },
+   {
+    "display": "the same day",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.6
+   },
+   {
+    "display": "none",
+    "id": "median_days_left_at_close",
+    "plain": "how much time was usually left before expiration when you closed an options trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.6
+   },
+   {
+    "display": "about three quarters",
+    "id": "median_upfront_kept_on_winners",
+    "plain": "how much of the premium collected your winning trades usually kept",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0003",
+     "story:p06-0004"
+    ],
+    "sources": 18,
+    "weight": 0.75
+   },
+   {
+    "display": "SPX the same day, SPX the same day and SPX the same day",
+    "id": "fastest_winners",
+    "plain": "your quickest trades that ended with a gain",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0003",
+     "story:p06-0004"
+    ],
+    "sources": 3,
+    "weight": 0.4
+   },
+   {
+    "display": "3 trades",
+    "id": "losers_closed_early",
+    "plain": "trades that ended with a loss that you closed before expiration",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p06-0002",
+     "story:p06-0021",
+     "story:p06-0022"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "18 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0003",
+     "story:p06-0004"
+    ],
+    "sources": 18,
+    "weight": 0.5
+   },
+   {
+    "display": "5 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0002",
+     "story:p06-0012",
+     "story:p06-0021"
+    ],
+    "sources": 5,
+    "weight": 0.5
+   },
+   {
+    "display": "$116",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.5
+   },
+   {
+    "display": "$159",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.7
+   },
+   {
+    "display": "$163 on SPX",
+    "id": "biggest_win",
+    "plain": "your largest gain on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0011"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "about the same",
+    "id": "biggest_win_vs_upfront",
+    "plain": "how your largest gain compared with the premium collected when that trade was opened",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0011"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$390 on SPX",
+    "id": "biggest_loss",
+    "plain": "your largest loss on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0021"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "3.2 times",
+    "id": "biggest_loss_vs_upfront",
+    "plain": "how your largest loss compared with the premium collected when that trade was opened",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0021"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$116",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.5
+   },
+   {
+    "display": "up 0.5%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.5
+   },
+   {
+    "display": "11 in the first half of the month, 12 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p06-0001",
+     "story:p06-0002",
+     "story:p06-0003"
+    ],
+    "sources": 23,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.4
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.4
+   }
+  ],
+  "first_name": "Alex",
+  "flags": [
+   "first month",
+   "gaining month",
+   "no futures"
+  ],
+  "id": "p06",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nAlex, here is your October 2026.\n\nYou sold premium on SPX index options with very little time left before expiration, and you usually closed each trade the same day you opened it.\n\nAT A GLANCE\n- 1 day: how far out the expiration usually was when you opened an options trade\n- the same day: how long you usually kept a trade\n- $45.00: premium you usually collected per contract when you opened a trade\n- about three quarters: how much of the premium collected your winning trades usually kept\n\nGETTING IN\n- You usually opened trades expiring 1 day out.\n- You usually collected $45.00 in premium per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You held or closed your trades; you did not roll or adjust any of them.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it.\n- Your winning trades usually kept about three quarters of the premium you collected.\n- Your largest loss was $390 on SPX, 3.2 times the premium collected when that trade was opened.\n\nHOW IT TURNED OUT\nYour account ended the month up 0.5%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 23 trades that ended, 18 ended with a gain and 5 with a loss.\nFees and commissions: $159.\n\nWHAT CHANGED\nHow far out your expirations were: 1 day in the first half of the month, the same day in the second half.\n\n3 trades that ended with a loss were closed before expiration.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Trades the S&P 500 index itself with small spreads that end the same day, or sometimes the next day. Checks every 15 minutes and closes once most of the possible gain shows up, usually waiting for a fair middle price rather than taking the first one offered; about one trade in three is left alone until it ends and settles in cash. One to three trades a day, one at a time.",
+  "workbook": "p06_alex_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "median_days_held",
+    "stories_ended",
+    "outside_hours_share",
+    "biggest_loss"
+   ],
+   "one_liner": "You traded futures in and out within a single session, usually closing each trade the same day you opened it.",
+   "results_line": "Your account changed by {{month_pnl}} this month, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You opened {{stories_opened}} during the month, trading only futures.",
+     "{{outside_hours_share}} of your orders were placed outside regular market hours."
+    ],
+    "getting_out": [
+     "You usually closed a trade {{median_days_held}} you opened it, and none were still open at the end of the month.",
+     "{{wins}} ended with a gain and {{losses}} ended with a loss.",
+     "Your largest gain was {{biggest_win}} and your largest loss was {{biggest_loss}}."
+    ],
+    "managing": [
+     "You did not adjust any trade once it was open; you held each one until you closed it."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [
+    {
+     "fact": "outside_hours_share",
+     "line": "of your orders were placed outside regular market hours."
+    },
+    {
+     "fact": "total_fees",
+     "line": "went to fees and commissions this month."
+    }
+   ],
+   "what_changed": "New trades you opened: {{stories_opened_by_half}}."
+  },
+  "cost_usd": 0.0372,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "23 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.3
+   },
+   {
+    "display": "53 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.3
+   },
+   {
+    "display": "53 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.3
+   },
+   {
+    "display": "53 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.3
+   },
+   {
+    "display": "0 trades",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.3
+   },
+   {
+    "display": "100% futures",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.3
+   },
+   {
+    "display": "1 in 3",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p07-0002",
+     "story:p07-0004",
+     "story:p07-0005"
+    ],
+    "sources": 19,
+    "weight": 0.3
+   },
+   {
+    "display": "0 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.2
+   },
+   {
+    "display": "no moves",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.2
+   },
+   {
+    "display": "0 to 1",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.2
+   },
+   {
+    "display": "the same day",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.6
+   },
+   {
+    "display": "/MES the same day, /MES the same day and /MES the same day",
+    "id": "fastest_winners",
+    "plain": "your quickest trades that ended with a gain",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p07-0012",
+     "story:p07-0016",
+     "story:p07-0021"
+    ],
+    "sources": 3,
+    "weight": 0.4
+   },
+   {
+    "display": "0 trades",
+    "id": "losers_closed_early",
+    "plain": "trades that ended with a loss that you closed before expiration",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 36,
+    "weight": 0.6
+   },
+   {
+    "display": "17 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p07-0006",
+     "story:p07-0009",
+     "story:p07-0012"
+    ],
+    "sources": 17,
+    "weight": 0.5
+   },
+   {
+    "display": "36 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 36,
+    "weight": 0.5
+   },
+   {
+    "display": "-$3,017",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.5
+   },
+   {
+    "display": "$207",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.3
+   },
+   {
+    "display": "$346 on /MNQ",
+    "id": "biggest_win",
+    "plain": "your largest gain on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p07-0024"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$315 on /MNQ",
+    "id": "biggest_loss",
+    "plain": "your largest loss on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p07-0050"
+    ],
+    "sources": 1,
+    "weight": 0.8
+   },
+   {
+    "display": "-$3,017",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.7
+   },
+   {
+    "display": "down 15.1%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.5
+   },
+   {
+    "display": "26 in the first half of the month, 27 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p07-0001",
+     "story:p07-0002",
+     "story:p07-0003"
+    ],
+    "sources": 53,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   }
+  ],
+  "first_name": "Morgan",
+  "flags": [
+   "first month",
+   "no options",
+   "losing month"
+  ],
+  "id": "p07",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nMorgan, here is your October 2026.\n\nYou traded futures in and out within a single session, usually closing each trade the same day you opened it.\n\nAT A GLANCE\n- the same day: how long you usually kept a trade\n- 53 trades: trades that ended this month\n- 1 in 3: share of your orders placed outside regular market hours\n- $315 on /MNQ: your largest loss on a single trade\n\nGETTING IN\n- You opened 53 trades during the month, trading only futures.\n- 1 in 3 of your orders were placed outside regular market hours.\n\nMANAGING\n- You did not adjust any trade once it was open; you held each one until you closed it.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it, and none were still open at the end of the month.\n- 17 trades ended with a gain and 36 trades ended with a loss.\n- Your largest gain was $346 on /MNQ and your largest loss was $315 on /MNQ.\n\nHOW IT TURNED OUT\nYour account changed by -$3,017 this month, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 53 trades that ended, 17 ended with a gain and 36 with a loss.\nFees and commissions: $207.\n\nWHAT CHANGED\nNew trades you opened: 26 in the first half of the month, 27 in the second half.\n\n1 in 3 of your orders were placed outside regular market hours.\n$207 went to fees and commissions this month.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Trades small stock-index futures (the micro S&P 500 and micro Nasdaq), betting both up and down. Many trades start in the evening session after the stock market has closed. Each trade lasts minutes to a few hours.",
+  "workbook": "p07_morgan_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "median_entry_dte",
+    "median_days_held",
+    "stories_ended",
+    "biggest_loss"
+   ],
+   "one_liner": "You opened options trades with weeks left before expiration and closed them well before expiration, without rolling or adjusting any of them.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You usually opened options trades expiring {{median_entry_dte}} out.",
+     "Implied volatility was usually {{median_price_level_at_entry}} compared with its past year when you opened a trade.",
+     "You usually collected {{median_opening_credit_per_contract}} per contract when you sold premium, and paid {{median_opening_debit_per_contract}} per contract when you opened for a debit."
+    ],
+    "getting_out": [
+     "When you closed an options trade, it was usually still {{median_days_left_at_close}} from expiration.",
+     "Your winning trades usually kept {{median_upfront_kept_on_winners}} of the premium you collected.",
+     "You closed {{losers_closed_early}} that ended with a loss before expiration, and your largest loss was {{biggest_loss}}."
+    ],
+    "managing": [
+     "You held or closed your trades; you did not roll or adjust any of them."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [
+    {
+     "fact": "outside_hours_share",
+     "line": "of your orders were placed outside regular market hours."
+    }
+   ],
+   "what_changed": "How far out your expirations were: {{entry_dte_by_half}}."
+  },
+  "cost_usd": 0.0395,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "11 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.3
+   },
+   {
+    "display": "7 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.3
+   },
+   {
+    "display": "7 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.3
+   },
+   {
+    "display": "5 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0003",
+     "story:p08-0004"
+    ],
+    "sources": 5,
+    "weight": 0.3
+   },
+   {
+    "display": "2 trades",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0002",
+     "story:p08-0006"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "36% crypto, 29% options on stocks and funds, 21% stocks and funds and 14% options on futures",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.3
+   },
+   {
+    "display": "3 in 8",
+    "id": "asset_mix.crypto",
+    "plain": "share of your orders that were crypto",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0002",
+     "story:p08-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "2 in 7",
+    "id": "asset_mix.equity_option",
+    "plain": "share of your orders that were options on stocks and funds",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0005",
+     "story:p08-0007"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "1 in 7",
+    "id": "asset_mix.future_option",
+    "plain": "share of your orders that were options on futures",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0001"
+    ],
+    "sources": 1,
+    "weight": 0.3
+   },
+   {
+    "display": "2 in 9",
+    "id": "asset_mix.stock_etf",
+    "plain": "share of your orders that were stocks and funds",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0003",
+     "story:p08-0006"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "3 in 8",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p08-0002",
+     "story:p08-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "about 6 weeks",
+    "id": "median_entry_dte",
+    "plain": "how far out the expiration usually was when you opened an options trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0005",
+     "story:p08-0007"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "about 7 weeks in the first half of the month, about 4 weeks in the second half",
+    "id": "entry_dte_by_half",
+    "plain": "how far out your expirations usually were in the first and second half of the month",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0005",
+     "story:p08-0007"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "high",
+    "id": "median_price_level_at_entry",
+    "plain": "where implied volatility usually sat, compared with its past year, when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0005",
+     "story:p08-0007"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "$153",
+    "id": "median_opening_credit_per_contract",
+    "plain": "premium you usually collected per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p08-0001"
+    ],
+    "sources": 1,
+    "weight": 0.6
+   },
+   {
+    "display": "$808",
+    "id": "median_opening_debit_per_contract",
+    "plain": "debit you usually paid per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p08-0005",
+     "story:p08-0007"
+    ],
+    "sources": 2,
+    "weight": 0.6
+   },
+   {
+    "display": "0 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.2
+   },
+   {
+    "display": "no moves",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.2
+   },
+   {
+    "display": "0 to 1",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0003",
+     "story:p08-0004"
+    ],
+    "sources": 5,
+    "weight": 0.2
+   },
+   {
+    "display": "5 days",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0003",
+     "story:p08-0004"
+    ],
+    "sources": 5,
+    "weight": 0.6
+   },
+   {
+    "display": "about 6 weeks",
+    "id": "median_days_left_at_close",
+    "plain": "how much time was usually left before expiration when you closed an options trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0005",
+     "story:p08-0007"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "about half",
+    "id": "median_upfront_kept_on_winners",
+    "plain": "how much of the premium collected your winning trades usually kept",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p08-0001"
+    ],
+    "sources": 1,
+    "weight": 0.75
+   },
+   {
+    "display": "/MES in 4 days and AAPL in about 2 weeks",
+    "id": "fastest_winners",
+    "plain": "your quickest trades that ended with a gain",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0003"
+    ],
+    "sources": 2,
+    "weight": 0.4
+   },
+   {
+    "display": "2 trades",
+    "id": "losers_closed_early",
+    "plain": "trades that ended with a loss that you closed before expiration",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p08-0005",
+     "story:p08-0007"
+    ],
+    "sources": 2,
+    "weight": 0.6
+   },
+   {
+    "display": "2 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0003"
+    ],
+    "sources": 2,
+    "weight": 0.5
+   },
+   {
+    "display": "3 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p08-0004",
+     "story:p08-0005",
+     "story:p08-0007"
+    ],
+    "sources": 3,
+    "weight": 0.5
+   },
+   {
+    "display": "-$1,468",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.5
+   },
+   {
+    "display": "$181",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.3
+   },
+   {
+    "display": "$215 on AAPL",
+    "id": "biggest_win",
+    "plain": "your largest gain on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p08-0003"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$753 on NVDA",
+    "id": "biggest_loss",
+    "plain": "your largest loss on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p08-0005"
+    ],
+    "sources": 1,
+    "weight": 0.8
+   },
+   {
+    "display": "-$2,258",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.7
+   },
+   {
+    "display": "down 2.8%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.5
+   },
+   {
+    "display": "BTC and MSFT",
+    "id": "open_stories",
+    "plain": "trades still open going into next month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p08-0002",
+     "story:p08-0006"
+    ],
+    "sources": 2,
+    "weight": 0.5
+   },
+   {
+    "display": "6 in the first half of the month, 1 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p08-0001",
+     "story:p08-0002",
+     "story:p08-0003"
+    ],
+    "sources": 7,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   }
+  ],
+  "first_name": "Jamie",
+  "flags": [
+   "first month",
+   "trades still open",
+   "losing month"
+  ],
+  "id": "p08",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nJamie, here is your October 2026.\n\nYou opened options trades with weeks left before expiration and closed them well before expiration, without rolling or adjusting any of them.\n\nAT A GLANCE\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n- 5 days: how long you usually kept a trade\n- 5 trades: trades that ended this month\n- $753 on NVDA: your largest loss on a single trade\n\nGETTING IN\n- You usually opened options trades expiring about 6 weeks out.\n- Implied volatility was usually high compared with its past year when you opened a trade.\n- You usually collected $153 per contract when you sold premium, and paid $808 per contract when you opened for a debit.\n\nMANAGING\n- You held or closed your trades; you did not roll or adjust any of them.\n\nGETTING OUT\n- When you closed an options trade, it was usually still about 6 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n- You closed 2 trades that ended with a loss before expiration, and your largest loss was $753 on NVDA.\n\nHOW IT TURNED OUT\nYour account ended the month down 2.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 5 trades that ended, 2 ended with a gain and 3 with a loss.\nFees and commissions: $181.\n\nSTILL OPEN\nGoing into next month: BTC and MSFT.\n\nWHAT CHANGED\nHow far out your expirations were: about 7 weeks in the first half of the month, about 4 weeks in the second half.\n\n3 in 8 of your orders were placed outside regular market hours.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Uses a bit of everything: buys shares, buys calls on one chip maker, sells puts on the micro S&P 500 future, and buys bitcoin and ether, sometimes on weekends. Adds money to the account mid-month.",
+  "workbook": "p08_jamie_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "stories_ended",
+    "median_entry_dte",
+    "median_opening_credit_per_contract",
+    "median_upfront_kept_on_winners"
+   ],
+   "one_liner": "You sold premium on trades expiring a few weeks out and held or closed them without rolling any of them.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You usually opened options trades expiring {{median_entry_dte}} out.",
+     "You usually collected {{median_opening_credit_per_contract}} in premium per contract when you opened a trade.",
+     "Implied volatility was usually {{median_price_level_at_entry}} compared with its past year when you opened a trade."
+    ],
+    "getting_out": [
+     "You usually kept a trade for {{median_days_held}}, and closed options trades with {{median_days_left_at_close}} still left before expiration.",
+     "Your winning trades usually kept {{median_upfront_kept_on_winners}} of the premium you collected.",
+     "Your largest loss was {{biggest_loss}}, {{biggest_loss_vs_upfront}} as the premium collected when that trade was opened."
+    ],
+    "managing": [
+     "You held or closed your trades; you did not roll any of them."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [],
+   "what_changed": "How far out your expirations were: {{entry_dte_by_half}}."
+  },
+  "cost_usd": 0.0362,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "6 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "4 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "3 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003",
+     "story:p09-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "3 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "1 trade",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0004"
+    ],
+    "sources": 1,
+    "weight": 0.3
+   },
+   {
+    "display": "88% options on stocks and funds and 12% stocks and funds",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "7 in 8",
+    "id": "asset_mix.equity_option",
+    "plain": "share of your orders that were options on stocks and funds",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "1 in 8",
+    "id": "asset_mix.stock_etf",
+    "plain": "share of your orders that were stocks and funds",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0001"
+    ],
+    "sources": 1,
+    "weight": 0.3
+   },
+   {
+    "display": "none",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "about 3 weeks",
+    "id": "median_entry_dte",
+    "plain": "how far out the expiration usually was when you opened an options trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003",
+     "story:p09-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "about 2 weeks in the first half of the month, about 4 weeks in the second half",
+    "id": "entry_dte_by_half",
+    "plain": "how far out your expirations usually were in the first and second half of the month",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003",
+     "story:p09-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "average",
+    "id": "median_price_level_at_entry",
+    "plain": "where implied volatility usually sat, compared with its past year, when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003",
+     "story:p09-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "$80.00",
+    "id": "median_opening_credit_per_contract",
+    "plain": "premium you usually collected per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003",
+     "story:p09-0004"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "0 times",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.2
+   },
+   {
+    "display": "no moves",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.2
+   },
+   {
+    "display": "0 to 1",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 3,
+    "weight": 0.2
+   },
+   {
+    "display": "12 days",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 3,
+    "weight": 0.6
+   },
+   {
+    "display": "13 days",
+    "id": "median_days_left_at_close",
+    "plain": "how much time was usually left before expiration when you closed an options trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 2,
+    "weight": 0.6
+   },
+   {
+    "display": "nearly all",
+    "id": "median_upfront_kept_on_winners",
+    "plain": "how much of the premium collected your winning trades usually kept",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 2,
+    "weight": 0.75
+   },
+   {
+    "display": "SBUX in 9 days and SBUX in 12 days",
+    "id": "fastest_winners",
+    "plain": "your quickest trades that ended with a gain",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 2,
+    "weight": 0.4
+   },
+   {
+    "display": "0 trades",
+    "id": "losers_closed_early",
+    "plain": "trades that ended with a loss that you closed before expiration",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p09-0001"
+    ],
+    "sources": 1,
+    "weight": 0.6
+   },
+   {
+    "display": "2 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 2,
+    "weight": 0.5
+   },
+   {
+    "display": "1 trade",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0001"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "-$1,803",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "$12.56",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "$308 on SBUX",
+    "id": "biggest_win",
+    "plain": "your largest gain on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0003"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "nearly all",
+    "id": "biggest_win_vs_upfront",
+    "plain": "how your largest gain compared with the premium collected when that trade was opened",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0003"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "$2,245 on NKE",
+    "id": "biggest_loss",
+    "plain": "your largest loss on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0001"
+    ],
+    "sources": 1,
+    "weight": 0.8
+   },
+   {
+    "display": "about the same",
+    "id": "biggest_loss_vs_upfront",
+    "plain": "how your largest loss compared with the premium collected when that trade was opened",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0001"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "-$1,844",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.7
+   },
+   {
+    "display": "down 4.1%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p09-0001",
+     "story:p09-0002",
+     "story:p09-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "NKE",
+    "id": "open_stories",
+    "plain": "trades still open going into next month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p09-0004"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "1 in the first half of the month, 2 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p09-0002",
+     "story:p09-0003",
+     "story:p09-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   }
+  ],
+  "first_name": "Riley",
+  "flags": [
+   "first month",
+   "trades still open",
+   "no futures",
+   "losing month"
+  ],
+  "id": "p09",
+  "issues": [],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nRiley, here is your October 2026.\n\nYou sold premium on trades expiring a few weeks out and held or closed them without rolling any of them.\n\nAT A GLANCE\n- 3 trades: trades that ended this month\n- about 3 weeks: how far out the expiration usually was when you opened an options trade\n- $80.00: premium you usually collected per contract when you opened a trade\n- nearly all: how much of the premium collected your winning trades usually kept\n\nGETTING IN\n- You usually opened options trades expiring about 3 weeks out.\n- You usually collected $80.00 in premium per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You held or closed your trades; you did not roll any of them.\n\nGETTING OUT\n- You usually kept a trade for 12 days, and closed options trades with 13 days still left before expiration.\n- Your winning trades usually kept nearly all of the premium you collected.\n- Your largest loss was $2,245 on NKE, about the same as the premium collected when that trade was opened.\n\nHOW IT TURNED OUT\nYour account ended the month down 4.1%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 3 trades that ended, 2 ended with a gain and 1 with a loss.\nFees and commissions: $12.56.\n\nSTILL OPEN\nGoing into next month: NKE.\n\nWHAT CHANGED\nHow far out your expirations were: about 2 weeks in the first half of the month, about 4 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "Sells puts on two retail stocks with cash set aside. Sells more of the same put each time the stock drops 3%. In October one of the stocks fell 12% overnight, the puts ended with the stock well below the strike, the shares were bought at the strike, and a few days later they were sold for much less. A red month.",
+  "workbook": "p09_riley_2026-10.xlsx"
+ },
+ {
+  "assumptions": [],
+  "attempts": [
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "red_month",
+     "no_doubled_units",
+     "glance_tiles"
+    ],
+    "passed": true,
+    "reasons": []
+   }
+  ],
+  "copy": {
+   "glance_tiles": [
+    "median_entry_dte",
+    "median_opening_debit_per_contract",
+    "rolls_total",
+    "biggest_loss"
+   ],
+   "one_liner": "You opened options trades for a debit and, when you adjusted, rolled down to a lower strike and out to a later expiration instead of closing.",
+   "results_line": "Your account ended the month {{month_return}}, while the broad US market was {{spy_move}} and large technology companies were {{qqq_move}}.",
+   "sections": {
+    "getting_in": [
+     "You usually opened options trades expiring {{median_entry_dte}} out.",
+     "You usually paid a debit of {{median_opening_debit_per_contract}} per contract when you opened a trade.",
+     "Implied volatility was usually {{median_price_level_at_entry}} compared with its past year when you opened a trade."
+    ],
+    "getting_out": [
+     "You usually kept a trade for {{median_days_held}}.",
+     "When you closed an options trade, it usually had {{median_days_left_at_close}} left before expiration.",
+     "Your largest loss on a single trade was {{biggest_loss}}."
+    ],
+    "managing": [
+     "You rolled a trade {{rolls_total}}, down to a lower strike and out to a later expiration.",
+     "{{credit_roll_share}} of your rolls were done for a credit."
+    ]
+   },
+   "subject_line": "Your October, trade by trade",
+   "teasers": [
+    {
+     "fact": "losers_closed_early",
+     "line": "that ended with a loss was closed before its expiration."
+    }
+   ],
+   "what_changed": "When you rolled: {{rolls_by_half}}."
+  },
+  "cost_usd": 0.0452,
+  "draft": null,
+  "effort": "medium",
+  "facts": [
+   {
+    "display": "5 days",
+    "id": "active_days",
+    "plain": "days you placed at least one trade",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0003",
+     "story:p10-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "3 trades",
+    "id": "stories_touched",
+    "plain": "trades you placed an order on this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0003",
+     "story:p10-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "2 trades",
+    "id": "stories_opened",
+    "plain": "new trades you started",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0003",
+     "story:p10-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "2 trades",
+    "id": "stories_ended",
+    "plain": "trades that ended this month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0003"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "2 trades",
+    "id": "stories_open_at_end",
+    "plain": "trades still open at the end of the month",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "67% options on stocks and funds and 33% stocks and funds",
+    "id": "asset_mix",
+    "plain": "how your orders split across what you traded",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0003",
+     "story:p10-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "2 in 3",
+    "id": "asset_mix.equity_option",
+    "plain": "share of your orders that were options on stocks and funds",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0003"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "1 in 3",
+    "id": "asset_mix.stock_etf",
+    "plain": "share of your orders that were stocks and funds",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "none",
+    "id": "outside_hours_share",
+    "plain": "share of your orders placed outside regular market hours",
+    "section": "at_a_glance",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0003",
+     "story:p10-0004"
+    ],
+    "sources": 3,
+    "weight": 0.3
+   },
+   {
+    "display": "about 6 weeks",
+    "id": "median_entry_dte",
+    "plain": "how far out the expiration usually was when you opened an options trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p10-0003"
+    ],
+    "sources": 1,
+    "weight": 0.6
+   },
+   {
+    "display": "average",
+    "id": "median_price_level_at_entry",
+    "plain": "where implied volatility usually sat, compared with its past year, when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p10-0003"
+    ],
+    "sources": 1,
+    "weight": 0.6
+   },
+   {
+    "display": "$143",
+    "id": "median_opening_debit_per_contract",
+    "plain": "debit you usually paid per contract when you opened a trade",
+    "section": "getting_in",
+    "source_examples": [
+     "story:p10-0003"
+    ],
+    "sources": 1,
+    "weight": 0.6
+   },
+   {
+    "display": "1 time",
+    "id": "rolls_total",
+    "plain": "times you rolled a trade to a new strike or expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p10-0002"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "rolled a strike down 1 time; rolled out to a later expiration 1 time",
+    "id": "rolls_by_type",
+    "plain": "the kinds of rolls you made",
+    "section": "managing",
+    "source_examples": [
+     "story:p10-0002"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "1 time",
+    "id": "rolls.down",
+    "plain": "times you rolled a strike down",
+    "section": "managing",
+    "source_examples": [
+     "story:p10-0002"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "1 time",
+    "id": "rolls.out_in_time",
+    "plain": "times you rolled out to a later expiration",
+    "section": "managing",
+    "source_examples": [
+     "story:p10-0002"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "none",
+    "id": "credit_roll_share",
+    "plain": "share of your rolls done for a credit",
+    "section": "managing",
+    "source_examples": [
+     "story:p10-0002"
+    ],
+    "sources": 1,
+    "weight": 0.8
+   },
+   {
+    "display": "1 to 1",
+    "id": "adjust_to_close_ratio",
+    "plain": "times you adjusted a trade for every time you closed one",
+    "section": "managing",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0003"
+    ],
+    "sources": 2,
+    "weight": 0.7
+   },
+   {
+    "display": "about 6 weeks",
+    "id": "median_days_held",
+    "plain": "how long you usually kept a trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0003"
+    ],
+    "sources": 2,
+    "weight": 0.6
+   },
+   {
+    "display": "12 days",
+    "id": "median_days_left_at_close",
+    "plain": "how much time was usually left before expiration when you closed an options trade",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0003"
+    ],
+    "sources": 2,
+    "weight": 0.6
+   },
+   {
+    "display": "1 trade",
+    "id": "losers_closed_early",
+    "plain": "trades that ended with a loss that you closed before expiration",
+    "section": "getting_out",
+    "source_examples": [
+     "story:p10-0003"
+    ],
+    "sources": 1,
+    "weight": 0.6
+   },
+   {
+    "display": "0 trades",
+    "id": "wins",
+    "plain": "trades that ended with a gain",
+    "section": "results",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0003"
+    ],
+    "sources": 2,
+    "weight": 0.5
+   },
+   {
+    "display": "2 trades",
+    "id": "losses",
+    "plain": "trades that ended with a loss",
+    "section": "results",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0003"
+    ],
+    "sources": 2,
+    "weight": 0.5
+   },
+   {
+    "display": "$376",
+    "id": "net_realized_pnl",
+    "plain": "gains and losses locked in this month, after fees",
+    "section": "results",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0002",
+     "story:p10-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "$8.74",
+    "id": "total_fees",
+    "plain": "fees and commissions you paid",
+    "section": "results",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0002",
+     "story:p10-0003"
+    ],
+    "sources": 4,
+    "weight": 0.3
+   },
+   {
+    "display": "$601 on KO",
+    "id": "biggest_loss",
+    "plain": "your largest loss on a single trade",
+    "section": "results",
+    "source_examples": [
+     "story:p10-0001"
+    ],
+    "sources": 1,
+    "weight": 0.8
+   },
+   {
+    "display": "-$596",
+    "id": "month_pnl",
+    "plain": "change in your account value, not counting deposits or withdrawals",
+    "section": "results",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0002",
+     "story:p10-0003"
+    ],
+    "sources": 4,
+    "weight": 0.7
+   },
+   {
+    "display": "down 0.8%",
+    "id": "month_return",
+    "plain": "change in your account value as a share of where it started",
+    "section": "results",
+    "source_examples": [
+     "story:p10-0001",
+     "story:p10-0002",
+     "story:p10-0003"
+    ],
+    "sources": 4,
+    "weight": 0.5
+   },
+   {
+    "display": "SHOP and F",
+    "id": "open_stories",
+    "plain": "trades still open going into next month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p10-0002",
+     "story:p10-0004"
+    ],
+    "sources": 2,
+    "weight": 0.5
+   },
+   {
+    "display": "1 trade",
+    "id": "open_moved_to_later_date",
+    "plain": "open trades you rolled out to a later expiration this month",
+    "section": "still_open",
+    "source_examples": [
+     "story:p10-0002"
+    ],
+    "sources": 1,
+    "weight": 0.5
+   },
+   {
+    "display": "0 in the first half of the month, 1 in the second half",
+    "id": "rolls_by_half",
+    "plain": "rolls you made in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p10-0002"
+    ],
+    "sources": 1,
+    "weight": 0.3
+   },
+   {
+    "display": "1 in the first half of the month, 1 in the second half",
+    "id": "stories_opened_by_half",
+    "plain": "new trades you started in the first and second half of the month",
+    "section": "what_changed",
+    "source_examples": [
+     "story:p10-0003",
+     "story:p10-0004"
+    ],
+    "sources": 2,
+    "weight": 0.3
+   },
+   {
+    "display": "up 0.7%",
+    "id": "spy_move",
+    "plain": "how a fund that tracks the broad US market moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:SPY"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   },
+   {
+    "display": "down 6.8%",
+    "id": "qqq_move",
+    "plain": "how a fund that tracks large technology companies moved this month",
+    "section": "context",
+    "source_examples": [
+     "market:QQQ"
+    ],
+    "sources": 1,
+    "weight": 0.7
+   }
+  ],
+  "first_name": "Drew",
+  "flags": [
+   "data needs a look",
+   "first month",
+   "trades still open",
+   "no futures",
+   "losing month"
+  ],
+  "id": "p10",
+  "issues": [
+   {
+    "count": 1,
+    "issue": "fees_missing",
+    "text": "Some trades have no commission or fees."
+   },
+   {
+    "count": 1,
+    "issue": "order_partially_filled",
+    "text": "An order was only partly filled."
+   },
+   {
+    "count": 1,
+    "issue": "split_adjusted_positions",
+    "text": "A stock split changed positions without an order."
+   }
+  ],
+  "model": "claude-opus-5-5",
+  "month": "2026-10",
+  "month_name": "October 2026",
+  "prompt_version": "recap_v3",
+  "recap_text": "Your October, trade by trade\n\nDrew, here is your October 2026.\n\nYou opened options trades for a debit and, when you adjusted, rolled down to a lower strike and out to a later expiration instead of closing.\n\nAT A GLANCE\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n- $143: debit you usually paid per contract when you opened a trade\n- 1 time: times you rolled a trade to a new strike or expiration\n- $601 on KO: your largest loss on a single trade\n\nGETTING IN\n- You usually opened options trades expiring about 6 weeks out.\n- You usually paid a debit of $143 per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You rolled a trade 1 time, down to a lower strike and out to a later expiration.\n- None of your rolls were done for a credit.\n\nGETTING OUT\n- You usually kept a trade for about 6 weeks.\n- When you closed an options trade, it usually had 12 days left before expiration.\n- Your largest loss on a single trade was $601 on KO.\n\nHOW IT TURNED OUT\nYour account ended the month down 0.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 2 trades that ended, 0 ended with a gain and 2 with a loss.\nFees and commissions: $8.74.\n\nSTILL OPEN\nGoing into next month: SHOP and F.\n\nWHAT CHANGED\nWhen you rolled: 0 in the first half of the month, 1 in the second half.\n\n1 trade that ended with a loss was closed before its expiration.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "status": "passed",
+  "summary": "An account with awkward data. It starts the month already holding shares and options. A call it sold is exercised early, the day before a dividend. One stock splits two-for-one while a put on it is open. One order fills in three pieces and another only partly fills. A roll is done as two separate orders two minutes apart. Half the split shares are sold, and that fill arrives with its fees missing.",
+  "workbook": "p10_drew_2026-10.xlsx"
+ }
+]

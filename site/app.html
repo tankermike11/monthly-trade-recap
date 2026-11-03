@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Your Month Recap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* Layout: a working desk for the team. A sticky bar with three views; each recap is shown as the
+   printed email beside the evidence behind it (facts, Claude's draft, the checks). */
+:root {
+  --bg:#f4f6f8; --card:#ffffff; --ink:#15212b; --muted:#5a6773; --faint:#8995a0; --rule:#d8dee4;
+  --accent:#0d6b4f; --accent-ink:#ffffff; --accent-soft:#e1f0ea;
+  --ph:#7a4b00; --ph-bg:#fbefd5; --warn:#9a3a1f; --warn-bg:#fbe9e2; --ok:#1f6b3d;
+  --font:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --serif:"Source Serif 4",Georgia,serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#10161b; --card:#182128; --ink:#e4e9ed; --muted:#9aa7b1; --faint:#66737d; --rule:#2b3640;
+    --accent:#4fbf95; --accent-ink:#0b1712; --accent-soft:#16352a; --ph:#f1c76e; --ph-bg:#3a2e14;
+    --warn:#f0a080; --warn-bg:#3b2219; --ok:#7fd3a2; color-scheme:dark; }
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 var(--font); }
+a { color:var(--accent); }
+.bar { position:sticky; top:0; z-index:5; background:var(--card); border-bottom:1px solid var(--rule); }
+.bar-in { max-width:1180px; margin:0 auto; padding:10px 16px; display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; }
+.brand { font-weight:600; margin-right:auto; }
+.brand small { color:var(--muted); font-weight:400; margin-left:6px; }
+nav { display:flex; gap:4px; flex-wrap:wrap; }
+nav button, .btn { font:inherit; cursor:pointer; padding:7px 12px; border-radius:6px; border:1px solid transparent; background:transparent; color:var(--ink); }
+nav button[aria-current="page"] { background:var(--accent-soft); color:var(--accent); font-weight:600; }
+.signout { color:var(--muted); font-size:14px; }
+main { max-width:1180px; margin:0 auto; padding:28px 16px 64px; display:grid; gap:28px; }
+section[hidden] { display:none; }
+h1 { font-family:var(--serif); font-weight:600; font-size:clamp(28px,4vw,38px); line-height:1.15; margin:0; text-wrap:balance; }
+h2 { font-size:20px; margin:0; font-weight:600; text-wrap:balance; }
+h3 { font-size:15px; margin:0; font-weight:600; }
+p { margin:0; }
+.lede { font-size:17px; color:var(--muted); max-width:70ch; }
+.label { font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.card { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:18px; }
+.stack { display:grid; gap:14px; }
+.grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; align-items:start; }
+.steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; counter-reset:step; }
+.step { counter-increment:step; display:grid; gap:6px; align-content:start; }
+.step .label::before { content:"Step " counter(step) " · "; }
+.step p { color:var(--muted); font-size:14px; }
+.who { display:inline-block; font-family:var(--mono); font-size:11px; padding:1px 7px; border-radius:999px; border:1px solid var(--rule); color:var(--muted); }
+.who.claude { border-color:var(--ph); color:var(--ph); }
+.who.code { border-color:var(--accent); color:var(--accent); }
+.example { display:grid; gap:10px; }
+.example-row { display:grid; grid-template-columns:140px 1fr; gap:12px; align-items:baseline; }
+@media (max-width:600px) { .example-row { grid-template-columns:1fr; gap:2px; } }
+mark.ph { background:var(--ph-bg); color:var(--ph); font-family:var(--mono); font-size:.9em; padding:0 3px; border-radius:3px; }
+.filled { background:var(--accent-soft); color:var(--accent); padding:0 3px; border-radius:3px; font-weight:500; }
+ul.rules { margin:0; padding-left:18px; display:grid; gap:6px; }
+.gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px; }
+.pcard { font:inherit; text-align:left; cursor:pointer; display:grid; gap:4px; align-content:start; padding:12px 14px; border-radius:8px; border:1px solid var(--rule); background:var(--card); color:var(--ink); }
+.pcard[aria-pressed="true"] { border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent); }
+.pcard .pid { font-family:var(--mono); font-size:11px; color:var(--muted); }
+.pcard .name { font-weight:600; }
+.pcard .sum { font-size:13px; color:var(--muted); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.chips { display:flex; flex-wrap:wrap; gap:6px; }
+.chip { font-family:var(--mono); font-size:11px; padding:1px 8px; border-radius:999px; border:1px solid var(--rule); color:var(--muted); }
+.chip.loss { border-color:var(--warn); color:var(--warn); }
+.result { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:16px; align-items:start; }
+@media (max-width:900px) { .result { grid-template-columns:minmax(0,1fr); } }
+.email { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:22px 24px; font-family:var(--serif); font-size:16px; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
+.email .head { font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--muted); }
+.tabs { display:flex; gap:4px; flex-wrap:wrap; border-bottom:1px solid var(--rule); }
+.tabs button { font:inherit; font-size:14px; cursor:pointer; padding:8px 12px; border:0; border-bottom:2px solid transparent; background:none; color:var(--muted); }
+.tabs button[aria-selected="true"] { color:var(--ink); border-bottom-color:var(--accent); font-weight:600; }
+.panel { padding-top:12px; display:grid; gap:10px; }
+.facts { width:100%; border-collapse:collapse; font-size:14px; }
+.facts td, .facts th { text-align:left; padding:6px 8px; border-bottom:1px solid var(--rule); vertical-align:top; }
+.facts th { font-weight:500; color:var(--muted); font-size:12px; }
+.facts td.num { font-variant-numeric:tabular-nums; white-space:nowrap; font-weight:500; }
+.facts .src { color:var(--faint); font-family:var(--mono); font-size:12px; white-space:nowrap; }
+.scroll { overflow-x:auto; }
+.draft-sec { display:grid; gap:4px; }
+.draft-sec div { font-size:14px; }
+.check { display:flex; gap:8px; font-size:14px; }
+.check .mark { color:var(--ok); font-weight:600; }
+.check.fail .mark { color:var(--warn); }
+.note { background:var(--accent-soft); border-radius:8px; padding:10px 14px; font-size:14px; }
+.note.warn { background:var(--warn-bg); color:var(--warn); }
+.note ul { margin:6px 0 0; padding-left:18px; }
+.meta { font-size:13px; color:var(--muted); }
+.drop { border:2px dashed var(--rule); border-radius:10px; padding:22px; display:grid; gap:10px; justify-items:start; }
+.drop.over { border-color:var(--accent); background:var(--accent-soft); }
+.primary { font:inherit; font-weight:600; cursor:pointer; padding:9px 16px; border-radius:6px; border:0; background:var(--accent); color:var(--accent-ink); }
+.primary:disabled { opacity:.5; cursor:not-allowed; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+.dl { display:flex; flex-wrap:wrap; gap:8px; }
+.dl a { font-size:14px; padding:6px 10px; border:1px solid var(--rule); border-radius:6px; text-decoration:none; background:var(--card); }
+@media (prefers-reduced-motion: no-preference) { .pcard, nav button { transition:background .15s, border-color .15s; } }
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-in">
+  <span class="brand">Your Month Recap <small>team demo · sample data only</small></span>
+  <nav aria-label="Views">
+    <button type="button" data-view="how">How it works</button>
+    <button type="button" data-view="personas">Personas</button>
+    <button type="button" data-view="try">Try your own</button>
+  </nav>
+  <a class="signout" href="/logout">Sign out</a>
+</div></div>
+
+<main>
+  <!-- ======================================================= HOW IT WORKS -->
+  <section id="view-how" class="stack" style="gap:28px">
+    <div class="stack">
+      <span class="label">Monthly trade recap · concept</span>
+      <h1>Each customer's month, written from their own trades</h1>
+      <p class="lede">Once a month, every customer gets a short recap of how they traded: how far out they went, how they managed and rolled positions, how they exited. It reads like a note from someone who watched the account, but every number comes from code and every sentence is checked before it renders.</p>
+    </div>
+
+    <div class="steps">
+      <div class="card step"><span class="label">Trades in</span><h3>A month of trades</h3>
+        <p>Fills, orders, positions and expirations for one customer, in a fixed format. Here, an Excel workbook.</p>
+        <span><span class="who code">code</span></span></div>
+      <div class="card step"><span class="label">Facts</span><h3>Code computes every number</h3>
+        <p>30 to 60 small facts: how far out trades expired, how often they were rolled, what share of winners' premium was kept. Each fact keeps the fills it came from.</p>
+        <span><span class="who code">code</span></span></div>
+      <div class="card step"><span class="label">Words</span><h3>Claude picks facts and writes</h3>
+        <p>Claude chooses which facts matter and writes the sentences, using placeholders where numbers go. It never types a number.</p>
+        <span><span class="who claude">Claude</span></span></div>
+      <div class="card step"><span class="label">Checks</span><h3>Code checks the words</h3>
+        <p>Nine checks: lengths, no typed numbers, only real facts, trader terms without shorthand, no advice, no praise, a losing month named once beside the market. One retry, then a person reviews it.</p>
+        <span><span class="who code">code</span></span></div>
+      <div class="card step"><span class="label">Recap out</span><h3>Numbers filled in, recap rendered</h3>
+        <p>Code swaps each placeholder for its fact's value and renders the recap: plain text now, a designed email later.</p>
+        <span><span class="who code">code</span></span></div>
+    </div>
+
+    <div class="card stack" id="example">
+      <span class="label">One sentence, end to end</span>
+      <p class="meta">Loading the example…</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card stack">
+        <h2>The rules it works under</h2>
+        <ul class="rules">
+          <li>Claude never does math. Counts, P&amp;L, ratios and dates come from tested code.</li>
+          <li>Every number traces back to the fills it came from, so any line can be audited.</li>
+          <li>It describes habits, never activity or wins: no "great month", no trade counts as achievements.</li>
+          <li>No advice and no predictions: never "you should" or "next month".</li>
+          <li>A losing month is named once, plainly, next to how the market moved.</li>
+          <li>Trader terms, spelled out: expiration, strike, premium, rolled out. No DTE, IVR or delta.</li>
+        </ul>
+      </div>
+      <div class="card stack">
+        <h2>What this demo shows</h2>
+        <p><strong>Personas</strong>: ten made-up traders (a wheel seller, a same-day SPX trader, a losing month and more), each with a workbook and the recap it produced.</p>
+        <p><strong>Try your own</strong>: download the template or a persona workbook, change it, upload it and get a fresh recap. Each upload calls Claude Opus 5.5 and costs about four cents.</p>
+        <p class="meta">All trades and prices here are simulated. Never upload real account data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================= PERSONAS -->
+  <section id="view-personas" class="stack" hidden>
+    <div class="stack">
+      <span class="label">Ten made-up traders · October 2026</span>
+      <h1>Personas</h1>
+      <p class="lede">Each persona is a simulated month of trading with a known answer key. Pick one to see its recap, the facts code computed, what Claude wrote, and the checks it passed.</p>
+    </div>
+    <div class="gallery" id="gallery"></div>
+    <div id="persona-detail" class="stack"></div>
+  </section>
+
+  <!-- ======================================================= TRY YOUR OWN -->
+  <section id="view-try" class="stack" hidden>
+    <div class="stack">
+      <span class="label">Upload a workbook</span>
+      <h1>Try your own trades</h1>
+      <p class="lede">Start from the template or a persona's workbook, edit the trades, and upload it. The site runs the same pipeline and asks Claude for a new recap, usually in 20 to 40 seconds.</p>
+    </div>
+    <div class="note warn"><strong>Sample or made-up trades only.</strong> Never upload real account data. Workbooks are processed in memory and are not stored.</div>
+    <div class="grid2">
+      <div class="card stack">
+        <h3>1. Get a workbook</h3>
+        <p class="meta">Account and Trades are the only required sheets; the Read me sheet explains every column. Persona workbooks have every sheet filled in.</p>
+        <div class="dl" id="downloads"><a href="/downloads/recap_template.xlsx">Blank template</a></div>
+      </div>
+      <div class="card stack">
+        <h3>2. Upload it</h3>
+        <div class="drop" id="drop">
+          <input type="file" id="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+          <span class="meta" id="file-note">Choose an .xlsx file or drop it here.</span>
+          <button type="button" class="primary" id="go" disabled>Write the recap</button>
+        </div>
+      </div>
+    </div>
+    <div id="upload-status" aria-live="polite"></div>
+    <div id="upload-result" class="stack"></div>
+  </section>
+</main>
+
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const PH = /\{\{\s*([a-z0-9_.]+)\s*\}\}/g;
+const SECTION_NAMES = { getting_in: "Getting in", managing: "Managing", getting_out: "Getting out" };
+const CHECK_NAMES = {
+  schema_and_lengths: "Right shape and length (lines of at most 160 characters once filled)",
+  no_raw_numbers: "No numbers typed by Claude, only placeholders",
+  known_facts: "Every placeholder is a real fact from this customer's sheet",
+  copy_rules: "Trader terms, no shorthand, no banned or retired words, no em dashes",
+  no_advice: "No advice and no predictions",
+  no_praise: "No praise for activity or wins, no consolation lines",
+  red_month: "A losing month is named once, beside the market move",
+  no_doubled_units: "No unit repeated after a value (\"53 trades new trades\")",
+  glance_tiles: "Each at-a-glance tile is one short value, none repeated",
+};
+let personas = [];
+
+function el(tag, attrs = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") n.className = v;
+    else if (k === "text") n.textContent = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else if (v !== false && v != null) n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const kid of kids.flat()) if (kid != null && kid !== false) n.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+  return n;
+}
+
+// "{{fact}}" text -> nodes with each placeholder highlighted (mode "ph") or filled (mode "fill")
+function withPlaceholders(text, facts, mode) {
+  const out = []; let last = 0;
+  for (const m of text.matchAll(PH)) {
+    out.push(text.slice(last, m.index));
+    const f = facts[m[1]];
+    out.push(mode === "fill" && f ? el("span", { class: "filled", title: f.plain, text: f.display })
+                                  : el("mark", { class: "ph", title: f ? `${f.display}: ${f.plain}` : "unknown fact", text: m[0] }));
+    last = m.index + m[0].length;
+  }
+  out.push(text.slice(last));
+  return out;
+}
+
+// ------------------------------------------------------------- views
+function show(view) {
+  if (!["how", "personas", "try"].includes(view)) view = "how";
+  for (const v of ["how", "personas", "try"]) $("view-" + v).hidden = v !== view;
+  document.querySelectorAll("nav button").forEach((b) => b.setAttribute("aria-current", b.dataset.view === view ? "page" : "false"));
+  if (location.hash.slice(1) !== view) history.replaceState(null, "", "#" + view);
+}
+document.querySelectorAll("nav button").forEach((b) => b.addEventListener("click", () => { show(b.dataset.view); window.scrollTo({ top: 0 }); }));
+window.addEventListener("hashchange", () => show(location.hash.slice(1)));
+
+// ------------------------------------------------------------- one recap, as text plus its evidence
+function recapView(data) {
+  const facts = Object.fromEntries(data.facts.map((f) => [f.id, f]));
+  const wrap = el("div", { class: "stack" });
+
+  const notes = [];
+  if (data.assumptions && data.assumptions.length) notes.push(el("div", { class: "note" }, el("strong", { text: "Defaults the site filled in" }), el("ul", {}, data.assumptions.map((a) => el("li", { text: a })))));
+  if (data.issues && data.issues.length) notes.push(el("div", { class: "note warn" }, el("strong", { text: "Data notes (a person would review this recap before sending)" }), el("ul", {}, data.issues.map((i) => el("li", { text: `${i.text} (${i.count})` })))));
+  if (data.status !== "passed") notes.push(el("div", { class: "note warn" }, el("strong", { text: "Sent to review. " }), "Claude's draft failed the checks twice, so it would go to a person instead of the customer. The reasons are under Checks."));
+  wrap.append(...notes);
+
+  const left = el("div", { class: "stack" });
+  if (data.recap_text) {
+    const email = el("div", { class: "email", "aria-label": "The recap" });
+    for (const line of data.recap_text.split("\n")) {
+      const isHead = /^[A-Z][A-Z ]{3,}$/.test(line.trim());
+      email.append(isHead ? el("span", { class: "head", text: line }) : line, "\n");
+    }
+    left.append(email);
+  } else if (data.draft) {
+    left.append(el("div", { class: "email" }, el("span", { class: "head", text: "LAST DRAFT (NOT SENT)" }), "\n", data.draft));
+  }
+  left.append(el("p", { class: "meta", text: `${data.model}, effort ${data.effort}, prompt ${data.prompt_version} · cost $${data.cost_usd.toFixed(3)} · ${data.attempts.length} attempt${data.attempts.length === 1 ? "" : "s"}` }));
+
+  const tabs = [
+    ["draft", "What Claude wrote", () => draftPanel(data, facts)],
+    ["facts", `Facts sheet (${data.facts.length})`, () => factsPanel(data)],
+    ["checks", "Checks", () => checksPanel(data)],
+  ];
+  const panel = el("div", { class: "panel" });
+  const bar = el("div", { class: "tabs", role: "tablist" });
+  const pick = (key) => {
+    bar.querySelectorAll("button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.key === key)));
+    panel.replaceChildren(tabs.find((t) => t[0] === key)[2]());
+  };
+  for (const [key, name] of tabs) bar.append(el("button", { type: "button", role: "tab", "data-key": key, onclick: () => pick(key), text: name }));
+  const right = el("div", { class: "card" }, bar, panel);
+  pick(data.copy ? "draft" : "checks");
+  wrap.append(el("div", { class: "result" }, left, right));
+  return wrap;
+}
+
+function draftPanel(data, facts) {
+  if (!data.copy) return el("p", { class: "meta", text: "No draft passed the checks." });
+  const c = data.copy, box = el("div", { class: "stack" });
+  box.append(el("p", { class: "meta" }, "Highlighted ", el("mark", { class: "ph", text: "{{placeholders}}" }), " are where code fills in a fact's value. Hover one to see it."));
+  const block = (title, lines) => lines.filter(Boolean).length ? el("div", { class: "draft-sec" }, el("span", { class: "label", text: title }), lines.filter(Boolean).map((t) => el("div", {}, withPlaceholders(t, facts, "ph")))) : null;
+  box.append(block("One-liner", [c.one_liner]));
+  box.append(block("At a glance (fact tiles)", (c.glance_tiles || []).map((id) => `{{${id}}}`)));
+  for (const k of ["getting_in", "managing", "getting_out"]) box.append(block(SECTION_NAMES[k], c.sections[k] || []));
+  box.append(block("How it turned out", [c.results_line]));
+  box.append(block("What changed", [c.what_changed]));
+  box.append(block("Teasers (value, then line)", (c.teasers || []).map((t) => `{{${t.fact}}} ${t.line}`)));
+  box.append(block("Subject line", [c.subject_line]));
+  return box;
+}
+
+function factsPanel(data) {
+  const rows = data.facts.map((f) => el("tr", {}, el("td", { text: f.plain }), el("td", { class: "num", text: f.display }),
+    el("td", { class: "src", title: f.source_examples.join(", "), text: `${f.sources} source${f.sources === 1 ? "" : "s"}` })));
+  return el("div", { class: "stack" },
+    el("p", { class: "meta", text: "Everything code computed for this customer. Claude may use any of these, and only these. Each value keeps the trades or fills it came from (hover the source count)." }),
+    el("div", { class: "scroll" }, el("table", { class: "facts" }, el("thead", {}, el("tr", {}, el("th", { text: "What it is" }), el("th", { text: "Value" }), el("th", { text: "From" }))), el("tbody", {}, rows))));
+}
+
+function checksPanel(data) {
+  const box = el("div", { class: "stack" });
+  data.attempts.forEach((a, i) => {
+    box.append(el("span", { class: "label", text: `Attempt ${i + 1}: ${a.passed ? "passed" : "failed"}` }));
+    const failed = new Set(a.reasons.map((r) => r.split(":")[0]));
+    for (const name of a.checks) {
+      const bad = failed.has(name);
+      box.append(el("div", { class: "check" + (bad ? " fail" : "") }, el("span", { class: "mark", text: bad ? "✗" : "✓" }), el("span", { text: CHECK_NAMES[name] || name })));
+    }
+    for (const r of a.reasons) box.append(el("p", { class: "meta", text: r }));
+  });
+  return box;
+}
+
+// ------------------------------------------------------------- how it works: one sentence end to end
+function renderExample() {
+  const p = personas.find((x) => x.id === "p09") || personas[0];
+  const facts = Object.fromEntries(p.facts.map((f) => [f.id, f]));
+  const lines = [...p.copy.sections.getting_in, ...p.copy.sections.managing, ...p.copy.sections.getting_out];
+  const line = lines.find((t) => [...t.matchAll(PH)].length === 1) || lines[0];
+  const id = [...line.matchAll(PH)][0][1];
+  const f = facts[id];
+  const row = (label, who, ...content) => el("div", { class: "example-row" }, el("span", {}, el("span", { class: "label", text: label }), " ", el("span", { class: "who " + who, text: who === "claude" ? "Claude" : "code" })), el("div", {}, ...content));
+  $("example").replaceChildren(
+    el("span", { class: "label", text: `One sentence, end to end · from ${p.first_name}'s recap` }),
+    el("div", { class: "example" },
+      row("Fact", "code", el("span", { class: "filled", text: f.display }), " ", el("span", { class: "meta", text: `${f.plain} (from ${f.sources} source${f.sources === 1 ? "" : "s"})` })),
+      row("Draft", "claude", ...withPlaceholders(line, facts, "ph")),
+      row("Checked", "code", el("span", { class: "meta", text: "Placeholder is a real fact, no typed numbers, trader terms, under 160 characters once filled" })),
+      row("Recap", "code", ...withPlaceholders(line, facts, "fill"))),
+    el("p", { class: "meta" }, "See the whole recap and all of its facts under ", el("a", { href: "#personas", onclick: () => { show("personas"); selectPersona(p.id); } , text: "Personas" }), "."));
+}
+
+// ------------------------------------------------------------- personas
+function selectPersona(id) {
+  const p = personas.find((x) => x.id === id);
+  document.querySelectorAll(".pcard").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.id === id)));
+  $("persona-detail").replaceChildren(
+    el("div", { class: "stack" },
+      el("h2", { text: `${p.first_name} (${p.id}) · ${p.month_name}` }),
+      el("div", { class: "chips" }, p.flags.map((f) => el("span", { class: "chip" + (f === "losing month" ? " loss" : ""), text: f }))),
+      el("p", { class: "meta", text: p.summary }),
+      el("div", { class: "dl" }, el("a", { href: `/downloads/${p.workbook}`, text: `Download ${p.first_name}'s workbook` }))),
+    recapView(p));
+}
+
+function renderGallery() {
+  $("gallery").replaceChildren(...personas.map((p) => el("button", { type: "button", class: "pcard", "data-id": p.id, "aria-pressed": "false", onclick: () => selectPersona(p.id) },
+    el("span", { class: "pid", text: p.id }), el("span", { class: "name", text: p.first_name }),
+    el("span", { class: "chips" }, p.flags.filter((f) => f !== "first month").slice(0, 2).map((f) => el("span", { class: "chip" + (f === "losing month" ? " loss" : ""), text: f }))),
+    el("span", { class: "sum", text: p.summary }))));
+  $("downloads").append(...personas.map((p) => el("a", { href: `/downloads/${p.workbook}`, text: `${p.first_name} (${p.id})` })));
+  selectPersona("p09");
+}
+
+// ------------------------------------------------------------- upload
+let chosen = null;
+function choose(file) {
+  chosen = file || null;
+  $("file-note").textContent = chosen ? `${chosen.name} · ${(chosen.size / 1024).toFixed(0)} KB` : "Choose an .xlsx file or drop it here.";
+  $("go").disabled = !chosen;
+}
+$("file").addEventListener("change", (e) => choose(e.target.files[0]));
+const drop = $("drop");
+drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); choose(e.dataTransfer.files[0]); });
+
+$("go").addEventListener("click", async () => {
+  if (!chosen) return;
+  const status = $("upload-status"), result = $("upload-result");
+  result.replaceChildren();
+  $("go").disabled = true;
+  const started = Date.now();
+  const tick = () => { status.replaceChildren(el("p", { class: "meta", text: `Working: reading the workbook, computing the facts, then Claude writes and the checks run. ${Math.round((Date.now() - started) / 1000)} s so far.` })); };
+  tick();
+  const timer = setInterval(tick, 1000);
+  try {
+    const res = await fetch("/api/recap", { method: "POST", headers: { "Content-Type": "application/octet-stream" }, body: chosen });
+    const body = await res.json().catch(() => ({ problems: ["The server sent an unreadable reply. Try again."] }));
+    clearInterval(timer);
+    if (res.status === 401) { location.href = "/login"; return; }
+    if (!res.ok) {
+      status.replaceChildren(el("div", { class: "note warn" }, el("strong", { text: "The workbook couldn't be used yet." }), el("ul", {}, (body.problems || ["Unknown error."]).slice(0, 40).map((p) => el("li", { text: p })))));
+      return;
+    }
+    status.replaceChildren(el("p", { class: "meta", text: `Done in ${Math.round((Date.now() - started) / 1000)} s.` }));
+    result.replaceChildren(el("h2", { text: `${body.first_name} · ${body.month_name}` }), el("div", { class: "chips" }, body.flags.map((f) => el("span", { class: "chip" + (f === "losing month" ? " loss" : ""), text: f }))), recapView(body));
+  } catch (e) {
+    clearInterval(timer);
+    status.replaceChildren(el("div", { class: "note warn", text: "The request didn't reach the server. Check your connection and try again." }));
+  } finally {
+    $("go").disabled = !chosen;
+  }
+});
+
+// ------------------------------------------------------------- start
+show(location.hash.slice(1));
+fetch("/data/personas.json").then((r) => {
+  if (r.status === 401) { location.href = "/login"; throw new Error("signed out"); }
+  return r.json();
+}).then((data) => { personas = data; renderGallery(); renderExample(); })
+  .catch(() => { $("example").replaceChildren(el("p", { class: "meta", text: "The persona data couldn't be loaded. Reload the page." })); });
+</script>
+</body>
+</html>

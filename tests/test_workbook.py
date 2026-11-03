@@ -61,8 +61,11 @@ def test_persona_workbook_gives_the_same_facts(fresh, raws, p):
 
 
 def test_same_input_same_bytes(raws):
+    import time
     raw = raws[("2026-10", "p04")]
-    assert write_workbook(raw) == write_workbook(raw)
+    first = write_workbook(raw)
+    time.sleep(1.1)                       # openpyxl stamps the save time to the second
+    assert write_workbook(raw) == first
     assert write_workbook(None) == write_workbook(None)
 
 
