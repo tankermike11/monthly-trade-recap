@@ -15,6 +15,8 @@ anything renders. Each rule is a named check that passes or fails with reasons.
                         in the whole recap, beside at least one market fact
 8. no_doubled_units     a placeholder whose display ends in its unit ("53 trades") is
                         not followed by that unit again ("53 trades new trades")
+9. glance_tiles         each tile's display is one short value (not a list), and no
+                        two tiles show the same display
 """
 
 from __future__ import annotations
@@ -35,6 +37,7 @@ PLACEHOLDER = re.compile(r"\{\{\s*([a-z0-9_.]+)\s*\}\}")
 RESULTS_FACTS = ("month_pnl", "month_return", "net_realized_pnl")
 MARKET_FACTS = ("spy_move", "qqq_move")
 MAX_LINES, MAX_CHARS, MAX_SUBJECT, MAX_TEASERS = 3, 160, 50, 3
+MAX_TILE_CHARS = 32    # longest single value seen: "100% options on stocks and funds"
 
 
 @lru_cache(maxsize=1)
@@ -148,6 +151,8 @@ def validate(raw: str | dict | RecapCopy, sheet: FactsSheet) -> tuple[RecapCopy 
             r.append(f"{where} uses the banned word {w!r}")
         for w in _phrases(t, rules["jargon"]):
             r.append(f"{where} uses the jargon {w!r}")
+        for w in _phrases(t, rules["retired"]):
+            r.append(f"{where} uses the retired wording {w!r}; use the trader term (expiration, strike, premium, rolled)")
     checks.append(_check("copy_rules", r))
 
     # 5. no advice or predictions
@@ -181,6 +186,21 @@ def validate(raw: str | dict | RecapCopy, sheet: FactsSheet) -> tuple[RecapCopy 
     # 8. no doubled units
     checks.append(_check("no_doubled_units", [f"{where} {r}" for where, t in texts(copy)
                                               for r in doubled_units(t, sheet)]))
+
+    # 9. each glance tile shows one short value, and no two tiles show the same one
+    display = {f.id: f.display for f in sheet.facts}
+    r, seen = [], {}
+    for i, tile in enumerate(copy.glance_tiles):
+        shown = display.get(tile)
+        if shown is None:
+            continue                                   # check 3 reports unknown tiles
+        if len(shown) > MAX_TILE_CHARS or ", " in shown:
+            r.append(f"glance_tiles[{i}] is {tile}, which reads {shown!r}; a tile needs one short value "
+                     f"(at most {MAX_TILE_CHARS} characters, not a list)")
+        if shown in seen:
+            r.append(f"glance_tiles[{i}] is {tile}, which reads {shown!r}, the same as {seen[shown]}")
+        seen.setdefault(shown, tile)
+    checks.append(_check("glance_tiles", r))
 
     return copy, ValidationResult(passed=all(c.passed for c in checks), checks=checks)
 

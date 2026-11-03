@@ -30,14 +30,14 @@ OPTION_CLASSES = {"equity_option", "index_option", "future_option"}
 FUTURE_CLASSES = {"future", "future_option"}
 STOCK_LIKE = {"stock_long", "stock_short", "crypto_long", "crypto_short", "future_long", "future_short"}
 
-ROLL_SHORT = {
-    "untested_toward_money": "slid the other half closer to the price",
-    "out_in_time": "moved to a later end date",
-    "up": "moved to a higher price",
-    "down": "moved to a lower price",
-    "tested_away_from_money": "moved the half under pressure further away",
-    "widened": "made the trade wider",
-    "narrowed": "made the trade narrower",
+ROLL_SHORT = {   # display words for rolls_by_type; trader terms per the CLAUDE.md copy rules
+    "untested_toward_money": "rolled the side not under pressure toward the stock price",
+    "out_in_time": "rolled out to a later expiration",
+    "up": "rolled a strike up",
+    "down": "rolled a strike down",
+    "tested_away_from_money": "rolled the side under pressure further away",
+    "widened": "widened the strikes",
+    "narrowed": "narrowed the strikes",
 }
 
 SECTION_WEIGHT = {"at_a_glance": 0.3, "getting_in": 0.6, "managing": 0.7, "getting_out": 0.6,

@@ -63,7 +63,9 @@ def _plant(change, p="p09"):
 
 
 BAD = {
-    "raw number": (lambda d: d["sections"]["getting_in"].__setitem__(0, "You usually picked end dates 21 days away."),
+    "retired wording": (lambda d: d["sections"]["getting_in"].__setitem__(0, "You usually picked end dates {{median_entry_dte}} away."),
+                        "copy_rules", "end dates"),
+    "raw number": (lambda d: d["sections"]["getting_in"].__setitem__(0, "You usually opened trades expiring 21 days out."),
                    "no_raw_numbers", "21"),
     "banned word": (lambda d: d.__setitem__("one_liner", "You had a quiet month selling options for cash upfront."),
                     "copy_rules", "quiet"),
@@ -108,6 +110,25 @@ def test_planted_bad_output_fails_with_reason(sheets, name):
         assert any(needle.lower() in r.lower() for r in failed[check]), (name, failed[check])
     else:   # jargon: any of the copy-rule checks names it
         assert any("jargon" in r for rs in failed.values() for r in rs), failed
+
+
+def test_glance_tiles_need_one_short_value_each(fresh):
+    sheet = facts_for(fresh / "raw", "2026-10", "p08")[1]
+    by_display = {}
+    for f in sheet.facts:
+        by_display.setdefault(f.display, []).append(f.id)
+    twins = next(ids for d, ids in by_display.items() if len(ids) > 1 and len(d) <= 32 and ", " not in d)
+    listy = next(f.id for f in sheet.facts if ", " in f.display)
+    short = [f.id for f in sheet.facts if len(f.display) <= 12 and f.id not in twins][:2]
+
+    def reasons(tiles):
+        d = good("p09") | {"glance_tiles": tiles}
+        _, v = validate(d, sheet)
+        return [r for c in v.checks if c.name == "glance_tiles" for r in c.reasons]
+
+    assert reasons(short + [twins[0]]) == []
+    assert any("the same as" in r for r in reasons(short + twins[:2]))
+    assert any("not a list" in r for r in reasons(short + [listy]))
 
 
 def test_doubled_unit_check_leaves_normal_sentences_alone(sheets):

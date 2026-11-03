@@ -31,6 +31,7 @@ from pipeline.validate_copy import copy_rules  # noqa: E402  (shared word lists)
 
 _RULES = copy_rules()
 BANNED, JARGON, PRAISE, ADVICE = _RULES["banned"], _RULES["jargon"], _RULES["praise"], _RULES["advice"]
+RETIRED = _RULES["retired"]
 
 
 @pytest.fixture(scope="session")
@@ -115,7 +116,7 @@ def test_only_catalog_facts_and_none_reward_activity(sheets):
 def _copy_ok(text: str, where: str) -> None:
     low = text.lower()
     assert "—" not in text and "!" not in text, where
-    for w in BANNED + JARGON + PRAISE + ADVICE:
+    for w in BANNED + JARGON + PRAISE + ADVICE + RETIRED:
         assert not re.search(rf"\b{re.escape(w)}\b", low), f"{where}: '{w}' in {text!r}"
 
 

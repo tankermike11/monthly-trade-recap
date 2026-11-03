@@ -34,6 +34,17 @@ jargon:
   - one-lot
   - one lot
 
+# Retired plain-English wording, replaced by trader terms (copy rules, 2026-11-02).
+retired:
+  - end date
+  - end dates
+  - cash upfront
+  - cash collected upfront
+  - cash you collected upfront
+  - new price
+  - slid the other half
+  - other half of the trade
+
 advice:
   - you should
   - you might want
