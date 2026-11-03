@@ -143,3 +143,4 @@ def test_deploy_folder_has_only_what_the_site_runs(tmp_path):
     cfg = json.loads((dest / "vercel.json").read_text())
     assert cfg["rewrites"] == [{"source": "/(.*)", "destination": "/api/index"}]
     assert cfg["outputDirectory"] == "public" and [p.name for p in (dest / "public").iterdir()] == ["robots.txt"]
+    assert ".env*" in (dest / ".vercelignore").read_text().splitlines()

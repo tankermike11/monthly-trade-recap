@@ -90,6 +90,7 @@ def assemble_deploy(dest: Path) -> None:
         lines.append(pins[name.lower()])
     _write(dest / "requirements.txt", "\n".join(lines) + "\n")
     _write(dest / "public" / "robots.txt", "User-agent: *\nDisallow: /\n")
+    _write(dest / ".vercelignore", ".env*\n.gitignore\n__pycache__\n")   # `vercel link` drops a token in .env.local
     _write(dest / "vercel.json", json.dumps({
         "$schema": "https://openapi.vercel.sh/vercel.json",
         "framework": None,
