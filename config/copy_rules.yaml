@@ -17,24 +17,22 @@ banned:
   - quiet
   - expensive
 
+# Shorthand and insider labels. Trader terms spelled out in full (expiration, strike,
+# premium, rolled out/in/up/down, strangle, iron condor, implied volatility) are allowed.
 jargon:
   - dte
+  - iv
   - ivr
   - iv rank
-  - implied volatility
   - delta
   - theta
   - untested
-  - debit diagonal
-  - strike
-  - premium
   - otm
   - itm
-  - credit spread
   - p&l
   - pnl
-  - strangle
-  - iron condor
+  - one-lot
+  - one lot
 
 advice:
   - you should

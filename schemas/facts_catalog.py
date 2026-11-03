@@ -101,16 +101,16 @@ DATA_QUALITY_ISSUES: dict[str, str] = {
 # review and must be approved by a person; the model never writes or changes it.
 # ---------------------------------------------------------------------------
 
-CATALOG_VERSION = "1.0.0-draft"
+CATALOG_VERSION = "1.1.0-draft"   # 1.1: trader terms, no shorthand (CLAUDE.md copy rules)
 
 ROLL_TYPE_PLAIN = {
-    "out_in_time": "times you moved a trade to a later end date",
-    "up": "times you moved part of a trade to a higher price",
-    "down": "times you moved part of a trade to a lower price",
-    "untested_toward_money": "times you slid the other half of a trade closer to the price",
-    "tested_away_from_money": "times you moved the half under pressure further from the price",
-    "widened": "times a move made the trade wider",
-    "narrowed": "times a move made the trade narrower",
+    "out_in_time": "times you rolled out to a later expiration",
+    "up": "times you rolled a strike up",
+    "down": "times you rolled a strike down",
+    "untested_toward_money": "times you rolled the side that was not under pressure toward the stock price",
+    "tested_away_from_money": "times you rolled the side under pressure further from the stock price",
+    "widened": "times a roll widened the distance between your strikes",
+    "narrowed": "times a roll narrowed the distance between your strikes",
 }
 
 ASSET_PLAIN = {
@@ -135,25 +135,25 @@ FACTS: dict[str, tuple[str, str]] = {
     **{f"asset_mix.{k}": ("at_a_glance", v) for k, v in ASSET_PLAIN.items()},
     "outside_hours_share": ("at_a_glance", "share of your orders placed outside regular market hours"),
     # getting in
-    "median_entry_dte": ("getting_in", "how far away the end dates usually were when you started an options trade"),
-    "entry_dte_by_half": ("getting_in", "how far away your end dates usually were in the first and second half of the month"),
-    "median_price_level_at_entry": ("getting_in", "where option prices usually sat, compared with their past year, when you started a trade"),
-    "median_opening_credit_per_contract": ("getting_in", "cash you usually collected per contract when you started a trade"),
-    "median_opening_debit_per_contract": ("getting_in", "cash you usually paid per contract when you started a trade"),
-    "scaling_in": ("getting_in", "contracts you traded three or more times at the same price level and end date"),
+    "median_entry_dte": ("getting_in", "how far out the expiration usually was when you opened an options trade"),
+    "entry_dte_by_half": ("getting_in", "how far out your expirations usually were in the first and second half of the month"),
+    "median_price_level_at_entry": ("getting_in", "where implied volatility usually sat, compared with its past year, when you opened a trade"),
+    "median_opening_credit_per_contract": ("getting_in", "premium you usually collected per contract when you opened a trade"),
+    "median_opening_debit_per_contract": ("getting_in", "debit you usually paid per contract when you opened a trade"),
+    "scaling_in": ("getting_in", "contracts you sold or bought three or more times at the same strike and expiration"),
     # managing
     "adjust_to_close_ratio": ("managing", "times you adjusted a trade for every time you closed one"),
-    "rolls_total": ("managing", "times you moved a trade to a new price or end date"),
-    "rolls_by_type": ("managing", "the kinds of moves you made"),
+    "rolls_total": ("managing", "times you rolled a trade to a new strike or expiration"),
+    "rolls_by_type": ("managing", "the kinds of rolls you made"),
     **{f"rolls.{k}": ("managing", v) for k, v in ROLL_TYPE_PLAIN.items()},
-    "credit_roll_share": ("managing", "share of those moves that brought in cash"),
+    "credit_roll_share": ("managing", "share of your rolls done for a credit"),
     "most_adjusted_stories": ("managing", "the trades you changed most often"),
     # getting out
     "median_days_held": ("getting_out", "how long you usually kept a trade"),
-    "median_days_left_at_close": ("getting_out", "how much time was usually left when you ended an options trade"),
-    "median_upfront_kept_on_winners": ("getting_out", "how much of the cash collected upfront your winning trades usually kept"),
+    "median_days_left_at_close": ("getting_out", "how much time was usually left before expiration when you closed an options trade"),
+    "median_upfront_kept_on_winners": ("getting_out", "how much of the premium collected your winning trades usually kept"),
     "fastest_winners": ("getting_out", "your quickest trades that ended with a gain"),
-    "losers_closed_early": ("getting_out", "trades that ended with a loss that you closed before their end date"),
+    "losers_closed_early": ("getting_out", "trades that ended with a loss that you closed before expiration"),
     # results
     "wins": ("results", "trades that ended with a gain"),
     "losses": ("results", "trades that ended with a loss"),
@@ -161,19 +161,19 @@ FACTS: dict[str, tuple[str, str]] = {
     "total_fees": ("results", "fees and commissions you paid"),
     "biggest_win": ("results", "your largest gain on a single trade"),
     "biggest_loss": ("results", "your largest loss on a single trade"),
-    "biggest_win_vs_upfront": ("results", "how your largest gain compared with the cash collected when that trade started"),
-    "biggest_loss_vs_upfront": ("results", "how your largest loss compared with the cash collected when that trade started"),
+    "biggest_win_vs_upfront": ("results", "how your largest gain compared with the premium collected when that trade was opened"),
+    "biggest_loss_vs_upfront": ("results", "how your largest loss compared with the premium collected when that trade was opened"),
     "month_pnl": ("results", "change in your account value, not counting deposits or withdrawals"),
     "month_return": ("results", "change in your account value as a share of where it started"),
     # still open
     "open_stories": ("still_open", "trades still open going into next month"),
-    "open_moved_to_later_date": ("still_open", "open trades you moved to a later end date this month"),
+    "open_moved_to_later_date": ("still_open", "open trades you rolled out to a later expiration this month"),
     # what changed
-    "rolls_by_half": ("what_changed", "moves you made in the first and second half of the month"),
+    "rolls_by_half": ("what_changed", "rolls you made in the first and second half of the month"),
     "stories_opened_by_half": ("what_changed", "new trades you started in the first and second half of the month"),
-    "vs_last_month.median_entry_dte": ("what_changed", "how far away your end dates usually were, this month and last"),
+    "vs_last_month.median_entry_dte": ("what_changed", "how far out your expirations usually were, this month and last"),
     "vs_last_month.adjust_to_close_ratio": ("what_changed", "adjustments for every close, this month and last"),
-    "vs_last_month.credit_roll_share": ("what_changed", "share of moves that brought in cash, this month and last"),
+    "vs_last_month.credit_roll_share": ("what_changed", "share of rolls done for a credit, this month and last"),
     "vs_last_month.outside_hours_share": ("what_changed", "share of orders outside regular market hours, this month and last"),
     "vs_last_month.median_days_held": ("what_changed", "how long you usually kept a trade, this month and last"),
     # context

@@ -17,7 +17,8 @@ from pipeline.validate_copy import copy_rules, validate
 from pipeline.write import ModelConfig, ModelReply, anthropic_caller, user_turn, write_recap
 from tests.conftest import REPO
 
-PROMPT = (REPO / "prompts" / "recap_v1.md").read_text(encoding="utf-8")
+PROMPT_VERSION = ModelConfig.load().prompt_version
+PROMPT = (REPO / "prompts" / f"{PROMPT_VERSION}.md").read_text(encoding="utf-8")
 EXAMPLES = dict(zip(["p04", "p09", "p01"], re.findall(r"```json\n(.*?)```", PROMPT, re.S)))
 
 
@@ -46,7 +47,8 @@ def test_prompt_states_the_copy_rules():
     for w in copy_rules()["banned"]:
         assert w in low, w
     for phrase in ("second person", "past tense", "em dash", "exclamation", "you should", "never type a number",
-                   "name the month's result exactly once", "low_activity"):
+                   "name the month's result exactly once", "low_activity", "first half of the month",
+                   "expiration", "strike", "premium", "rolled out"):
         assert phrase in low, phrase
 
 
@@ -191,7 +193,7 @@ def test_first_try_passes(sheets):
     call = fake(good())
     res = write_recap(sheets["p09"], CFG, call)
     assert res.status == "passed" and len(res.attempts) == 1 and res.recap is not None
-    assert res.prompt_version == "recap_v1" and len(res.prompt_sha256) == 64
+    assert res.prompt_version == PROMPT_VERSION and len(res.prompt_sha256) == 64
 
 
 def test_retry_once_with_reasons(sheets):

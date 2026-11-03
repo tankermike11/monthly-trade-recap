@@ -139,7 +139,7 @@ class _Builder:
         if all(halves.values()):
             v = {h: float(statistics.median(x)) for h, x in halves.items()}
             self.add("entry_dte_by_half", v,
-                     f"{D.days(v['first'])} in the first half, {D.days(v['second'])} in the second half",
+                     f"{D.days(v['first'])} in the first half of the month, {D.days(v['second'])} in the second half",
                      [self.sid(s) for s in with_dte])
         self._entry_prices(opened)
         self._scaling_in()
@@ -244,11 +244,11 @@ class _Builder:
         # ---------------------------------------------------------- what changed
         if rolls:
             rh = {h: sum(1 for _, r in rolls if half_of(ny_date(r.ts_utc), self.month) == h) for h in ("first", "second")}
-            self.add("rolls_by_half", rh, f"{rh['first']} in the first half, {rh['second']} in the second half", roll_src,
+            self.add("rolls_by_half", rh, f"{rh['first']} in the first half of the month, {rh['second']} in the second half", roll_src,
                      0.6 if abs(rh["first"] - rh["second"]) >= max(3, (rh["first"] + rh["second"]) // 2) else 0.3)
         if opened:
             oh = {h: sum(1 for s in opened if half_of(s.opened_date, self.month) == h) for h in ("first", "second")}
-            self.add("stories_opened_by_half", oh, f"{oh['first']} in the first half, {oh['second']} in the second half",
+            self.add("stories_opened_by_half", oh, f"{oh['first']} in the first half of the month, {oh['second']} in the second half",
                      [self.sid(s) for s in opened], 0.3)
         self._vs_last_month()
 

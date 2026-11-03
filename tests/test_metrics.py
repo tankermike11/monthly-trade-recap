@@ -131,6 +131,17 @@ def test_plain_phrases_have_no_digits():
     assert not bad, bad
 
 
+def test_half_month_displays_name_the_month(sheets):
+    """Copy rule: "the first half of the month", never a bare "first half"."""
+    seen = 0
+    for case, (_, sheet) in sheets.items():
+        for f in sheet.facts:
+            if "first half" in f.display:
+                seen += 1
+                assert "first half of the month" in f.display, f"{case} {f.id}: {f.display!r}"
+    assert seen, "no half-of-month facts in any sheet"
+
+
 def test_display_strings_pass_copy_rules(sheets):
     for case, (_, sheet) in sheets.items():
         for f in sheet.facts:

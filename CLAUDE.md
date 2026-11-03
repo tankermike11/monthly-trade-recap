@@ -9,24 +9,28 @@ Build a monthly pipeline that turns each customer's normalized trade data into a
 3. **The mock data ships with an answer key.** The generator writes the expected facts alongside the trades, and the test suite must reproduce them exactly.
 4. **Rewards attach to habits, never to activity or wins.** No copy celebrates trade count, volume or realized gains. Lead with how the customer traded.
 5. **The losing month is a first-class case.** Every template and prompt is tested on a red month before a green one.
-6. **Plain language.** Every string must survive being read aloud to someone who has never used a brokerage app (copy rules at the end).
+6. **Trader language, no shorthand.** Use the words traders use (expiration, strike, premium, rolled out), spelled out in full; no acronyms or insider labels (copy rules at the end).
 7. **Deterministic and replayable.** Same inputs, same prompt version and same model give the same facts sheet. Every run is archived.
 
 
 ### Copy rules (put these in `CLAUDE.md` and the system prompt)
 
-- Every string must survive being read aloud to someone who has never used a brokerage app.
-- Second person, past tense, plain words. Describe what the customer did; never judge it or advise.
-- No jargon in customer copy: no "DTE", "IVR", "delta", "untested side", "debit diagonal". Say "ended 5 to 6 weeks out", "when option prices were low", "the other half of the trade".
+- Write for a customer who trades: use the words traders use, spelled out in full. Every sentence must read cleanly to someone in their first year of trading options.
+- Second person, past tense. Describe what the customer did; never judge it or advise.
+- Trader terms are expected: expiration (or expiration date), further out, closer in, strike, premium, sold or collected premium, credit, debit, rolled out, rolled in, rolled up, rolled down, puts, calls, strangle, spread, iron condor, implied volatility.
+- No shorthand or insider labels: no "DTE", "IV", "IVR", "IV rank", "delta", "theta", "OTM", "ITM", "P&L", "untested side", "one-lot". Say "expiring about 6 weeks out", "when implied volatility was low compared with its past year", "the side that was not under pressure", "per contract".
+- Halves of the month are always "the first half of the month" and "the second half of the month", never a bare "first half".
 - Banned words: annotation, invalidation, calibration, thesis, immutable, conviction score, resolution event, "came due", dishonesty, bite, sharp, quiet, expensive.
 - Hyphens, colons or semicolons, never em dashes.
 
 | Never | Always |
 | --- | --- |
-| "Rolled the untested side toward the money 113 times" | "When a stock moved hard one way, you slid the other half of the trade closer to the price" |
-| "Median entry 42 DTE" | "You usually picked end dates about 6 weeks away" |
-| "IVR at entry 25" | "Most of your trades went in when option prices were average or low" |
-| "Kept 38% of max profit" | "Your winners usually kept about a third of the cash you collected upfront" |
+| "Rolled the untested side toward the money 113 times" | "When a stock moved hard, you rolled the side that was not under pressure toward the stock price 113 times" |
+| "Median entry 42 DTE" | "You usually opened trades expiring about 6 weeks out" |
+| "IVR at entry 25" | "Most of your trades went in when implied volatility was average or low compared with its past year" |
+| "Kept 38% of max profit" | "Your winners usually kept about a third of the premium you collected" |
+| "Moved one trade to a later end date" | "You rolled one trade out to a later expiration" |
+| "7 in the first half, 3 in the second half" | "7 in the first half of the month, 3 in the second half" |
 | "Great month! 625 trades!" | "You adjusted 3 times for every time you closed a trade" |
 
 ### Guardrails for customer copy
