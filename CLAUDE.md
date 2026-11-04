@@ -1,6 +1,6 @@
 ## Purpose and principles
 
-Build a monthly pipeline that turns each customer's normalized trade data into a personal "Your month" recap: a plain-text version first, then the visual email. Code computes every number; Claude only chooses which facts matter and writes the words; code checks the words before anything renders.
+Build a monthly pipeline that turns each customer's normalized trade data into a personal "Your month" recap: a plain-text version first, then the visual email. Code computes every number and writes every single-fact line; Claude reads the month's trades and writes only what code cannot, the overall picture and what stood out; code checks the words before anything renders.
 
 **Non-negotiable principles**
 
@@ -20,7 +20,7 @@ Build a monthly pipeline that turns each customer's normalized trade data into a
 - Trader terms are expected: expiration (or expiration date), further out, closer in, strike, premium, sold or collected premium, credit, debit, rolled out, rolled in, rolled up, rolled down, puts, calls, strangle, spread, iron condor, implied volatility.
 - No shorthand or insider labels: no "DTE", "IV", "IVR", "IV rank", "delta", "theta", "OTM", "ITM", "P&L", "untested side", "one-lot". Say "expiring about 6 weeks out", "when implied volatility was low compared with its past year", "the side that was not under pressure", "per contract".
 - Halves of the month are always "the first half of the month" and "the second half of the month", never a bare "first half".
-- Banned words: annotation, invalidation, calibration, thesis, immutable, conviction score, resolution event, "came due", dishonesty, bite, sharp, quiet, expensive.
+- Banned words: annotation, invalidation, calibration, thesis, immutable, conviction score, resolution event, "came due", dishonesty, bite, sharp, quiet, expensive, bet (bets, betting).
 - Hyphens, colons or semicolons, never em dashes.
 
 | Never | Always |

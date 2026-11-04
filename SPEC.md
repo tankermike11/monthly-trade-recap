@@ -4,7 +4,7 @@ Nov 2, 2026 · @Mike
 
 ## Purpose and principles
 
-Build a monthly pipeline that turns each customer's normalized trade data into a personal "Your month" recap: a plain-text version first, then the visual email. Code computes every number; Claude only chooses which facts matter and writes the words; code checks the words before anything renders.
+Build a monthly pipeline that turns each customer's normalized trade data into a personal "Your month" recap: a plain-text version first, then the visual email. Code computes every number and writes every single-fact line; Claude reads the month's trades and writes only what code cannot, the overall picture and what stood out; code checks the words before anything renders.
 
 **Non-negotiable principles**
 
@@ -240,6 +240,18 @@ No fact may reward or rank activity: no "most trades ever", no streaks, no volum
 
 One Claude call per customer turns the facts sheet into `RecapCopy` JSON; a validator in code accepts it, retries once, or sends it to review.
 
+### 4.0 Revised 2026-11-04: code writes the facts, Claude writes the picture (`prompts/recap_v4.md`)
+
+With prompts v1 to v3 Claude wrote every line of the recap, and most of what it wrote was a single fact restated in a fixed pattern (64% of its sentences were identical word for word across two runs). From v4 the work is split:
+
+- **Code** (`pipeline/compose.py`) writes every single-fact sentence (getting in, managing, getting out), picks the at-a-glance tiles, and writes the results line (the month's result beside the market move, so a losing month is named once, next to the market, by construction) and what changed.
+- **Claude** gets the month's facts, per-trade facts (`trade.t3.opened`, `trade.t3.result`; every number still a placeholder), group counts computed by code (`group.losing.bought_back_before_expiration_day` = "3 of 5"; "all 10", "both", "none of the 4") and every trade grouped by opening day, and writes only `overall`, two or three `observations` (at most one in a low-activity month) and the subject line, in the voice of the curated written report.
+- **Validator** (`pipeline/validate_copy.py`), nine checks: lengths and shape, no typed numbers, only real facts, copy rules, no advice, no praise, the month's result left to code, no doubled units or repeated words, and every trade a passage cites is named in it.
+- **Accuracy rules in the prompt:** a group word (every, all, both, only, the largest) needs a count or named trades; "usually" facts are medians, never "every"; how a trade ended comes from its `how_it_ended`, never from dates; a range of days covers every trade opened on each day; no times of day. `first_month` is not passed to Claude (it read as "your first month").
+- **Result on the October personas** (Opus 5.5, effort medium): 10 of 10 passed, 9 on the first try, $0.92. A full fact check of every claim against the trades found no false statements; wording notes remain (one heading calls a put bought back with 3 days left "well before expiration"). Claims about groups of trades are the one risk the validator cannot check, so the review gallery (Phase 5) should spot-check them.
+
+Sections 4.1 to 4.3 below describe the original design (prompts v1 to v3) and are kept as the record.
+
 ### 4.1 The prompt (`prompts/recap_v1.md`)
 
 - **System prompt (cached):** the role ("write a monthly recap of the customer's own trading, in second person"), the copy rules, the guardrails (no advice, no predictions, no praise for activity or wins), the output schema, and 3 worked examples: one green month, one red month, one low-activity month.
@@ -348,7 +360,7 @@ Placeholder fill happens only in `render.py`: `{{fact_id}}` → that fact's `dis
 - Trader terms are expected: expiration (or expiration date), further out, closer in, strike, premium, sold or collected premium, credit, debit, rolled out, rolled in, rolled up, rolled down, puts, calls, strangle, spread, iron condor, implied volatility.
 - No shorthand or insider labels: no "DTE", "IV", "IVR", "IV rank", "delta", "theta", "OTM", "ITM", "P&L", "untested side", "one-lot". Say "expiring about 6 weeks out", "when implied volatility was low compared with its past year", "the side that was not under pressure", "per contract".
 - Halves of the month are always "the first half of the month" and "the second half of the month", never a bare "first half".
-- Banned words: annotation, invalidation, calibration, thesis, immutable, conviction score, resolution event, "came due", dishonesty, bite, sharp, quiet, expensive.
+- Banned words: annotation, invalidation, calibration, thesis, immutable, conviction score, resolution event, "came due", dishonesty, bite, sharp, quiet, expensive, bet (bets, betting).
 - Hyphens, colons or semicolons, never em dashes.
 
 | Never | Always |
