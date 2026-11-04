@@ -230,6 +230,8 @@ def test_cli_writes_recap(fresh, tmp_path):
     run("2026-10", "p09", fresh / "raw", tmp_path, cfg=CFG, call=fake(good()))
     text = (tmp_path / "2026-10" / "p09" / "recap.txt").read_text(encoding="utf-8")
     assert "{{" not in text and "your statement is correct" in text and "Riley" in text
+    html = (tmp_path / "2026-10" / "p09" / "recap.html").read_text(encoding="utf-8")
+    assert "Riley, here's your October." in html
 
 
 # ---------------------------------------------------------------------------

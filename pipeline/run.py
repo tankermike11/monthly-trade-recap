@@ -53,6 +53,8 @@ def write_stage(sheet: FactsSheet, linked: LinkResult, folder: Path, review_dir:
     if result.status == "passed":
         _write(folder / "recap.json", _dump(result.model_dump(mode="json")))
         _write(folder / "recap.txt", render_text(result.recap, sheet, linked))
+        from pipeline.render_email import render_html
+        _write(folder / "recap.html", render_html(result.recap, sheet, linked))
     else:
         _write(review_dir / f"{sheet.customer_id}.json", _dump(result.model_dump(mode="json")))
     return result

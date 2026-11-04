@@ -325,6 +325,7 @@ def _attempt(rec: dict) -> Attempt:
 def finalize(run_dir: Path, m: dict, cfg: ModelConfig, sample_rate: float = 0.05, min_sample: int = 10) -> dict:
     from pipeline.gallery import build as build_gallery
     from pipeline.render import render_text
+    from pipeline.render_email import render_html
     from pipeline.write import cost
 
     results: dict[str, WriteResult] = {}
@@ -356,6 +357,7 @@ def finalize(run_dir: Path, m: dict, cfg: ModelConfig, sample_rate: float = 0.05
         if passed:
             linked, sheet, _ = _customer(run_dir, Path(m["raw_root"]), m["month"], cid)
             _write(folder / "recap.txt", render_text(copy, sheet, linked))
+            _write(folder / "recap.html", render_html(copy, sheet, linked))
             if issues:
                 review[cid] = [f"data quality: {', '.join(issues)}"]
         else:

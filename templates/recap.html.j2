@@ -1,0 +1,194 @@
+{#- Email-safe: table layout, inline styles, no images, system fonts. Dark by design; the
+    color-scheme metas tell mail apps it is already dark so they do not invert it. -#}
+{% set bg = "#0B0B0C" %}{% set card = "#18181B" %}{% set ink = "#F4F4F5" %}{% set muted = "#A1A1AA" %}{% set rule = "#27272A" %}{% set gold = "#FFC800" %}
+{% set sans = "'Helvetica Neue', Helvetica, Arial, sans-serif" %}{% set heavy = "'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif" %}{% set mono = "Menlo, Consolas, 'Courier New', monospace" %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="supported-color-schemes" content="dark">
+<title>{{ subject }}</title>
+<style>
+  :root { color-scheme: dark; supported-color-schemes: dark; }
+  body { margin:0; padding:0; background:{{ bg }}; }
+  a { color:{{ gold }}; }
+  @media (max-width: 480px) {
+    .px { padding-left:20px !important; padding-right:20px !important; }
+    .tile { display:block !important; width:100% !important; box-sizing:border-box; }
+    .tile-gap { display:block !important; width:100% !important; height:12px !important; }
+    .hero { font-size:40px !important; line-height:44px !important; }
+    .big { font-size:40px !important; }
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; background:{{ bg }};" bgcolor="{{ bg }}">
+<div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">{{ preheader }}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ bg }}" style="background:{{ bg }};">
+<tr><td align="center">
+<table role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ bg }}" style="width:100%; max-width:640px; background:{{ bg }}; font-family:{{ sans }}; color:{{ ink }};">
+
+  {#- header #}
+  <tr><td class="px" style="padding:32px 40px 0 40px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td style="vertical-align:middle;">
+        <span style="display:inline-block; width:32px; height:32px; line-height:32px; text-align:center; background:{{ gold }}; color:#111111; font-family:{{ heavy }}; font-weight:900; font-size:18px; border-radius:8px;">L</span>
+        <span style="font-family:{{ heavy }}; font-weight:900; font-size:18px; color:{{ ink }}; vertical-align:middle; margin-left:8px;">Lossdog</span>
+      </td>
+      <td align="right" style="font-size:13px; color:{{ muted }};">Monthly Trade Recap</td>
+    </tr></table>
+  </td></tr>
+
+  {#- greeting #}
+  <tr><td class="px" style="padding:28px 40px 0 40px;">
+    <div style="font-family:{{ mono }}; font-size:13px; letter-spacing:2px; color:{{ gold }};">{{ month | upper }} {{ year }}</div>
+    <h1 class="hero" style="margin:14px 0 0 0; font-family:{{ heavy }}; font-weight:900; font-size:52px; line-height:56px; letter-spacing:-1px; color:{{ ink }};">{{ first_name }}, here's your {{ month }}.</h1>
+    <p style="margin:18px 0 0 0; font-size:16px; line-height:25px; color:#D4D4D8;">We went through every trade you made this month and pulled out how you got in, how you managed and how you got out.</p>
+  </td></tr>
+  <tr><td class="px" style="padding:24px 40px 32px 40px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid {{ gold }}; border-radius:14px;" bgcolor="#17140A">
+      <tr><td style="padding:22px 24px;">
+        <div style="font-size:12px; font-weight:700; letter-spacing:1px; color:{{ gold }};">YOUR MONTH</div>
+        <p style="margin:10px 0 0 0; font-size:17px; line-height:27px; color:{{ ink }};">{{ overall }}</p>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  {#- at a glance #}
+  <tr><td style="border-top:1px solid {{ rule }};"></td></tr>
+  <tr><td class="px" style="padding:32px 40px 8px 40px;">
+    <h2 style="margin:0 0 18px 0; font-family:{{ heavy }}; font-weight:900; font-size:26px; color:{{ ink }};">{{ month }} at a glance</h2>
+    {% for row in tiles | batch(2) %}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:12px;"><tr>
+      {% for t in row %}
+      <td class="tile" width="49%" valign="top" bgcolor="{{ card }}" style="width:49%; background:{{ card }}; border-radius:14px; padding:20px 22px;">
+        <div class="big" style="font-family:{{ mono }}; font-weight:700; font-size:30px; line-height:36px; color:{{ ink }};">{{ t.display }}</div>
+        <div style="margin-top:6px; font-size:14px; line-height:20px; color:#D4D4D8;">{{ t.plain }}</div>
+      </td>
+      {% if not loop.last %}<td class="tile-gap" width="2%" style="width:2%;"></td>{% endif %}
+      {% endfor %}
+      {% if row | length == 1 %}<td width="51%" style="width:51%;"></td>{% endif %}
+    </tr></table>
+    {% endfor %}
+    {% if asset_bar %}
+    <div style="margin-top:20px; font-size:12px; font-weight:700; letter-spacing:1px; color:{{ muted }};">WHAT YOU TRADED</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;"><tr>
+      {% for a in asset_bar %}<td width="{{ a.width }}%" height="12" bgcolor="{{ a.color }}" style="width:{{ a.width }}%; height:12px; background:{{ a.color }}; font-size:0; line-height:0;{% if loop.first %} border-radius:6px 0 0 6px;{% endif %}{% if loop.last %} border-radius:0 6px 6px 0;{% endif %}{% if loop.first and loop.last %} border-radius:6px;{% endif %}">&nbsp;</td>{% endfor %}
+    </tr></table>
+    <div style="margin-top:10px; font-size:14px; line-height:22px; color:#D4D4D8;">
+      {% for a in asset_bar %}<span style="white-space:nowrap; margin-right:14px;"><span style="display:inline-block; width:10px; height:10px; border-radius:3px; background:{{ a.color }};"></span>&nbsp;{{ a.name }} · {{ a.pct }}%</span> {% endfor %}
+    </div>
+    {% endif %}
+  </td></tr>
+
+  {#- how you traded #}
+  {% set shown = namespace(any=false) %}{% for sec in [getting_in, managing, getting_out] %}{% if sec.lines or sec.big or sec.bars or sec.credit %}{% set shown.any = true %}{% endif %}{% endfor %}
+  {% if not short and shown.any %}
+  <tr><td class="px" style="padding:28px 40px 0 40px; border-top:1px solid {{ rule }};">
+    <h2 style="margin:12px 0 18px 0; font-family:{{ heavy }}; font-weight:900; font-size:26px; color:{{ ink }};">How you traded</h2>
+  </td></tr>
+  {% for name, sec in [("GETTING IN", getting_in), ("MANAGING", managing), ("GETTING OUT", getting_out)] %}
+  {% if sec.lines or sec.big or sec.bars or sec.credit %}
+  <tr><td class="px" style="padding:0 40px 14px 40px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ card }}" style="background:{{ card }}; border-radius:14px;"><tr><td style="padding:22px 24px;">
+      <div style="font-size:12px; font-weight:700; letter-spacing:1px; color:{{ gold }};">{{ name }}</div>
+      {% if sec.big %}
+      <div style="margin-top:10px;"><span class="big" style="font-family:{{ heavy }}; font-weight:900; font-size:40px; line-height:44px; color:{{ ink }};">{{ sec.big.display }}</span>
+        <span style="font-size:14px; color:{{ muted }}; margin-left:8px;">{{ sec.big.plain }}</span></div>
+      {% endif %}
+      {% if sec.bars %}
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;">
+        {% for label, n, w, color in [("Adjusted", sec.bars.adjusted, sec.bars.adjusted_width, gold), ("Closed", sec.bars.closed, sec.bars.closed_width, "#52525B")] %}
+        <tr>
+          <td width="80" style="width:80px; font-size:14px; color:{{ muted }}; padding:5px 0;">{{ label }}</td>
+          <td style="padding:5px 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+            {% if w %}<td width="{{ w }}%" height="22" bgcolor="{{ color }}" style="width:{{ w }}%; height:22px; background:{{ color }}; border-radius:6px; font-size:0; line-height:0;">&nbsp;</td>{% endif %}
+            {% if w < 100 %}<td style="font-size:0; line-height:0;">&nbsp;</td>{% endif %}
+          </tr></table></td>
+          <td width="48" align="right" style="width:48px; font-family:{{ mono }}; font-weight:700; font-size:16px; color:{{ ink }}; padding:5px 0 5px 10px;">{{ n }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+      {% for line in sec.lines %}<p style="margin:12px 0 0 0; font-size:15px; line-height:24px; color:#E4E4E7;">{{ line }}</p>{% endfor %}
+      {% if sec.credit %}
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#222226" style="margin-top:14px; background:#222226; border-radius:10px;"><tr>
+        <td style="padding:14px 16px; white-space:nowrap; font-size:18px; line-height:18px;" width="1%">{% for _ in range(sec.credit.filled) %}<span style="color:{{ gold }};">&#9679;</span>{% endfor %}{% for _ in range(sec.credit.empty) %}<span style="color:#71717A;">&#9675;</span>{% endfor %}</td>
+        <td style="padding:14px 16px 14px 4px; font-size:14px; line-height:20px; color:#E4E4E7;">{{ sec.credit.display | capitalize }} of your rolls were done for a credit.</td>
+      </tr></table>
+      {% endif %}
+    </td></tr></table>
+  </td></tr>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {#- what stood out (Claude) #}
+  {% if observations %}
+  <tr><td class="px" style="padding:28px 40px 4px 40px; border-top:1px solid {{ rule }};">
+    <h2 style="margin:12px 0 4px 0; font-family:{{ heavy }}; font-weight:900; font-size:26px; color:{{ ink }};">What stood out</h2>
+    {% for o in observations %}
+    <p style="margin:18px 0 0 0; font-size:16px; line-height:22px; font-weight:700; color:{{ ink }};">{{ o.heading }}</p>
+    <p style="margin:6px 0 0 0; font-size:15px; line-height:24px; color:#D4D4D8;">{{ o.text }}</p>
+    {% endfor %}
+  </td></tr>
+  {% endif %}
+
+  {#- how it turned out #}
+  <tr><td class="px" style="padding:32px 40px 0 40px;">
+    <h2 style="margin:0 0 18px 0; font-family:{{ heavy }}; font-weight:900; font-size:26px; color:{{ ink }};">How it turned out</h2>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #3F3F46; border-radius:14px;"><tr><td style="padding:22px 24px;">
+      {% if results_line %}<p style="margin:0; font-size:16px; line-height:25px; color:{{ ink }};">{{ results_line }}</p>{% endif %}
+      {% if dots %}
+      <div style="margin-top:18px; font-size:12px; font-weight:700; letter-spacing:1px; color:{{ muted }};">TRADES THAT ENDED IN {{ month | upper }}{% if dots.per > 1 %} (EACH DOT IS {{ dots.per }} TRADES){% endif %}</div>
+      <div style="margin-top:10px; font-size:20px; line-height:26px; letter-spacing:2px; word-wrap:break-word;">{% for _ in range(dots.win_dots) %}<span style="color:{{ gold }};">&#9679;</span>{% endfor %}{% for _ in range(dots.loss_dots) %}<span style="color:#71717A;">&#9675;</span>{% endfor %}</div>
+      {% endif %}
+      {% if tally %}<p style="margin:12px 0 0 0; font-size:15px; line-height:23px; color:#E4E4E7;">{{ tally }}</p>{% endif %}
+      {% if fees %}<p style="margin:6px 0 0 0; font-size:14px; line-height:22px; color:{{ muted }};">Fees and commissions: {{ fees }}.</p>{% endif %}
+    </td></tr></table>
+  </td></tr>
+
+  {#- still open #}
+  {% if open %}
+  <tr><td class="px" style="padding:14px 40px 0 40px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="{{ card }}" style="background:{{ card }}; border-radius:14px;"><tr><td style="padding:22px 24px;">
+      <div style="font-size:12px; font-weight:700; letter-spacing:1px; color:{{ gold }};">STILL OPEN GOING INTO {{ next_month | upper }}</div>
+      <div style="margin-top:12px; line-height:40px;">{% for t in open %}<span style="display:inline-block; font-family:{{ mono }}; font-weight:700; font-size:14px; color:{{ ink }}; background:#27272A; border-radius:16px; padding:6px 14px; margin:0 6px 6px 0; line-height:20px;">{{ t }}</span>{% endfor %}</div>
+    </td></tr></table>
+  </td></tr>
+  {% endif %}
+
+  {#- what changed #}
+  {% if what_changed %}
+  <tr><td class="px" style="padding:32px 40px 0 40px;">
+    <h2 style="margin:0 0 16px 0; font-family:{{ heavy }}; font-weight:900; font-size:26px; color:{{ ink }};">What changed this month</h2>
+    {% if halves %}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td width="{{ halves.first_width }}%" bgcolor="#2E2A16" style="width:{{ halves.first_width }}%; background:#2E2A16; border-radius:10px 0 0 10px; padding:14px 14px; font-size:14px; color:{{ ink }};">First half: {{ halves.first }} new</td>
+      <td width="{{ halves.second_width }}%" bgcolor="{{ gold }}" style="width:{{ halves.second_width }}%; background:{{ gold }}; border-radius:0 10px 10px 0; padding:14px 14px; font-size:14px; font-weight:700; color:#111111;">Second half: {{ halves.second }} new</td>
+    </tr></table>
+    {% endif %}
+    <p style="margin:14px 0 0 0; font-size:15px; line-height:24px; color:#E4E4E7;">{{ what_changed }}</p>
+  </td></tr>
+  {% endif %}
+
+  {#- button #}
+  <tr><td align="center" style="padding:36px 20px 8px 20px;">
+    <a href="{{ links.trades }}" style="display:inline-block; background:{{ gold }}; color:#111111; font-weight:700; font-size:16px; text-decoration:none; padding:15px 32px; border-radius:28px;">See all your {{ month }} trades</a>
+  </td></tr>
+
+  {#- fine print #}
+  <tr><td class="px" bgcolor="#09090A" style="padding:28px 40px 36px 40px; background:#09090A; font-size:13px; line-height:21px; color:{{ muted }};">
+    <p style="margin:0;"><strong style="color:#D4D4D8;">This isn't your account statement.</strong> If anything here differs from your statement, your statement is correct.</p>
+    <p style="margin:10px 0 0 0;"><strong style="color:#D4D4D8;">How we counted.</strong> A trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.</p>
+    <p style="margin:10px 0 0 0;">This recap is for education only. It describes what you did and is not advice. Options and futures carry real risk and aren't right for everyone.</p>
+    <p style="margin:10px 0 0 0;">[Required disclosures]</p>
+    <p style="margin:10px 0 0 0;"><a href="{{ links.unsubscribe }}" style="color:{{ muted }};">Stop monthly recaps</a> · <a href="{{ links.settings }}" style="color:{{ muted }};">Email settings</a></p>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>

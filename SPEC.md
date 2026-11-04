@@ -342,6 +342,8 @@ Placeholder fill happens only in `render.py`: `{{fact_id}}` → that fact's `dis
 
 **Light-mode fallback:** the HTML email must stay readable when a mail app forces light or dark mode.
 
+**Built 2026-11-04** (`pipeline/render_email.py`, `templates/recap.html.j2`): the design's dark layout at 640 px, tables and inline styles only, no images, system fonts, tiles stacking below 480 px. It declares itself dark (`color-scheme` metas) so mail apps leave it alone, and stays readable under a forced colour inversion. Differences from the design: the "your month in one line" box holds Claude's overall picture; Claude's observations get their own "What stood out" section; there is no big net-result number, because the month's result is named once, in the results line beside the market move; a card drops the sentence that repeats the value it shows big or as a chart; the "See how Tom handled the same tickers" link is left out until RC-4 is decided. Monthly runs write `recap.html` beside `recap.txt`. Screenshots at 640 and 375 px: `out/email/screens/`.
+
 ### 5.2 Review gallery
 
 `python -m pipeline.run --month 2026-10 --gallery` builds `out/2026-10/gallery.html`: one card per customer showing the rendered recap, its flags, the validator result, and a toggle to show the facts sheet beside it. This is how a person reviews a sample before sending.

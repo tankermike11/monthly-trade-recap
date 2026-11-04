@@ -95,7 +95,8 @@ def test_full_run_archives_every_customer(run):
     run_dir = run.archive / "run-0001"
     for cid in PERSONA_IDS:
         folder = run_dir / "customers" / cid
-        for name in ("facts.json", "stories.json", "request.txt", "attempt-1.json", "recap.json", "recap.txt", "hashes.json"):
+        for name in ("facts.json", "stories.json", "request.txt", "attempt-1.json", "recap.json", "recap.txt", "recap.html",
+                     "hashes.json"):
             assert (folder / name).exists(), (cid, name)
         hashes = json.loads((folder / "hashes.json").read_text(encoding="utf-8"))
         for name, digest in hashes.items():
