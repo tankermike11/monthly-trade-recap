@@ -334,7 +334,7 @@ The same validated `RecapCopy` and facts sheet fill every template. Ship plain t
 
 1. **`recap.txt.j2`** (build first): plain-text recap in the style of the original write-up, but in second person. Sections: one-liner, at a glance, getting in, managing, getting out, how it turned out, still open, what changed, fine print.
 2. **`recap.html.j2`** (second): the visual email from the October Trader Recap design canvas. Use email-safe HTML (tables, inline styles, no web fonts required to read it, 640 px wide). Charts are built from facts in code: the asset-mix bar, adjusted vs closed bars, the win and loss dot grid, the first half vs second half bar.
-3. **Teasers and banner** (third): the three phone cards and the in-app banner, each filled from `teasers` and the facts they name.
+3. **Phone cards and banner** (not built yet): the three phone cards and the in-app banner, filled by code from facts (`RecapCopy` no longer has teasers).
 
 Placeholder fill happens only in `render.py`: `{{fact_id}}` → that fact's `display` string. Any unknown placeholder at render time is a hard error.
 
@@ -357,10 +357,40 @@ Placeholder fill happens only in `render.py`: `{{fact_id}}` → that fact's `dis
 
 ### Acceptance criteria
 
-- [ ] All 10 personas render in both templates with no unknown placeholders.
-- [ ] The HTML email renders correctly in a headless browser at 640 px and 375 px wide (screenshot each).
-- [ ] The gallery shows all 10, with persona 10 marked "needs review".
-- [ ] Re-running a month produces a new run ID and leaves the earlier archive untouched.
+- [x] All 10 personas render in both templates with no unknown placeholders.
+- [x] The HTML email renders correctly in a headless browser at 640 px and 375 px wide (screenshot each).
+- [x] The gallery shows all 10, with persona 10 marked "needs review".
+- [x] Re-running a month produces a new run ID and leaves the earlier archive untouched.
+- [ ] Phone cards and in-app banner (step 4), deferred.
+
+## Build log and where we paused (2026-11-04)
+
+Paused by decision after Phase 5 step 3. Next up, when work resumes: **phone cards and in-app banner** (design PDF pages 2 to 5), filled by code from facts, no new claims.
+
+**Done, in order** (branch `phase-4`, 404 offline tests passing):
+
+| Step | What | Where |
+| --- | --- | --- |
+| Phase 1 to 3 | Mock data with answer keys, ingest and linker, facts sheet | `mock/`, `pipeline/`, `data/expected/` |
+| Phase 4 | Live writer on Opus 5.5 (chosen by a blind review over Sonnet 5.5), trader terms without shorthand, validator with nine checks | `pipeline/write.py`, `pipeline/validate_copy.py`, `prompts/recap_v4.md` |
+| 4.0 revision | Code writes every single-fact line; Claude writes only the overall picture and what stood out, with per-trade facts and group counts | `pipeline/compose.py` |
+| Demo site | Password-protected Vercel site: try your own upload, how it works, personas (recap, facts, email, workbook), review gallery | `site/`, `api/index.py`, `scripts/build_site.py`; https://monthly-trade-recap.vercel.app |
+| Phase 5.1 | Review gallery: ready or needs review with reasons, Claude's claims listed beside the trades they cite | `pipeline/gallery.py` |
+| Phase 5.2 | Monthly run through the Batch API: write, check, one rewrite, check, archive with hashes, seeded 5% review sample | `pipeline/monthly.py`, `archive/<month>/run-NNNN` |
+| Phase 5.3 | Claim check: a second Opus call verifies every sentence against the trades (caught 11 of 12 known errors, held 0 of 21 clean recaps) | `pipeline/claimcheck.py`, `prompts/claimcheck_v2.md`, `evals/claims.jsonl` |
+| Phase 5.4 | HTML email, dark 640 px design, charts from facts | `pipeline/render_email.py`, `templates/recap.html.j2` |
+
+**Live runs:** October `archive/2026-10/run-0001`: 10 of 10 passed (p10 held for data quality, as designed); the site is built from it. November `archive/2026-11/run-0002`: 9 of 10 passed; p04 went to review for a doubled unit, and the claim check caught and fixed a false sentence for p07.
+
+**Cost:** about $0.064 a recap at batch prices ($0.045 writing, $0.019 checking), roughly $640 per 10,000 customers. A site upload costs about $0.11 and takes under a minute; the site function's time limit is 300 seconds.
+
+**Commands to resume:**
+
+- Tests: `.venv/Scripts/python.exe -m pytest -q` (live API tests: `-m live`).
+- Monthly run: `python -m pipeline.run --month 2026-11 --batch` (add `--no-wait`, then `--resume run-NNNN`, to submit and come back later; needs `ANTHROPIC_API_KEY`; on this machine also `SSL_CERT_FILE` for the Norton certificate).
+- Site: `python scripts/build_site.py --results archive/2026-10/run-0001`, then `vercel deploy --cwd deploy --prod --yes`.
+
+**Still open:** the decisions table below (RC-1, RC-3 to RC-6), and compliance review of the email's fine print and disclosures slot.
 
 ## Copy rules, compliance and open decisions
 

@@ -109,7 +109,7 @@ def assemble_deploy(dest: Path) -> None:
         "framework": None,
         "buildCommand": "",
         "outputDirectory": "public",
-        "functions": {"api/index.py": {"maxDuration": 120,
+        "functions": {"api/index.py": {"maxDuration": 300,
                                        "includeFiles": "{" + ",".join(DEPLOY_DIRS) + "}/**"}},
         "rewrites": [{"source": "/(.*)", "destination": "/api/index"}],
     }, indent=2) + "\n")
