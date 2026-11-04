@@ -97,8 +97,15 @@ def trade_facts(sheet: FactsSheet, linked: LinkResult) -> tuple[list[Fact], list
             add("left_at_close", s.days_left_at_close, D.days(s.days_left_at_close),
                 "time left before expiration when the trade was bought back")
         if s.upfront_cash:
-            add("upfront", s.upfront_cash, D.money(abs(s.upfront_cash)),
-                "premium collected when opened" if s.upfront_cash > 0 else "debit paid when opened")
+            # A trade carried in from an earlier month starts from its cost at the start of
+            # this month (what it cost when first opened is not in this month's data).
+            if s.carried_in:
+                plain = ("premium held at the start of this month, plus any added this month" if s.upfront_cash > 0
+                         else "net cost of the position at the start of this month, plus any added this month")
+            else:
+                plain = ("premium collected when opened, plus any added later" if s.upfront_cash > 0
+                         else "debit paid when opened, plus any added later")
+            add("upfront", s.upfront_cash, D.money(abs(s.upfront_cash)), plain)
         if s.rolls:
             add("rolls", len(s.rolls), D.count(len(s.rolls), "roll"), "rolls on this trade this month")
             credit = sum(r.credit for r in s.rolls)

@@ -35,7 +35,8 @@ from schemas.recap import RecapCopy, WriteResult
 REPO = Path(__file__).resolve().parent.parent
 CLAIM_WORDS = re.compile(r"\b(every|all|each|both|none|neither|never|always|only|most|mostly|largest|smallest|"
                          r"biggest|first|last|through|until|whole|entire|any|well|almost|nearly|often|rarely|"
-                         r"same|steadily)\b", re.I)
+                         r"same|steadily|further|farther|longer|shorter|more|less|fewer|earlier|later|closer|"
+                         r"higher|lower|larger|smaller|bigger|instead|replacement|than)\b", re.I)
 SENTENCE = re.compile(r"(?<=[.!?])\s+")
 
 
