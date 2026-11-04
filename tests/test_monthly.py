@@ -36,9 +36,10 @@ def narrative(user: str) -> str:
 class FakeBatches:
     """Behaves like the Batches API: results in any order, done after a few polls."""
 
-    def __init__(self, bad_first=(), errored_first=(), polls_needed=0):
+    def __init__(self, bad_first=(), errored_first=(), polls_needed=0, unsupported_first=()):
         self.batches, self.polls, self.sent = {}, {}, []
         self.bad_first, self.errored_first, self.polls_needed = set(bad_first), set(errored_first), polls_needed
+        self.unsupported_first, self.checked = set(unsupported_first), set()
 
     def submit(self, requests):
         bid = f"batch_{len(self.batches) + 1}"
@@ -55,6 +56,17 @@ class FakeBatches:
         first_round = bid == "batch_1"
         for r in reversed(self.batches[bid]):                      # any order
             user = r["params"]["messages"][0]["content"]
+            if "sentences_to_check" in user:                        # a claim-check request
+                d = json.loads(user)
+                name = d["data"]["first_name"]
+                bad = name in self.unsupported_first and name not in self.checked
+                self.checked.add(name)
+                yield BatchResult(r["custom_id"], "succeeded", json.dumps({"sentences": [
+                    {"id": s["id"], "verdict": "unsupported" if bad and i == 0 else "supported",
+                     "reason": "group: not true of every trade" if bad and i == 0 else ""}
+                    for i, s in enumerate(d["sentences_to_check"])]}), "end_turn",
+                    {"input_tokens": 4000, "output_tokens": 300, "model": CFG.claim_check["model"]})
+                continue
             name = json.loads(user.split("\n\nYour previous draft")[0])["first_name"]
             if first_round and name in self.errored_first:
                 yield BatchResult(r["custom_id"], "errored", error="api_error")
@@ -107,17 +119,31 @@ def test_round_two_retries_failures(run):
     s = run(client)
     assert s["passed"] == len(PERSONA_IDS) and s["passed_first_try"] == len(PERSONA_IDS) - 2
     second = {json.loads(r["params"]["messages"][0]["content"].split("\n\nYour previous draft")[0])["first_name"]:
-              r["params"]["messages"][0]["content"] for r in client.sent[1]}
+              r["params"]["messages"][0]["content"] for r in client.sent[2]}     # [1] is the claim check
     assert set(second) == {"Jordan", "Alex"}
     assert "failed these checks" in second["Jordan"] and "no_raw_numbers" in second["Jordan"]
     assert "failed these checks" not in second["Alex"]                 # errored: resent as it was
+
+
+def test_claim_check_runs_after_each_writing_round(run):
+    client = FakeBatches(unsupported_first={"Riley"})
+    s = run(client)
+    assert s["passed"] == len(PERSONA_IDS) and s["passed_first_try"] == len(PERSONA_IDS) - 1
+    kinds = [("sentences_to_check" in reqs[0]["params"]["messages"][0]["content"], len(reqs)) for reqs in client.sent]
+    assert kinds == [(False, 10), (True, 10), (False, 1), (True, 1)]       # write, check, rewrite Riley, check
+    rewrite = client.sent[2][0]["params"]["messages"][0]["content"]
+    assert "claims_supported" in rewrite and "not true of every trade" in rewrite
+    check = client.sent[1][0]["params"]
+    assert check["model"] == CFG.claim_check["model"] and check["system"][0]["cache_control"] == {"type": "ephemeral"}
+    recap = json.loads((run.archive / "run-0001" / "customers" / "p09" / "recap.json").read_text(encoding="utf-8"))
+    assert recap["attempts"][0]["validation"]["checks"][-1]["name"] == "claims_supported"
 
 
 def test_no_wait_then_resume(run):
     client = FakeBatches(polls_needed=3)
     assert run(client, no_wait=True) is None
     m = json.loads((run.archive / "run-0001" / "manifest.json").read_text(encoding="utf-8"))
-    assert m["phase"] == "round1_submitted"
+    assert m["phase"] == "write1_submitted"
     s = run(client, resume="run-0001")
     assert s["passed"] == len(PERSONA_IDS) and s["run_id"] == "run-0001"
 

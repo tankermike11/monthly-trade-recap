@@ -1,6 +1,6 @@
 """Build the demo site's data and the folder that gets deployed to Vercel.
 
-    python scripts/build_site.py --results out/compare_v3a/2026-10/claude-opus-5-5.json
+    python scripts/build_site.py --results archive/2026-10/run-0001
 
 1. site/data/personas.json: each October persona's recap, built ahead of time from a
    saved model run (no API calls here). The run must match the configured model and
@@ -45,8 +45,12 @@ def _write(path: Path, data: bytes | str) -> None:
 
 def build_site_data(results: Path) -> list[dict]:
     cfg = ModelConfig.load()
-    saved = {r["customer_id"]: WriteResult.model_validate(r)
-             for r in json.loads(results.read_text(encoding="utf-8"))}
+    if results.is_dir():                    # a monthly run: archive/<month>/run-NNNN
+        saved = {p.parent.name: WriteResult.model_validate(json.loads(p.read_text(encoding="utf-8")))
+                 for p in sorted((results / "customers").glob("*/recap.json"))}
+    else:                                   # a comparison file: out/compare*/<month>/<model>.json
+        saved = {r["customer_id"]: WriteResult.model_validate(r)
+                 for r in json.loads(results.read_text(encoding="utf-8"))}
     personas = []
     _write(REPO / "site" / "downloads" / "recap_template.xlsx", write_workbook(None, MONTH))
     for folder in sorted((REPO / "data" / "raw" / MONTH).iterdir()):
@@ -107,7 +111,8 @@ def assemble_deploy(dest: Path) -> None:
 
 def main(argv: list[str] | None = None) -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--results", type=Path, required=True, help="a pipeline.compare <model>.json for October")
+    ap.add_argument("--results", type=Path, required=True,
+                    help="October recaps: a monthly run folder (archive/2026-10/run-NNNN) or a pipeline.compare file")
     ap.add_argument("--deploy", type=Path, default=REPO / "deploy")
     a = ap.parse_args(argv)
     personas = build_site_data(a.results)

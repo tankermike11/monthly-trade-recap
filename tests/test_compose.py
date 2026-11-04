@@ -56,13 +56,14 @@ def test_time_left_is_given_for_trades_bought_back_early(composed):
     assert f[f"trade.{sbux['ref']}.left_at_close"] == "3 days"
 
 
-def test_carried_in_trades_are_not_described_as_opened_this_month(composed):
-    """A carried-in trade's upfront value is its cost at the start of the month, not what it
-    cost when first opened (p10's SHOP read as "cost $7,344 when opened"; it was $14,775)."""
+def test_carried_in_trades_have_no_opening_amount(composed):
+    """A carried-in trade's recorded cost is not what it cost when opened once it was added
+    to or adjusted (p10's SHOP read as "cost $7,344 when opened"; it was $14,775), so no
+    opening amount is given for it."""
     c, linked = composed["p09"]
+    ids = {f.id for f in c.sheet.facts}
     carried = next(t for t in c.trades if t["opened_before_this_month"])
-    plain = next(f.plain for f in c.sheet.facts if f.id == f"trade.{carried['ref']}.upfront")
-    assert "start of this month" in plain and "when opened" not in plain
+    assert f"trade.{carried['ref']}.upfront" not in ids
     new = next(t for t in c.trades if not t["opened_before_this_month"])
     assert "when opened" in next(f.plain for f in c.sheet.facts if f.id == f"trade.{new['ref']}.upfront")
 

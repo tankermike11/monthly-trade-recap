@@ -9,8 +9,11 @@ Built for thousands of customers:
 - round 1: requests go out in batches split by size (a batch holds at most 100,000
   requests or 256 MB; requests carry each customer's trade list), then the results are
   collected and validated;
-- round 2: one retry batch for the failures (failed checks get the reasons appended, as
-  in pipeline/write.py; errored or expired requests are resent unchanged);
+- claim check: after each writing round, a batch that checks every sentence of the recaps
+  that passed the validator against the trades (pipeline/claimcheck.py);
+- round 2: one retry batch for the failures (failed checks, the claim check included, get
+  the reasons appended, as in pipeline/write.py; errored or expired requests are resent
+  unchanged), then its claim check;
 - finalize: recap.txt for every recap that passed, a hash of every file, a summary, and a
   review gallery of every recap that needs review plus a seeded random sample of the rest.
 
@@ -166,14 +169,43 @@ def prepare(run_dir: Path, month: str, raw_root: Path, cfg: ModelConfig, only: l
     return m
 
 
-def submit_round(run_dir: Path, m: dict, cfg: ModelConfig, client, round_no: int) -> None:
-    """Round 1: every prepared customer. Round 2: the customers whose round-1 attempt failed."""
+def _phases(cfg: ModelConfig) -> list[tuple[str, int]]:
+    """write 1, check 1, write 2, check 2 (no checks when the claim check is off)."""
+    return [("write", 1), ("check", 1), ("write", 2), ("check", 2)] if cfg.claim_check else [("write", 1), ("write", 2)]
+
+
+def _check_params(cfg: ModelConfig, user: str) -> dict:
+    from pipeline import claimcheck
+    return {"model": cfg.claim_check["model"], "max_tokens": 8000,
+            "system": [{"type": "text", "text": claimcheck.system_prompt(), "cache_control": {"type": "ephemeral"}}],
+            "messages": [{"role": "user", "content": user}],
+            "output_config": {"effort": cfg.claim_check.get("effort", "medium"),
+                              "format": {"type": "json_schema", "schema": claimcheck.OUTPUT_SCHEMA}}}
+
+
+def submit_phase(run_dir: Path, m: dict, cfg: ModelConfig, client, kind: str, round_no: int) -> None:
+    """write 1: every prepared customer. check N: every recap from write N that passed the
+    validator. write 2: every customer whose round-1 recap failed the validator or the
+    claim check (with the reasons), or whose request errored (resent as it was)."""
+    from pipeline import claimcheck
+    from schemas.recap import RecapCopy
     system = system_prompt(cfg.prompt_version)
     requests = []
     for cid, e in m["customers"].items():
         if "error" in e:
             continue
         folder = run_dir / "customers" / cid
+        if kind == "check":
+            att = folder / f"attempt-{round_no}.json"
+            if not att.exists():
+                continue
+            rec = _load(att)
+            if not rec["passed"] or rec.get("checked"):
+                continue
+            _, _, c = _customer(run_dir, Path(m["raw_root"]), m["month"], cid)
+            copy = RecapCopy.model_validate_json(rec["raw_output"])
+            requests.append({"custom_id": e["custom_id"], "params": _check_params(cfg, claimcheck.user_turn(copy, c))})
+            continue
         user = (folder / "request.txt").read_text(encoding="utf-8")
         if round_no == 2:
             first = folder / "attempt-1.json"
@@ -186,26 +218,33 @@ def submit_round(run_dir: Path, m: dict, cfg: ModelConfig, client, round_no: int
                 user = retry_turn(user, a1["raw_output"], a1["reasons"])
         requests.append({"custom_id": e["custom_id"], "params": _params(cfg, system, user)})
     batches = [client.submit(part) for part in chunk(requests)] if requests else []
-    m["rounds"].append({"round": round_no, "requests": len(requests), "batch_ids": batches, "collected": False})
-    m["phase"] = f"round{round_no}_submitted"
+    m["rounds"].append({"kind": kind, "round": round_no, "requests": len(requests), "batch_ids": batches,
+                        "collected": False})
+    m["phase"] = f"{kind}{round_no}_submitted"
     _save_manifest(run_dir, m)
 
 
-def wait(m: dict, client, round_no: int, poll_seconds: int = POLL_SECONDS, sleep=time.sleep) -> None:
-    pending = set(m["rounds"][round_no - 1]["batch_ids"])
+def wait(phase: dict, client, poll_seconds: int = POLL_SECONDS, sleep=time.sleep) -> None:
+    pending = set(phase["batch_ids"])
     while pending:
         pending = {b for b in pending if not client.ended(b)}
         if pending:
             sleep(poll_seconds)
 
 
-def collect_round(run_dir: Path, m: dict, client, round_no: int) -> None:
+def collect_phase(run_dir: Path, m: dict, client, index: int) -> None:
+    phase = m["rounds"][index]
+    kind, round_no = phase["kind"], phase["round"]
     by_custom = {e["custom_id"]: cid for cid, e in m["customers"].items()}
-    for bid in m["rounds"][round_no - 1]["batch_ids"]:
+    seen = set()
+    for bid in phase["batch_ids"]:
         for r in client.results(bid):
             cid = by_custom[r.custom_id]
+            seen.add(cid)
             folder = run_dir / "customers" / cid
-            sheet_and_trades = _composed(run_dir, cid, m) if r.kind == "succeeded" else None
+            if kind == "check":
+                _record_check(run_dir, m, cid, round_no, r)
+                continue
             if r.kind != "succeeded":
                 rec = {"kind": r.kind, "passed": False, "raw_output": "", "stop_reason": None, "usage": {},
                        "reasons": [f"batch_{r.kind}: {r.error or 'no result'}"], "checks": []}
@@ -214,14 +253,46 @@ def collect_round(run_dir: Path, m: dict, client, round_no: int) -> None:
                        "usage": r.usage or {}, "reasons": ["model_refused: the model declined the request"],
                        "checks": [["model_refused", False]]}
             else:
-                full, trades = sheet_and_trades
+                full, trades = _composed(run_dir, cid, m)
                 _, v = validate(r.text, full, trades)
                 rec = {"kind": r.kind, "passed": v.passed, "raw_output": r.text, "stop_reason": r.stop_reason,
                        "usage": r.usage or {}, "reasons": v.reasons(), "checks": [[c.name, c.passed] for c in v.checks]}
             _write(folder / f"attempt-{round_no}.json", _dump(rec))
-    m["rounds"][round_no - 1]["collected"] = True
-    m["phase"] = f"round{round_no}_collected"
+    if kind == "check":                     # a recap the check never returned for is not sent unchecked
+        for cid in m["customers"]:
+            att = run_dir / "customers" / cid / f"attempt-{round_no}.json"
+            if cid not in seen and att.exists():
+                rec = _load(att)
+                if rec["passed"] and not rec.get("checked"):
+                    _record_check(run_dir, m, cid, round_no, None)
+    phase["collected"] = True
+    m["phase"] = f"{kind}{round_no}_collected"
     _save_manifest(run_dir, m)
+
+
+def _record_check(run_dir: Path, m: dict, cid: str, round_no: int, r) -> None:
+    from pipeline import claimcheck
+    from schemas.recap import RecapCopy
+    folder = run_dir / "customers" / cid
+    rec = _load(folder / f"attempt-{round_no}.json")
+    reasons, usage = None, {}
+    if r is not None and r.kind == "succeeded" and r.stop_reason != "refusal":
+        try:
+            verdicts = claimcheck.parse(r.text)
+            _, _, c = _customer(run_dir, Path(m["raw_root"]), m["month"], cid)
+            res = claimcheck.result(RecapCopy.model_validate_json(rec["raw_output"]), c, verdicts)
+            reasons = res.reasons
+        except (ValueError, KeyError, TypeError):
+            reasons = ["the claim check returned an unreadable answer"]
+        usage = r.usage or {}
+    else:
+        reasons = [f"the claim check did not return ({r.kind if r is not None else 'no result'})"]
+    rec["checks"].append(["claims_supported", not reasons])
+    rec["reasons"] += [f"claims_supported: {x}" for x in reasons]
+    rec["passed"] = rec["passed"] and not reasons
+    rec["usage"]["claim_check"] = usage
+    rec["checked"] = True
+    _write(folder / f"attempt-{round_no}.json", _dump(rec))
 
 
 _CACHE: dict[tuple[str, str], tuple] = {}
@@ -324,18 +395,18 @@ def run_month(month: str, raw_root: Path, archive_root: Path, cfg: ModelConfig, 
     else:
         run_dir = new_run_dir(archive_root, month)
         m = prepare(run_dir, month, raw_root, cfg, only)
-    for round_no in (1, 2):
+    for i, (kind, round_no) in enumerate(_phases(cfg)):
         if m["phase"] == "finalized":
             break
-        if len(m["rounds"]) < round_no:
-            submit_round(run_dir, m, cfg, client, round_no)
-        rnd = m["rounds"][round_no - 1]
-        if not rnd["collected"]:
-            if no_wait and not all(client.ended(b) for b in rnd["batch_ids"]):
-                print(f"{run_dir.name}: round {round_no} still processing; resume with --resume {run_dir.name}")
+        if len(m["rounds"]) <= i:
+            submit_phase(run_dir, m, cfg, client, kind, round_no)
+        phase = m["rounds"][i]
+        if not phase["collected"]:
+            if no_wait and not all(client.ended(b) for b in phase["batch_ids"]):
+                print(f"{run_dir.name}: {kind} {round_no} still processing; resume with --resume {run_dir.name}")
                 return None
-            wait(m, client, round_no, poll_seconds, sleep)
-            collect_round(run_dir, m, client, round_no)
+            wait(phase, client, poll_seconds, sleep)
+            collect_phase(run_dir, m, client, i)
     return _load(run_dir / "summary.json") if m["phase"] == "finalized" else finalize(run_dir, m, cfg, sample_rate)
 
 

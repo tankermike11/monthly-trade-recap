@@ -40,13 +40,14 @@ class ModelConfig:
     prompt_version: str
     fallbacks: str | None
     prices: dict
+    claim_check: dict | None = None      # {"model": ..., "effort": ...}; None turns the check off
 
     @classmethod
     def load(cls, path: Path | None = None, **overrides) -> "ModelConfig":
         d = yaml.safe_load((path or REPO / "config" / "model.yaml").read_text(encoding="utf-8"))
         d.update({k: v for k, v in overrides.items() if v is not None})
         return cls(d["model"], d["effort"], int(d["max_tokens"]), d["prompt_version"], d.get("fallbacks"),
-                   d.get("prices", {}))
+                   d.get("prices", {}), d.get("claim_check"))
 
 
 def system_prompt(version: str) -> str:
@@ -126,7 +127,16 @@ def retry_turn(user: str, previous: str, reasons: list[str]) -> str:
             + "\n\nWrite a corrected version that passes every check.")
 
 
-def write_recap(sheet: FactsSheet, linked: LinkResult, cfg: ModelConfig, call: Caller | None = None) -> WriteResult:
+def write_recap(sheet: FactsSheet, linked: LinkResult, cfg: ModelConfig, call: Caller | None = None,
+                check_call=None) -> WriteResult:
+    """Write, validate and claim-check one recap; one rewrite with the reasons, then review.
+
+    The claim check runs when cfg.claim_check is set and either a check_call is given or
+    the real API is used (no `call` given). Tests that pass a fake `call` and no
+    `check_call` skip it."""
+    from pipeline import claimcheck
+    if check_call is None and call is None and cfg.claim_check:
+        check_call = claimcheck.anthropic_check(cfg.claim_check["model"], cfg.claim_check.get("effort", "medium"))
     call = call or anthropic_caller()
     system = system_prompt(cfg.prompt_version)
     composed = compose(sheet, linked)
@@ -143,7 +153,13 @@ def write_recap(sheet: FactsSheet, linked: LinkResult, cfg: ModelConfig, call: C
             copy = None
         else:
             copy, v = validate(reply.text, composed.sheet, composed.trades)
-        attempts.append(Attempt(raw_output=reply.text, validation=v, stop_reason=reply.stop_reason, usage=reply.usage))
+        usage = dict(reply.usage)
+        if v.passed and check_call is not None and cfg.claim_check:
+            from schemas.recap import ValidationResult
+            claims, check_reply = claimcheck.check(copy, composed, check_call)
+            v = ValidationResult(passed=claims.passed, checks=list(v.checks) + [claims])
+            usage["claim_check"] = check_reply.usage
+        attempts.append(Attempt(raw_output=reply.text, validation=v, stop_reason=reply.stop_reason, usage=usage))
         if v.passed:
             break
         turn = retry_turn(user, reply.text, v.reasons())
@@ -156,14 +172,20 @@ def write_recap(sheet: FactsSheet, linked: LinkResult, cfg: ModelConfig, call: C
     )
 
 
-def cost(result: WriteResult, cfg: ModelConfig) -> float:
-    p = cfg.prices.get(result.model)
+def usage_cost(u: dict, p: dict | None) -> float:
     if not p:
         return 0.0
+    return (u.get("input_tokens", 0) * p["input"] + u.get("output_tokens", 0) * p["output"]
+            + u.get("cache_read_input_tokens", 0) * p.get("cache_read", p["input"])
+            + u.get("cache_creation_input_tokens", 0) * p["input"] * 1.25) / 1e6
+
+
+def cost(result: WriteResult, cfg: ModelConfig) -> float:
+    """Writer and claim-check calls, at standard prices."""
     total = 0.0
     for a in result.attempts:
-        u = a.usage
-        total += (u.get("input_tokens", 0) * p["input"] + u.get("output_tokens", 0) * p["output"]
-                  + u.get("cache_read_input_tokens", 0) * p.get("cache_read", p["input"])
-                  + u.get("cache_creation_input_tokens", 0) * p["input"] * 1.25) / 1e6
+        total += usage_cost(a.usage, cfg.prices.get(result.model))
+        chk = a.usage.get("claim_check")
+        if chk:
+            total += usage_cost(chk, cfg.prices.get(chk.get("model", ""), cfg.prices.get((cfg.claim_check or {}).get("model", ""))))
     return total
