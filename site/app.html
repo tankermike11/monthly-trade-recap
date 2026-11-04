@@ -76,11 +76,12 @@ ul.rules { margin:0; padding-left:18px; display:grid; gap:6px; }
 .tabs button { font:inherit; font-size:14px; cursor:pointer; padding:8px 12px; border:0; border-bottom:2px solid transparent; background:none; color:var(--muted); }
 .tabs button[aria-selected="true"] { color:var(--ink); border-bottom-color:var(--accent); font-weight:600; }
 .panel { padding-top:12px; display:grid; gap:10px; }
-.facts { width:100%; border-collapse:collapse; font-size:14px; }
+.facts { width:100%; border-collapse:collapse; font-size:14px; table-layout:fixed; }
 .facts td, .facts th { text-align:left; padding:6px 8px; border-bottom:1px solid var(--rule); vertical-align:top; }
 .facts th { font-weight:500; color:var(--muted); font-size:12px; }
-.facts td.num { font-variant-numeric:tabular-nums; white-space:nowrap; font-weight:500; }
-.facts .src { color:var(--faint); font-family:var(--mono); font-size:12px; white-space:nowrap; }
+.facts td { overflow-wrap:anywhere; }
+.facts td.num { font-variant-numeric:tabular-nums; font-weight:500; }
+.facts .src { color:var(--faint); font-family:var(--mono); font-size:12px; }
 .scroll { overflow-x:auto; }
 .draft-sec { display:grid; gap:4px; }
 .draft-sec div { font-size:14px; }
@@ -105,16 +106,16 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 <div class="bar"><div class="bar-in">
   <span class="brand">Your Month Recap <small>team demo · sample data only</small></span>
   <nav aria-label="Views">
+    <button type="button" data-view="try">Try your own</button>
     <button type="button" data-view="how">How it works</button>
     <button type="button" data-view="personas">Personas</button>
-    <button type="button" data-view="try">Try your own</button>
   </nav>
   <a class="signout" href="/logout">Sign out</a>
 </div></div>
 
 <main>
   <!-- ======================================================= HOW IT WORKS -->
-  <section id="view-how" class="stack" style="gap:28px">
+  <section id="view-how" class="stack" style="gap:28px" hidden>
     <div class="stack">
       <span class="label">Monthly trade recap · concept</span>
       <h1>Each customer's month, written from their own trades</h1>
@@ -177,7 +178,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
   </section>
 
   <!-- ======================================================= TRY YOUR OWN -->
-  <section id="view-try" class="stack" hidden>
+  <section id="view-try" class="stack">
     <div class="stack">
       <span class="label">Upload a workbook</span>
       <h1>Try your own trades</h1>
@@ -248,7 +249,7 @@ function withPlaceholders(text, facts, mode) {
 
 // ------------------------------------------------------------- views
 function show(view) {
-  if (!["how", "personas", "try"].includes(view)) view = "how";
+  if (!["try", "how", "personas"].includes(view)) view = "try";
   for (const v of ["how", "personas", "try"]) $("view-" + v).hidden = v !== view;
   document.querySelectorAll("nav button").forEach((b) => b.setAttribute("aria-current", b.dataset.view === view ? "page" : "false"));
   if (location.hash.slice(1) !== view) history.replaceState(null, "", "#" + view);
@@ -316,7 +317,7 @@ function factsPanel(data) {
     el("td", { class: "src", title: f.source_examples.join(", "), text: `${f.sources} source${f.sources === 1 ? "" : "s"}` })));
   return el("div", { class: "stack" },
     el("p", { class: "meta", text: `The month's facts and counts code computed for this customer, plus ${tradeFacts} per-trade facts (dates, rolls, results) not listed here. Claude may use any of these, and only these. Each value keeps the trades or fills it came from (hover the source count).` }),
-    el("div", { class: "scroll" }, el("table", { class: "facts" }, el("thead", {}, el("tr", {}, el("th", { text: "What it is" }), el("th", { text: "Value" }), el("th", { text: "From" }))), el("tbody", {}, rows))));
+    el("div", { class: "scroll" }, el("table", { class: "facts" }, el("colgroup", {}, el("col", { style: "width:52%" }), el("col", { style: "width:33%" }), el("col", { style: "width:15%" })), el("thead", {}, el("tr", {}, el("th", { text: "What it is" }), el("th", { text: "Value" }), el("th", { text: "From" }))), el("tbody", {}, rows))));
 }
 
 function checksPanel(data) {
