@@ -7,9 +7,11 @@ carry counts only (CLAUDE.md, "Demo site").
 
 from __future__ import annotations
 
-from pipeline.link import link
+from pipeline.compose import compose
+from pipeline.display import MONTHS
+from pipeline.link import LinkResult, link
 from pipeline.metrics import build_facts
-from pipeline.render import MONTHS, render_text
+from pipeline.render import render_text
 from pipeline.workbook import read_workbook
 from pipeline.write import Caller, ModelConfig, cost, write_recap
 from schemas.facts import FactsSheet
@@ -33,19 +35,21 @@ def month_name(month: str) -> str:
     return f"{MONTHS[int(month[5:7]) - 1]} {month[:4]}"
 
 
-def payload(sheet: FactsSheet, result: WriteResult, cfg: ModelConfig, assumptions: list[str]) -> dict:
+def payload(sheet: FactsSheet, linked: LinkResult, result: WriteResult, cfg: ModelConfig, assumptions: list[str]) -> dict:
     passed = result.status == "passed"
+    full = compose(sheet, linked).sheet
     return {
         "first_name": sheet.first_name,
         "month": sheet.month,
         "month_name": month_name(sheet.month),
         "flags": [FLAG_WORDS[f] for f in sheet.flags if f in FLAG_WORDS],
         "status": result.status,
-        "recap_text": render_text(result.recap, sheet) if passed else None,
+        "recap_text": render_text(result.recap, sheet, linked) if passed else None,
         "copy": result.recap.model_dump(mode="json") if passed else None,
         "facts": [{"id": f.id, "section": str(f.section), "display": f.display, "plain": f.plain,
-                   "weight": f.weight, "sources": len(f.sources), "source_examples": f.sources[:3]}
-                  for f in sheet.facts],
+                   "weight": f.weight, "sources": len(f.sources), "source_examples": f.sources[:3],
+                   "kind": "trade" if f.id.startswith("trade.") else "count" if f.id.startswith("group.") else "month"}
+                  for f in full.facts],
         "assumptions": assumptions,
         "issues": [{"issue": i.issue, "text": ISSUE_WORDS.get(i.issue, i.issue), "count": len(i.refs)}
                    for i in sheet.data_quality_issues],
@@ -64,7 +68,8 @@ def run_upload(data: bytes, cfg: ModelConfig | None = None, call: Caller | None 
     workbook. Calls Claude once (twice if the first draft fails the validator)."""
     imported = read_workbook(data)
     raw = imported.raw
-    sheet = build_facts(raw, link(raw), previous=None, first_month=True)
+    linked = link(raw)
+    sheet = build_facts(raw, linked, previous=None, first_month=True)
     cfg = cfg or ModelConfig.load()
-    result = write_recap(sheet, cfg, call)
-    return payload(sheet, result, cfg, imported.assumptions)
+    result = write_recap(sheet, linked, cfg, call)
+    return payload(sheet, linked, result, cfg, imported.assumptions)

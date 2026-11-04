@@ -118,7 +118,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     <div class="stack">
       <span class="label">Monthly trade recap · concept</span>
       <h1>Each customer's month, written from their own trades</h1>
-      <p class="lede">Once a month, every customer gets a short recap of how they traded: how far out they went, how they managed and rolled positions, how they exited. It reads like a note from someone who watched the account, but every number comes from code and every sentence is checked before it renders.</p>
+      <p class="lede">Once a month, every customer gets a short recap of how they traded: how far out they went, how they managed and rolled positions, how they exited. Code writes the facts; Claude reads every trade and describes the patterns, like a note from someone who watched the account. Every number comes from code and every sentence is checked before it renders.</p>
     </div>
 
     <div class="steps">
@@ -126,16 +126,16 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
         <p>Fills, orders, positions and expirations for one customer, in a fixed format. Here, an Excel workbook.</p>
         <span><span class="who code">code</span></span></div>
       <div class="card step"><span class="label">Facts</span><h3>Code computes every number</h3>
-        <p>30 to 60 small facts: how far out trades expired, how often they were rolled, what share of winners' premium was kept. Each fact keeps the fills it came from.</p>
+        <p>30 to 60 month facts (how far out trades expired, how often they were rolled), per-trade facts (dates, rolls, results) and counts ("3 of 5 losing trades"). Each keeps the trades it came from. Code also writes every single-fact line.</p>
         <span><span class="who code">code</span></span></div>
-      <div class="card step"><span class="label">Words</span><h3>Claude picks facts and writes</h3>
-        <p>Claude chooses which facts matter and writes the sentences, using placeholders where numbers go. It never types a number.</p>
+      <div class="card step"><span class="label">Words</span><h3>Claude describes the month</h3>
+        <p>Claude reads every trade and writes what code can't: the overall picture and what stood out, naming patterns and specific trades. Numbers go in as placeholders; it never types one.</p>
         <span><span class="who claude">Claude</span></span></div>
       <div class="card step"><span class="label">Checks</span><h3>Code checks the words</h3>
-        <p>Nine checks: lengths, no typed numbers, only real facts, trader terms without shorthand, no advice, no praise, a losing month named once beside the market. One retry, then a person reviews it.</p>
+        <p>Eight checks: lengths, no typed numbers, only real facts, trader terms without shorthand, no advice, no praise, the month's result left to code, no repeated units or words. One retry, then a person reviews it.</p>
         <span><span class="who code">code</span></span></div>
       <div class="card step"><span class="label">Recap out</span><h3>Numbers filled in, recap rendered</h3>
-        <p>Code swaps each placeholder for its fact's value and renders the recap: plain text now, a designed email later.</p>
+        <p>Code fills each placeholder with its fact's value, adds its own lines and the results line beside the market move, and renders the recap: plain text now, a designed email later.</p>
         <span><span class="who code">code</span></span></div>
     </div>
 
@@ -208,17 +208,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 "use strict";
 const $ = (id) => document.getElementById(id);
 const PH = /\{\{\s*([a-z0-9_.]+)\s*\}\}/g;
-const SECTION_NAMES = { getting_in: "Getting in", managing: "Managing", getting_out: "Getting out" };
 const CHECK_NAMES = {
-  schema_and_lengths: "Right shape and length (lines of at most 160 characters once filled)",
+  schema_and_lengths: "Right shape and length: an overall picture, 2 or 3 observations, lengths counted once filled",
   no_raw_numbers: "No numbers typed by Claude, only placeholders",
-  known_facts: "Every placeholder is a real fact from this customer's sheet",
+  known_facts: "Every placeholder is a real fact: a month fact, a trade's fact or a count",
   copy_rules: "Trader terms, no shorthand, no banned or retired words, no em dashes",
   no_advice: "No advice and no predictions",
   no_praise: "No praise for activity or wins, no consolation lines",
-  red_month: "A losing month is named once, beside the market move",
-  no_doubled_units: "No unit repeated after a value (\"53 trades new trades\")",
-  glance_tiles: "Each at-a-glance tile is one short value, none repeated",
+  results_left_to_code: "The month's result is left to the code-written line beside the market move",
+  no_doubled_units: "No unit or word repeated around a value (\"53 trades new trades\", \"about about\")",
 };
 let personas = [];
 
@@ -303,23 +301,21 @@ function recapView(data) {
 function draftPanel(data, facts) {
   if (!data.copy) return el("p", { class: "meta", text: "No draft passed the checks." });
   const c = data.copy, box = el("div", { class: "stack" });
-  box.append(el("p", { class: "meta" }, "Highlighted ", el("mark", { class: "ph", text: "{{placeholders}}" }), " are where code fills in a fact's value. Hover one to see it."));
+  box.append(el("p", { class: "meta" }, "Claude writes only these parts; code writes the rest of the recap. Highlighted ", el("mark", { class: "ph", text: "{{placeholders}}" }), " are where code fills in a fact's value. Hover one to see it."));
   const block = (title, lines) => lines.filter(Boolean).length ? el("div", { class: "draft-sec" }, el("span", { class: "label", text: title }), lines.filter(Boolean).map((t) => el("div", {}, withPlaceholders(t, facts, "ph")))) : null;
-  box.append(block("One-liner", [c.one_liner]));
-  box.append(block("At a glance (fact tiles)", (c.glance_tiles || []).map((id) => `{{${id}}}`)));
-  for (const k of ["getting_in", "managing", "getting_out"]) box.append(block(SECTION_NAMES[k], c.sections[k] || []));
-  box.append(block("How it turned out", [c.results_line]));
-  box.append(block("What changed", [c.what_changed]));
-  box.append(block("Teasers (value, then line)", (c.teasers || []).map((t) => `{{${t.fact}}} ${t.line}`)));
+  box.append(block("Overall picture", [c.overall]));
+  (c.observations || []).forEach((o, i) => box.append(block(`What stood out ${i + 1}: ${o.heading}`, [o.text])));
   box.append(block("Subject line", [c.subject_line]));
   return box;
 }
 
 function factsPanel(data) {
-  const rows = data.facts.map((f) => el("tr", {}, el("td", { text: f.plain }), el("td", { class: "num", text: f.display }),
+  const shownFacts = data.facts.filter((f) => f.kind !== "trade");
+  const tradeFacts = data.facts.length - shownFacts.length;
+  const rows = shownFacts.map((f) => el("tr", {}, el("td", { text: f.plain }), el("td", { class: "num", text: f.display }),
     el("td", { class: "src", title: f.source_examples.join(", "), text: `${f.sources} source${f.sources === 1 ? "" : "s"}` })));
   return el("div", { class: "stack" },
-    el("p", { class: "meta", text: "Everything code computed for this customer. Claude may use any of these, and only these. Each value keeps the trades or fills it came from (hover the source count)." }),
+    el("p", { class: "meta", text: `The month's facts and counts code computed for this customer, plus ${tradeFacts} per-trade facts (dates, rolls, results) not listed here. Claude may use any of these, and only these. Each value keeps the trades or fills it came from (hover the source count).` }),
     el("div", { class: "scroll" }, el("table", { class: "facts" }, el("thead", {}, el("tr", {}, el("th", { text: "What it is" }), el("th", { text: "Value" }), el("th", { text: "From" }))), el("tbody", {}, rows))));
 }
 
@@ -341,8 +337,8 @@ function checksPanel(data) {
 function renderExample() {
   const p = personas.find((x) => x.id === "p09") || personas[0];
   const facts = Object.fromEntries(p.facts.map((f) => [f.id, f]));
-  const lines = [...p.copy.sections.getting_in, ...p.copy.sections.managing, ...p.copy.sections.getting_out];
-  const line = lines.find((t) => [...t.matchAll(PH)].length === 1) || lines[0];
+  const lines = [p.copy.overall, ...p.copy.observations.map((o) => o.text)];
+  const line = lines.find((t) => [...t.matchAll(PH)].length === 1) || lines.find((t) => [...t.matchAll(PH)].length) || lines[0];
   const id = [...line.matchAll(PH)][0][1];
   const f = facts[id];
   const row = (label, who, ...content) => el("div", { class: "example-row" }, el("span", {}, el("span", { class: "label", text: label }), " ", el("span", { class: "who " + who, text: who === "claude" ? "Claude" : "code" })), el("div", {}, ...content));
@@ -351,7 +347,7 @@ function renderExample() {
     el("div", { class: "example" },
       row("Fact", "code", el("span", { class: "filled", text: f.display }), " ", el("span", { class: "meta", text: `${f.plain} (from ${f.sources} source${f.sources === 1 ? "" : "s"})` })),
       row("Draft", "claude", ...withPlaceholders(line, facts, "ph")),
-      row("Checked", "code", el("span", { class: "meta", text: "Placeholder is a real fact, no typed numbers, trader terms, under 160 characters once filled" })),
+      row("Checked", "code", el("span", { class: "meta", text: "Every placeholder is a real fact, no typed numbers, trader terms, no repeated units, within length once filled" })),
       row("Recap", "code", ...withPlaceholders(line, facts, "fill"))),
     el("p", { class: "meta" }, "See the whole recap and all of its facts under ", el("a", { href: "#personas", onclick: () => { show("personas"); selectPersona(p.id); } , text: "Personas" }), "."));
 }

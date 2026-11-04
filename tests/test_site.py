@@ -22,13 +22,13 @@ from pipeline.ingest import load_month
 from pipeline.workbook import write_workbook
 from pipeline.write import ModelReply
 from tests.conftest import REPO
+from tests.recap_fixtures import good_json
 
 _real_run_upload = demo.run_upload
 
+
 def _good_copy() -> str:
-    import re
-    prompt = (REPO / "prompts" / "recap_v3.md").read_text(encoding="utf-8")
-    return re.findall(r"```json\n(.*?)```", prompt, re.S)[1]          # the red-month example (Riley, p09)
+    return good_json()                      # a known-good recap for Riley (p09)
 
 
 def _offline(data):

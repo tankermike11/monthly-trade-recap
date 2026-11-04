@@ -21,18 +21,18 @@ from pipeline.write import ModelConfig, cost, write_recap
 
 def compare(month: str, models: list[str], raw_root: Path, out_root: Path, effort: str | None = None) -> list[dict]:
     rows = []
-    sheets = {cid: facts_for(raw_root, month, cid)[1] for cid in customers(raw_root, month)}
+    sheets = {cid: facts_for(raw_root, month, cid) for cid in customers(raw_root, month)}
     for model in models:
         cfg = ModelConfig.load(model=model, effort=effort)
         results, spent = [], 0.0
-        for cid, sheet in sheets.items():
-            res = write_recap(sheet, cfg)
+        for cid, (linked, sheet) in sheets.items():
+            res = write_recap(sheet, linked, cfg)
             spent += cost(res, cfg)
             results.append(res)
             folder = out_root / month / model
             folder.mkdir(parents=True, exist_ok=True)
             if res.status == "passed":
-                (folder / f"{cid}.txt").write_text(render_text(res.recap, sheet), encoding="utf-8")
+                (folder / f"{cid}.txt").write_text(render_text(res.recap, sheet, linked), encoding="utf-8")
         (out_root / month / f"{model}.json").write_text(
             json.dumps([r.model_dump(mode="json") for r in results], indent=2, sort_keys=True), encoding="utf-8")
         rows.append({

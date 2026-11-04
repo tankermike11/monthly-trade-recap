@@ -1,207 +1,181 @@
-"""Phase 4, offline: the validator, the retry/review flow, rendering and the request
-shape, with a fake model in place of the API. Live runs are in test_live.py
-(pytest -m live)."""
+"""Phase 4 offline: the prompt, the validator, the writer loop and rendering (no API calls).
+
+Code writes the fact lines, tiles, results line and what changed (pipeline/compose.py);
+Claude writes the overall picture and observations; the validator checks Claude's words.
+"""
 
 from __future__ import annotations
 
 import json
-import re
-from pathlib import Path
 
 import pytest
 
+from pipeline import validate_copy
+from pipeline.compose import compose
 from pipeline.render import UnknownPlaceholder, render_text
 from pipeline.run import facts_for, run
-from pipeline import validate_copy
 from pipeline.validate_copy import copy_rules, validate
 from pipeline.write import ModelConfig, ModelReply, anthropic_caller, user_turn, write_recap
+from schemas.recap import RecapCopy
 from tests.conftest import REPO
+from tests.recap_fixtures import good
 
-PROMPT_VERSION = ModelConfig.load().prompt_version
-PROMPT = (REPO / "prompts" / f"{PROMPT_VERSION}.md").read_text(encoding="utf-8")
-EXAMPLES = dict(zip(["p04", "p09", "p01"], re.findall(r"```json\n(.*?)```", PROMPT, re.S)))
+CFG = ModelConfig.load()
+PROMPT = (REPO / "prompts" / f"{CFG.prompt_version}.md").read_text(encoding="utf-8")
 
 
 @pytest.fixture(scope="module")
-def sheets(fresh):
-    return {p: facts_for(fresh / "raw", "2026-10", p)[1] for p in ("p01", "p04", "p09")}
+def cases(fresh):
+    return {p: facts_for(fresh / "raw", "2026-10", p) for p in ("p01", "p04", "p09")}
 
 
-def good(p="p09") -> dict:
-    return json.loads(EXAMPLES[p])
+@pytest.fixture(scope="module")
+def p09(cases):
+    linked, sheet = cases["p09"]
+    return sheet, linked, compose(sheet, linked).sheet
 
 
 # ---------------------------------------------------------------------------
-# The worked examples in the prompt pass the validator for their own personas
+# The prompt states the rules
 # ---------------------------------------------------------------------------
-
-@pytest.mark.parametrize("p", ["p04", "p09", "p01"])
-def test_prompt_examples_pass(sheets, p):
-    copy, v = validate(EXAMPLES[p], sheets[p])
-    assert v.passed, v.reasons()
-    render_text(copy, sheets[p])
-
 
 def test_prompt_states_the_copy_rules():
     low = PROMPT.lower()
     for w in copy_rules()["banned"]:
         assert w in low, w
     for phrase in ("second person", "past tense", "em dash", "exclamation", "you should", "never type a number",
-                   "name the month's result exactly once", "low_activity", "first half of the month",
-                   "expiration", "strike", "premium", "rolled out"):
+                   "low_activity", "red_month", "first half of the month", "expiration", "strike", "premium",
+                   "rolled out", "trade_counts", "trades_by_opening_day", "how_it_ended", "every trade it covers"):
         assert phrase in low, phrase
 
 
 # ---------------------------------------------------------------------------
-# Planted bad outputs fail with a clear reason each
+# The validator
 # ---------------------------------------------------------------------------
 
-def _plant(change, p="p09"):
-    d = good(p)
+def test_good_copy_passes(p09):
+    _, _, full = p09
+    copy, v = validate(good(), full)
+    assert v.passed, v.reasons()
+
+
+def _with(change):
+    d = good()
     change(d)
     return d
 
 
+def _obs(text):
+    return lambda d: d["observations"][0].__setitem__("text", text)
+
+
 BAD = {
-    "retired wording": (lambda d: d["sections"]["getting_in"].__setitem__(0, "You usually picked end dates {{median_entry_dte}} away."),
-                        "copy_rules", "end dates"),
-    "raw number": (lambda d: d["sections"]["getting_in"].__setitem__(0, "You usually opened trades expiring 21 days out."),
-                   "no_raw_numbers", "21"),
-    "banned word": (lambda d: d.__setitem__("one_liner", "You had a quiet month selling options for cash upfront."),
-                    "copy_rules", "quiet"),
-    "jargon": (lambda d: d["sections"]["getting_in"].__setitem__(0, "You usually sold strangles at the 16 delta strike {{median_entry_dte}} out."),
-               None, None),
-    "unknown placeholder": (lambda d: d["sections"]["managing"].__setitem__(0, "You rolled {{roll_count_total}}."),
-                            "known_facts", "roll_count_total"),
-    "unknown tile": (lambda d: d["glance_tiles"].__setitem__(0, "trades_ever"), "known_facts", "trades_ever"),
-    "advice": (lambda d: d.__setitem__("what_changed", "You should consider picking later end dates."),
-               "no_advice", "you should"),
-    "praise": (lambda d: d.__setitem__("one_liner", "Great job selling options for cash upfront."),
-               "no_praise", "great job"),
-    "consolation": (lambda d: d.__setitem__("what_changed", "It was a tough month, but it happens."),
-                    "no_praise", "tough month"),
-    "em dash": (lambda d: d.__setitem__("one_liner", "You sold options — and held them."), "copy_rules", "—"),
+    "raw number": (_obs("You sold 2 SBUX puts."), "no_raw_numbers", "2"),
+    "unknown placeholder": (_obs("You rolled {{rolls_total_ever}}."), "known_facts", "rolls_total_ever"),
+    "placeholder in heading": (lambda d: d["observations"][0].__setitem__("heading", "Sold on {{trade.t2.opened}}"),
+                               "known_facts", "must not contain placeholders"),
+    "banned word": (_obs("It was a quiet month."), "copy_rules", "quiet"),
+    "bet": (_obs("Each put was a bet on SBUX."), "copy_rules", "bet"),
+    "jargon": (_obs("You sold puts at a low delta."), "copy_rules", "delta"),
+    "retired wording": (_obs("You picked end dates a few weeks out."), "copy_rules", "end dates"),
+    "em dash": (_obs("You sold puts — and held them."), "copy_rules", "—"),
     "exclamation": (lambda d: d.__setitem__("subject_line", "Your October!"), "copy_rules", "!"),
-    "too long": (lambda d: d.__setitem__("one_liner", "You sold options " * 12), "schema_and_lengths", "characters"),
-    "subject too long": (lambda d: d.__setitem__("subject_line", "Your October, trade by trade, every single one of them"),
-                         "schema_and_lengths", "subject_line"),
-    "four lines": (lambda d: d["sections"]["getting_out"].extend(["a.", "b."]), "schema_and_lengths", "getting_out"),
-    "red month without market": (lambda d: d.__setitem__("results_line", "Your account ended the month {{month_return}}."),
-                                 "red_month", "market"),
-    "loss named twice": (lambda d: d.__setitem__("what_changed", "Your account changed by {{month_pnl}}."),
-                         "red_month", "named 2 times"),
+    "advice": (_obs("You should consider rolling earlier."), "no_advice", "you should"),
+    "praise": (_obs("Great job on the SBUX puts."), "no_praise", "great"),
+    "consolation": (_obs("It was a tough month, but it happens."), "no_praise", "tough month"),
+    "month's result": (_obs("Your account ended {{month_return}}."), "results_left_to_code", "month_return"),
+    "doubled unit": (_obs("You held the first SBUX put {{trade.t2.held}} days."), "no_doubled_units", "repeats 'days'"),
+    "repeated word": (lambda d: d.__setitem__("overall", "You sold puts and sold more puts and puts puts away."),
+                      "no_doubled_units", "repeats the word 'puts'"),
+    "too long": (_obs("You sold puts. " * 40), "schema_and_lengths", "characters"),
+    "one observation": (lambda d: d["observations"].pop(), "schema_and_lengths", "observations"),
     "not json": (None, "schema_and_lengths", "not a valid RecapCopy"),
-    "doubled unit": (lambda d: d["sections"]["getting_out"].__setitem__(0, "You ended {{stories_ended}} trades this month."),
-                     "no_doubled_units", "repeats 'trades'"),
-    "doubled unit, singular": (lambda d: d["sections"]["getting_out"].__setitem__(0, "Only {{losses}} new trades lost money."),
-                               "no_doubled_units", "repeats 'trades'"),
 }
 
 
 @pytest.mark.parametrize("name", sorted(BAD))
-def test_planted_bad_output_fails_with_reason(sheets, name):
+def test_planted_bad_output_fails_with_reason(p09, name):
     change, check, needle = BAD[name]
-    raw = "{not json" if change is None else _plant(change)
-    _, v = validate(raw, sheets["p09"])
+    raw = "{not json" if change is None else _with(change)
+    _, v = validate(raw, p09[2])
     assert not v.passed, name
     failed = {c.name: c.reasons for c in v.checks if not c.passed}
-    if check:
-        assert check in failed, (name, failed)
-        assert any(needle.lower() in r.lower() for r in failed[check]), (name, failed[check])
-    else:   # jargon: any of the copy-rule checks names it
-        assert any("jargon" in r for rs in failed.values() for r in rs), failed
+    assert check in failed, (name, failed)
+    assert any(needle.lower() in r.lower() for r in failed[check]), (name, failed[check])
 
 
-def test_glance_tiles_need_one_short_value_each(fresh):
-    sheet = facts_for(fresh / "raw", "2026-10", "p08")[1]
-    by_display = {}
-    for f in sheet.facts:
-        by_display.setdefault(f.display, []).append(f.id)
-    twins = next(ids for d, ids in by_display.items() if len(ids) > 1 and len(d) <= 32 and ", " not in d)
-    listy = next(f.id for f in sheet.facts if ", " in f.display)
-    short = [f.id for f in sheet.facts if len(f.display) <= 12 and f.id not in twins][:2]
-
-    def reasons(tiles):
-        d = good("p09") | {"glance_tiles": tiles}
-        _, v = validate(d, sheet)
-        return [r for c in v.checks if c.name == "glance_tiles" for r in c.reasons]
-
-    assert reasons(short + [twins[0]]) == []
-    assert any("the same as" in r for r in reasons(short + twins[:2]))
-    assert any("not a list" in r for r in reasons(short + [listy]))
+def test_a_trade_cited_in_a_passage_must_be_named_in_it(p09, cases):
+    sheet, linked, _ = p09
+    c = compose(sheet, linked)
+    nke = next(t["ref"] for t in c.trades if t["underlying"] == "NKE")
+    # an NKE trade's date in a passage that only names SBUX
+    bad = _with(_obs(f"Your SBUX put was opened {{{{trade.{nke}.opened}}}}."))
+    reasons = " ".join(validate(bad, c.sheet, c.trades)[1].reasons())
+    assert "trades_named" in reasons and "a NKE trade, but never names NKE" in reasons
+    assert validate(good(), c.sheet, c.trades)[1].passed
 
 
-def test_doubled_unit_check_leaves_normal_sentences_alone(sheets):
-    sheet = sheets["p09"]
-    for line in ("Of {{stories_ended}} that ended, {{losses}} ended with a loss.",
-                 "Your largest loss was {{biggest_loss}}, about the same as the premium collected.",
-                 "You usually opened trades expiring {{median_entry_dte}} out.",
-                 "You usually kept a trade for {{median_days_held}}; most trades closed early."):
-        assert validate_copy.doubled_units(line, sheet) == [], line
+def test_sentences_opening_with_a_value_are_capitalized(p09):
+    from pipeline.render import sentence
+    _, _, full = p09
+    out = sentence("You held them. {{group.winning.bought_back_before_expiration_day}} winning trades ended early.", full)
+    assert "You held them. Both winning trades" in out
 
 
-def _length_reasons(line: str, sheet) -> list[str]:
-    _, v = validate(_plant(lambda d: d.__setitem__("one_liner", line)), sheet)
-    return [r for c in v.checks if c.name == "schema_and_lengths" for r in c.reasons]
+def test_low_activity_allows_at_most_one_observation(cases):
+    linked, sheet = cases["p01"]
+    assert "low_activity" in sheet.flags
+    full = compose(sheet, linked).sheet
+    d = {"overall": "You added to funds you already held.", "subject_line": "Your October", "observations": []}
+    assert validate(d, full)[1].passed
+    d["observations"] = [{"heading": "One", "text": "You held funds."}, {"heading": "Two", "text": "You held more."}]
+    reasons = " ".join(validate(d, full)[1].reasons())
+    assert "need 0 to 1" in reasons
 
 
-def test_line_length_counts_filled_text_not_placeholder_names(sheets):
-    """The prompt promises 160 characters after filling; the validator must count the same way."""
-    sheet = sheets["p09"]
-    shrinks = min(sheet.facts, key=lambda f: len(f.display) - len(f.id))
-    grows = max(sheet.facts, key=lambda f: len(f.display) - len(f.id))
-    assert len(shrinks.display) < len(shrinks.id) + 4 and len(grows.display) > len(grows.id) + 4
+# ---------------------------------------------------------------------------
+# What code writes, and rendering
+# ---------------------------------------------------------------------------
 
-    # Over 160 as typed, under 160 as read: passes.
-    line = "You opened trades " + f"{{{{{shrinks.id}}}}} " * 3
-    line += "and closed them " * ((165 - len(line)) // 16 + 1)
-    assert len(line) > 160 and len(validate_copy.filled(line, sheet)) <= 160
-    assert not _length_reasons(line, sheet)
-
-    # Under 160 as typed, over 160 as read: fails, and the reason says so.
-    base = f"You traded {{{{{grows.id}}}}} " * 3
-    line = base + "a" * (160 - len(base) - 1)
-    assert len(line) <= 160 < len(validate_copy.filled(line, sheet))
-    reasons = _length_reasons(line, sheet)
-    assert reasons and "once the placeholders are filled" in reasons[0]
+def test_red_month_names_the_loss_once_beside_the_market(p09):
+    sheet, linked, full = p09
+    text = render_text(RecapCopy.model_validate(good()), sheet, linked)
+    shown = {f.id: f.display for f in full.facts}
+    assert text.count(shown["month_return"]) == 1
+    line = next(l for l in text.splitlines() if shown["month_return"] in l)
+    assert shown["spy_move"] in line
 
 
-def test_short_month_rules(sheets):
-    d = good("p01")
-    d["sections"]["managing"] = ["You held your funds."]
-    d["glance_tiles"].append("month_return")
-    _, v = validate(d, sheets["p01"])
-    reasons = " ".join(v.reasons())
-    assert "must be empty" in reasons and "glance tiles" in reasons
+def test_render_fills_every_placeholder_and_keeps_the_fine_print(p09):
+    sheet, linked, _ = p09
+    text = render_text(RecapCopy.model_validate(good()), sheet, linked)
+    assert "{{" not in text and "Riley, here is your October 2026." in text
+    for head in ("AT A GLANCE", "GETTING IN", "WHAT STOOD OUT", "HOW IT TURNED OUT", "FINE PRINT"):
+        assert head in text, head
+    assert "Your SBUX puts were bought back early. The SBUX put opened Oct 1" in text
 
 
-def test_render_rejects_unknown_placeholder(sheets):
-    copy, _ = validate(EXAMPLES["p04"], sheets["p04"])
-    bad = copy.model_copy(update={"one_liner": "You moved {{not_a_fact}}."})
+def test_render_rejects_unknown_placeholder(p09):
+    sheet, linked, _ = p09
+    bad = RecapCopy.model_validate(_with(_obs("You rolled {{not_a_fact}}.")))
     with pytest.raises(UnknownPlaceholder):
-        render_text(bad, sheets["p04"])
+        render_text(bad, sheet, linked)
 
 
-def test_render_capitalizes_a_line_that_opens_with_a_placeholder(sheets):
-    sheet = sheets["p09"]
-    fact = next(f for f in sheet.facts if f.display[:1].islower())
-    copy, _ = validate(EXAMPLES["p09"], sheet)
-    line = f"{{{{{fact.id}}}}} stayed with your winning trades."
-    text = render_text(copy.model_copy(update={"what_changed": line}), sheet)
-    assert fact.display[:1].upper() + fact.display[1:] + " stayed with" in text
-    assert fact.display + " stayed with" not in text
+def test_code_written_lines_use_trader_terms_and_no_retired_wording(cases):
+    rules = copy_rules()
+    for linked, sheet in cases.values():
+        c = compose(sheet, linked)
+        lines = sum(c.sections.values(), []) + [c.results_line, c.what_changed] + [t.plain for t in c.tiles]
+        for line in filter(None, lines):
+            assert "{{" not in line
+            assert not validate_copy._phrases(line, rules["banned"] + rules["jargon"] + rules["retired"]), line
 
 
-def test_render_teaser_capitalizes_the_value_not_the_line(sheets):
-    """A teaser reads "<value> <line>", so the line continues the value."""
-    sheet = sheets["p09"]
-    fact = next(f for f in sheet.facts if f.display[:1].islower())
-    d = good("p09")
-    d["teasers"] = [{"fact": fact.id, "line": "of the cash stayed with your winning trades."}]
-    copy, _ = validate(d, sheet)
-    text = render_text(copy, sheet)
-    assert fact.display[:1].upper() + fact.display[1:] + " of the cash stayed" in text
-    assert " Of the cash stayed" not in text
+def test_low_activity_recap_has_no_sections(cases):
+    linked, sheet = cases["p01"]
+    c = compose(sheet, linked)
+    assert all(not v for v in c.sections.values()) and len(c.tiles) <= 3
 
 
 # ---------------------------------------------------------------------------
@@ -220,35 +194,34 @@ def fake(*outputs, stop="end_turn"):
     return call
 
 
-CFG = ModelConfig.load()
-
-
-def test_first_try_passes(sheets):
-    call = fake(good())
-    res = write_recap(sheets["p09"], CFG, call)
+def test_first_try_passes(p09):
+    sheet, linked, _ = p09
+    res = write_recap(sheet, linked, CFG, fake(good()))
     assert res.status == "passed" and len(res.attempts) == 1 and res.recap is not None
-    assert res.prompt_version == PROMPT_VERSION and len(res.prompt_sha256) == 64
+    assert res.prompt_version == CFG.prompt_version and len(res.prompt_sha256) == 64
 
 
-def test_retry_once_with_reasons(sheets):
-    bad = _plant(BAD["raw number"][0])
-    call = fake(bad, good())
-    res = write_recap(sheets["p09"], CFG, call)
+def test_retry_once_with_reasons(p09):
+    sheet, linked, _ = p09
+    call = fake(_with(BAD["raw number"][0]), good())
+    res = write_recap(sheet, linked, CFG, call)
     assert res.status == "passed" and len(res.attempts) == 2
     assert "failed these checks" in call.calls[1] and "no_raw_numbers" in call.calls[1]
 
 
-def test_two_failures_go_to_review(sheets, tmp_path, fresh):
-    bad = _plant(BAD["advice"][0])
-    res = write_recap(sheets["p09"], CFG, fake(bad, bad))
+def test_two_failures_go_to_review(p09, tmp_path, fresh):
+    sheet, linked, _ = p09
+    bad = _with(BAD["advice"][0])
+    res = write_recap(sheet, linked, CFG, fake(bad, bad))
     assert res.status == "review" and res.recap is None and len(res.attempts) == 2
     run("2026-10", "p09", fresh / "raw", tmp_path, cfg=CFG, call=fake(bad, bad))
     assert (tmp_path / "2026-10" / "review" / "p09.json").exists()
     assert not (tmp_path / "2026-10" / "p09" / "recap.txt").exists()
 
 
-def test_refusal_goes_to_review(sheets):
-    res = write_recap(sheets["p09"], CFG, fake("", stop="refusal"))
+def test_refusal_goes_to_review(p09):
+    sheet, linked, _ = p09
+    res = write_recap(sheet, linked, CFG, fake("", stop="refusal"))
     assert res.status == "review"
     assert res.attempts[0].validation.checks[0].name == "model_refused"
 
@@ -263,11 +236,18 @@ def test_cli_writes_recap(fresh, tmp_path):
 # What the model is sent
 # ---------------------------------------------------------------------------
 
-def test_user_turn_is_the_facts_sheet_without_sources(sheets):
-    u = json.loads(user_turn(sheets["p09"]))
-    assert u["customer_id"] == "p09" and u["facts"]
-    assert all("sources" not in f for f in u["facts"])
-    assert user_turn(sheets["p09"]) == user_turn(sheets["p09"])      # stable bytes, cache friendly
+def test_user_turn_has_facts_counts_and_trades_but_no_sources(p09):
+    sheet, linked, _ = p09
+    c = compose(sheet, linked)
+    u = json.loads(user_turn(c))
+    days = u["trades_by_opening_day"]
+    assert u["first_name"] == "Riley" and u["month_facts"] and u["trade_counts"] and sum(len(d["trades"]) for d in days) == 4
+    assert [d["opened"] for d in days] == ["Sep 21", "Oct 1", "Oct 20", "Oct 29"]
+    assert "first_month" in sheet.flags and "first_month" not in u["flags"]   # read as "your first month"
+    assert all("sources" not in f for f in u["month_facts"] + u["trade_counts"])
+    assert {t["how_it_ended"] for d in days for t in d["trades"]} >= {"bought back before its expiration day"}
+    assert u["already_in_the_recap"]["results_line"].startswith("Your account ended the month")
+    assert user_turn(c) == user_turn(compose(sheet, linked))       # stable bytes, cache friendly
 
 
 class _FakeClient:
@@ -291,14 +271,16 @@ class _FakeClient:
 
 @pytest.mark.parametrize("model,fallback", [("claude-opus-5-5", True), ("claude-sonnet-5-5", True),
                                             ("claude-haiku-5-5", False)])
-def test_request_shape(sheets, model, fallback):
+def test_request_shape(p09, model, fallback):
+    sheet, linked, _ = p09
     client = _FakeClient()
     cfg = ModelConfig.load(model=model)
-    anthropic_caller(client)(cfg, "SYSTEM", user_turn(sheets["p09"]))
+    anthropic_caller(client)(cfg, "SYSTEM", user_turn(compose(sheet, linked)))
     kw = client.sent
     assert kw["model"] == model
     assert kw["system"][0]["cache_control"] == {"type": "ephemeral"}
     assert kw["output_config"]["format"]["type"] == "json_schema"
+    assert kw["output_config"]["format"]["schema"]["required"] == ["overall", "observations", "subject_line"]
     assert kw["output_config"]["effort"] == cfg.effort
     assert "temperature" not in kw and "thinking" not in kw
     assert ("fallbacks" in kw) == fallback

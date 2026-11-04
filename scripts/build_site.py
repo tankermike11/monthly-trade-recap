@@ -55,12 +55,12 @@ def build_site_data(results: Path) -> list[dict]:
             raise SystemExit(f"{results} was made with {res.model} / {res.prompt_version}; the site needs "
                              f"{cfg.model} / {cfg.prompt_version}. Run pipeline.compare first.")
         raw = load_month(folder)
-        sheet = facts_for(REPO / "data" / "raw", MONTH, pid)[1]
+        linked, sheet = facts_for(REPO / "data" / "raw", MONTH, pid)
         spec = yaml.safe_load(next((REPO / "mock" / "personas").glob(f"{pid}_*.yaml")).read_text(encoding="utf-8"))
         workbook = f"{pid}_{raw.account.first_name.lower()}_{MONTH}.xlsx"
         _write(REPO / "site" / "downloads" / workbook, write_workbook(raw))
         personas.append({"id": pid, "summary": " ".join(str(spec.get("summary", "")).split()),
-                         "workbook": workbook, **payload(sheet, res, cfg, [])})
+                         "workbook": workbook, **payload(sheet, linked, res, cfg, [])})
     _write(REPO / "site" / "data" / "personas.json",
            json.dumps(personas, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
     return personas

@@ -45,14 +45,14 @@ def _dump(obj) -> str:
     return json.dumps(obj, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
 
 
-def write_stage(sheet: FactsSheet, folder: Path, review_dir: Path, cfg, call=None):
+def write_stage(sheet: FactsSheet, linked: LinkResult, folder: Path, review_dir: Path, cfg, call=None):
     from pipeline.render import render_text
     from pipeline.write import write_recap
 
-    result = write_recap(sheet, cfg, call=call)
+    result = write_recap(sheet, linked, cfg, call=call)
     if result.status == "passed":
         _write(folder / "recap.json", _dump(result.model_dump(mode="json")))
-        _write(folder / "recap.txt", render_text(result.recap, sheet))
+        _write(folder / "recap.txt", render_text(result.recap, sheet, linked))
     else:
         _write(review_dir / f"{sheet.customer_id}.json", _dump(result.model_dump(mode="json")))
     return result
@@ -69,7 +69,7 @@ def run(month: str, customer: str | None, raw_root: Path, out_root: Path, cfg=No
         }))
         _write(folder / "facts.json", _dump(sheet.model_dump(mode="json")))
         if cfg is not None:
-            res = write_stage(sheet, folder, out_root / month / "review", cfg, call)
+            res = write_stage(sheet, linked, folder, out_root / month / "review", cfg, call)
             print(f"{cid}: {res.status} after {len(res.attempts)} attempt(s)")
         written.append(folder)
     return written

@@ -2,13 +2,12 @@
 
 {{ first_name }}, here is your {{ month_name }}.
 
-{{ one_liner }}
+{{ overall }}
 
 AT A GLANCE
 {% for t in tiles %}
 - {{ t.display }}: {{ t.plain }}
 {% endfor %}
-{% if not short %}
 {% for title, lines in sections %}
 {% if lines %}
 
@@ -16,6 +15,15 @@ AT A GLANCE
 {% for line in lines %}
 - {{ line }}
 {% endfor %}
+{% endif %}
+{% endfor %}
+{% if observations %}
+
+WHAT STOOD OUT
+{% for o in observations %}
+{{ o.heading }}. {{ o.text }}
+{% if not loop.last %}
+
 {% endif %}
 {% endfor %}
 {% endif %}
@@ -39,12 +47,6 @@ Going into next month: {{ open }}.
 
 WHAT CHANGED
 {{ what_changed }}
-{% endif %}
-{% if teasers %}
-
-{% for t in teasers %}
-{{ t.display }} {{ t.line }}
-{% endfor %}
 {% endif %}
 
 FINE PRINT

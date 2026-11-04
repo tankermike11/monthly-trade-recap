@@ -1,41 +1,25 @@
-"""PROTOTYPE: a different split of work between code and Claude (not wired into the site).
+"""Stage 4a: everything code writes in a recap, and the per-trade facts Claude writes from.
 
-Today's recap asks Claude to restate single facts ("You usually opened trades expiring
-{{median_entry_dte}} out"), which code can do. This prototype:
+Code writes every single-fact sentence (getting in, managing, getting out), picks the
+at-a-glance tiles, and writes the results line (the month's result beside the market
+move, so a losing month is named once, next to the market, by construction) and what
+changed. Claude (pipeline/write.py) writes only the overall picture and the
+observations, from the month's facts plus every trade.
 
-- code writes every single-fact sentence (getting in, managing, getting out), the at a
-  glance tiles, the results line and what changed, from fixed templates;
-- Claude gets the month's facts plus every trade (ticker, strategy, dates, rolls, outcome,
-  each number behind a placeholder) and writes only what code cannot: an overall
-  picture and two or three observations about how this customer traded, in the voice
-  of the curated written report;
-- the same guardrails check Claude's words: no typed numbers, only real facts, trader
-  terms without shorthand, no advice, no praise, no doubled units, and the month's
-  result is left to the code-written results line.
+Per-trade facts ("trade.t3.opened") and group counts ("group.losing.expired") join the
+facts sheet for writing and rendering, so every number Claude places still comes from
+code through a placeholder. Group counts let words like "every" or "both" rest on a
+count instead of Claude's reading of the trade list.
 """
 
 from __future__ import annotations
 
-import hashlib
-import json
-import re
-from dataclasses import dataclass, field
-from pathlib import Path
+from dataclasses import dataclass
 
 from pipeline import display as D
 from pipeline.link import LinkResult
 from pipeline.nytime import ny_date
-from pipeline.render import MONTHS
-from pipeline.validate_copy import (PLACEHOLDER, RESULTS_FACTS, _phrases, copy_rules, doubled_units, filled,
-                                    placeholders)
-from pipeline.write import ModelConfig, ModelReply, NO_SERVER_FALLBACK, cost
 from schemas.facts import Fact, FactsSheet
-from schemas.raw import RawMonth
-
-REPO = Path(__file__).resolve().parent.parent
-PROMPT_VERSION = "narrative_proto_v3"
-NARRATIVE_BANNED = ["bet", "bets", "betting"]   # fold into config/copy_rules.yaml if this approach is adopted
-MAX_OVERALL, MAX_OBSERVATION, MAX_HEADING = 600, 450, 60
 
 STRATEGY = {"stock_long": "shares", "stock_short": "a short stock position", "long_call": "a long call",
             "long_put": "a long put", "short_call": "a short call", "short_put": "a short put",
@@ -79,7 +63,7 @@ TILE_ORDER = ["stories_opened", "stories_ended", "rolls_total", "credit_roll_sha
 
 
 def _day(d) -> str:
-    return f"{MONTHS[d.month - 1][:3]} {d.day}"
+    return f"{D.MONTHS[d.month - 1][:3]} {d.day}"
 
 
 def _cap(s: str) -> str:
@@ -139,15 +123,19 @@ def trade_facts(sheet: FactsSheet, linked: LinkResult) -> tuple[list[Fact], list
 
 def group_facts(linked: LinkResult) -> list[Fact]:
     """Counts across trades, computed by code, so "every", "both" and "most" can come
-    from a fact instead of Claude's reading of the trade list. Display: "3 of 5"."""
+    from a fact instead of Claude's reading of the trade list. Display: "3 of 5",
+    "all 10", "none of the 4", "both", "neither of the 2"."""
     stories = linked.stories
     ended = [s for s in stories if s.status != "open"]
     out: list[Fact] = []
 
     def add(key: str, members: list, pool: list, plain: str):
         if pool:
-            out.append(Fact(id=f"group.{key}", section="managing", value=f"{len(members)}/{len(pool)}",
-                            display=f"{len(members)} of {len(pool)}", plain=plain, weight=0.5,
+            k, n = len(members), len(pool)
+            shown = ("both" if k == n == 2 else "neither of the 2" if k == 0 and n == 2 else
+                     f"all {n}" if k == n and n > 1 else f"none of the {n}" if k == 0 else f"{k} of {n}")
+            out.append(Fact(id=f"group.{key}", section="managing", value=f"{k}/{n}",
+                            display=shown, plain=plain, weight=0.5,
                             sources=[f"story:{s.story_id}" for s in pool]))
 
     for name, pool in (("winning", [s for s in ended if s.realized_pnl > 0]), ("losing", [s for s in ended if s.realized_pnl < 0])):
@@ -235,165 +223,25 @@ def code_what_changed(sheet: FactsSheet) -> str:
     return ""
 
 
-# ---------------------------------------------------------------------------
-# Claude's part
-# ---------------------------------------------------------------------------
+@dataclass(frozen=True)
+class Composed:
+    sheet: FactsSheet            # the month's facts plus per-trade facts and group counts
+    trades: list[dict]           # one brief per trade, for the model
+    sections: dict[str, list[str]]
+    tiles: list[Fact]
+    results_line: str
+    what_changed: str
 
-OUTPUT_SCHEMA = {
-    "type": "object", "additionalProperties": False,
-    "required": ["overall", "observations", "subject_line"],
-    "properties": {
-        "overall": {"type": "string"},
-        "observations": {"type": "array", "items": {
-            "type": "object", "additionalProperties": False, "required": ["heading", "text"],
-            "properties": {"heading": {"type": "string"}, "text": {"type": "string"}}}},
-        "subject_line": {"type": "string"},
-    },
-}
+    def code_written(self) -> dict:
+        """What code already wrote, shown to the model so it does not repeat it."""
+        return {"sections": self.sections, "tiles": [f"{t.display}: {t.plain}" for t in self.tiles],
+                "results_line": self.results_line, "what_changed": self.what_changed}
 
 
-def system_prompt() -> str:
-    return (REPO / "prompts" / f"{PROMPT_VERSION}.md").read_text(encoding="utf-8")
-
-
-def user_turn(sheet: FactsSheet, briefs: list[dict], code_parts: dict) -> str:
-    month_facts = [{"id": f.id, "display": f.display, "plain": f.plain} for f in sheet.facts
-                   if not f.id.startswith(("trade.", "group."))]
-    counts = [{"id": f.id, "display": f.display, "plain": f.plain} for f in sheet.facts if f.id.startswith("group.")]
-    return json.dumps({"first_name": sheet.first_name, "month": sheet.month, "flags": sheet.flags,
-                       "month_facts": month_facts, "trade_counts": counts, "trades": briefs,
-                       "already_in_the_recap": code_parts}, ensure_ascii=False, sort_keys=True)
-
-
-def anthropic_call(cfg: ModelConfig, system: str, user: str) -> ModelReply:
-    import anthropic
-
-    client = anthropic.Anthropic()
-    kwargs = dict(model=cfg.model, max_tokens=cfg.max_tokens,
-                  system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}],
-                  messages=[{"role": "user", "content": user}],
-                  output_config={"effort": cfg.effort, "format": {"type": "json_schema", "schema": OUTPUT_SCHEMA}})
-    if cfg.fallbacks and not cfg.model.startswith(NO_SERVER_FALLBACK):
-        resp = client.beta.messages.create(betas=["server-side-fallback-2026-07-01"], fallbacks=cfg.fallbacks, **kwargs)
-    else:
-        resp = client.messages.create(**kwargs)
-    text = next((b.text for b in resp.content if b.type == "text"), "")
-    u = resp.usage
-    return ModelReply(text, resp.stop_reason, {
-        "input_tokens": u.input_tokens, "output_tokens": u.output_tokens,
-        "cache_read_input_tokens": getattr(u, "cache_read_input_tokens", 0) or 0,
-        "cache_creation_input_tokens": getattr(u, "cache_creation_input_tokens", 0) or 0, "model": resp.model})
-
-
-def check(copy: dict, sheet: FactsSheet) -> list[str]:
-    """The guardrails, applied to Claude's narrative. Returns the problems (empty = pass)."""
-    rules = copy_rules()
-    known = {f.id for f in sheet.facts}
-    strings = [("overall", copy.get("overall", ""), MAX_OVERALL), ("subject_line", copy.get("subject_line", ""), 50)]
-    obs = copy.get("observations") or []
-    if not 2 <= len(obs) <= 3:
-        return [f"observations: need 2 or 3, got {len(obs)}"]
-    for i, o in enumerate(obs):
-        strings += [(f"observations[{i}].heading", o["heading"], MAX_HEADING), (f"observations[{i}].text", o["text"], MAX_OBSERVATION)]
-    r = []
-    for where, t, limit in strings:
-        if not t.strip():
-            r.append(f"{where} is empty")
-            continue
-        if len(filled(t, sheet)) > limit:
-            r.append(f"{where} is {len(filled(t, sheet))} characters once filled (max {limit})")
-        if re.findall(r"\d", PLACEHOLDER.sub("", t)):
-            r.append(f"{where} types a digit instead of using a placeholder")
-        for p in placeholders(t):
-            if p not in known:
-                r.append(f"{where} uses {{{{{p}}}}}, which is not a fact")
-            if p in RESULTS_FACTS:
-                r.append(f"{where} names the month's result; the results line already does")
-        if (where.endswith("heading") or where == "subject_line") and placeholders(t):
-            r.append(f"{where} must not contain placeholders")
-        for ch in rules["characters"]["forbidden"]:
-            if ch in t:
-                r.append(f"{where} contains {ch!r}")
-        for kind in ("banned", "jargon", "retired", "advice", "praise", "consolation"):
-            for w in _phrases(t, rules[kind]):
-                r.append(f"{where} uses {w!r} ({kind})")
-        for w in _phrases(t, NARRATIVE_BANNED):
-            r.append(f"{where} uses {w!r} (banned)")
-        r += [f"{where} {x}" for x in doubled_units(t, sheet)]
-        for m in re.finditer(r"\b([A-Za-z]+)\s+\1\b", filled(t, sheet), re.I):
-            r.append(f"{where} repeats the word {m.group(1)!r} once the placeholders are filled "
-                     f"(a display may already start with it, such as 'about 7 weeks')")
-    return r
-
-
-@dataclass
-class NarrativeResult:
-    status: str
-    copy: dict | None
-    attempts: list[dict] = field(default_factory=list)
-    cost_usd: float = 0.0
-    prompt_sha256: str = ""
-
-
-def write_narrative(sheet: FactsSheet, briefs: list[dict], code_parts: dict, cfg: ModelConfig, call=None) -> NarrativeResult:
-    call = call or anthropic_call
-    system = system_prompt()
-    user = user_turn(sheet, briefs, code_parts)
-    turn, attempts, copy = user, [], None
-    from schemas.recap import Attempt, CheckResult, ValidationResult, WriteResult
-    for _ in range(2):
-        reply = call(cfg, system, turn)
-        try:
-            copy = json.loads(reply.text)
-            problems = check(copy, sheet)
-        except (json.JSONDecodeError, KeyError, TypeError) as e:
-            copy, problems = None, [f"not valid output: {type(e).__name__}"]
-        attempts.append({"raw": reply.text, "problems": problems, "usage": reply.usage})
-        if not problems:
-            break
-        turn = (user + "\n\nYour previous draft failed these checks:\n" + "\n".join(f"- {p}" for p in problems)
-                + "\n\nPrevious draft:\n" + reply.text + "\n\nWrite a corrected version that passes every check.")
-    passed = not attempts[-1]["problems"]
-    fake = WriteResult(customer_id=sheet.customer_id, month=sheet.month, status="passed" if passed else "review", recap=None,
-                       attempts=[Attempt(raw_output=a["raw"], validation=ValidationResult(passed=not a["problems"], checks=[
-                           CheckResult(name="narrative", passed=not a["problems"], reasons=a["problems"])]),
-                           stop_reason=None, usage=a["usage"]) for a in attempts],
-                       model=cfg.model, effort=cfg.effort, max_tokens=cfg.max_tokens, prompt_version=PROMPT_VERSION,
-                       prompt_sha256=hashlib.sha256(system.encode()).hexdigest())
-    return NarrativeResult("passed" if passed else "review", copy if passed else None, attempts,
-                           round(cost(fake, cfg), 4), fake.prompt_sha256)
-
-
-# ---------------------------------------------------------------------------
-# Rendering
-# ---------------------------------------------------------------------------
-
-def render(sheet: FactsSheet, raw: RawMonth, code_parts: dict, tiles: list[Fact], narrative: dict | None) -> str:
-    f = {x.id: x.display for x in sheet.facts}
-    fill = lambda t: _cap(filled(t, sheet))  # noqa: E731
-    month = f"{MONTHS[int(sheet.month[5:7]) - 1]} {sheet.month[:4]}"
-    out = [f"{sheet.first_name}, here is your {month}.", ""]
-    if narrative:
-        out += ["OVERALL PICTURE", fill(narrative["overall"]), ""]
-    out += ["AT A GLANCE"] + [f"- {t.display}: {t.plain}" for t in tiles] + [""]
-    for sec, title in (("getting_in", "GETTING IN"), ("managing", "MANAGING"), ("getting_out", "GETTING OUT")):
-        if code_parts["sections"][sec]:
-            out += [title] + [f"- {x}" for x in code_parts["sections"][sec]] + [""]
-    if narrative:
-        out += ["WHAT STOOD OUT"]
-        for o in narrative["observations"]:
-            out += [f"{o['heading'].rstrip('.')}. {fill(o['text'])}", ""]
-    out += ["HOW IT TURNED OUT"]
-    if code_parts["results_line"]:
-        out.append(code_parts["results_line"])
-    if {"wins", "losses", "stories_ended"} <= set(f):
-        out.append(f"Of the {f['stories_ended']} that ended, {f['wins'].split()[0]} ended with a gain and "
-                   f"{f['losses'].split()[0]} with a loss.")
-    if "total_fees" in f:
-        out.append(f"Fees and commissions: {f['total_fees']}.")
-    out.append("")
-    if "open_stories" in f:
-        out += ["STILL OPEN", f"Going into next month: {f['open_stories']}.", ""]
-    if code_parts["what_changed"]:
-        out += ["WHAT CHANGED", code_parts["what_changed"], ""]
-    return "\n".join(out).rstrip() + "\n"
+def compose(sheet: FactsSheet, linked: LinkResult) -> Composed:
+    extra, briefs = trade_facts(sheet, linked)
+    full = with_trades(sheet, extra + group_facts(linked))
+    short = "low_activity" in sheet.flags
+    sections = {k: [] for k in SENTENCES} if short else code_sections(sheet)
+    return Composed(full, briefs, sections, code_tiles(sheet)[:3] if short else code_tiles(sheet),
+                    code_results_line(sheet), code_what_changed(sheet))

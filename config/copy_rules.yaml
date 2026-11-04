@@ -16,6 +16,9 @@ banned:
   - sharp
   - quiet
   - expensive
+  - bet
+  - bets
+  - betting
 
 # Shorthand and insider labels. Trader terms spelled out in full (expiration, strike,
 # premium, rolled out/in/up/down, strangle, iron condor, implied volatility) are allowed.

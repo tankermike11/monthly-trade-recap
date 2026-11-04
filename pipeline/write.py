@@ -1,7 +1,9 @@
-"""Stage 4: one Claude call per customer turns the facts sheet into RecapCopy (SPEC 4).
+"""Stage 4: one Claude call per customer writes the recap's overall picture and
+observations (RecapCopy, SPEC 4). Code writes the rest (pipeline/compose.py).
 
-- The system prompt (prompts/<version>.md) is cached; the user turn is the facts
-  sheet JSON only (sources left out; they are for audit, not for writing).
+- The system prompt (prompts/<version>.md) is cached; the user turn is JSON: the
+  month's facts, group counts, every trade (numbers as fact IDs) and what code has
+  already written. Sources stay out; they are for audit, not for writing.
 - Structured output (output_config.format) guarantees the JSON shape; the validator
   (pipeline/validate_copy.py) checks the content.
 - Fail once: retry with the failure reasons appended. Fail twice: status "review",
@@ -20,6 +22,8 @@ from pathlib import Path
 
 import yaml
 
+from pipeline.compose import Composed, compose
+from pipeline.link import LinkResult
 from pipeline.validate_copy import validate
 from schemas.facts import FactsSheet
 from schemas.recap import Attempt, WriteResult, output_schema
@@ -49,12 +53,30 @@ def system_prompt(version: str) -> str:
     return (REPO / "prompts" / f"{version}.md").read_text(encoding="utf-8")
 
 
-def user_turn(sheet: FactsSheet) -> str:
-    """The facts sheet as the model sees it: everything but the audit sources."""
-    d = sheet.model_dump(mode="json")
-    d["facts"] = [{k: v for k, v in f.items() if k != "sources"} for f in d["facts"]]
-    d.pop("data_quality_issues", None)
-    return json.dumps(d, sort_keys=True, ensure_ascii=False)
+def trades_by_day(c: Composed) -> list[dict]:
+    shown = {f.id: f.display for f in c.sheet.facts}
+    days: dict[str, list[dict]] = {}
+    for t in c.trades:
+        days.setdefault(shown[f"trade.{t['ref']}.opened"], []).append(t)
+    return [{"opened": day, "trades": ts} for day, ts in days.items()]
+
+
+def user_turn(c: Composed) -> str:
+    """What the model sees: the month's facts, group counts, every trade, and what code
+    already wrote. No audit sources, no data-quality issues."""
+    fact = lambda f: {"id": f.id, "display": f.display, "plain": f.plain}  # noqa: E731
+    return json.dumps({
+        # first_month only means there is no earlier month of data (code writes "what
+        # changed"); passed on, it read as "your first month" of trading.
+        "first_name": c.sheet.first_name, "month": c.sheet.month,
+        "flags": [f for f in c.sheet.flags if f != "first_month"],
+        "month_facts": [fact(f) for f in c.sheet.facts if not f.id.startswith(("trade.", "group."))],
+        "trade_counts": [fact(f) for f in c.sheet.facts if f.id.startswith("group.")],
+        # grouped by opening day, so a claim about a range of days covers every trade
+        # opened on each of them (a flat list read as "the first five trades")
+        "trades_by_opening_day": trades_by_day(c),
+        "already_in_the_recap": c.code_written(),
+    }, sort_keys=True, ensure_ascii=False)
 
 
 @dataclass(frozen=True)
@@ -104,10 +126,11 @@ def retry_turn(user: str, previous: str, reasons: list[str]) -> str:
             + "\n\nWrite a corrected version that passes every check.")
 
 
-def write_recap(sheet: FactsSheet, cfg: ModelConfig, call: Caller | None = None) -> WriteResult:
+def write_recap(sheet: FactsSheet, linked: LinkResult, cfg: ModelConfig, call: Caller | None = None) -> WriteResult:
     call = call or anthropic_caller()
     system = system_prompt(cfg.prompt_version)
-    user = user_turn(sheet)
+    composed = compose(sheet, linked)
+    user = user_turn(composed)
     attempts: list[Attempt] = []
     copy = None
     turn = user
@@ -119,7 +142,7 @@ def write_recap(sheet: FactsSheet, cfg: ModelConfig, call: Caller | None = None)
                                                                    reasons=["the model declined the request"])])
             copy = None
         else:
-            copy, v = validate(reply.text, sheet)
+            copy, v = validate(reply.text, composed.sheet, composed.trades)
         attempts.append(Attempt(raw_output=reply.text, validation=v, stop_reason=reply.stop_reason, usage=reply.usage))
         if v.passed:
             break

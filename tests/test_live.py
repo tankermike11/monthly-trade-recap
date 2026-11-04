@@ -28,29 +28,31 @@ def results(fresh):
     cfg = ModelConfig.load(model=os.environ.get("RECAP_MODEL"))
     out = {}
     for p in PERSONA_IDS:
-        sheet = facts_for(fresh / "raw", MONTH, p)[1]
-        out[p] = (sheet, write_recap(sheet, cfg))
+        linked, sheet = facts_for(fresh / "raw", MONTH, p)
+        out[p] = (sheet, linked, write_recap(sheet, linked, cfg))
     return out
 
 
 @pytest.mark.parametrize("p", PERSONA_IDS)
 def test_passes_with_at_most_one_retry(results, p):
-    sheet, res = results[p]
+    sheet, linked, res = results[p]
     assert res.status == "passed", [a.validation.reasons() for a in res.attempts]
     assert len(res.attempts) <= 2
-    render_text(res.recap, sheet)
+    render_text(res.recap, sheet, linked)
 
 
 def test_persona_9_names_the_loss_once_next_to_the_market(results):
-    _, res = results["p09"]
-    uses = [p for _, t in texts(res.recap) for p in placeholders(t) if p in RESULTS_FACTS]
-    assert len(uses) == 1
-    line = placeholders(res.recap.results_line)
-    assert any(p in RESULTS_FACTS for p in line) and any(p in MARKET_FACTS for p in line)
+    sheet, linked, res = results["p09"]
+    assert not [p for _, t in texts(res.recap) for p in placeholders(t) if p in RESULTS_FACTS]
+    shown = {f.id: f.display for f in sheet.facts}
+    text = render_text(res.recap, sheet, linked)
+    assert text.count(shown["month_return"]) == 1
+    line = next(l for l in text.splitlines() if shown["month_return"] in l)
+    assert any(shown[m] in line for m in MARKET_FACTS if m in shown)
 
 
 def test_rerun_passes_the_same_checks(results):
-    sheet, first = results["p09"]
-    again = write_recap(sheet, ModelConfig.load(model=os.environ.get("RECAP_MODEL")))
+    sheet, linked, first = results["p09"]
+    again = write_recap(sheet, linked, ModelConfig.load(model=os.environ.get("RECAP_MODEL")))
     assert again.status == first.status == "passed"
     assert again.prompt_sha256 == first.prompt_sha256
