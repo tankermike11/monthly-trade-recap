@@ -137,7 +137,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
         <p>Claude reads every trade and writes what code can't: the overall picture and what stood out, naming patterns and specific trades. Numbers go in as placeholders; it never types one.</p>
         <span><span class="who claude">Claude</span></span></div>
       <div class="card step"><span class="label">Checks</span><h3>Code checks the words</h3>
-        <p>Eight checks: lengths, no typed numbers, only real facts, trader terms without shorthand, no advice, no praise, the month's result left to code, no repeated units or words. One retry, then a person reviews it.</p>
+        <p>Code checks the wording: lengths, no typed numbers, only real facts, trader terms without shorthand, no advice, no praise, the month's result left to code. Then a second Claude call reads every sentence against the trades and flags anything false, overstated or not in the data. One rewrite, then a person reviews it.</p>
         <span><span class="who code">code</span></span></div>
       <div class="card step"><span class="label">Recap out</span><h3>Numbers filled in, recap rendered</h3>
         <p>Code fills each placeholder with its fact's value, adds its own lines and the results line beside the market move, and renders the recap: plain text now, a designed email later.</p>
@@ -221,6 +221,7 @@ const CHECK_NAMES = {
   no_advice: "No advice and no predictions",
   no_praise: "No praise for activity or wins, no consolation lines",
   results_left_to_code: "The month's result is left to the code-written line beside the market move",
+  claims_supported: "Every sentence checked against the trades by a second model call (nothing false, overstated or outside the data)",
   no_doubled_units: "No unit or word repeated around a value (\"53 trades new trades\", \"about about\")",
 };
 let personas = [];

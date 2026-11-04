@@ -12,7 +12,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -21,14 +22,14 @@
   "copy": {
    "observations": [
     {
-     "heading": "Your positions were built in stages before October",
-     "text": "You opened VTI and VXUS together on {{trade.t1.opened}}, added BND on {{trade.t3.opened}}, and then bought AAPL shares on {{trade.t4.opened}}. Nothing was closed this month, and {{group.trades.still_open}} positions were still open at month end."
+     "heading": "Broad funds held, with one single company",
+     "text": "Most of what you held was broad funds: VTI for US stocks, VXUS for international stocks and BND for bonds. AAPL, held since {{trade.t4.opened}}, was the one single company alongside them. None of these positions was opened or closed this month."
     }
    ],
-   "overall": "You held a portfolio of the broad funds VTI, VXUS and BND alongside AAPL shares, with {{group.trades.opened_before_month}} positions opened before this month and no new trades started. Rather than opening or closing positions, you carried your existing holdings through the month.",
-   "subject_line": "A month of holding your core positions"
+   "overall": "You held the same stock and fund positions through October: VTI and VXUS from {{trade.t1.opened}}, BND from {{trade.t3.opened}} and AAPL from {{trade.t4.opened}}. Your orders this month went to positions you already held, across {{active_days}}. You started no new trades and closed none out, so the portfolio you carried into the month was the one you carried out of it.",
+   "subject_line": "A month of holding your positions"
   },
-  "cost_usd": 0.0395,
+  "cost_usd": 0.0636,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -286,34 +287,10 @@
     "weight": 0.5
    },
    {
-    "display": "$21,532",
-    "id": "trade.t1.upfront",
-    "kind": "trade",
-    "plain": "debit paid when opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p01-0001"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
     "display": "Aug 4",
     "id": "trade.t2.opened",
     "kind": "trade",
     "plain": "date the trade was opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p01-0002"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
-    "display": "$11,027",
-    "id": "trade.t2.upfront",
-    "kind": "trade",
-    "plain": "debit paid when opened",
     "section": "managing",
     "source_examples": [
      "story:p01-0002"
@@ -334,34 +311,10 @@
     "weight": 0.5
    },
    {
-    "display": "$14,746",
-    "id": "trade.t3.upfront",
-    "kind": "trade",
-    "plain": "debit paid when opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p01-0003"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
     "display": "Sep 14",
     "id": "trade.t4.opened",
     "kind": "trade",
     "plain": "date the trade was opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p01-0004"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
-    "display": "$6,676",
-    "id": "trade.t4.upfront",
-    "kind": "trade",
-    "plain": "debit paid when opened",
     "section": "managing",
     "source_examples": [
      "story:p01-0004"
@@ -427,7 +380,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "A month of holding your core positions\n\nRobin, here is your October 2026.\n\nYou held a portfolio of the broad funds VTI, VXUS and BND alongside AAPL shares, with all 4 positions opened before this month and no new trades started. Rather than opening or closing positions, you carried your existing holdings through the month.\n\nAT A GLANCE\n- 2 days: days you placed at least one trade\n- 2 trades: trades you placed an order on this month\n- 4 trades: trades still open at the end of the month\n\nWHAT STOOD OUT\nYour positions were built in stages before October. You opened VTI and VXUS together on Aug 4, added BND on Aug 17, and then bought AAPL shares on Sep 14. Nothing was closed this month, and all 4 positions were still open at month end.\n\nHOW IT TURNED OUT\nYour account ended the month down 3.0%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 0 trades that ended, 0 ended with a gain and 0 with a loss.\nFees and commissions: $0.00.\n\nSTILL OPEN\nGoing into next month: VTI, VXUS, BND and AAPL.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "A month of holding your positions\n\nRobin, here is your October 2026.\n\nYou held the same stock and fund positions through October: VTI and VXUS from Aug 4, BND from Aug 17 and AAPL from Sep 14. Your orders this month went to positions you already held, across 2 days. You started no new trades and closed none out, so the portfolio you carried into the month was the one you carried out of it.\n\nAT A GLANCE\n- 2 days: days you placed at least one trade\n- 2 trades: trades you placed an order on this month\n- 4 trades: trades still open at the end of the month\n\nWHAT STOOD OUT\nBroad funds held, with one single company. Most of what you held was broad funds: VTI for US stocks, VXUS for international stocks and BND for bonds. AAPL, held since Sep 14, was the one single company alongside them. None of these positions was opened or closed this month.\n\nHOW IT TURNED OUT\nYour account ended the month down 3.0%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 0 trades that ended, 0 ended with a gain and 0 with a loss.\nFees and commissions: $0.00.\n\nSTILL OPEN\nGoing into next month: VTI, VXUS, BND and AAPL.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Already owns three broad funds and one company's stock. Adds a few shares of two of them early each month and otherwise leaves everything alone. The bond fund pays a small cash dividend at the start of each month.",
   "workbook": "p01_robin_2026-10.xlsx"
@@ -445,7 +398,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -454,22 +408,22 @@
   "copy": {
    "observations": [
     {
-     "heading": "You often traded both sides of one stock in a day",
-     "text": "On {{trade.t34.opened}} you bought PLTR shares twice and also opened a short PLTR position, and each of them closed with a gain, including your largest gain of {{trade.t34.result}}. On {{trade.t6.opened}} NVDA split the other way: the NVDA shares gained {{trade.t6.result}} while the NVDA short position lost {{trade.t7.result}}."
+     "heading": "You traded both directions in the same stocks",
+     "text": "On several days you went long and short the same stock: on {{trade.t33.opened}} you opened a PLTR short position alongside PLTR shares, and on {{trade.t64.opened}} you did the same in both PLTR and NVDA. On {{trade.t6.opened}} your NVDA shares ended with a gain of {{trade.t6.result}}, while your NVDA short ended with a loss of {{trade.t7.result}}."
     },
     {
-     "heading": "Shorting PLTR began in the second half",
-     "text": "In the first half of the month your NVDA short positions on {{trade.t4.opened}}, {{trade.t7.opened}} and {{trade.t15.opened}} each closed at a loss. From {{trade.t33.opened}} you also began shorting PLTR, and those PLTR shorts closed with gains on {{trade.t46.opened}}, {{trade.t53.opened}}, {{trade.t59.opened}} and {{trade.t67.opened}}, with {{trade.t50.opened}} the one loss at {{trade.t50.result}}."
+     "heading": "Winners and losers were handled the same way",
+     "text": "{{group.winning.ended_same_day_opened}} of your winning trades and {{group.losing.ended_same_day_opened}} of your losing trades ended the same day they were opened, and {{group.ended.next_day}} carried into the next day. Larger losses, such as the TSLA short on {{trade.t55.opened}} with a loss of {{trade.t55.result}} and the SOFI shares on {{trade.t18.opened}} with a loss of {{trade.t18.result}}, were also closed the same day."
     },
     {
-     "heading": "SOFI was where losses gathered",
-     "text": "Your SOFI shares bought on {{trade.t9.opened}}, {{trade.t13.opened}} and {{trade.t18.opened}} each closed at a loss, and a short SOFI position on {{trade.t28.opened}} was your largest single loss. Short SOFI positions on {{trade.t49.opened}} and {{trade.t52.opened}} also closed at a loss."
+     "heading": "Your early NVDA shorts lost, a later one gained",
+     "text": "The short NVDA positions you opened on {{trade.t4.opened}}, {{trade.t7.opened}} and {{trade.t15.opened}} each ended with a loss. The NVDA short on {{trade.t40.opened}} ended with a gain of {{trade.t40.result}}, while the one on {{trade.t65.opened}} ended with a loss of {{trade.t65.result}}."
     }
    ],
-   "overall": "You traded only stocks this month, moving between PLTR, TSLA, NVDA, AMD and SOFI and taking both sides: buying shares on most trades and opening short stock positions on others. Each trade was a day trade, with {{group.ended.same_day_opened}} ending the same day they were opened, so you went in and out of the same few names day after day and carried nothing overnight. {{outside_hours_share}} of your orders were placed outside regular market hours.",
-   "subject_line": "Your month of same-day stock trades, both sides"
+   "overall": "You day traded a short list of stocks in October: PLTR, TSLA, NVDA, AMD and SOFI, buying shares and also opening short stock positions in the same names. {{group.ended.same_day_opened}} of your trades ended the same day they were opened, with no adjustments along the way, so each trade was a single move in and out. {{wins}} ended with a gain and {{losses}} with a loss, and {{outside_hours_share}} of your orders were placed outside regular market hours.",
+   "subject_line": "Your October of same-day stock trades"
   },
-  "cost_usd": 0.1697,
+  "cost_usd": 0.2162,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -841,7 +795,7 @@
     "display": "$12,206",
     "id": "trade.t1.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0001"
@@ -901,7 +855,7 @@
     "display": "$13,530",
     "id": "trade.t2.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0002"
@@ -961,7 +915,7 @@
     "display": "$18,765",
     "id": "trade.t3.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0003"
@@ -1021,7 +975,7 @@
     "display": "$18,658",
     "id": "trade.t4.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0004"
@@ -1081,7 +1035,7 @@
     "display": "$16,391",
     "id": "trade.t5.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0005"
@@ -1141,7 +1095,7 @@
     "display": "$15,639",
     "id": "trade.t6.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0006"
@@ -1201,7 +1155,7 @@
     "display": "$20,080",
     "id": "trade.t7.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0007"
@@ -1261,7 +1215,7 @@
     "display": "$10,385",
     "id": "trade.t8.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0008"
@@ -1321,7 +1275,7 @@
     "display": "$15,492",
     "id": "trade.t9.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0009"
@@ -1381,7 +1335,7 @@
     "display": "$20,969",
     "id": "trade.t10.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0010"
@@ -1441,7 +1395,7 @@
     "display": "$15,895",
     "id": "trade.t11.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0011"
@@ -1501,7 +1455,7 @@
     "display": "$11,340",
     "id": "trade.t12.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0012"
@@ -1561,7 +1515,7 @@
     "display": "$15,700",
     "id": "trade.t13.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0013"
@@ -1621,7 +1575,7 @@
     "display": "$21,364",
     "id": "trade.t14.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0014"
@@ -1681,7 +1635,7 @@
     "display": "$16,477",
     "id": "trade.t15.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0015"
@@ -1741,7 +1695,7 @@
     "display": "$12,286",
     "id": "trade.t16.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0016"
@@ -1801,7 +1755,7 @@
     "display": "$8,152",
     "id": "trade.t17.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0017"
@@ -1861,7 +1815,7 @@
     "display": "$20,201",
     "id": "trade.t18.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0018"
@@ -1921,7 +1875,7 @@
     "display": "$21,307",
     "id": "trade.t19.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0019"
@@ -1981,7 +1935,7 @@
     "display": "$14,780",
     "id": "trade.t20.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0020"
@@ -2041,7 +1995,7 @@
     "display": "$11,429",
     "id": "trade.t21.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0021"
@@ -2101,7 +2055,7 @@
     "display": "$15,723",
     "id": "trade.t22.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0022"
@@ -2161,7 +2115,7 @@
     "display": "$19,686",
     "id": "trade.t23.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0023"
@@ -2221,7 +2175,7 @@
     "display": "$16,865",
     "id": "trade.t24.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0024"
@@ -2281,7 +2235,7 @@
     "display": "$8,450",
     "id": "trade.t25.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0025"
@@ -2341,7 +2295,7 @@
     "display": "$17,201",
     "id": "trade.t26.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0026"
@@ -2401,7 +2355,7 @@
     "display": "$14,990",
     "id": "trade.t27.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0027"
@@ -2461,7 +2415,7 @@
     "display": "$19,172",
     "id": "trade.t28.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0028"
@@ -2521,7 +2475,7 @@
     "display": "$15,702",
     "id": "trade.t29.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0029"
@@ -2581,7 +2535,7 @@
     "display": "$11,450",
     "id": "trade.t30.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0030"
@@ -2641,7 +2595,7 @@
     "display": "$20,105",
     "id": "trade.t31.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0031"
@@ -2701,7 +2655,7 @@
     "display": "$11,602",
     "id": "trade.t32.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0032"
@@ -2761,7 +2715,7 @@
     "display": "$15,827",
     "id": "trade.t33.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0033"
@@ -2821,7 +2775,7 @@
     "display": "$20,003",
     "id": "trade.t34.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0034"
@@ -2881,7 +2835,7 @@
     "display": "$15,929",
     "id": "trade.t35.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0035"
@@ -2941,7 +2895,7 @@
     "display": "$10,796",
     "id": "trade.t36.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0036"
@@ -3001,7 +2955,7 @@
     "display": "$10,020",
     "id": "trade.t37.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0037"
@@ -3061,7 +3015,7 @@
     "display": "$13,335",
     "id": "trade.t38.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0038"
@@ -3121,7 +3075,7 @@
     "display": "$15,019",
     "id": "trade.t39.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0039"
@@ -3181,7 +3135,7 @@
     "display": "$16,462",
     "id": "trade.t40.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0040"
@@ -3241,7 +3195,7 @@
     "display": "$20,206",
     "id": "trade.t41.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0041"
@@ -3301,7 +3255,7 @@
     "display": "$11,980",
     "id": "trade.t42.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0042"
@@ -3361,7 +3315,7 @@
     "display": "$17,593",
     "id": "trade.t43.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0043"
@@ -3421,7 +3375,7 @@
     "display": "$12,580",
     "id": "trade.t44.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0044"
@@ -3481,7 +3435,7 @@
     "display": "$17,356",
     "id": "trade.t45.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0045"
@@ -3541,7 +3495,7 @@
     "display": "$20,434",
     "id": "trade.t46.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0046"
@@ -3601,7 +3555,7 @@
     "display": "$20,210",
     "id": "trade.t47.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0047"
@@ -3661,7 +3615,7 @@
     "display": "$15,337",
     "id": "trade.t48.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0048"
@@ -3721,7 +3675,7 @@
     "display": "$9,960",
     "id": "trade.t49.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0049"
@@ -3781,7 +3735,7 @@
     "display": "$19,759",
     "id": "trade.t50.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0050"
@@ -3841,7 +3795,7 @@
     "display": "$15,322",
     "id": "trade.t51.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0051"
@@ -3901,7 +3855,7 @@
     "display": "$16,311",
     "id": "trade.t52.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0052"
@@ -3961,7 +3915,7 @@
     "display": "$21,255",
     "id": "trade.t53.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0053"
@@ -4021,7 +3975,7 @@
     "display": "$16,190",
     "id": "trade.t54.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0054"
@@ -4081,7 +4035,7 @@
     "display": "$22,304",
     "id": "trade.t55.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0055"
@@ -4141,7 +4095,7 @@
     "display": "$13,655",
     "id": "trade.t56.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0056"
@@ -4201,7 +4155,7 @@
     "display": "$10,801",
     "id": "trade.t57.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0057"
@@ -4261,7 +4215,7 @@
     "display": "$10,266",
     "id": "trade.t58.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0058"
@@ -4321,7 +4275,7 @@
     "display": "$12,752",
     "id": "trade.t59.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0059"
@@ -4381,7 +4335,7 @@
     "display": "$14,546",
     "id": "trade.t60.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0060"
@@ -4441,7 +4395,7 @@
     "display": "$12,844",
     "id": "trade.t61.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0061"
@@ -4501,7 +4455,7 @@
     "display": "$10,703",
     "id": "trade.t62.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0062"
@@ -4561,7 +4515,7 @@
     "display": "$10,082",
     "id": "trade.t63.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0063"
@@ -4621,7 +4575,7 @@
     "display": "$21,239",
     "id": "trade.t64.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0064"
@@ -4681,7 +4635,7 @@
     "display": "$18,304",
     "id": "trade.t65.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0065"
@@ -4741,7 +4695,7 @@
     "display": "$20,541",
     "id": "trade.t66.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0066"
@@ -4801,7 +4755,7 @@
     "display": "$19,757",
     "id": "trade.t67.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0067"
@@ -4861,7 +4815,7 @@
     "display": "$11,063",
     "id": "trade.t68.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0068"
@@ -4921,7 +4875,7 @@
     "display": "$14,010",
     "id": "trade.t69.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0069"
@@ -4981,7 +4935,7 @@
     "display": "$18,360",
     "id": "trade.t70.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p02-0070"
@@ -5113,7 +5067,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "Your month of same-day stock trades, both sides\n\nSam, here is your October 2026.\n\nYou traded only stocks this month, moving between PLTR, TSLA, NVDA, AMD and SOFI and taking both sides: buying shares on most trades and opening short stock positions on others. Each trade was a day trade, with all 70 ending the same day they were opened, so you went in and out of the same few names day after day and carried nothing overnight. 1 in 5 of your orders were placed outside regular market hours.\n\nAT A GLANCE\n- 70 trades: new trades you started\n- the same day: how long you usually kept a trade\n- $141 on SOFI: your largest loss on a single trade\n- 22 days: days you placed at least one trade\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it.\n\nWHAT STOOD OUT\nYou often traded both sides of one stock in a day. On Oct 16 you bought PLTR shares twice and also opened a short PLTR position, and each of them closed with a gain, including your largest gain of $153. On Oct 5 NVDA split the other way: the NVDA shares gained $62.35 while the NVDA short position lost $88.65.\n\nShorting PLTR began in the second half. In the first half of the month your NVDA short positions on Oct 2, Oct 5 and Oct 7 each closed at a loss. From Oct 16 you also began shorting PLTR, and those PLTR shorts closed with gains on Oct 21, Oct 26, Oct 27 and Oct 29, with Oct 22 the one loss at $104.\n\nSOFI was where losses gathered. Your SOFI shares bought on Oct 6, Oct 7 and Oct 9 each closed at a loss, and a short SOFI position on Oct 14 was your largest single loss. Short SOFI positions on Oct 22 and Oct 23 also closed at a loss.\n\nHOW IT TURNED OUT\nYour account ended the month down 0.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 70 trades that ended, 36 ended with a gain and 34 with a loss.\nFees and commissions: $25.22.\n\nWHAT CHANGED\nNew trades you opened: 31 in the first half of the month, 39 in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "Your October of same-day stock trades\n\nSam, here is your October 2026.\n\nYou day traded a short list of stocks in October: PLTR, TSLA, NVDA, AMD and SOFI, buying shares and also opening short stock positions in the same names. All 70 of your trades ended the same day they were opened, with no adjustments along the way, so each trade was a single move in and out. 36 trades ended with a gain and 34 trades with a loss, and 1 in 5 of your orders were placed outside regular market hours.\n\nAT A GLANCE\n- 70 trades: new trades you started\n- the same day: how long you usually kept a trade\n- $141 on SOFI: your largest loss on a single trade\n- 22 days: days you placed at least one trade\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it.\n\nWHAT STOOD OUT\nYou traded both directions in the same stocks. On several days you went long and short the same stock: on Oct 16 you opened a PLTR short position alongside PLTR shares, and on Oct 29 you did the same in both PLTR and NVDA. On Oct 5 your NVDA shares ended with a gain of $62.35, while your NVDA short ended with a loss of $88.65.\n\nWinners and losers were handled the same way. All 36 of your winning trades and all 34 of your losing trades ended the same day they were opened, and none of the 70 carried into the next day. Larger losses, such as the TSLA short on Oct 26 with a loss of $126 and the SOFI shares on Oct 9 with a loss of $122, were also closed the same day.\n\nYour early NVDA shorts lost, a later one gained. The short NVDA positions you opened on Oct 2, Oct 5 and Oct 7 each ended with a loss. The NVDA short on Oct 20 ended with a gain of $66.84, while the one on Oct 29 ended with a loss of $99.21.\n\nHOW IT TURNED OUT\nYour account ended the month down 0.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 70 trades that ended, 36 ended with a gain and 34 with a loss.\nFees and commissions: $25.22.\n\nWHAT CHANGED\nNew trades you opened: 31 in the first half of the month, 39 in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Buys and sells the same shares within the same day, about three times a day, in a handful of fast-moving stocks. Some trades start before the market opens. Takes a small gain or a small loss quickly and is always out of every stock before the close.",
   "workbook": "p02_sam_2026-10.xlsx"
@@ -5133,6 +5087,24 @@
      "no_doubled_units",
      "trades_named"
     ],
+    "passed": false,
+    "reasons": [
+     "schema_and_lengths: subject_line is 51 characters once the placeholders are filled (max 50)"
+    ]
+   },
+   {
+    "checks": [
+     "schema_and_lengths",
+     "no_raw_numbers",
+     "known_facts",
+     "copy_rules",
+     "no_advice",
+     "no_praise",
+     "results_left_to_code",
+     "no_doubled_units",
+     "trades_named",
+     "claims_supported"
+    ],
     "passed": true,
     "reasons": []
    }
@@ -5140,22 +5112,18 @@
   "copy": {
    "observations": [
     {
-     "heading": "You went back to INTC after closing it",
-     "text": "Your first INTC put, opened {{trade.t2.opened}}, was bought back on {{trade.t2.ended}} with {{trade.t2.left_at_close}} left before expiration, for a gain of {{trade.t2.result}}. On {{trade.t4.opened}} you sold a new INTC put expiring {{trade.t4.expiry_at_open}} out and bought it back on {{trade.t4.ended}}, after {{trade.t4.held}}, for a gain of {{trade.t4.result}}."
+     "heading": "You went back to INTC after closing the first put",
+     "text": "Your first INTC put, opened on {{trade.t2.opened}} with the expiration {{trade.t2.expiry_at_open}} out, was bought back on {{trade.t2.ended}} for a gain of {{trade.t2.result}}. On {{trade.t4.opened}} you opened a new INTC put with the expiration {{trade.t4.expiry_at_open}} out, and bought it back on {{trade.t4.ended}}, {{trade.t4.held}} later, for a gain of {{trade.t4.result}}."
     },
     {
-     "heading": "Among closed trades, SOFI stayed on the longest",
-     "text": "The SOFI put, opened {{trade.t3.opened}} alongside the first INTC put, stayed on for {{trade.t3.held}} and was bought back on {{trade.t3.ended}} with {{trade.t3.left_at_close}} left before expiration. It kept {{trade.t3.result}} of the {{trade.t3.upfront}} in premium collected when you opened it."
-    },
-    {
-     "heading": "Your F trade changed shape from a put to a call",
-     "text": "The F trade began as a cash-secured put on {{trade.t1.opened}}, collecting {{trade.t1.upfront}} in premium, and was a covered call by the end of the month, still open when the month closed."
+     "heading": "The SOFI put ran through most of the month",
+     "text": "You opened the SOFI put on {{trade.t3.opened}}, alongside the first INTC put, and bought it back on {{trade.t3.ended}} after {{trade.t3.held}}. It collected {{trade.t3.upfront}} in premium and produced your largest gain, {{biggest_win}}, with {{trade.t3.left_at_close}} still left before expiration."
     }
    ],
-   "overall": "You sold cash-secured puts this month: on INTC and SOFI together on {{trade.t2.opened}}, then a second INTC put on {{trade.t4.opened}}, while the F trade started on {{trade.t1.opened}} carried on in the background. Once a put was on, you left it alone rather than adjusting it, and then bought it back well before expiration; {{group.winning.bought_back_before_expiration_day}} winning trades ended that way. F was the one position still open when the month ended.",
-   "subject_line": "Cash-secured puts, closed well before expiration"
+   "overall": "You sold cash-secured puts on INTC and SOFI on {{trade.t2.opened}}, then came back to INTC with a new put on {{trade.t4.opened}}, after the first one had been bought back on {{trade.t2.ended}}. You managed by holding and closing rather than rolling: {{group.winning.bought_back_before_expiration_day}} of your winning trades were bought back before their expiration day. Your F position, opened on {{trade.t1.opened}} as a cash-secured put, had become a covered call and was still open at month end.",
+   "subject_line": "Cash-secured puts on INTC and SOFI, no rolls"
   },
-  "cost_usd": 0.0563,
+  "cost_usd": 0.1316,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -5580,18 +5548,6 @@
     "weight": 0.5
    },
    {
-    "display": "$288",
-    "id": "trade.t1.upfront",
-    "kind": "trade",
-    "plain": "premium collected when opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p03-0001"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
     "display": "Oct 1",
     "id": "trade.t2.opened",
     "kind": "trade",
@@ -5655,7 +5611,7 @@
     "display": "$595",
     "id": "trade.t2.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p03-0002"
@@ -5739,7 +5695,7 @@
     "display": "$705",
     "id": "trade.t3.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p03-0003"
@@ -5823,7 +5779,7 @@
     "display": "$415",
     "id": "trade.t4.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p03-0004"
@@ -5997,7 +5953,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "Cash-secured puts, closed well before expiration\n\nCasey, here is your October 2026.\n\nYou sold cash-secured puts this month: on INTC and SOFI together on Oct 1, then a second INTC put on Oct 20, while the F trade started on Sep 21 carried on in the background. Once a put was on, you left it alone rather than adjusting it, and then bought it back well before expiration; all 3 winning trades ended that way. F was the one position still open when the month ended.\n\nAT A GLANCE\n- 3 trades: new trades you started\n- about 7 weeks: how far out the expiration usually was when you opened an options trade\n- about 2 weeks: how long you usually kept a trade\n- $119: premium you usually collected per contract when you opened a trade\n\nGETTING IN\n- You usually opened options trades expiring about 7 weeks out.\n- You usually collected $119 in premium per contract when you opened a trade.\n- Implied volatility was usually low compared with its past year when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually kept a trade for about 2 weeks.\n- When you closed an options trade, it was usually still about 3 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n\nWHAT STOOD OUT\nYou went back to INTC after closing it. Your first INTC put, opened Oct 1, was bought back on Oct 16 with about 5 weeks left before expiration, for a gain of $329. On Oct 20 you sold a new INTC put expiring about 4 weeks out and bought it back on Oct 29, after 9 days, for a gain of $249.\n\nAmong closed trades, SOFI stayed on the longest. The SOFI put, opened Oct 1 alongside the first INTC put, stayed on for about 4 weeks and was bought back on Oct 30 with about 3 weeks left before expiration. It kept $399 of the $705 in premium collected when you opened it.\n\nYour F trade changed shape from a put to a call. The F trade began as a cash-secured put on Sep 21, collecting $288 in premium, and was a covered call by the end of the month, still open when the month closed.\n\nHOW IT TURNED OUT\nYour account ended the month up 1.2%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 3 trades that ended, 3 ended with a gain and 0 with a loss.\nFees and commissions: $24.34.\n\nSTILL OPEN\nGoing into next month: F.\n\nWHAT CHANGED\nHow far out your expirations were: about 7 weeks in the first half of the month, about 4 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "Cash-secured puts on INTC and SOFI, no rolls\n\nCasey, here is your October 2026.\n\nYou sold cash-secured puts on INTC and SOFI on Oct 1, then came back to INTC with a new put on Oct 20, after the first one had been bought back on Oct 16. You managed by holding and closing rather than rolling: all 3 of your winning trades were bought back before their expiration day. Your F position, opened on Sep 21 as a cash-secured put, had become a covered call and was still open at month end.\n\nAT A GLANCE\n- 3 trades: new trades you started\n- about 7 weeks: how far out the expiration usually was when you opened an options trade\n- about 2 weeks: how long you usually kept a trade\n- $119: premium you usually collected per contract when you opened a trade\n\nGETTING IN\n- You usually opened options trades expiring about 7 weeks out.\n- You usually collected $119 in premium per contract when you opened a trade.\n- Implied volatility was usually low compared with its past year when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually kept a trade for about 2 weeks.\n- When you closed an options trade, it was usually still about 3 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n\nWHAT STOOD OUT\nYou went back to INTC after closing the first put. Your first INTC put, opened on Oct 1 with the expiration about 7 weeks out, was bought back on Oct 16 for a gain of $329. On Oct 20 you opened a new INTC put with the expiration about 4 weeks out, and bought it back on Oct 29, 9 days later, for a gain of $249.\n\nThe SOFI put ran through most of the month. You opened the SOFI put on Oct 1, alongside the first INTC put, and bought it back on Oct 30 after about 4 weeks. It collected $705 in premium and produced your largest gain, $399 on SOFI, with about 3 weeks still left before expiration.\n\nHOW IT TURNED OUT\nYour account ended the month up 1.2%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 3 trades that ended, 3 ended with a gain and 0 with a loss.\nFees and commissions: $24.34.\n\nSTILL OPEN\nGoing into next month: F.\n\nWHAT CHANGED\nHow far out your expirations were: about 7 weeks in the first half of the month, about 4 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Sells puts on three low-priced stocks with enough cash set aside to buy the shares. When a put ends with the stock below the strike, takes the shares and then sells calls against them. Buys trades back early once half the upfront cash is kept.",
   "workbook": "p03_casey_2026-10.xlsx"
@@ -6015,7 +5971,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -6024,22 +5981,22 @@
   "copy": {
    "observations": [
     {
-     "heading": "AMD carried nearly all of the adjustment work",
-     "text": "You opened a new AMD strangle on {{trade.t5.opened}}, the day after buying back the September one on {{trade.t1.ended}}, and began adjusting it on {{trade.t5.first_roll}}. It took {{trade.t5.rolls}} this month, with {{trade.t5.credit_rolls}} done for a credit. These mixed narrowed strikes, moves of the side not under pressure toward the stock price and a roll out to a later expiration, and it was still open at month end."
+     "heading": "Rolling went into two strangles, mostly AMD",
+     "text": "Only {{group.trades.rolled}} trades were rolled at least once. The AMD strangle opened {{trade.t5.opened}} took {{trade.t5.rolls}} starting {{trade.t5.first_roll}}, {{trade.t5.credit_rolls}} of them for a credit, and it was still open at month end. The META strangle opened {{trade.t9.opened}} took {{trade.t9.rolls}} from {{trade.t9.first_roll}} and was bought back on {{trade.t9.ended}} for a gain of {{trade.t9.result}}."
     },
     {
-     "heading": "META came off fast and went straight back on",
-     "text": "You opened a META strangle on {{trade.t6.opened}} and bought it back after {{trade.t6.held}} for a gain of {{trade.t6.result}}, then opened a new META strangle on {{trade.t9.opened}}. That second one took {{trade.t9.rolls}}, starting {{trade.t9.first_roll}}, before you bought it back on {{trade.t9.ended}} for a gain of {{trade.t9.result}}."
+     "heading": "Winners were bought back early, not held to expiration",
+     "text": "{{group.winning.bought_back_before_expiration_day}} of your winning trades were bought back before their expiration day, and none were left to expire. The META strangle opened {{trade.t6.opened}} was bought back after {{trade.t6.held}} with {{trade.t6.left_at_close}} still left, for a gain of {{trade.t6.result}}."
     },
     {
-     "heading": "Openings bunched early, then a late-month reload",
-     "text": "You opened new strangles steadily from NVDA on {{trade.t4.opened}} through CRWD on {{trade.t11.opened}}, then nothing new until INTC on {{trade.t12.opened}}, DELL on {{trade.t13.opened}} and MSFT on {{trade.t14.opened}}. Each of those three went back onto a stock whose strangle you had bought back earlier in the month, and all three were still open at month end."
+     "heading": "You reopened names you had closed earlier",
+     "text": "After buying back INTC on {{trade.t2.ended}}, MSFT on {{trade.t3.ended}} and DELL on {{trade.t8.ended}}, you opened new strangles on all three late in the month: INTC on {{trade.t12.opened}}, DELL on {{trade.t13.opened}} and MSFT on {{trade.t14.opened}}."
     }
    ],
-   "overall": "Every trade you touched was a short strangle, spread across AMD, INTC, MSFT, NVDA, META, AAPL, DELL and CRWD. You did most of your opening in the first half of the month. You managed mainly by taking strangles off well before expiration rather than adjusting them: only {{group.trades.rolled}} trades were rolled, and AMD took most of those adjustments. {{group.winning.bought_back_before_expiration_day}} of your winning trades were bought back before their expiration day, and you finished by reopening strangles on INTC, DELL and MSFT in the last days of the month.",
-   "subject_line": "Strangles taken off early, AMD worked hardest"
+   "overall": "You traded short strangles on large technology names all month, and every trade on the list kept that shape from open to end. You cleared out the September AMD and INTC strangles on {{trade.t1.ended}} and opened NVDA the same day, then built new positions through the first half of the month. Most trades were left alone and bought back well before expiration, while the adjusting went almost entirely into AMD and META. You finished by opening fresh INTC, DELL and MSFT strangles in the last days of the month.",
+   "subject_line": "Strangles, bought back well before expiration"
   },
-  "cost_usd": 0.0989,
+  "cost_usd": 0.1099,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -6642,18 +6599,6 @@
     "weight": 0.5
    },
    {
-    "display": "$1,388",
-    "id": "trade.t1.upfront",
-    "kind": "trade",
-    "plain": "premium collected when opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p04-0001"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
     "display": "$894",
     "id": "trade.t1.result",
     "kind": "trade",
@@ -6714,18 +6659,6 @@
     "weight": 0.5
    },
    {
-    "display": "$333",
-    "id": "trade.t2.upfront",
-    "kind": "trade",
-    "plain": "premium collected when opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p04-0002"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
     "display": "$227",
     "id": "trade.t2.result",
     "kind": "trade",
@@ -6778,18 +6711,6 @@
     "id": "trade.t3.left_at_close",
     "kind": "trade",
     "plain": "time left before expiration when the trade was bought back",
-    "section": "managing",
-    "source_examples": [
-     "story:p04-0003"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
-    "display": "$962",
-    "id": "trade.t3.upfront",
-    "kind": "trade",
-    "plain": "premium collected when opened",
     "section": "managing",
     "source_examples": [
      "story:p04-0003"
@@ -6873,7 +6794,7 @@
     "display": "$1,740",
     "id": "trade.t4.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0004"
@@ -6921,7 +6842,7 @@
     "display": "$750",
     "id": "trade.t5.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0005"
@@ -7029,7 +6950,7 @@
     "display": "$6,120",
     "id": "trade.t6.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0006"
@@ -7113,7 +7034,7 @@
     "display": "$1,122",
     "id": "trade.t7.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0007"
@@ -7197,7 +7118,7 @@
     "display": "$1,010",
     "id": "trade.t8.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0008"
@@ -7281,7 +7202,7 @@
     "display": "$5,865",
     "id": "trade.t9.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0009"
@@ -7401,7 +7322,7 @@
     "display": "$1,287",
     "id": "trade.t10.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0010"
@@ -7485,7 +7406,7 @@
     "display": "$1,110",
     "id": "trade.t11.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0011"
@@ -7533,7 +7454,7 @@
     "display": "$138",
     "id": "trade.t12.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0012"
@@ -7569,7 +7490,7 @@
     "display": "$555",
     "id": "trade.t13.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0013"
@@ -7605,7 +7526,7 @@
     "display": "$970",
     "id": "trade.t14.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p04-0014"
@@ -7767,7 +7688,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "Strangles taken off early, AMD worked hardest\n\nJordan, here is your October 2026.\n\nEvery trade you touched was a short strangle, spread across AMD, INTC, MSFT, NVDA, META, AAPL, DELL and CRWD. You did most of your opening in the first half of the month. You managed mainly by taking strangles off well before expiration rather than adjusting them: only 2 of 14 trades were rolled, and AMD took most of those adjustments. All 10 of your winning trades were bought back before their expiration day, and you finished by reopening strangles on INTC, DELL and MSFT in the last days of the month.\n\nAT A GLANCE\n- 11 trades: new trades you started\n- 10 trades: trades that ended this month\n- 13 times: times you rolled a trade to a new strike or expiration\n- 7 in 10: share of your rolls done for a credit\n\nGETTING IN\n- You usually opened options trades expiring about 7 weeks out.\n- You usually collected $580 in premium per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You rolled trades 13 times.\n- 7 in 10 of your rolls were done for a credit.\n\nGETTING OUT\n- You usually kept a trade for about 2 weeks.\n- When you closed an options trade, it was usually still about 4 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n\nWHAT STOOD OUT\nAMD carried nearly all of the adjustment work. You opened a new AMD strangle on Oct 2, the day after buying back the September one on Oct 1, and began adjusting it on Oct 7. It took 11 rolls this month, with 8 rolls done for a credit. These mixed narrowed strikes, moves of the side not under pressure toward the stock price and a roll out to a later expiration, and it was still open at month end.\n\nMETA came off fast and went straight back on. You opened a META strangle on Oct 5 and bought it back after 3 days for a gain of $2,530, then opened a new META strangle on Oct 9. That second one took 2 rolls, starting Oct 15, before you bought it back on Oct 28 for a gain of $2,070.\n\nOpenings bunched early, then a late-month reload. You opened new strangles steadily from NVDA on Oct 1 through CRWD on Oct 13, then nothing new until INTC on Oct 28, DELL on Oct 29 and MSFT on Oct 30. Each of those three went back onto a stock whose strangle you had bought back earlier in the month, and all three were still open at month end.\n\nHOW IT TURNED OUT\nYour account ended the month up 3.4%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 10 trades that ended, 10 ended with a gain and 0 with a loss.\nFees and commissions: $76.15.\n\nSTILL OPEN\nGoing into next month: AMD, INTC, DELL and MSFT.\n\nWHAT CHANGED\nHow far out your expirations were: about 6 weeks in the first half of the month, about 7 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "Strangles, bought back well before expiration\n\nJordan, here is your October 2026.\n\nYou traded short strangles on large technology names all month, and every trade on the list kept that shape from open to end. You cleared out the September AMD and INTC strangles on Oct 1 and opened NVDA the same day, then built new positions through the first half of the month. Most trades were left alone and bought back well before expiration, while the adjusting went almost entirely into AMD and META. You finished by opening fresh INTC, DELL and MSFT strangles in the last days of the month.\n\nAT A GLANCE\n- 11 trades: new trades you started\n- 10 trades: trades that ended this month\n- 13 times: times you rolled a trade to a new strike or expiration\n- 7 in 10: share of your rolls done for a credit\n\nGETTING IN\n- You usually opened options trades expiring about 7 weeks out.\n- You usually collected $580 in premium per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You rolled trades 13 times.\n- 7 in 10 of your rolls were done for a credit.\n\nGETTING OUT\n- You usually kept a trade for about 2 weeks.\n- When you closed an options trade, it was usually still about 4 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n\nWHAT STOOD OUT\nRolling went into two strangles, mostly AMD. Only 2 of 14 trades were rolled at least once. The AMD strangle opened Oct 2 took 11 rolls starting Oct 7, 8 rolls of them for a credit, and it was still open at month end. The META strangle opened Oct 9 took 2 rolls from Oct 15 and was bought back on Oct 28 for a gain of $2,070.\n\nWinners were bought back early, not held to expiration. All 10 of your winning trades were bought back before their expiration day, and none were left to expire. The META strangle opened Oct 5 was bought back after 3 days with about 6 weeks still left, for a gain of $2,530.\n\nYou reopened names you had closed earlier. After buying back INTC on Oct 1, MSFT on Oct 12 and DELL on Oct 26, you opened new strangles on all three late in the month: INTC on Oct 28, DELL on Oct 29 and MSFT on Oct 30.\n\nHOW IT TURNED OUT\nYour account ended the month up 3.4%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 10 trades that ended, 10 ended with a gain and 0 with a loss.\nFees and commissions: $76.15.\n\nSTILL OPEN\nGoing into next month: AMD, INTC, DELL and MSFT.\n\nWHAT CHANGED\nHow far out your expirations were: about 6 weeks in the first half of the month, about 7 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Sells a put below the price and a call above it on big, well-known stocks, usually ending about 6 weeks out. When a stock moves hard one way, slides the other half of the trade closer to the price instead of closing. With about 3 weeks left, moves the whole trade out to the next month. Many trades are still open when the month ends.",
   "workbook": "p04_jordan_2026-10.xlsx"
@@ -7785,7 +7706,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -7794,22 +7716,22 @@
   "copy": {
    "observations": [
     {
-     "heading": "Short-dated diagonals were closed the next day",
-     "text": "Your NVDA diagonal, opened {{trade.t1.opened}} with expiration {{trade.t1.expiry_at_open}} out, was bought back {{trade.t1.ended}} for a gain of {{trade.t1.result}}. The IWM diagonal followed the same path: opened {{trade.t4.opened}}, bought back {{trade.t4.ended}} for a gain of {{trade.t4.result}}."
+     "heading": "Short-dated diagonals turned over in a day",
+     "text": "Your NVDA diagonal, opened {{trade.t1.opened}}, was bought back on {{trade.t1.ended}} with {{trade.t1.left_at_close}} still left before expiration. The IWM diagonal followed the same path, opened {{trade.t4.opened}} and bought back on {{trade.t4.ended}} for a gain of {{trade.t4.result}}."
     },
     {
-     "heading": "Losing trades were cut with weeks left on them",
-     "text": "You bought back {{group.losing.bought_back_before_expiration_day}} losing options trades before their expiration day. The QQQ debit spread was bought back {{trade.t7.ended}} with {{trade.t7.left_at_close}} to go, for a loss of {{trade.t7.result}}. The IWM credit spread was bought back {{trade.t6.ended}} with {{trade.t6.left_at_close}} left, for a loss of {{trade.t6.result}}."
+     "heading": "Losing spreads were closed with weeks to spare",
+     "text": "You bought back the IWM credit spread on {{trade.t6.ended}} with {{trade.t6.left_at_close}} left, for a loss of {{trade.t6.result}}. The QQQ debit spread was closed on {{trade.t7.ended}} with {{trade.t7.left_at_close}} left, a loss of {{trade.t7.result}}, and on {{trade.t8.opened}} you opened a new QQQ debit spread that was still open at month end."
     },
     {
-     "heading": "You reopened QQQ the day you closed it",
-     "text": "On {{trade.t7.ended}}, the same day you bought back the losing QQQ debit spread, you opened a new QQQ debit spread with expiration {{trade.t8.expiry_at_open}} out. That new spread was still open at month end."
+     "heading": "New trades thinned out after mid-month",
+     "text": "New trades came {{stories_opened_by_half}}. After the QQQ debit spread on {{trade.t8.opened}}, your next entries were a SPY debit spread on {{trade.t9.opened}} and an IWM credit spread on {{trade.t10.opened}}."
     }
    ],
-   "overall": "You traded only options spreads in October: short-dated diagonals, credit spreads, debit spreads and a GOOGL iron condor, across SPY, QQQ, IWM, NVDA and GOOGL. Most of your new trades came early ({{stories_opened_by_half}}). With no rolls, managing each trade came down to holding it or buying it back, and every trade that ended was bought back before its expiration day. Your GOOGL, NVDA, QQQ, SPY and IWM positions carried into November.",
-   "subject_line": "Spreads managed by closing, not by rolling"
+   "overall": "You traded only options on stocks and funds, spread across several structures: diagonals on NVDA and IWM, debit spreads on NVDA, QQQ and SPY, credit spreads on SPY and IWM, and an iron condor on GOOGL. Positions stayed as you opened them. Exits came ahead of expiration: {{group.winning.bought_back_before_expiration_day}} winning trades and {{group.losing.bought_back_before_expiration_day}} losing trades were bought back before their expiration day. You ended the month still holding positions in {{open_stories}}.",
+   "subject_line": "Spreads closed well before expiration"
   },
-  "cost_usd": 0.067,
+  "cost_usd": 0.0916,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -8313,7 +8235,7 @@
     "display": "$6,500",
     "id": "trade.t1.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0001"
@@ -8361,7 +8283,7 @@
     "display": "$1,362",
     "id": "trade.t2.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0002"
@@ -8397,7 +8319,7 @@
     "display": "$2,080",
     "id": "trade.t3.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0003"
@@ -8469,7 +8391,7 @@
     "display": "$2,984",
     "id": "trade.t4.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0004"
@@ -8553,7 +8475,7 @@
     "display": "$460",
     "id": "trade.t5.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0005"
@@ -8637,7 +8559,7 @@
     "display": "$110",
     "id": "trade.t6.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0006"
@@ -8721,7 +8643,7 @@
     "display": "$1,080",
     "id": "trade.t7.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0007"
@@ -8769,7 +8691,7 @@
     "display": "$840",
     "id": "trade.t8.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0008"
@@ -8805,7 +8727,7 @@
     "display": "$765",
     "id": "trade.t9.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0009"
@@ -8841,7 +8763,7 @@
     "display": "$218",
     "id": "trade.t10.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p05-0010"
@@ -9068,7 +8990,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "Spreads managed by closing, not by rolling\n\nTaylor, here is your October 2026.\n\nYou traded only options spreads in October: short-dated diagonals, credit spreads, debit spreads and a GOOGL iron condor, across SPY, QQQ, IWM, NVDA and GOOGL. Most of your new trades came early (7 in the first half of the month, 3 in the second half). With no rolls, managing each trade came down to holding it or buying it back, and every trade that ended was bought back before its expiration day. Your GOOGL, NVDA, QQQ, SPY and IWM positions carried into November.\n\nAT A GLANCE\n- 10 trades: new trades you started\n- 5 trades: trades that ended this month\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n- 3 days: how long you usually kept a trade\n\nGETTING IN\n- You usually opened options trades expiring about 6 weeks out.\n- You usually collected $113 in premium per contract when you opened a trade.\n- You usually paid a debit of $400 per contract when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually kept a trade for 3 days.\n- When you closed an options trade, it was usually still about 3 weeks from expiration.\n- Your winning trades usually kept about a fifth of the premium you collected.\n\nWHAT STOOD OUT\nShort-dated diagonals were closed the next day. Your NVDA diagonal, opened Oct 1 with expiration 8 days out, was bought back Oct 2 for a gain of $69.83. The IWM diagonal followed the same path: opened Oct 8, bought back Oct 9 for a gain of $111.\n\nLosing trades were cut with weeks left on them. You bought back both losing options trades before their expiration day. The QQQ debit spread was bought back Oct 16 with about 5 weeks to go, for a loss of $610. The IWM credit spread was bought back Oct 20 with about 4 weeks left, for a loss of $188.\n\nYou reopened QQQ the day you closed it. On Oct 16, the same day you bought back the losing QQQ debit spread, you opened a new QQQ debit spread with expiration about 5 weeks out. That new spread was still open at month end.\n\nHOW IT TURNED OUT\nYour account ended the month down 1.9%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 5 trades that ended, 3 ended with a gain and 2 with a loss.\nFees and commissions: $78.62.\n\nSTILL OPEN\nGoing into next month: GOOGL, NVDA, QQQ, SPY and IWM.\n\nWHAT CHANGED\nHow far out your expirations were: about 6 weeks in the first half of the month, about 5 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "Spreads closed well before expiration\n\nTaylor, here is your October 2026.\n\nYou traded only options on stocks and funds, spread across several structures: diagonals on NVDA and IWM, debit spreads on NVDA, QQQ and SPY, credit spreads on SPY and IWM, and an iron condor on GOOGL. Positions stayed as you opened them. Exits came ahead of expiration: all 3 winning trades and both losing trades were bought back before their expiration day. You ended the month still holding positions in GOOGL, NVDA, QQQ, SPY and IWM.\n\nAT A GLANCE\n- 10 trades: new trades you started\n- 5 trades: trades that ended this month\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n- 3 days: how long you usually kept a trade\n\nGETTING IN\n- You usually opened options trades expiring about 6 weeks out.\n- You usually collected $113 in premium per contract when you opened a trade.\n- You usually paid a debit of $400 per contract when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually kept a trade for 3 days.\n- When you closed an options trade, it was usually still about 3 weeks from expiration.\n- Your winning trades usually kept about a fifth of the premium you collected.\n\nWHAT STOOD OUT\nShort-dated diagonals turned over in a day. Your NVDA diagonal, opened Oct 1, was bought back on Oct 2 with 7 days still left before expiration. The IWM diagonal followed the same path, opened Oct 8 and bought back on Oct 9 for a gain of $111.\n\nLosing spreads were closed with weeks to spare. You bought back the IWM credit spread on Oct 20 with about 4 weeks left, for a loss of $188. The QQQ debit spread was closed on Oct 16 with about 5 weeks left, a loss of $610, and on Oct 16 you opened a new QQQ debit spread that was still open at month end.\n\nNew trades thinned out after mid-month. New trades came 7 in the first half of the month, 3 in the second half. After the QQQ debit spread on Oct 16, your next entries were a SPY debit spread on Oct 28 and an IWM credit spread on Oct 30.\n\nHOW IT TURNED OUT\nYour account ended the month down 1.9%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 5 trades that ended, 3 ended with a gain and 2 with a loss.\nFees and commissions: $78.62.\n\nSTILL OPEN\nGoing into next month: GOOGL, NVDA, QQQ, SPY and IWM.\n\nWHAT CHANGED\nHow far out your expirations were: about 6 weeks in the first half of the month, about 5 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Trades option spreads where the most that can be lost is known upfront: put spreads and iron condors for cash collected, call spreads and an occasional call diagonal paid for upfront. Takes profits early, usually after a quarter of the possible gain, and rarely holds into the last week.",
   "workbook": "p05_taylor_2026-10.xlsx"
@@ -9086,7 +9008,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -9095,22 +9018,22 @@
   "copy": {
    "observations": [
     {
-     "heading": "Winning spreads ran into their expiration day",
-     "text": "{{group.winning.bought_back_on_expiration_day}} of your winning trades were bought back on their expiration day and {{group.winning.expired}} were left to expire. The only winner bought back earlier was the SPX spread opened {{trade.t1.opened}}, closed with {{trade.t1.left_at_close}} still left."
+     "heading": "Winners were held into their expiration day",
+     "text": "Only {{group.winning.bought_back_before_expiration_day}} winning trades was bought back before its expiration day: the SPX spread opened {{trade.t1.opened}}. Your largest gain, the SPX spread opened {{trade.t11.opened}}, was left to expire and made {{trade.t11.result}} on {{trade.t11.upfront}} of premium collected."
     },
     {
      "heading": "Losing spreads were closed the same day",
-     "text": "{{group.losing.ended_same_day_opened}} of your losing trades ended the day you opened them, and {{group.losing.bought_back_before_expiration_day}} were bought back before their expiration day. The SPX spread opened {{trade.t2.opened}} was bought back with {{trade.t2.left_at_close}} left, for a loss of {{trade.t2.result}}."
+     "text": "In total, {{group.losing.ended_same_day_opened}} losing trades ended the same day they were opened, and {{group.losing.bought_back_before_expiration_day}} were bought back before their expiration day rather than held into it. None were rolled or left to expire."
     },
     {
-     "heading": "Losses gathered in the final days of the month",
-     "text": "Both SPX spreads opened {{trade.t21.opened}} were bought back that day for losses of {{trade.t21.result}} and {{trade.t22.result}}, and the SPX spread opened {{trade.t23.opened}} was bought back on its expiration day for a loss of {{trade.t23.result}}."
+     "heading": "Losses gathered at the end of the month",
+     "text": "Every SPX spread opened from {{trade.t14.opened}} through {{trade.t20.opened}} ended with a gain. Then every SPX spread opened on {{trade.t21.opened}} and {{trade.t23.opened}} ended with a loss, including the spread opened {{trade.t21.opened}} that lost {{trade.t21.result}} after collecting {{trade.t21.upfront}}."
     }
    ],
-   "overall": "You traded nothing but SPX credit spreads this month, opening a fresh one on most active days and finishing it within a few days at most rather than carrying positions. You never adjusted a trade once it was on: winners were almost all held into their expiration day, while losing spreads were closed the same day you opened them. The largest gain, {{biggest_win}}, came from a spread left to expire; the largest loss, {{biggest_loss}}, came from one bought back before its expiration day.",
-   "subject_line": "Your month of short-dated SPX credit spreads"
+   "overall": "Every trade this month was an SPX credit spread, run on a short cycle: you opened {{stories_opened}} across {{active_days}}, with expirations no more than a few days out, and nothing was rolled or carried past the month. Exits clustered at expiration: {{group.winning.bought_back_on_expiration_day}} of your winning trades were bought back on their expiration day and {{group.winning.expired}} were left to expire. Losing spreads were bought back rather than held or adjusted.",
+   "subject_line": "Alex, your month of SPX credit spreads"
   },
-  "cost_usd": 0.0855,
+  "cost_usd": 0.1306,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -9614,7 +9537,7 @@
     "display": "$140",
     "id": "trade.t1.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0001"
@@ -9698,7 +9621,7 @@
     "display": "$40.00",
     "id": "trade.t2.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0002"
@@ -9770,7 +9693,7 @@
     "display": "$60.00",
     "id": "trade.t3.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0003"
@@ -9842,7 +9765,7 @@
     "display": "$90.00",
     "id": "trade.t4.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0004"
@@ -9914,7 +9837,7 @@
     "display": "$80.00",
     "id": "trade.t5.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0005"
@@ -9986,7 +9909,7 @@
     "display": "$130",
     "id": "trade.t6.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0006"
@@ -10058,7 +9981,7 @@
     "display": "$80.00",
     "id": "trade.t7.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0007"
@@ -10130,7 +10053,7 @@
     "display": "$70.00",
     "id": "trade.t8.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0008"
@@ -10202,7 +10125,7 @@
     "display": "$30.00",
     "id": "trade.t9.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0009"
@@ -10274,7 +10197,7 @@
     "display": "$40.00",
     "id": "trade.t10.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0010"
@@ -10346,7 +10269,7 @@
     "display": "$170",
     "id": "trade.t11.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0011"
@@ -10418,7 +10341,7 @@
     "display": "$30.00",
     "id": "trade.t12.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0012"
@@ -10490,7 +10413,7 @@
     "display": "$45.00",
     "id": "trade.t13.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0013"
@@ -10562,7 +10485,7 @@
     "display": "$50.00",
     "id": "trade.t14.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0014"
@@ -10634,7 +10557,7 @@
     "display": "$120",
     "id": "trade.t15.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0015"
@@ -10706,7 +10629,7 @@
     "display": "$60.00",
     "id": "trade.t16.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0016"
@@ -10778,7 +10701,7 @@
     "display": "$140",
     "id": "trade.t17.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0017"
@@ -10850,7 +10773,7 @@
     "display": "$40.00",
     "id": "trade.t18.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0018"
@@ -10922,7 +10845,7 @@
     "display": "$80.00",
     "id": "trade.t19.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0019"
@@ -10994,7 +10917,7 @@
     "display": "$60.00",
     "id": "trade.t20.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0020"
@@ -11078,7 +11001,7 @@
     "display": "$120",
     "id": "trade.t21.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0021"
@@ -11162,7 +11085,7 @@
     "display": "$60.00",
     "id": "trade.t22.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0022"
@@ -11234,7 +11157,7 @@
     "display": "$60.00",
     "id": "trade.t23.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p06-0023"
@@ -11477,7 +11400,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "Your month of short-dated SPX credit spreads\n\nAlex, here is your October 2026.\n\nYou traded nothing but SPX credit spreads this month, opening a fresh one on most active days and finishing it within a few days at most rather than carrying positions. You never adjusted a trade once it was on: winners were almost all held into their expiration day, while losing spreads were closed the same day you opened them. The largest gain, $163 on SPX, came from a spread left to expire; the largest loss, $390 on SPX, came from one bought back before its expiration day.\n\nAT A GLANCE\n- 23 trades: new trades you started\n- 1 day: how far out the expiration usually was when you opened an options trade\n- the same day: how long you usually kept a trade\n- $45.00: premium you usually collected per contract when you opened a trade\n\nGETTING IN\n- You usually opened options trades expiring 1 day out.\n- You usually collected $45.00 in premium per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it.\n- When you closed an options trade, it was usually still none from expiration.\n- Your winning trades usually kept about three quarters of the premium you collected.\n\nWHAT STOOD OUT\nWinning spreads ran into their expiration day. 9 of 18 of your winning trades were bought back on their expiration day and 8 of 18 were left to expire. The only winner bought back earlier was the SPX spread opened Oct 1, closed with 1 day still left.\n\nLosing spreads were closed the same day. All 5 of your losing trades ended the day you opened them, and 3 of 5 were bought back before their expiration day. The SPX spread opened Oct 2 was bought back with 3 days left, for a loss of $145.\n\nLosses gathered in the final days of the month. Both SPX spreads opened Oct 29 were bought back that day for losses of $390 and $190, and the SPX spread opened Oct 30 was bought back on its expiration day for a loss of $210.\n\nHOW IT TURNED OUT\nYour account ended the month up 0.5%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 23 trades that ended, 18 ended with a gain and 5 with a loss.\nFees and commissions: $159.\n\nWHAT CHANGED\nHow far out your expirations were: 1 day in the first half of the month, the same day in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "Alex, your month of SPX credit spreads\n\nAlex, here is your October 2026.\n\nEvery trade this month was an SPX credit spread, run on a short cycle: you opened 23 trades across 18 days, with expirations no more than a few days out, and nothing was rolled or carried past the month. Exits clustered at expiration: 9 of 18 of your winning trades were bought back on their expiration day and 8 of 18 were left to expire. Losing spreads were bought back rather than held or adjusted.\n\nAT A GLANCE\n- 23 trades: new trades you started\n- 1 day: how far out the expiration usually was when you opened an options trade\n- the same day: how long you usually kept a trade\n- $45.00: premium you usually collected per contract when you opened a trade\n\nGETTING IN\n- You usually opened options trades expiring 1 day out.\n- You usually collected $45.00 in premium per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it.\n- When you closed an options trade, it was usually still none from expiration.\n- Your winning trades usually kept about three quarters of the premium you collected.\n\nWHAT STOOD OUT\nWinners were held into their expiration day. Only 1 of 18 winning trades was bought back before its expiration day: the SPX spread opened Oct 1. Your largest gain, the SPX spread opened Oct 14, was left to expire and made $163 on $170 of premium collected.\n\nLosing spreads were closed the same day. In total, all 5 losing trades ended the same day they were opened, and 3 of 5 were bought back before their expiration day rather than held into it. None were rolled or left to expire.\n\nLosses gathered at the end of the month. Every SPX spread opened from Oct 19 through Oct 27 ended with a gain. Then every SPX spread opened on Oct 29 and Oct 30 ended with a loss, including the spread opened Oct 29 that lost $390 after collecting $120.\n\nHOW IT TURNED OUT\nYour account ended the month up 0.5%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 23 trades that ended, 18 ended with a gain and 5 with a loss.\nFees and commissions: $159.\n\nWHAT CHANGED\nHow far out your expirations were: 1 day in the first half of the month, the same day in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Trades the S&P 500 index itself with small spreads that end the same day, or sometimes the next day. Checks every 15 minutes and closes once most of the possible gain shows up, usually waiting for a fair middle price rather than taking the first one offered; about one trade in three is left alone until it ends and settles in cash. One to three trades a day, one at a time.",
   "workbook": "p06_alex_2026-10.xlsx"
@@ -11499,7 +11422,7 @@
     ],
     "passed": false,
     "reasons": [
-     "no_doubled_units: overall repeats 'trades' after {{losses}}, which already reads '36 trades'"
+     "no_raw_numbers: observations[0].text types the number(s) 1, 20 instead of a placeholder"
     ]
    },
    {
@@ -11512,7 +11435,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -11521,22 +11445,22 @@
   "copy": {
    "observations": [
     {
-     "heading": "You switched direction within the same day",
-     "text": "On {{trade.t1.opened}} you were both long and short /MNQ, and both trades ended with a loss. On {{trade.t31.opened}} you went long /MNQ twice and short once, and all three were closed at a loss the same day, alongside a short /MES you held to the next day."
+     "heading": "You switched between long and short on the same day",
+     "text": "On {{trade.t1.opened}} you opened a long /MNQ position and a short /MNQ position, and closed them for losses of {{trade.t1.result}} and {{trade.t2.result}}. On {{trade.t31.opened}} you closed long /MNQ positions for losses of {{trade.t31.result}} and {{trade.t32.result}}, and the same day also opened a short /MNQ position and a short /MES position."
     },
     {
-     "heading": "Your /MNQ trades lost steadily before the first gain",
-     "text": "Every /MNQ trade you opened from {{trade.t1.opened}} through {{trade.t23.opened}} ended with a loss, including {{trade.t18.result}} on {{trade.t18.opened}} and {{trade.t20.result}} and {{trade.t22.result}} on {{trade.t20.opened}}. Your first /MNQ gain came on {{trade.t24.opened}}, a short that closed up {{trade.t24.result}}, your largest gain of the month."
+     "heading": "Winners and losers were both closed within the day",
+     "text": "{{group.losing.ended_same_day_opened}} of your losing trades and {{group.winning.ended_same_day_opened}} of your winning trades ended the same day they were opened. Your largest gain, a short /MNQ position opened {{trade.t24.opened}}, and your largest loss, a long /MNQ position opened {{trade.t50.opened}}, were each closed the day they were opened."
     },
     {
-     "heading": "Overnight holds were the exception, with mixed results",
-     "text": "Only {{group.ended.next_day}} trades were kept past the day they were opened. They ranged from a {{trade.t6.result}} gain on a short /MES opened {{trade.t6.opened}} to a {{trade.t23.result}} loss on a short /MNQ opened {{trade.t23.opened}}."
+     "heading": "A few positions were held into the next day",
+     "text": "Some trades were carried past the day they were opened: a short /MES position from {{trade.t6.opened}} closed {{trade.t6.ended}} with a gain of {{trade.t6.result}}, and a short /MNQ position from {{trade.t40.opened}} closed {{trade.t40.ended}} with a gain of {{trade.t40.result}}. A short /MNQ position opened {{trade.t23.opened}} closed {{trade.t23.ended}} with a loss of {{trade.t23.result}}."
     }
    ],
-   "overall": "You traded only /MES and /MNQ futures on {{active_days}}, going both long and short in each. {{group.ended.same_day_opened}} trades ended the same day they were opened and {{group.ended.next_day}} ended the day after, so nothing was left open at month end. {{outside_hours_share}} orders went in outside regular market hours, and with no rolls or adjustments, each trade was simply opened and then closed.",
-   "subject_line": "Your month of /MES and /MNQ day trades"
+   "overall": "In October you traded only /MNQ and /MES futures, going both long and short and at times holding both directions on the same day. Trades were short-lived: {{group.ended.same_day_opened}} of your trades ended the same day they were opened, and {{group.ended.next_day}} ended the day after. Your exits were straight closes, and {{outside_hours_share}} of your orders were placed outside regular market hours.",
+   "subject_line": "Your October of /MNQ and /MES day trades"
   },
-  "cost_usd": 0.2264,
+  "cost_usd": 0.2374,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -14523,7 +14447,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "Your month of /MES and /MNQ day trades\n\nMorgan, here is your October 2026.\n\nYou traded only /MES and /MNQ futures on 23 days, going both long and short in each. 42 of 53 trades ended the same day they were opened and 11 of 53 ended the day after, so nothing was left open at month end. 1 in 3 orders went in outside regular market hours, and with no rolls or adjustments, each trade was simply opened and then closed.\n\nAT A GLANCE\n- 53 trades: new trades you started\n- the same day: how long you usually kept a trade\n- $315 on /MNQ: your largest loss on a single trade\n- 23 days: days you placed at least one trade\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it.\n\nWHAT STOOD OUT\nYou switched direction within the same day. On Oct 1 you were both long and short /MNQ, and both trades ended with a loss. On Oct 20 you went long /MNQ twice and short once, and all three were closed at a loss the same day, alongside a short /MES you held to the next day.\n\nYour /MNQ trades lost steadily before the first gain. Every /MNQ trade you opened from Oct 1 through Oct 14 ended with a loss, including $313 on Oct 13 and $307 and $295 on Oct 14. Your first /MNQ gain came on Oct 15, a short that closed up $346, your largest gain of the month.\n\nOvernight holds were the exception, with mixed results. Only 11 of 53 trades were kept past the day they were opened. They ranged from a $209 gain on a short /MES opened Oct 5 to a $284 loss on a short /MNQ opened Oct 14.\n\nHOW IT TURNED OUT\nYour account ended the month down 15.1%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 53 trades that ended, 17 ended with a gain and 36 with a loss.\nFees and commissions: $207.\n\nWHAT CHANGED\nNew trades you opened: 26 in the first half of the month, 27 in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "Your October of /MNQ and /MES day trades\n\nMorgan, here is your October 2026.\n\nIn October you traded only /MNQ and /MES futures, going both long and short and at times holding both directions on the same day. Trades were short-lived: 42 of 53 of your trades ended the same day they were opened, and 11 of 53 ended the day after. Your exits were straight closes, and 1 in 3 of your orders were placed outside regular market hours.\n\nAT A GLANCE\n- 53 trades: new trades you started\n- the same day: how long you usually kept a trade\n- $315 on /MNQ: your largest loss on a single trade\n- 23 days: days you placed at least one trade\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually closed a trade the same day you opened it.\n\nWHAT STOOD OUT\nYou switched between long and short on the same day. On Oct 1 you opened a long /MNQ position and a short /MNQ position, and closed them for losses of $141 and $136. On Oct 20 you closed long /MNQ positions for losses of $312 and $148, and the same day also opened a short /MNQ position and a short /MES position.\n\nWinners and losers were both closed within the day. 28 of 36 of your losing trades and 14 of 17 of your winning trades ended the same day they were opened. Your largest gain, a short /MNQ position opened Oct 15, and your largest loss, a long /MNQ position opened Oct 29, were each closed the day they were opened.\n\nA few positions were held into the next day. Some trades were carried past the day they were opened: a short /MES position from Oct 5 closed Oct 6 with a gain of $209, and a short /MNQ position from Oct 25 closed Oct 26 with a gain of $135. A short /MNQ position opened Oct 14 closed Oct 15 with a loss of $284.\n\nHOW IT TURNED OUT\nYour account ended the month down 15.1%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 53 trades that ended, 17 ended with a gain and 36 with a loss.\nFees and commissions: $207.\n\nWHAT CHANGED\nNew trades you opened: 26 in the first half of the month, 27 in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Trades small stock-index futures (the micro S&P 500 and micro Nasdaq), betting both up and down. Many trades start in the evening session after the stock market has closed. Each trade lasts minutes to a few hours.",
   "workbook": "p07_morgan_2026-10.xlsx"
@@ -14541,7 +14465,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -14550,22 +14475,22 @@
   "copy": {
    "observations": [
     {
-     "heading": "You returned to NVDA calls after the first one lost",
-     "text": "You opened an NVDA long call on {{trade.t5.opened}} and closed it on {{trade.t5.ended}} for a loss of {{trade.t5.result}}. On {{trade.t7.opened}} you opened another NVDA long call with {{trade.t7.expiry_at_open}} to expiration and closed it on {{trade.t7.ended}}, for a loss of {{trade.t7.result}}."
+     "heading": "NVDA long calls were closed soon after opening",
+     "text": "Your NVDA long call opened {{trade.t5.opened}} was closed on {{trade.t5.ended}} with {{trade.t5.left_at_close}} still left before expiration, for a loss of {{trade.t5.result}}. You came back to NVDA with another long call on {{trade.t7.opened}} and closed it after {{trade.t7.held}} on {{trade.t7.ended}}, for a loss of {{trade.t7.result}}."
     },
     {
-     "heading": "Your gains came from a short put and AAPL shares",
-     "text": "The /MES short put opened on {{trade.t1.opened}} was bought back on {{trade.t1.ended}} with {{trade.t1.left_at_close}} still left to expiration, for a gain of {{trade.t1.result}}. The AAPL shares bought on {{trade.t3.opened}} were held until {{trade.t3.ended}} and closed for a gain of {{trade.t3.result}}."
+     "heading": "The /MES short put was bought back early",
+     "text": "You sold a put on /MES on {{trade.t1.opened}} expiring {{trade.t1.expiry_at_open}} out, and bought it back on {{trade.t1.ended}} with {{trade.t1.left_at_close}} still left, keeping a gain of {{trade.t1.result}}."
     },
     {
-     "heading": "Crypto made up the largest share of your orders",
-     "text": "You bought BTC on {{trade.t2.opened}} for {{trade.t2.upfront}} and still held it at month end. ETH, bought on {{trade.t4.opened}}, was held for {{trade.t4.held}} and closed on {{trade.t4.ended}} for a loss of {{trade.t4.result}}."
+     "heading": "Shares and crypto were held longer than options",
+     "text": "Your AAPL shares were held {{trade.t3.held}} and closed for a gain of {{trade.t3.result}}, and your ETH position ran {{trade.t4.held}} before you closed it for a loss of {{trade.t4.result}}. BTC, opened {{trade.t2.opened}}, and MSFT shares, opened {{trade.t6.opened}}, were still open at month end."
     }
    ],
-   "overall": "In October you spread your trading across crypto, shares and options, and most positions were bought outright: BTC and ETH, AAPL and MSFT shares, and NVDA long calls. A short put on /MES was the only trade that collected premium. Your new trades split {{stories_opened_by_half}}, and each position was held or closed as opened, with {{open_stories}} still open at month end.",
-   "subject_line": "Your October: NVDA calls, crypto and shares"
+   "overall": "In October you spread your trading across crypto, shares and options, and most new trades came early in the month: {{stories_opened_by_half}}. On the options side you mostly bought, with long calls on NVDA alongside a short put on /MES, and you got out of every options trade well ahead of its expiration. Shares and crypto were the positions you held for weeks; {{open_stories}} were still open at month end.",
+   "subject_line": "NVDA calls closed fast, shares and crypto held"
   },
-  "cost_usd": 0.066,
+  "cost_usd": 0.0851,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -15113,7 +15038,7 @@
     "display": "$153",
     "id": "trade.t1.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p08-0001"
@@ -15149,7 +15074,7 @@
     "display": "$16,013",
     "id": "trade.t2.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p08-0002"
@@ -15197,7 +15122,7 @@
     "display": "$4,958",
     "id": "trade.t3.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p08-0003"
@@ -15257,7 +15182,7 @@
     "display": "$3,656",
     "id": "trade.t4.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p08-0004"
@@ -15341,7 +15266,7 @@
     "display": "$1,780",
     "id": "trade.t5.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p08-0005"
@@ -15377,7 +15302,7 @@
     "display": "$4,435",
     "id": "trade.t6.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p08-0006"
@@ -15449,7 +15374,7 @@
     "display": "$1,450",
     "id": "trade.t7.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p08-0007"
@@ -15679,7 +15604,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "Your October: NVDA calls, crypto and shares\n\nJamie, here is your October 2026.\n\nIn October you spread your trading across crypto, shares and options, and most positions were bought outright: BTC and ETH, AAPL and MSFT shares, and NVDA long calls. A short put on /MES was the only trade that collected premium. Your new trades split 6 in the first half of the month, 1 in the second half, and each position was held or closed as opened, with BTC and MSFT still open at month end.\n\nAT A GLANCE\n- 7 trades: new trades you started\n- 5 trades: trades that ended this month\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n- 5 days: how long you usually kept a trade\n\nGETTING IN\n- You usually opened options trades expiring about 6 weeks out.\n- You usually collected $153 in premium per contract when you opened a trade.\n- You usually paid a debit of $808 per contract when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually kept a trade for 5 days.\n- When you closed an options trade, it was usually still about 6 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n\nWHAT STOOD OUT\nYou returned to NVDA calls after the first one lost. You opened an NVDA long call on Oct 7 and closed it on Oct 12 for a loss of $753. On Oct 20 you opened another NVDA long call with about 4 weeks to expiration and closed it on Oct 21, for a loss of $673.\n\nYour gains came from a short put and AAPL shares. The /MES short put opened on Oct 2 was bought back on Oct 6 with about 6 weeks still left to expiration, for a gain of $76.21. The AAPL shares bought on Oct 5 were held until Oct 21 and closed for a gain of $215.\n\nCrypto made up the largest share of your orders. You bought BTC on Oct 3 for $16,013 and still held it at month end. ETH, bought on Oct 6, was held for about 3 weeks and closed on Oct 24 for a loss of $215.\n\nHOW IT TURNED OUT\nYour account ended the month down 2.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 5 trades that ended, 2 ended with a gain and 3 with a loss.\nFees and commissions: $181.\n\nSTILL OPEN\nGoing into next month: BTC and MSFT.\n\nWHAT CHANGED\nHow far out your expirations were: about 7 weeks in the first half of the month, about 4 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "NVDA calls closed fast, shares and crypto held\n\nJamie, here is your October 2026.\n\nIn October you spread your trading across crypto, shares and options, and most new trades came early in the month: 6 in the first half of the month, 1 in the second half. On the options side you mostly bought, with long calls on NVDA alongside a short put on /MES, and you got out of every options trade well ahead of its expiration. Shares and crypto were the positions you held for weeks; BTC and MSFT were still open at month end.\n\nAT A GLANCE\n- 7 trades: new trades you started\n- 5 trades: trades that ended this month\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n- 5 days: how long you usually kept a trade\n\nGETTING IN\n- You usually opened options trades expiring about 6 weeks out.\n- You usually collected $153 in premium per contract when you opened a trade.\n- You usually paid a debit of $808 per contract when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually kept a trade for 5 days.\n- When you closed an options trade, it was usually still about 6 weeks from expiration.\n- Your winning trades usually kept about half of the premium you collected.\n\nWHAT STOOD OUT\nNVDA long calls were closed soon after opening. Your NVDA long call opened Oct 7 was closed on Oct 12 with about 6 weeks still left before expiration, for a loss of $753. You came back to NVDA with another long call on Oct 20 and closed it after 1 day on Oct 21, for a loss of $673.\n\nThe /MES short put was bought back early. You sold a put on /MES on Oct 2 expiring about 7 weeks out, and bought it back on Oct 6 with about 6 weeks still left, keeping a gain of $76.21.\n\nShares and crypto were held longer than options. Your AAPL shares were held about 2 weeks and closed for a gain of $215, and your ETH position ran about 3 weeks before you closed it for a loss of $215. BTC, opened Oct 3, and MSFT shares, opened Oct 12, were still open at month end.\n\nHOW IT TURNED OUT\nYour account ended the month down 2.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 5 trades that ended, 2 ended with a gain and 3 with a loss.\nFees and commissions: $181.\n\nSTILL OPEN\nGoing into next month: BTC and MSFT.\n\nWHAT CHANGED\nHow far out your expirations were: about 7 weeks in the first half of the month, about 4 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Uses a bit of everything: buys shares, buys calls on one chip maker, sells puts on the micro S&P 500 future, and buys bitcoin and ether, sometimes on weekends. Adds money to the account mid-month.",
   "workbook": "p08_jamie_2026-10.xlsx"
@@ -15697,7 +15622,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -15706,22 +15632,18 @@
   "copy": {
    "observations": [
     {
-     "heading": "SBUX puts were bought back well before expiration",
-     "text": "You bought back the SBUX put opened on {{trade.t2.opened}} for a gain of {{trade.t2.result}} with {{trade.t2.left_at_close}} left. The SBUX put opened on {{trade.t3.opened}} went further out, {{trade.t3.expiry_at_open}} at opening, and you bought it back for {{trade.t3.result}} with {{trade.t3.left_at_close}} still remaining."
+     "heading": "SBUX puts were bought back before expiration",
+     "text": "The SBUX put opened {{trade.t2.opened}} was bought back on {{trade.t2.ended}} with {{trade.t2.left_at_close}} left, for a gain of {{trade.t2.result}} on {{trade.t2.upfront}} collected. The second SBUX put, opened {{trade.t3.opened}} with {{trade.t3.expiry_at_open}} to expiration, was bought back on {{trade.t3.ended}} with {{trade.t3.left_at_close}} still to go, for a gain of {{trade.t3.result}} on {{trade.t3.upfront}} collected."
     },
     {
-     "heading": "The NKE loss came from a put that became shares",
-     "text": "The NKE cash-secured put opened on {{trade.t1.opened}} collected {{trade.t1.upfront}} in premium and finished as shares. You closed those shares on {{trade.t1.ended}} for a loss of {{trade.t1.result}}, roughly the size of that premium. After that, you sold a new NKE cash-secured put on {{trade.t4.opened}} for {{trade.t4.upfront}}, expiring {{trade.t4.expiry_at_open}} out."
-    },
-    {
-     "heading": "You swapped SBUX for NKE on the same day",
-     "text": "On {{trade.t3.ended}} you bought back the SBUX put and opened the new NKE cash-secured put, so the month closed with NKE as your open position and no SBUX exposure."
+     "heading": "You returned to NKE after closing the shares",
+     "text": "Your largest loss came from NKE: the cash-secured put opened {{trade.t1.opened}} ended as shares, which you closed on {{trade.t1.ended}} for a loss of {{trade.t1.result}}. On {{trade.t4.opened}}, the same day you bought back the second SBUX put, you sold a new NKE cash-secured put expiring {{trade.t4.expiry_at_open}} out, collecting {{trade.t4.upfront}}."
     }
    ],
-   "overall": "You sold puts on SBUX and NKE and managed them without rolling, either buying them back or closing them outright. SBUX was the steady part: you sold a put on {{trade.t2.opened}}, bought it back on {{trade.t2.ended}}, then sold another on {{trade.t3.opened}} with an expiration further out and bought it back on {{trade.t3.ended}}. The NKE cash-secured put carried over from {{trade.t1.opened}} finished as shares that you closed on {{trade.t1.ended}}, and you went back to NKE with a new cash-secured put on {{trade.t4.opened}} that was still open at month end.",
-   "subject_line": "Selling puts on SBUX and NKE without rolling"
+   "overall": "Your month was built on selling puts on SBUX and NKE, and you managed them without rolling, either holding them or buying them back. You carried in an NKE cash-secured put from {{trade.t1.opened}} that ended as shares, and you closed those shares on {{trade.t1.ended}}. On SBUX you sold a put on {{trade.t2.opened}} and another on {{trade.t3.opened}}, buying both back before their expiration day. On {{trade.t4.opened}} you went back to NKE with a new cash-secured put that was still open at month end.",
+   "subject_line": "Riley, your month of SBUX and NKE puts"
   },
-  "cost_usd": 0.0656,
+  "cost_usd": 0.0778,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -16226,18 +16148,6 @@
     "weight": 0.5
    },
    {
-    "display": "$2,314",
-    "id": "trade.t1.upfront",
-    "kind": "trade",
-    "plain": "premium collected when opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p09-0001"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
     "display": "$2,245",
     "id": "trade.t1.result",
     "kind": "trade",
@@ -16313,7 +16223,7 @@
     "display": "$160",
     "id": "trade.t2.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p09-0002"
@@ -16397,7 +16307,7 @@
     "display": "$350",
     "id": "trade.t3.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p09-0003"
@@ -16445,7 +16355,7 @@
     "display": "$160",
     "id": "trade.t4.upfront",
     "kind": "trade",
-    "plain": "premium collected when opened",
+    "plain": "premium collected when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p09-0004"
@@ -16614,7 +16524,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "Selling puts on SBUX and NKE without rolling\n\nRiley, here is your October 2026.\n\nYou sold puts on SBUX and NKE and managed them without rolling, either buying them back or closing them outright. SBUX was the steady part: you sold a put on Oct 1, bought it back on Oct 13, then sold another on Oct 20 with an expiration further out and bought it back on Oct 29. The NKE cash-secured put carried over from Sep 21 finished as shares that you closed on Oct 22, and you went back to NKE with a new cash-secured put on Oct 29 that was still open at month end.\n\nAT A GLANCE\n- 3 trades: new trades you started\n- about 3 weeks: how far out the expiration usually was when you opened an options trade\n- 12 days: how long you usually kept a trade\n- $80.00: premium you usually collected per contract when you opened a trade\n\nGETTING IN\n- You usually opened options trades expiring about 3 weeks out.\n- You usually collected $80.00 in premium per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually kept a trade for 12 days.\n- When you closed an options trade, it was usually still 13 days from expiration.\n- Your winning trades usually kept nearly all of the premium you collected.\n\nWHAT STOOD OUT\nSBUX puts were bought back well before expiration. You bought back the SBUX put opened on Oct 1 for a gain of $138 with 3 days left. The SBUX put opened on Oct 20 went further out, about 4 weeks at opening, and you bought it back for $308 with about 3 weeks still remaining.\n\nThe NKE loss came from a put that became shares. The NKE cash-secured put opened on Sep 21 collected $2,314 in premium and finished as shares. You closed those shares on Oct 22 for a loss of $2,245, roughly the size of that premium. After that, you sold a new NKE cash-secured put on Oct 29 for $160, expiring about 3 weeks out.\n\nYou swapped SBUX for NKE on the same day. On Oct 29 you bought back the SBUX put and opened the new NKE cash-secured put, so the month closed with NKE as your open position and no SBUX exposure.\n\nHOW IT TURNED OUT\nYour account ended the month down 4.1%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 3 trades that ended, 2 ended with a gain and 1 with a loss.\nFees and commissions: $12.56.\n\nSTILL OPEN\nGoing into next month: NKE.\n\nWHAT CHANGED\nHow far out your expirations were: about 2 weeks in the first half of the month, about 4 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "Riley, your month of SBUX and NKE puts\n\nRiley, here is your October 2026.\n\nYour month was built on selling puts on SBUX and NKE, and you managed them without rolling, either holding them or buying them back. You carried in an NKE cash-secured put from Sep 21 that ended as shares, and you closed those shares on Oct 22. On SBUX you sold a put on Oct 1 and another on Oct 20, buying both back before their expiration day. On Oct 29 you went back to NKE with a new cash-secured put that was still open at month end.\n\nAT A GLANCE\n- 3 trades: new trades you started\n- about 3 weeks: how far out the expiration usually was when you opened an options trade\n- 12 days: how long you usually kept a trade\n- $80.00: premium you usually collected per contract when you opened a trade\n\nGETTING IN\n- You usually opened options trades expiring about 3 weeks out.\n- You usually collected $80.00 in premium per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You held or closed your trades without rolling any of them.\n\nGETTING OUT\n- You usually kept a trade for 12 days.\n- When you closed an options trade, it was usually still 13 days from expiration.\n- Your winning trades usually kept nearly all of the premium you collected.\n\nWHAT STOOD OUT\nSBUX puts were bought back before expiration. The SBUX put opened Oct 1 was bought back on Oct 13 with 3 days left, for a gain of $138 on $160 collected. The second SBUX put, opened Oct 20 with about 4 weeks to expiration, was bought back on Oct 29 with about 3 weeks still to go, for a gain of $308 on $350 collected.\n\nYou returned to NKE after closing the shares. Your largest loss came from NKE: the cash-secured put opened Sep 21 ended as shares, which you closed on Oct 22 for a loss of $2,245. On Oct 29, the same day you bought back the second SBUX put, you sold a new NKE cash-secured put expiring about 3 weeks out, collecting $160.\n\nHOW IT TURNED OUT\nYour account ended the month down 4.1%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 3 trades that ended, 2 ended with a gain and 1 with a loss.\nFees and commissions: $12.56.\n\nSTILL OPEN\nGoing into next month: NKE.\n\nWHAT CHANGED\nHow far out your expirations were: about 2 weeks in the first half of the month, about 4 weeks in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "Sells puts on two retail stocks with cash set aside. Sells more of the same put each time the stock drops 3%. In October one of the stocks fell 12% overnight, the puts ended with the stock well below the strike, the shares were bought at the strike, and a few days later they were sold for much less. A red month.",
   "workbook": "p09_riley_2026-10.xlsx"
@@ -16632,7 +16542,8 @@
      "no_praise",
      "results_left_to_code",
      "no_doubled_units",
-     "trades_named"
+     "trades_named",
+     "claims_supported"
     ],
     "passed": true,
     "reasons": []
@@ -16641,18 +16552,22 @@
   "copy": {
    "observations": [
     {
-     "heading": "Your losing trades ended in two different ways",
-     "text": "KO was not closed by you; the covered call was assigned on {{trade.t1.ended}} after you had held it for {{trade.t1.held}}, for a loss of {{trade.t1.result}}. INTC was the one you chose to exit: you closed the long call on {{trade.t3.ended}} with {{trade.t3.left_at_close}} left before expiration, for a loss of {{trade.t3.result}}."
+     "heading": "Your new trades were bought, not sold",
+     "text": "The INTC long call opened on {{trade.t3.opened}} with its expiration {{trade.t3.expiry_at_open}} out, for a debit of {{trade.t3.upfront}}. The F shares followed on {{trade.t4.opened}} for {{trade.t4.upfront}}. Neither new position collected premium; both put money in up front."
     },
     {
-     "heading": "The second half of the month held most of the activity",
-     "text": "After INTC opened on {{trade.t3.opened}}, the later moves came close together: you bought F shares on {{trade.t4.opened}}, rolled SHOP down to a lower strike and out to a later expiration on {{trade.t2.first_roll}}, and closed INTC on {{trade.t3.ended}}. SHOP and F were both still open at month end."
+     "heading": "The two losing trades ended in different ways",
+     "text": "The KO covered call ran its course and was assigned on {{trade.t1.ended}} after {{trade.t1.held}}, a loss of {{trade.t1.result}}. The INTC long call you closed yourself on {{trade.t3.ended}}, before its expiration day, for a loss of {{trade.t3.result}}."
+    },
+    {
+     "heading": "SHOP was the one position you adjusted",
+     "text": "On {{trade.t2.first_roll}} you rolled the SHOP position down to a lower strike and out to a later expiration, and the roll was not done for a credit. Rather than closing it, you kept SHOP open into next month alongside the F shares."
     }
    ],
-   "overall": "Your month combined two positions carried over from August with two new ones. The KO covered call opened on {{trade.t1.opened}} was assigned on {{trade.t1.ended}}, while the SHOP position from {{trade.t2.opened}} stayed open and became the one trade you rolled. On the new side, you paid a debit of {{trade.t3.upfront}} for an INTC long call on {{trade.t3.opened}}, then bought F shares on {{trade.t4.opened}} and still held them at month end.",
-   "subject_line": "KO assigned, INTC closed and a SHOP roll"
+   "overall": "Your month mixed two positions carried in from August with two new ones: a KO covered call and a SHOP custom position from before the month, then an INTC long call opened on {{trade.t3.opened}} and F shares bought on {{trade.t4.opened}}. The new trades were bought for a debit rather than sold for premium. KO was assigned on {{trade.t1.ended}}, you closed INTC on {{trade.t3.ended}} with {{trade.t3.left_at_close}} still left before expiration, and SHOP and F were carried into next month.",
+   "subject_line": "Two trades wrapped up, two carried forward"
   },
-  "cost_usd": 0.0481,
+  "cost_usd": 0.0705,
   "draft": null,
   "effort": "medium",
   "facts": [
@@ -17129,18 +17044,6 @@
     "weight": 0.5
    },
    {
-    "display": "$13,001",
-    "id": "trade.t1.upfront",
-    "kind": "trade",
-    "plain": "debit paid when opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p10-0001"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
     "display": "$601",
     "id": "trade.t1.result",
     "kind": "trade",
@@ -17157,18 +17060,6 @@
     "id": "trade.t2.opened",
     "kind": "trade",
     "plain": "date the trade was opened",
-    "section": "managing",
-    "source_examples": [
-     "story:p10-0002"
-    ],
-    "sources": 1,
-    "weight": 0.5
-   },
-   {
-    "display": "$14,775",
-    "id": "trade.t2.upfront",
-    "kind": "trade",
-    "plain": "debit paid when opened",
     "section": "managing",
     "source_examples": [
      "story:p10-0002"
@@ -17276,7 +17167,7 @@
     "display": "$715",
     "id": "trade.t3.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p10-0003"
@@ -17312,7 +17203,7 @@
     "display": "$3,124",
     "id": "trade.t4.upfront",
     "kind": "trade",
-    "plain": "debit paid when opened",
+    "plain": "debit paid when opened, plus any added later",
     "section": "managing",
     "source_examples": [
      "story:p10-0004"
@@ -17484,7 +17375,7 @@
   "month": "2026-10",
   "month_name": "October 2026",
   "prompt_version": "recap_v4",
-  "recap_text": "KO assigned, INTC closed and a SHOP roll\n\nDrew, here is your October 2026.\n\nYour month combined two positions carried over from August with two new ones. The KO covered call opened on Aug 10 was assigned on Oct 14, while the SHOP position from Aug 20 stayed open and became the one trade you rolled. On the new side, you paid a debit of $715 for an INTC long call on Oct 7, then bought F shares on Oct 22 and still held them at month end.\n\nAT A GLANCE\n- 2 trades: new trades you started\n- 1 time: times you rolled a trade to a new strike or expiration\n- none: share of your rolls done for a credit\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n\nGETTING IN\n- You usually opened options trades expiring about 6 weeks out.\n- You usually paid a debit of $143 per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You rolled trades 1 time.\n- None of your rolls were done for a credit.\n\nGETTING OUT\n- You usually kept a trade for about 6 weeks.\n- When you closed an options trade, it was usually still 12 days from expiration.\n- You closed 1 trade that ended with a loss before expiration.\n\nWHAT STOOD OUT\nYour losing trades ended in two different ways. KO was not closed by you; the covered call was assigned on Oct 14 after you had held it for about 2 months, for a loss of $601. INTC was the one you chose to exit: you closed the long call on Oct 27 with about 3 weeks left before expiration, for a loss of $251.\n\nThe second half of the month held most of the activity. After INTC opened on Oct 7, the later moves came close together: you bought F shares on Oct 22, rolled SHOP down to a lower strike and out to a later expiration on Oct 26, and closed INTC on Oct 27. SHOP and F were both still open at month end.\n\nHOW IT TURNED OUT\nYour account ended the month down 0.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 2 trades that ended, 0 ended with a gain and 2 with a loss.\nFees and commissions: $8.74.\n\nSTILL OPEN\nGoing into next month: SHOP and F.\n\nWHAT CHANGED\nRolls you made: 0 in the first half of the month, 1 in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
+  "recap_text": "Two trades wrapped up, two carried forward\n\nDrew, here is your October 2026.\n\nYour month mixed two positions carried in from August with two new ones: a KO covered call and a SHOP custom position from before the month, then an INTC long call opened on Oct 7 and F shares bought on Oct 22. The new trades were bought for a debit rather than sold for premium. KO was assigned on Oct 14, you closed INTC on Oct 27 with about 3 weeks still left before expiration, and SHOP and F were carried into next month.\n\nAT A GLANCE\n- 2 trades: new trades you started\n- 1 time: times you rolled a trade to a new strike or expiration\n- none: share of your rolls done for a credit\n- about 6 weeks: how far out the expiration usually was when you opened an options trade\n\nGETTING IN\n- You usually opened options trades expiring about 6 weeks out.\n- You usually paid a debit of $143 per contract when you opened a trade.\n- Implied volatility was usually average compared with its past year when you opened a trade.\n\nMANAGING\n- You rolled trades 1 time.\n- None of your rolls were done for a credit.\n\nGETTING OUT\n- You usually kept a trade for about 6 weeks.\n- When you closed an options trade, it was usually still 12 days from expiration.\n- You closed 1 trade that ended with a loss before expiration.\n\nWHAT STOOD OUT\nYour new trades were bought, not sold. The INTC long call opened on Oct 7 with its expiration about 6 weeks out, for a debit of $715. The F shares followed on Oct 22 for $3,124. Neither new position collected premium; both put money in up front.\n\nThe two losing trades ended in different ways. The KO covered call ran its course and was assigned on Oct 14 after about 2 months, a loss of $601. The INTC long call you closed yourself on Oct 27, before its expiration day, for a loss of $251.\n\nSHOP was the one position you adjusted. On Oct 26 you rolled the SHOP position down to a lower strike and out to a later expiration, and the roll was not done for a credit. Rather than closing it, you kept SHOP open into next month alongside the F shares.\n\nHOW IT TURNED OUT\nYour account ended the month down 0.8%, while the broad US market was up 0.7% and large technology companies were down 6.8%.\nOf the 2 trades that ended, 0 ended with a gain and 2 with a loss.\nFees and commissions: $8.74.\n\nSTILL OPEN\nGoing into next month: SHOP and F.\n\nWHAT CHANGED\nRolls you made: 0 in the first half of the month, 1 in the second half.\n\nFINE PRINT\nThis isn't your account statement; if anything here differs, your statement is correct.\nHow we counted: a trade is one position from your first order until it was fully closed, however many orders that took. Results are after fees and commissions. Trades still open are not counted as gains or losses yet.\nThis recap is for education only. It describes what you did and is not advice.\n[Required disclosures]\n[Unsubscribe]\n",
   "status": "passed",
   "summary": "An account with awkward data. It starts the month already holding shares and options. A call it sold is exercised early, the day before a dividend. One stock splits two-for-one while a put on it is open. One order fills in three pieces and another only partly fills. A roll is done as two separate orders two minutes apart. Half the split shares are sold, and that fill arrives with its fees missing.",
   "workbook": "p10_drew_2026-10.xlsx"
