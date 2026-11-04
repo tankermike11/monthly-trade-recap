@@ -5,7 +5,8 @@
 1. site/data/personas.json: each October persona's recap, built ahead of time from a
    saved model run (no API calls here). The run must match the configured model and
    prompt version, so the site shows what the pipeline produces today.
-2. site/downloads/: the blank template and one filled workbook per persona.
+2. site/downloads/: the blank template and one filled workbook per persona; and
+   site/gallery.html: the review gallery for the same recaps.
 3. deploy/ (gitignored): only what the site runs, ready for `vercel deploy deploy`:
    the function (api/index.py), the site files, the pipeline code it imports, config,
    prompts and templates, a requirements.txt with the light dependencies only, and
@@ -61,6 +62,8 @@ def build_site_data(results: Path) -> list[dict]:
         _write(REPO / "site" / "downloads" / workbook, write_workbook(raw))
         personas.append({"id": pid, "summary": " ".join(str(spec.get("summary", "")).split()),
                          "workbook": workbook, **payload(sheet, linked, res, cfg, [])})
+    from pipeline.gallery import build as build_gallery
+    _write(REPO / "site" / "gallery.html", build_gallery(MONTH, REPO / "data" / "raw", saved))
     _write(REPO / "site" / "data" / "personas.json",
            json.dumps(personas, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
     return personas

@@ -71,7 +71,7 @@ def login(port, password="team-pass"):
 def test_signed_out_reaches_only_the_login_page(server, monkeypatch):
     monkeypatch.setenv("SITE_PASSWORD", "team-pass")
     assert req(server, "GET", "/login")[0] == 200
-    for path in ("/", "/downloads/recap_template.xlsx", "/config/model.yaml", "/api/index.py"):
+    for path in ("/", "/gallery", "/downloads/recap_template.xlsx", "/config/model.yaml", "/api/index.py"):
         status, headers, _ = req(server, "GET", path)
         assert (status, headers.get("Location")) in ((303, "/login"), (401, None)), path
     assert req(server, "GET", "/data/personas.json")[0] == 401
@@ -95,6 +95,8 @@ def test_signed_in_gets_the_site_but_not_the_source(server, monkeypatch):
     assert [p["id"] for p in personas] == [f"p{i:02d}" for i in range(1, 11)]
     for p in personas:
         assert req(server, "GET", f"/downloads/{p['workbook']}", cookie=cookie)[0] == 200
+    status, headers, body = req(server, "GET", "/gallery", cookie=cookie)
+    assert status == 200 and b"Recap review gallery" in body
     for path in ("/config/model.yaml", "/pipeline/write.py", "/downloads/..%2Fconfig%2Fmodel.yaml", "/site/app.html"):
         assert req(server, "GET", path, cookie=cookie)[0] == 404, path
     # a changed password ends old sessions

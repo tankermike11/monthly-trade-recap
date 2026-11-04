@@ -4,6 +4,7 @@
   (SITE_PASSWORD) can get; with no password configured, nobody gets in.
 - GET  /                     the app (site/app.html)
 - GET  /data/personas.json   persona recaps built ahead of time
+- GET  /gallery              the review gallery for the same recaps
 - GET  /downloads/<file>     the template and persona workbooks
 - POST /api/recap            an uploaded workbook (raw .xlsx bytes) -> recap JSON;
                              calls Claude with ANTHROPIC_API_KEY
@@ -109,6 +110,8 @@ class handler(BaseHTTPRequestHandler):  # noqa: N801  (Vercel looks for this nam
             return self._file(SITE / "app.html")
         if path == "/data/personas.json":
             return self._file(SITE / "data" / "personas.json")
+        if path == "/gallery":
+            return self._file(SITE / "gallery.html")
         if path.startswith("/downloads/"):
             name = path.removeprefix("/downloads/")
             if not SAFE_DOWNLOAD.match(name):
