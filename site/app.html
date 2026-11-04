@@ -83,8 +83,11 @@ ul.rules { margin:0; padding-left:18px; display:grid; gap:6px; }
 .facts td.num { font-variant-numeric:tabular-nums; font-weight:500; }
 .facts .src { color:var(--faint); font-family:var(--mono); font-size:12px; }
 .scroll { overflow-x:auto; }
-.draft-sec { display:grid; gap:4px; }
-.draft-sec div { font-size:14px; }
+.draft { display:grid; }
+.draft-sec { display:grid; gap:8px; padding-block:18px; border-top:1px solid var(--rule); }
+.draft-sec:first-of-type { border-top:0; padding-top:4px; }
+.draft-sec .text { font-size:15px; line-height:1.65; }
+.draft-sec .heading { font-size:15px; font-weight:600; }
 .check { display:flex; gap:8px; font-size:14px; }
 .check .mark { color:var(--ok); font-weight:600; }
 .check.fail .mark { color:var(--warn); }
@@ -303,10 +306,15 @@ function draftPanel(data, facts) {
   if (!data.copy) return el("p", { class: "meta", text: "No draft passed the checks." });
   const c = data.copy, box = el("div", { class: "stack" });
   box.append(el("p", { class: "meta" }, "Claude writes only these parts; code writes the rest of the recap. Highlighted ", el("mark", { class: "ph", text: "{{placeholders}}" }), " are where code fills in a fact's value. Hover one to see it."));
-  const block = (title, lines) => lines.filter(Boolean).length ? el("div", { class: "draft-sec" }, el("span", { class: "label", text: title }), lines.filter(Boolean).map((t) => el("div", {}, withPlaceholders(t, facts, "ph")))) : null;
-  box.append(block("Overall picture", [c.overall]));
-  (c.observations || []).forEach((o, i) => box.append(block(`What stood out ${i + 1}: ${o.heading}`, [o.text])));
-  box.append(block("Subject line", [c.subject_line]));
+  const block = (title, lines, heading) => lines.filter(Boolean).length ? el("div", { class: "draft-sec" },
+    el("span", { class: "label", text: title }),
+    heading ? el("div", { class: "heading", text: heading }) : null,
+    lines.filter(Boolean).map((t) => el("div", { class: "text" }, withPlaceholders(t, facts, "ph")))) : null;
+  const sections = el("div", { class: "draft" });
+  sections.append(...[block("Overall picture", [c.overall]),
+    ...(c.observations || []).map((o, i) => block(`What stood out (${i + 1} of ${c.observations.length})`, [o.text], o.heading)),
+    block("Subject line", [c.subject_line])].filter(Boolean));
+  box.append(sections);
   return box;
 }
 
