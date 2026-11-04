@@ -88,7 +88,23 @@ def main(argv: list[str] | None = None) -> None:
                     help="build out/<month>/gallery.html from this month's recaps (no API calls)")
     ap.add_argument("--results", type=Path,
                     help="with --gallery: read recaps from a saved comparison file instead of out/<month>/")
+    ap.add_argument("--batch", action="store_true",
+                    help="the monthly run: every customer through the Batch API, archived (pipeline/monthly.py)")
+    ap.add_argument("--archive", type=Path, default=REPO / "archive")
+    ap.add_argument("--resume", help="with --batch: continue an earlier run, e.g. run-0003")
+    ap.add_argument("--no-wait", action="store_true", help="with --batch: submit, then stop; resume later")
+    ap.add_argument("--sample-rate", type=float, default=0.05, help="with --batch: share of ready recaps to sample for review")
     a = ap.parse_args(argv)
+    if a.batch:
+        from pipeline.monthly import describe, run_month
+        from pipeline.write import ModelConfig
+
+        summary = run_month(a.month, a.raw, a.archive, ModelConfig.load(model=a.model, effort=a.effort),
+                            resume=a.resume, no_wait=a.no_wait, sample_rate=a.sample_rate,
+                            only=[a.customer] if a.customer else None)
+        if summary:
+            print(describe(summary))
+        return
     if a.gallery and not a.write:
         from pipeline.gallery import build, load_results
 

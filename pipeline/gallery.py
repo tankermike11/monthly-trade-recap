@@ -126,9 +126,11 @@ def load_results(out_root: Path, month: str, results: Path | None = None) -> dic
     return found
 
 
-def build(month: str, raw_root: Path, results: dict[str, WriteResult]) -> str:
+def build(month: str, raw_root: Path, results: dict[str, WriteResult], only: list[str] | None = None) -> str:
+    """`only` limits the cards (a monthly run shows every recap that needs review plus a
+    sample, never thousands of cards); by default every customer in the month."""
     cfg = ModelConfig.load()
-    cards = [card(raw_root, month, cid, results.get(cid), cfg) for cid in customers(raw_root, month)]
+    cards = [card(raw_root, month, cid, results.get(cid), cfg) for cid in (only if only is not None else customers(raw_root, month))]
     env = Environment(loader=FileSystemLoader(REPO / "templates"), autoescape=select_autoescape(["html", "j2"]),
                       trim_blocks=True, lstrip_blocks=True)
     return env.get_template("gallery.html.j2").render(
