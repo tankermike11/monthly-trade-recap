@@ -321,6 +321,14 @@ Fail once → retry with the failure reasons appended. Fail twice → `out/<mont
 
 The same validated `RecapCopy` and facts sheet fill every template. Ship plain text first; add the visual email only once the content holds up across all 10 personas.
 
+**Decided 2026-11-04** (after the 4.0 revision):
+
+- **Order:** (1) review gallery with a claims spot-check, (2) monthly batch run and archive, (3) HTML email, (4) phone cards and banner. The plain-text recap already exists, so review and the monthly run come before the visual templates.
+- **Sections follow the 4.0 recap:** subject, greeting, overall picture (Claude), at a glance, getting in, managing, getting out (code), what stood out (Claude), how it turned out, still open, what changed, fine print.
+- **Phone cards and banner are filled by code from facts** (the value large, its plain phrase beneath); `RecapCopy` no longer has teasers, and cards add no new claims.
+- **The gallery lists Claude's claims about groups of trades** (every, all, both, only, the largest, first, last, a range of days, or a code count) beside the trades and facts each one cites, because the validator cannot check them. A customer "needs review" when the copy failed twice, the model declined, or the data has a quality issue (with the issue named).
+- **The monthly run uses the Message Batches API.** Server-side refusal fallback is not available in batches, so a declined request goes to review.
+
 ### 5.1 Templates
 
 1. **`recap.txt.j2`** (build first): plain-text recap in the style of the original write-up, but in second person. Sections: one-liner, at a glance, getting in, managing, getting out, how it turned out, still open, what changed, fine print.

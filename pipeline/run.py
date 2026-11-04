@@ -84,7 +84,18 @@ def main(argv: list[str] | None = None) -> None:
     ap.add_argument("--write", action="store_true", help="call Claude and render the recap")
     ap.add_argument("--model")
     ap.add_argument("--effort")
+    ap.add_argument("--gallery", action="store_true",
+                    help="build out/<month>/gallery.html from this month's recaps (no API calls)")
+    ap.add_argument("--results", type=Path,
+                    help="with --gallery: read recaps from a saved comparison file instead of out/<month>/")
     a = ap.parse_args(argv)
+    if a.gallery and not a.write:
+        from pipeline.gallery import build, load_results
+
+        path = a.out / a.month / "gallery.html"
+        _write(path, build(a.month, a.raw, load_results(a.out, a.month, a.results)))
+        print(path)
+        return
     cfg = None
     if a.write:
         from pipeline.write import ModelConfig

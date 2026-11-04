@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recap Review · {{ month_name }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+/* A reviewer's desk: one card per customer, the recap as the customer reads it on the left,
+   the evidence (claims to spot-check, checks, facts, trades) on the right. */
+:root {
+  --bg:#f4f6f8; --card:#ffffff; --ink:#15212b; --muted:#5a6773; --faint:#8995a0; --rule:#d8dee4;
+  --accent:#0d6b4f; --accent-soft:#e1f0ea; --warn:#9a3a1f; --warn-bg:#fbe9e2; --claim:#7a4b00; --claim-bg:#fbefd5;
+  --font:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --serif:"Source Serif 4",Georgia,serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#10161b; --card:#182128; --ink:#e4e9ed; --muted:#9aa7b1; --faint:#66737d; --rule:#2b3640;
+    --accent:#4fbf95; --accent-soft:#16352a; --warn:#f0a080; --warn-bg:#3b2219; --claim:#f1c76e; --claim-bg:#3a2e14; color-scheme:dark; }
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 var(--font); }
+main { max-width:1280px; margin:0 auto; padding:28px 16px 64px; display:grid; gap:20px; }
+h1 { font-family:var(--serif); font-weight:600; font-size:32px; margin:0; }
+h2 { font-size:20px; margin:0; }
+p { margin:0; }
+.label { font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.meta { font-size:13px; color:var(--muted); }
+.summary { display:flex; flex-wrap:wrap; gap:8px 28px; font-size:15px; }
+.summary b { font-variant-numeric:tabular-nums; }
+.filters { display:flex; gap:6px; flex-wrap:wrap; }
+.filters button { font:inherit; font-size:14px; cursor:pointer; padding:6px 12px; border-radius:6px; border:1px solid var(--rule); background:var(--card); color:var(--ink); }
+.filters button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
+.card { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:18px; display:grid; gap:14px; }
+.card.review { border-left:4px solid var(--warn); }
+.card-head { display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; }
+.pill { font-family:var(--mono); font-size:12px; padding:2px 10px; border-radius:999px; }
+.pill.ready { background:var(--accent-soft); color:var(--accent); }
+.pill.review { background:var(--warn-bg); color:var(--warn); }
+.chip { font-family:var(--mono); font-size:11px; padding:1px 8px; border-radius:999px; border:1px solid var(--rule); color:var(--muted); }
+.reasons { background:var(--warn-bg); color:var(--warn); border-radius:8px; padding:10px 14px; font-size:14px; }
+.reasons ul { margin:4px 0 0; padding-left:18px; }
+.cols { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:16px; align-items:start; }
+@media (max-width:960px) { .cols { grid-template-columns:minmax(0,1fr); } }
+.recap { font-family:var(--serif); font-size:15.5px; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; border:1px solid var(--rule); border-radius:8px; padding:16px 18px; margin:0; }
+details { border:1px solid var(--rule); border-radius:8px; padding:10px 14px; }
+details + details { margin-top:10px; }
+summary { cursor:pointer; font-weight:600; }
+.claim { border-top:1px solid var(--rule); padding-block:14px; display:grid; gap:8px; }
+.claim:first-of-type { border-top:0; }
+.claim .text { font-family:var(--serif); font-size:15.5px; line-height:1.55; }
+.claim .where { font-size:12px; color:var(--muted); }
+.word { font-family:var(--mono); font-size:11px; padding:1px 6px; border-radius:4px; background:var(--claim-bg); color:var(--claim); }
+.scroll { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th, td { text-align:left; padding:5px 7px; border-bottom:1px solid var(--rule); vertical-align:top; }
+th { font-weight:500; color:var(--muted); font-size:12px; white-space:nowrap; }
+td.num { font-variant-numeric:tabular-nums; white-space:nowrap; }
+.ok { color:var(--accent); font-weight:600; }
+.bad { color:var(--warn); font-weight:600; }
+.checks { display:grid; gap:4px; font-size:14px; }
+button:focus-visible, summary:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+<main>
+  <header style="display:grid; gap:10px">
+    <span class="label">Recap review gallery</span>
+    <h1>{{ month_name }}</h1>
+    <div class="summary">
+      <span><b>{{ ready }}</b> ready</span>
+      <span><b>{{ review }}</b> need review</span>
+      <span><b>{{ claims }}</b> claims to spot-check</span>
+      <span>model <b>{{ models | join(", ") }}</b>, prompt <b>{{ prompts | join(", ") }}</b></span>
+      <span>cost <b>${{ "%.2f" | format(cost) }}</b></span>
+    </div>
+    <p class="meta">Numbers, facts and wording were checked by code. The claims listed on each card (about groups of trades, or citing a count) were not: confirm each against the trades shown with it.</p>
+    <div class="filters" role="group" aria-label="Show">
+      <button type="button" data-filter="all" aria-pressed="true">All ({{ cards | length }})</button>
+      <button type="button" data-filter="review" aria-pressed="false">Needs review ({{ review }})</button>
+    </div>
+  </header>
+
+  {% for c in cards %}
+  <article class="card{{ ' review' if c.status != 'ready' }}" data-status="{{ c.status }}" id="{{ c.id }}">
+    <div class="card-head">
+      <h2>{{ c.name }} <span class="meta">({{ c.id }})</span></h2>
+      <span class="pill {{ 'ready' if c.status == 'ready' else 'review' }}">{{ c.status }}</span>
+      {% for f in c.flags %}<span class="chip">{{ f }}</span>{% endfor %}
+      <span class="meta">{{ c.attempts | length }} attempt{{ '' if c.attempts | length == 1 else 's' }} · ${{ "%.3f" | format(c.cost) }}</span>
+    </div>
+    {% if c.reasons %}
+    <div class="reasons"><strong>Why it needs review</strong><ul>{% for r in c.reasons %}<li>{{ r }}</li>{% endfor %}</ul></div>
+    {% endif %}
+    <div class="cols">
+      <div>
+        {% if c.recap_text %}<pre class="recap">{{ c.recap_text }}</pre>
+        {% elif c.draft %}<pre class="recap">LAST DRAFT (NOT SENT)
+
+{{ c.draft }}</pre>
+        {% else %}<p class="meta">No recap.</p>{% endif %}
+      </div>
+      <div>
+        <details open>
+          <summary>Claims to spot-check ({{ c.claims | length }})</summary>
+          {% if not c.claims %}<p class="meta" style="margin-top:8px">None: Claude made no claims about groups of trades.</p>{% endif %}
+          {% for k in c.claims %}
+          <div class="claim">
+            <span class="where">{{ k.where }}{% for w in k.words %} <span class="word">{{ w }}</span>{% endfor %}</span>
+            <div class="text">{{ k.text }}</div>
+            {% for f in k.facts %}<div class="meta">Cites <b>{{ f.display }}</b>: {{ f.plain }} (computed by code)</div>{% endfor %}
+            {% if k.trades %}
+            <div class="scroll"><table>
+              <tr><th>Trade</th><th>Strategy</th><th>Opened</th><th>Ended</th><th>How it ended</th><th>Outcome</th><th>Result</th></tr>
+              {% for t in k.trades %}<tr><td>{{ t.underlying }}</td><td>{{ t.strategy }}</td><td class="num">{{ t.opened }}</td><td class="num">{{ t.ended }}</td><td>{{ t.how_it_ended }}{% if t.left %} ({{ t.left }} left){% endif %}</td><td>{{ t.outcome }}</td><td class="num">{{ t.result }}</td></tr>{% endfor %}
+            </table></div>
+            {% else %}<div class="meta">Names no trade directly: check it against All trades below.</div>{% endif %}
+          </div>
+          {% endfor %}
+        </details>
+        <details>
+          <summary>Validator ({{ 'passed' if c.attempts and c.attempts[-1].passed else 'failed' }})</summary>
+          {% for a in c.attempts %}
+          <div class="checks" style="margin-top:8px">
+            <span class="label">Attempt {{ loop.index }}: {{ 'passed' if a.passed else 'failed' }}</span>
+            {% for name, ok in a.checks %}<span><span class="{{ 'ok' if ok else 'bad' }}">{{ '✓' if ok else '✗' }}</span> {{ name }}</span>{% endfor %}
+            {% for r in a.reasons %}<span class="meta">{{ r }}</span>{% endfor %}
+          </div>
+          {% endfor %}
+        </details>
+        <details>
+          <summary>Facts sheet ({{ c.facts | length }})</summary>
+          <div class="scroll"><table>
+            <tr><th>What it is</th><th>Value</th></tr>
+            {% for f in c.facts %}<tr><td>{{ f.plain }}</td><td>{{ f.display }}</td></tr>{% endfor %}
+          </table></div>
+        </details>
+        <details>
+          <summary>All trades ({{ c.trades | length }})</summary>
+          <div class="scroll"><table>
+            <tr><th>Trade</th><th>Strategy</th><th>Opened</th><th>Ended</th><th>Held</th><th>How it ended</th><th>Outcome</th><th>Result</th><th>Rolls</th></tr>
+            {% for t in c.trades %}<tr><td>{{ t.underlying }}</td><td>{{ t.strategy }}{% if t.strategy_end != t.strategy %} → {{ t.strategy_end }}{% endif %}</td><td class="num">{{ t.opened }}</td><td class="num">{{ t.ended }}</td><td class="num">{{ t.held }}</td><td>{{ t.how_it_ended }}{% if t.left %} ({{ t.left }} left){% endif %}</td><td>{{ t.outcome }}</td><td class="num">{{ t.result }}</td><td class="num">{{ t.rolls }}</td></tr>{% endfor %}
+          </table></div>
+        </details>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</main>
+<script>
+document.querySelectorAll(".filters button").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll(".filters button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  document.querySelectorAll("article.card").forEach((c) => { c.hidden = b.dataset.filter === "review" && c.dataset.status === "ready"; });
+}));
+</script>
+</body>
+</html>
