@@ -2,7 +2,7 @@
 
     python scripts/prototype_narrative.py p04 p06 p09 [--dry-run]
 
-Writes out/prototype/<pid>.txt (the new recap), <pid>.json (everything, including
+Writes out/prototype/<prompt version>/<pid>.txt (the new recap), <pid>.json (everything, including
 Claude's attempts and cost) and prints a summary. --dry-run uses a canned narrative
 instead of calling Claude, to check the code-written parts for free.
 """
@@ -38,14 +38,14 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
     cfg = ModelConfig.load()
-    out = REPO / "out" / "prototype"
+    out = REPO / "out" / "prototype" / (N.PROMPT_VERSION + ("-dry" if a.dry_run else ""))
     out.mkdir(parents=True, exist_ok=True)
     total = 0.0
     for pid in a.personas:
         raw = load_month(REPO / "data" / "raw" / MONTH / pid)
         linked, sheet = facts_for(REPO / "data" / "raw", MONTH, pid)
         extra, briefs = N.trade_facts(sheet, linked)
-        full = N.with_trades(sheet, extra)
+        full = N.with_trades(sheet, extra + N.group_facts(linked))
         tiles = N.code_tiles(sheet)
         parts = {"sections": N.code_sections(sheet), "results_line": N.code_results_line(sheet),
                  "what_changed": N.code_what_changed(sheet),

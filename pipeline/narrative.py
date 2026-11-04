@@ -33,7 +33,8 @@ from schemas.facts import Fact, FactsSheet
 from schemas.raw import RawMonth
 
 REPO = Path(__file__).resolve().parent.parent
-PROMPT_VERSION = "narrative_proto_v1"
+PROMPT_VERSION = "narrative_proto_v3"
+NARRATIVE_BANNED = ["bet", "bets", "betting"]   # fold into config/copy_rules.yaml if this approach is adopted
 MAX_OVERALL, MAX_OBSERVATION, MAX_HEADING = 600, 450, 60
 
 STRATEGY = {"stock_long": "shares", "stock_short": "a short stock position", "long_call": "a long call",
@@ -108,6 +109,9 @@ def trade_facts(sheet: FactsSheet, linked: LinkResult) -> tuple[list[Fact], list
             add("held", s.days_held, D.days(s.days_held), "how long the trade was held")
         if s.opening_dte is not None:
             add("expiry_at_open", s.opening_dte, D.days(s.opening_dte), "how far out the expiration was when opened")
+        if s.status == "closed" and s.days_left_at_close:
+            add("left_at_close", s.days_left_at_close, D.days(s.days_left_at_close),
+                "time left before expiration when the trade was bought back")
         if s.upfront_cash:
             add("upfront", s.upfront_cash, D.money(abs(s.upfront_cash)),
                 "premium collected when opened" if s.upfront_cash > 0 else "debit paid when opened")
@@ -120,12 +124,54 @@ def trade_facts(sheet: FactsSheet, linked: LinkResult) -> tuple[list[Fact], list
             add("result", s.realized_pnl, D.money(abs(s.realized_pnl)),
                 "gain on the trade after fees" if s.realized_pnl >= 0 else "loss on the trade after fees")
         kinds = sorted({str(t) for r in s.rolls for t in r.types})
+        if s.status == "closed":
+            ended = ("bought back on its expiration day" if s.days_left_at_close == 0 else
+                     "bought back before its expiration day" if s.days_left_at_close is not None else "closed")
+        else:
+            ended = STATUS[str(s.status)]
         briefs.append({"ref": ref, "underlying": s.underlying, "strategy_at_open": STRATEGY.get(str(s.label_open), str(s.label_open)),
                        "strategy_at_end": STRATEGY.get(str(s.label_end), str(s.label_end)),
-                       "opened_before_this_month": s.carried_in, "status": STATUS[str(s.status)],
+                       "opened_before_this_month": s.carried_in, "how_it_ended": ended,
                        "outcome": None if s.status == "open" else ("gain" if s.realized_pnl > 0 else "loss" if s.realized_pnl < 0 else "flat"),
                        "roll_kinds": [ROLL_WORDS.get(k, k) for k in kinds], "facts": mine})
     return facts, briefs
+
+
+def group_facts(linked: LinkResult) -> list[Fact]:
+    """Counts across trades, computed by code, so "every", "both" and "most" can come
+    from a fact instead of Claude's reading of the trade list. Display: "3 of 5"."""
+    stories = linked.stories
+    ended = [s for s in stories if s.status != "open"]
+    out: list[Fact] = []
+
+    def add(key: str, members: list, pool: list, plain: str):
+        if pool:
+            out.append(Fact(id=f"group.{key}", section="managing", value=f"{len(members)}/{len(pool)}",
+                            display=f"{len(members)} of {len(pool)}", plain=plain, weight=0.5,
+                            sources=[f"story:{s.story_id}" for s in pool]))
+
+    for name, pool in (("winning", [s for s in ended if s.realized_pnl > 0]), ("losing", [s for s in ended if s.realized_pnl < 0])):
+        opts = [s for s in pool if s.days_left_at_close is not None or s.status in ("expired", "assigned")]
+        add(f"{name}.bought_back_before_expiration_day", [s for s in opts if s.status == "closed" and s.days_left_at_close],
+            opts, f"{name} options trades bought back before their expiration day, out of all {name} options trades")
+        add(f"{name}.bought_back_on_expiration_day", [s for s in opts if s.status == "closed" and s.days_left_at_close == 0],
+            opts, f"{name} options trades bought back on their expiration day, out of all {name} options trades")
+        add(f"{name}.expired", [s for s in opts if s.status == "expired"], opts,
+            f"{name} options trades left to expire, out of all {name} options trades")
+        add(f"{name}.assigned", [s for s in opts if s.status == "assigned"], opts,
+            f"{name} options trades that were assigned, out of all {name} options trades")
+        add(f"{name}.ended_same_day_opened", [s for s in pool if s.days_held == 0], pool,
+            f"{name} trades that ended the same day they were opened, out of all {name} trades")
+    add("ended.same_day_opened", [s for s in ended if s.days_held == 0], ended,
+        "trades that ended the same day they were opened, out of all trades that ended")
+    add("ended.next_day", [s for s in ended if s.days_held == 1], ended,
+        "trades that ended the day after they were opened, out of all trades that ended")
+    add("trades.rolled", [s for s in stories if s.rolls], stories, "trades rolled at least once, out of all trades")
+    add("trades.opened_before_month", [s for s in stories if s.carried_in], stories,
+        "trades opened before this month, out of all trades")
+    add("trades.still_open", [s for s in stories if s.status == "open"], stories,
+        "trades still open at month end, out of all trades")
+    return out
 
 
 def with_trades(sheet: FactsSheet, extra: list[Fact]) -> FactsSheet:
@@ -211,9 +257,11 @@ def system_prompt() -> str:
 
 
 def user_turn(sheet: FactsSheet, briefs: list[dict], code_parts: dict) -> str:
-    month_facts = [{"id": f.id, "display": f.display, "plain": f.plain} for f in sheet.facts if not f.id.startswith("trade.")]
+    month_facts = [{"id": f.id, "display": f.display, "plain": f.plain} for f in sheet.facts
+                   if not f.id.startswith(("trade.", "group."))]
+    counts = [{"id": f.id, "display": f.display, "plain": f.plain} for f in sheet.facts if f.id.startswith("group.")]
     return json.dumps({"first_name": sheet.first_name, "month": sheet.month, "flags": sheet.flags,
-                       "month_facts": month_facts, "trades": briefs,
+                       "month_facts": month_facts, "trade_counts": counts, "trades": briefs,
                        "already_in_the_recap": code_parts}, ensure_ascii=False, sort_keys=True)
 
 
@@ -269,7 +317,12 @@ def check(copy: dict, sheet: FactsSheet) -> list[str]:
         for kind in ("banned", "jargon", "retired", "advice", "praise", "consolation"):
             for w in _phrases(t, rules[kind]):
                 r.append(f"{where} uses {w!r} ({kind})")
+        for w in _phrases(t, NARRATIVE_BANNED):
+            r.append(f"{where} uses {w!r} (banned)")
         r += [f"{where} {x}" for x in doubled_units(t, sheet)]
+        for m in re.finditer(r"\b([A-Za-z]+)\s+\1\b", filled(t, sheet), re.I):
+            r.append(f"{where} repeats the word {m.group(1)!r} once the placeholders are filled "
+                     f"(a display may already start with it, such as 'about 7 weeks')")
     return r
 
 
