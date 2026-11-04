@@ -46,7 +46,7 @@ p { margin:0; }
 .card { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:18px; }
 .stack { display:grid; gap:14px; }
 .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; align-items:start; }
-.steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; counter-reset:step; }
+.steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:12px; counter-reset:step; }
 .step { counter-increment:step; display:grid; gap:6px; align-content:start; }
 .step .label::before { content:"Step " counter(step) " · "; }
 .step p { color:var(--muted); font-size:14px; }
@@ -123,7 +123,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     <div class="stack">
       <span class="label">Monthly trade recap · concept</span>
       <h1>Each customer's month, written from their own trades</h1>
-      <p class="lede">Once a month, every customer gets a short recap of how they traded: how far out they went, how they managed and rolled positions, how they exited. Code writes the facts; Claude reads every trade and describes the patterns, like a note from someone who watched the account. Every number comes from code and every sentence is checked before it renders.</p>
+      <p class="lede">Once a month, every customer gets a short recap of how they traded: how far out they went, how they managed and rolled positions, how they exited. Code writes the facts; Claude reads every trade and describes the patterns, like a note from someone who watched the account. Every number comes from code, and every sentence Claude writes is checked twice before it goes out: once by code for the rules, once by a second Claude call against the trades.</p>
     </div>
 
     <div class="steps">
@@ -136,11 +136,14 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       <div class="card step"><span class="label">Words</span><h3>Claude describes the month</h3>
         <p>Claude reads every trade and writes what code can't: the overall picture and what stood out, naming patterns and specific trades. Numbers go in as placeholders; it never types one.</p>
         <span><span class="who claude">Claude</span></span></div>
-      <div class="card step"><span class="label">Checks</span><h3>Code checks the words</h3>
-        <p>Code checks the wording: lengths, no typed numbers, only real facts, trader terms without shorthand, no advice, no praise, the month's result left to code. Then a second Claude call reads every sentence against the trades and flags anything false, overstated or not in the data. One rewrite, then a person reviews it.</p>
+      <div class="card step"><span class="label">Rules</span><h3>Code checks the wording</h3>
+        <p>Lengths, no typed numbers, only real facts, trader terms without shorthand, no advice, no praise, no repeated units, the month's result left to code. A draft that breaks a rule is sent back once with the reason.</p>
         <span><span class="who code">code</span></span></div>
-      <div class="card step"><span class="label">Recap out</span><h3>Numbers filled in, recap rendered</h3>
-        <p>Code fills each placeholder with its fact's value, adds its own lines and the results line beside the market move, and renders the recap: plain text now, a designed email later.</p>
+      <div class="card step"><span class="label">Claim check</span><h3>A second Claude call checks the claims</h3>
+        <p>A separate call reads every sentence, with the numbers filled in, beside the full list of trades, and flags anything false, overstated ("all", "every", "usually") or not in the data. One rewrite with the reason; if it still fails, the recap is held for a person.</p>
+        <span><span class="who claude">Claude</span></span></div>
+      <div class="card step"><span class="label">Recap out</span><h3>Numbers filled in, email rendered</h3>
+        <p>Code fills each placeholder with its fact's value, adds its own lines and the results line beside the market move, and renders the recap twice: a plain-text version and the HTML email, whose charts are drawn from the facts. Open any persona to see its email.</p>
         <span><span class="who code">code</span></span></div>
     </div>
 
@@ -153,7 +156,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       <div class="card stack">
         <h2>The rules it works under</h2>
         <ul class="rules">
-          <li>Claude never does math. Counts, P&amp;L, ratios and dates come from tested code.</li>
+          <li>Claude never does math. Counts, profit and loss, ratios and dates come from tested code.</li>
           <li>Every number traces back to the fills it came from, so any line can be audited.</li>
           <li>It describes habits, never activity or wins: no "great month", no trade counts as achievements.</li>
           <li>No advice and no predictions: never "you should" or "next month".</li>
@@ -163,10 +166,21 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
       </div>
       <div class="card stack">
         <h2>What this demo shows</h2>
-        <p><strong>Personas</strong>: ten made-up traders (a wheel seller, a same-day SPX trader, a losing month and more), each with a workbook and the recap it produced.</p>
-        <p><strong>Try your own</strong>: download the template or a persona workbook, change it, upload it and get a fresh recap. Each upload calls Claude Opus 5.5 and costs about four cents.</p>
+        <p><strong>Personas</strong>: ten made-up traders (a wheel seller, a same-day SPX trader, a losing month and more), each with a workbook, the recap it produced, its facts and its email. These came from a full monthly run, so they passed both checks.</p>
+        <p><strong>Try your own</strong>: download the template or a persona workbook, change it, upload it and get a fresh recap. Each upload calls Claude Opus 5.5 twice, to write and to check, and costs about eleven cents.</p>
+        <p><strong>Review gallery</strong> (top bar): what a reviewer sees after a monthly run, with each recap's claims listed beside the trades they name.</p>
         <p class="meta">All trades and prices here are simulated. Never upload real account data.</p>
       </div>
+    </div>
+    <div class="card stack">
+      <h2>Every month, for every customer</h2>
+      <p>The real run is built for 5,000 to 10,000 customers, too many to read one by one, so the checks decide what a person sees:</p>
+      <ul class="rules">
+        <li>All recaps go out together through the Batch API, which costs half as much and takes up to a day. Writing and checking come to about six and a half cents a customer, or roughly $640 per 10,000.</li>
+        <li>A recap that fails a check gets one rewrite. If it fails again, or the customer's data has problems, it is held for review instead of sent.</li>
+        <li>A person reads every held recap and a random 5% sample of the ones that passed, in the review gallery.</li>
+        <li>Every run is archived and never overwritten: the facts, the request, each draft, the checks and the final recap for each customer, with a fingerprint of every file, so any line can be traced later.</li>
+      </ul>
     </div>
   </section>
 
@@ -186,7 +200,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     <div class="stack">
       <span class="label">Upload a workbook</span>
       <h1>Try your own trades</h1>
-      <p class="lede">Start from the template or a persona's workbook, edit the trades, and upload it. The site runs the same pipeline and asks Claude for a new recap, usually in 20 to 40 seconds.</p>
+      <p class="lede">Start from the template or a persona's workbook, edit the trades, and upload it. The site runs the same pipeline and asks Claude to write a new recap and then check it, usually in under a minute.</p>
     </div>
     <div class="note warn"><strong>Sample or made-up trades only.</strong> Never upload real account data. Workbooks are processed in memory and are not stored.</div>
     <div class="grid2">
@@ -359,8 +373,9 @@ function renderExample() {
       row("Fact", "code", el("span", { class: "filled", text: f.display }), " ", el("span", { class: "meta", text: `${f.plain} (from ${f.sources} source${f.sources === 1 ? "" : "s"})` })),
       row("Draft", "claude", ...withPlaceholders(line, facts, "ph")),
       row("Checked", "code", el("span", { class: "meta", text: "Every placeholder is a real fact, no typed numbers, trader terms, no repeated units, within length once filled" })),
+      row("Claim check", "claude", el("span", { class: "meta", text: "Read beside every trade and marked supported" })),
       row("Recap", "code", ...withPlaceholders(line, facts, "fill"))),
-    el("p", { class: "meta" }, "See the whole recap and all of its facts under ", el("a", { href: "#personas", onclick: () => { show("personas"); selectPersona(p.id); } , text: "Personas" }), "."));
+    el("p", { class: "meta" }, "See the whole recap, its facts and its email under ", el("a", { href: "#personas", onclick: () => { show("personas"); selectPersona(p.id); } , text: "Personas" }), "."));
 }
 
 // ------------------------------------------------------------- personas
@@ -372,7 +387,9 @@ function selectPersona(id) {
       el("h2", { text: `${p.first_name} (${p.id}) · ${p.month_name}` }),
       el("div", { class: "chips" }, p.flags.map((f) => el("span", { class: "chip" + (f === "losing month" ? " loss" : ""), text: f }))),
       el("p", { class: "meta", text: p.summary }),
-      el("div", { class: "dl" }, el("a", { href: `/downloads/${p.workbook}`, text: `Download ${p.first_name}'s workbook` }))),
+      el("div", { class: "dl" },
+        p.email ? el("a", { href: `/emails/${p.email}`, target: "_blank", rel: "noopener", text: "View the email" }) : null,
+        el("a", { href: `/downloads/${p.workbook}`, text: `Download ${p.first_name}'s workbook` }))),
     recapView(p));
 }
 

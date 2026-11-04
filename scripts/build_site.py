@@ -5,7 +5,8 @@
 1. site/data/personas.json: each October persona's recap, built ahead of time from a
    saved model run (no API calls here). The run must match the configured model and
    prompt version, so the site shows what the pipeline produces today.
-2. site/downloads/: the blank template and one filled workbook per persona; and
+2. site/downloads/: the blank template and one filled workbook per persona;
+   site/emails/: each persona's recap as the HTML email (pipeline/render_email.py); and
    site/gallery.html: the review gallery for the same recaps.
 3. deploy/ (gitignored): only what the site runs, ready for `vercel deploy deploy`:
    the function (api/index.py), the site files, the pipeline code it imports, config,
@@ -28,6 +29,7 @@ import yaml  # noqa: E402
 
 from pipeline.demo import payload  # noqa: E402
 from pipeline.ingest import load_month  # noqa: E402
+from pipeline.render_email import render_html  # noqa: E402
 from pipeline.run import facts_for  # noqa: E402
 from pipeline.workbook import write_workbook  # noqa: E402
 from pipeline.write import ModelConfig  # noqa: E402
@@ -64,8 +66,12 @@ def build_site_data(results: Path) -> list[dict]:
         spec = yaml.safe_load(next((REPO / "mock" / "personas").glob(f"{pid}_*.yaml")).read_text(encoding="utf-8"))
         workbook = f"{pid}_{raw.account.first_name.lower()}_{MONTH}.xlsx"
         _write(REPO / "site" / "downloads" / workbook, write_workbook(raw))
+        email = None
+        if res.recap is not None:
+            email = f"{pid}.html"
+            _write(REPO / "site" / "emails" / email, render_html(res.recap, sheet, linked))
         personas.append({"id": pid, "summary": " ".join(str(spec.get("summary", "")).split()),
-                         "workbook": workbook, **payload(sheet, linked, res, cfg, [])})
+                         "workbook": workbook, "email": email, **payload(sheet, linked, res, cfg, [])})
     from pipeline.gallery import build as build_gallery
     _write(REPO / "site" / "gallery.html", build_gallery(MONTH, REPO / "data" / "raw", saved))
     _write(REPO / "site" / "data" / "personas.json",

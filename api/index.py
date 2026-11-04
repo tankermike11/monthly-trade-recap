@@ -6,6 +6,7 @@
 - GET  /data/personas.json   persona recaps built ahead of time
 - GET  /gallery              the review gallery for the same recaps
 - GET  /downloads/<file>     the template and persona workbooks
+- GET  /emails/<id>.html     each persona's recap as the HTML email
 - POST /api/recap            an uploaded workbook (raw .xlsx bytes) -> recap JSON;
                              calls Claude with ANTHROPIC_API_KEY
 - Uploads are processed in memory and never stored; log lines carry counts only.
@@ -34,6 +35,7 @@ SESSION_DAYS = 30
 TYPES = {".html": "text/html; charset=utf-8", ".json": "application/json; charset=utf-8",
          ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}
 SAFE_DOWNLOAD = re.compile(r"^[a-z0-9_\-]+(?:\.[a-z0-9_\-]+)*\.xlsx$")
+SAFE_EMAIL = re.compile(r"^p[0-9]{2}\.html$")
 
 
 def _token(password: str) -> str:
@@ -118,6 +120,11 @@ class handler(BaseHTTPRequestHandler):  # noqa: N801  (Vercel looks for this nam
                 return self._json(404, {"error": "not found"})
             return self._file(SITE / "downloads" / name,
                               {"Content-Disposition": f'attachment; filename="{name}"'})
+        if path.startswith("/emails/"):
+            name = path.removeprefix("/emails/")
+            if not SAFE_EMAIL.match(name):
+                return self._json(404, {"error": "not found"})
+            return self._file(SITE / "emails" / name)
         return self._json(404, {"error": "not found"})
 
     def do_POST(self):

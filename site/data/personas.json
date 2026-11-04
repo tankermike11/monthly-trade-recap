@@ -32,6 +32,7 @@
   "cost_usd": 0.0636,
   "draft": null,
   "effort": "medium",
+  "email": "p01.html",
   "facts": [
    {
     "display": "2 days",
@@ -426,6 +427,7 @@
   "cost_usd": 0.2162,
   "draft": null,
   "effort": "medium",
+  "email": "p02.html",
   "facts": [
    {
     "display": "22 days",
@@ -5126,6 +5128,7 @@
   "cost_usd": 0.1316,
   "draft": null,
   "effort": "medium",
+  "email": "p03.html",
   "facts": [
    {
     "display": "6 days",
@@ -5999,6 +6002,7 @@
   "cost_usd": 0.1099,
   "draft": null,
   "effort": "medium",
+  "email": "p04.html",
   "facts": [
    {
     "display": "18 days",
@@ -7734,6 +7738,7 @@
   "cost_usd": 0.0916,
   "draft": null,
   "effort": "medium",
+  "email": "p05.html",
   "facts": [
    {
     "display": "13 days",
@@ -9036,6 +9041,7 @@
   "cost_usd": 0.1306,
   "draft": null,
   "effort": "medium",
+  "email": "p06.html",
   "facts": [
    {
     "display": "18 days",
@@ -11463,6 +11469,7 @@
   "cost_usd": 0.2374,
   "draft": null,
   "effort": "medium",
+  "email": "p07.html",
   "facts": [
    {
     "display": "23 days",
@@ -14493,6 +14500,7 @@
   "cost_usd": 0.0851,
   "draft": null,
   "effort": "medium",
+  "email": "p08.html",
   "facts": [
    {
     "display": "11 days",
@@ -15646,6 +15654,7 @@
   "cost_usd": 0.0778,
   "draft": null,
   "effort": "medium",
+  "email": "p09.html",
   "facts": [
    {
     "display": "6 days",
@@ -16570,6 +16579,7 @@
   "cost_usd": 0.0705,
   "draft": null,
   "effort": "medium",
+  "email": "p10.html",
   "facts": [
    {
     "display": "5 days",
