@@ -86,7 +86,8 @@ def trade_facts(sheet: FactsSheet, linked: LinkResult) -> tuple[list[Fact], list
                               weight=0.5, sources=[f"story:{s.story_id}"]))
             mine.append({"id": fid, "display": shown, "plain": plain})
 
-        add("opened", s.opened_date.isoformat(), _day(s.opened_date), "date the trade was opened")
+        if s.story_id not in linked.unknown_open_dates:      # an upload's stand-in date is not a fact
+            add("opened", s.opened_date.isoformat(), _day(s.opened_date), "date the trade was opened")
         if s.closed_ts is not None:
             add("ended", ny_date(s.closed_ts).isoformat(), _day(ny_date(s.closed_ts)), "date the trade ended")
         if s.days_held is not None:

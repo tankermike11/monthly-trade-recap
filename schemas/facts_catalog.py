@@ -50,7 +50,8 @@ HEADLINE_FACTS: dict[str, str] = {
         "Sum of realized_pnl over all stories (ended and open), after fees.",
     "total_fees":
         "Sum of commission + fees over this month's fills; a missing value counts as 0 "
-        "and raises the data-quality issue 'fees_missing'.",
+        "and raises the data-quality issue 'fees_missing'. When some are missing the display "
+        "reads 'at least $X'; when every fill's is missing there is no fact (no '$0.00').",
     "biggest_win":
         "The ended story with the largest positive realized_pnl: {story_id, pnl, "
         "multiple_of_upfront} where multiple_of_upfront = pnl / upfront_cash when the "

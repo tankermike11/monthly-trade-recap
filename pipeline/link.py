@@ -75,6 +75,19 @@ class LinkResult:
     stories: list[TradeStory]
     data_quality_issues: list[DataQualityIssue]
     labels_confidence: dict[str, Confidence]      # story_id -> confidence of label_end
+    unknown_open_dates: frozenset[str] = frozenset()   # story_ids whose opening date is a stand-in
+
+
+def forget_open_dates(linked: LinkResult, underlyings) -> LinkResult:
+    """Carried-in trades whose start positions came without an opened date (an upload
+    default): keep the stand-in date for ordering, but drop how long they were held and
+    mark them so the recap does not state when they were opened."""
+    under = set(underlyings)
+    hit = {s.story_id for s in linked.stories if s.carried_in and s.underlying in under}
+    if not hit:
+        return linked
+    stories = [s.model_copy(update={"days_held": None}) if s.story_id in hit else s for s in linked.stories]
+    return LinkResult(stories, linked.data_quality_issues, linked.labels_confidence, frozenset(hit))
 
 
 def _inst_from_fill(f: Fill) -> Instrument:

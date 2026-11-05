@@ -100,7 +100,9 @@ def build(res: dict, world, seed: int) -> dict:
     fact("wins", len(wins), [sid(s) for s in wins])
     fact("losses", len(losses), [sid(s) for s in losses])
     fact("net_realized_pnl", money(sum((s["realized_pnl"] for s in stories), Decimal(0))), [sid(s) for s in stories])
-    fact("total_fees", money(sum(((f["commission"] or 0) + (f["fees"] or 0) for f in res["fills"]), Decimal(0))),
+    all_unknown = res["fills"] and all(f["commission"] is None or f["fees"] is None for f in res["fills"])
+    fact("total_fees", None if all_unknown else
+         money(sum(((f["commission"] or 0) + (f["fees"] or 0) for f in res["fills"]), Decimal(0))),
          [sid(story_of_exec[f["exec_id"]]) for f in res["fills"]])
 
     def extreme(group, pick):

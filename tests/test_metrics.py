@@ -232,3 +232,21 @@ def test_halves_are_counted_in_trading_days():
     # November 2026 has 20 (Thanksgiving closed): first half ends Nov 13
     assert tradingcal.first_half_end("2026-11") == date(2026, 11, 13)
     assert tradingcal.half_of(date(2026, 11, 14), "2026-11") == "second"
+
+
+def test_fees_line_never_reads_zero_when_fees_are_unknown(raw):
+    """Missing fees count as 0 in the total, so the display says 'at least'; when no fill
+    says what it cost there is no fees fact at all, rather than a false '$0.00'."""
+    from pipeline.link import link
+    from pipeline.metrics import build_facts
+
+    def fees_fact(rm):
+        sheet = build_facts(rm, link(rm), previous=None, first_month=True)
+        return {f.id: f for f in sheet.facts}.get("total_fees")
+
+    p10 = raw[("2026-10", "p10")]                       # one fill arrives with its fees missing
+    assert fees_fact(p10).display.startswith("at least $")
+    p04 = raw[("2026-10", "p04")]
+    assert not fees_fact(p04).display.startswith("at least")
+    unknown = p04.model_copy(update={"fills": [f.model_copy(update={"fees": None}) for f in p04.fills]})
+    assert fees_fact(unknown) is None

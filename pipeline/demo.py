@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from pipeline.compose import compose
 from pipeline.display import MONTHS
-from pipeline.link import LinkResult, link
+from pipeline.link import LinkResult, forget_open_dates, link
 from pipeline.metrics import build_facts
 from pipeline.render import render_text
 from pipeline.workbook import read_workbook
@@ -68,7 +68,7 @@ def run_upload(data: bytes, cfg: ModelConfig | None = None, call: Caller | None 
     workbook. Calls Claude once (twice if the first draft fails the validator)."""
     imported = read_workbook(data)
     raw = imported.raw
-    linked = link(raw)
+    linked = forget_open_dates(link(raw), imported.unknown_open)
     sheet = build_facts(raw, linked, previous=None, first_month=True)
     cfg = cfg or ModelConfig.load()
     result = write_recap(sheet, linked, cfg, call)

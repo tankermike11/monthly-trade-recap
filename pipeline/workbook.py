@@ -8,6 +8,8 @@ assumption so the site can show it beside the recap:
 - no Order ID: each fill is its own order; no Orders sheet: order details come from
   the fills (limit order, fully filled, net price from the legs);
 - no Cash at start and no start positions: the account held only cash at the start;
+- a start position with no opened date: the last trading day before the month stands in,
+  and the recap leaves out that trade's opening date and how long it was held;
 - no Cash at end and no end positions: month-end holdings come from replaying the
   trades with the pipeline's own linker, marked at each instrument's last price;
 - no Events sheet: options still held after their expiration expired worthless;
@@ -144,6 +146,7 @@ class WorkbookError(ValueError):
 class ImportResult:
     raw: RawMonth
     assumptions: list[str] = field(default_factory=list)
+    unknown_open: list[str] = field(default_factory=list)    # underlyings whose start positions had no opened date
 
 
 # ---------------------------------------------------------------------------
@@ -536,6 +539,8 @@ def _build(acct: dict, tables: dict, has: dict, problems: list[str]) -> ImportRe
 
     # -- positions
     lines = {"start": [], "end": []}
+    undated: list[int] = []
+    unknown_open: set[str] = set()
     for n, r in tables.get("Positions", []):
         inst = _instrument(r, "Positions", n, problems)
         if inst is None or r["_bad"]:
@@ -544,9 +549,14 @@ def _build(acct: dict, tables: dict, has: dict, problems: list[str]) -> ImportRe
         if opened is None:
             opened = prev_days[-1] if r["as_of"] == "start" else first_day
             if r["as_of"] == "start":
-                notes.append(f"Positions row {n} has no opened date; {opened:%Y-%m-%d} was used.")
+                undated.append(n)
+                unknown_open.add(r["underlying"])
         lines[r["as_of"]].append(PositionLine(qty=r["qty"], cost_basis=r["cost_basis"], mark=r["mark"],
                                               opened_date=opened, **inst))
+    if undated:
+        rows = f"Positions row {undated[0]} has" if len(undated) == 1 else f"{len(undated)} start positions have"
+        notes.append(f"{rows} no opened date, so the recap leaves out when those trades were opened "
+                     "and how long they were held.")
     if problems:
         raise WorkbookError(problems)
 
@@ -588,7 +598,7 @@ def _build(acct: dict, tables: dict, has: dict, problems: list[str]) -> ImportRe
     try:
         if end_given:
             end = snapshot("end", acct.get("cash_end"), end_valued, acct["end_value"])
-            return ImportResult(raw_with(end, events), notes)
+            return ImportResult(raw_with(end, events), notes, sorted(unknown_open))
         empty_end = PositionSnapshot(as_of="end", valued_at_utc=end_valued, cash=Decimal(0), lines=[])
         rep = _Replay(raw_with(empty_end, events))
         rep.run()
@@ -621,7 +631,7 @@ def _build(acct: dict, tables: dict, has: dict, problems: list[str]) -> ImportRe
         end = PositionSnapshot(as_of="end", valued_at_utc=end_valued, cash=rep.replayed_cash, lines=end_lines)
         notes.append("There are no end positions, so month-end holdings came from replaying the trades, "
                      "each marked at its last traded price.")
-        return ImportResult(raw_with(end, events), notes)
+        return ImportResult(raw_with(end, events), notes, sorted(unknown_open))
     except ValueError as e:
         raise WorkbookError([str(e).splitlines()[0]]) from None
 

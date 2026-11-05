@@ -178,3 +178,31 @@ def test_numbers_typed_as_text_are_read():
     assert _convert(0.1, "dec") == Decimal("0.1")
     assert _convert("Call", "put_call") == "C"
     assert _convert("Equity option", "asset_class") == "equity_option"
+
+
+def test_start_positions_without_an_opened_date_give_no_opening_date_in_the_recap(raws):
+    """An upload's stand-in opening date (the last trading day before the month) must not
+    become a fact: the trade keeps no 'opened' date and no holding time."""
+    from pipeline.compose import compose
+    from pipeline.link import forget_open_dates
+
+    raw = raws[("2026-10", "p01")]                      # Robin carries VTI, VXUS, BND and AAPL in
+    wb = load_workbook(io.BytesIO(write_workbook(raw)))
+    ws = wb["Positions"]
+    col = [c.value for c in ws[1]].index("Opened date") + 1
+    for row in ws.iter_rows(min_row=2):
+        if row[0].value == "start":
+            row[col - 1].value = None
+    buf = io.BytesIO()
+    wb.save(buf)
+    res = read_workbook(buf.getvalue())
+    assert res.unknown_open and any("no opened date" in a for a in res.assumptions)
+
+    dated = compose(build_facts(raw, link(raw), previous=None, first_month=True), link(raw))
+    linked = forget_open_dates(link(res.raw), res.unknown_open)
+    undated = compose(build_facts(res.raw, linked, previous=None, first_month=True), linked)
+    carried = {t["ref"] for t in undated.trades if t["opened_before_this_month"]}
+    assert carried
+    ids = {f.id for f in undated.sheet.facts}
+    assert not any(f"trade.{r}.opened" in ids or f"trade.{r}.held" in ids for r in carried)
+    assert any(f.id.endswith(".opened") for f in dated.sheet.facts)    # dates given: still stated

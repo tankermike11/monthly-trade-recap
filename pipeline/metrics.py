@@ -210,7 +210,10 @@ class _Builder:
         self.add("net_realized_pnl", net, D.money(net), [self.sid(s) for s in st])
         fees = money(sum(((f.commission or 0) + (f.fees or 0) for f in self.raw.fills), Decimal(0)))
         heavy = net != 0 and fees >= abs(net) * Decimal("0.25")
-        self.add("total_fees", fees, D.money(fees),
+        unknown = [f for f in self.raw.fills if f.commission is None or f.fees is None]
+        if self.raw.fills and len(unknown) == len(self.raw.fills):
+            fees = None                    # no fill says what it cost: no fee line rather than "$0.00"
+        self.add("total_fees", fees, ("at least " if unknown else "") + D.money(fees) if fees is not None else "",
                  [self.sid(self.story_of_exec[f.exec_id]) for f in self.raw.fills], 0.7 if heavy else 0.3)
         for fid, group, pick in (("biggest_win", wins, max), ("biggest_loss", losses, min)):
             if not group:
