@@ -478,7 +478,10 @@ $("go").addEventListener("click", async () => {
       return;
     }
     status.replaceChildren(el("p", { class: "meta", text: `Done in ${Math.round((Date.now() - started) / 1000)} s.` }));
-    result.replaceChildren(el("h2", { text: `${body.first_name} · ${body.month_name}` }), el("div", { class: "chips" }, body.flags.map((f) => el("span", { class: "chip" + (f === "losing month" ? " loss" : ""), text: f }))), recapView(body));
+    // the email version comes back with the reply; it opens from this browser's memory, never from the server
+    const emailBtn = body.email_html ? el("div", { class: "dl" }, el("a", { href: "#", role: "button", text: "View the email",
+      onclick: (e) => { e.preventDefault(); const url = URL.createObjectURL(new Blob([body.email_html], { type: "text/html" })); window.open(url, "_blank", "noopener"); setTimeout(() => URL.revokeObjectURL(url), 60000); } })) : null;
+    result.replaceChildren(el("h2", { text: `${body.first_name} · ${body.month_name}` }), el("div", { class: "chips" }, body.flags.map((f) => el("span", { class: "chip" + (f === "losing month" ? " loss" : ""), text: f }))), emailBtn, recapView(body));
   } catch (e) {
     clearInterval(timer);
     status.replaceChildren(el("div", { class: "note warn", text: "The request didn't reach the server. Check your connection and try again." }));

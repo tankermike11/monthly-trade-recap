@@ -12,6 +12,7 @@ from pipeline.display import MONTHS
 from pipeline.link import LinkResult, forget_open_dates, link
 from pipeline.metrics import build_facts
 from pipeline.render import render_text
+from pipeline.render_email import render_html
 from pipeline.workbook import read_workbook
 from pipeline.write import Caller, ModelConfig, cost, write_recap
 from schemas.facts import FactsSheet
@@ -72,4 +73,7 @@ def run_upload(data: bytes, cfg: ModelConfig | None = None, call: Caller | None 
     sheet = build_facts(raw, linked, previous=None, first_month=True)
     cfg = cfg or ModelConfig.load()
     result = write_recap(sheet, linked, cfg, call)
-    return payload(sheet, linked, result, cfg, imported.assumptions)
+    out = payload(sheet, linked, result, cfg, imported.assumptions)
+    # the HTML email for a recap that passed, sent back with the reply only (nothing is stored)
+    out["email_html"] = render_html(result.recap, sheet, linked) if result.status == "passed" else None
+    return out
