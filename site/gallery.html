@@ -10,18 +10,28 @@
 <style>
 /* A reviewer's desk: one card per customer, the recap as the customer reads it on the left,
    the evidence (claims to spot-check, checks, facts, trades) on the right. */
-/* Theme: Stox (STOX 2026-09-17), dark only like the brand file. */
+/* Theme: Stox (STOX 2026-09-17): light by default, dark when the system asks; inside the site,
+   the site's light/dark switch sets data-theme here too. */
 :root {
-  --bg:#110706; --card:#1F0F0C; --ink:#FFF3F0; --muted:#A59997; --faint:#706564; --rule:#2E2322;
-  --accent:#FF3B30; --accent-ink:#190A08; --accent-soft:#320E0C;
-  --ok:#6EF3C0; --ok-bg:#1C231C; --warn:#FAC94F; --warn-bg:#2D1F0F; --loss:#FF6B57;
-  --ph:#B3C0FF; --ph-bg:#282129;
+  --bg:#FFF6F3; --card:#FFFFFF; --ink:#1E0B08; --muted:#6E5F5B; --faint:#9A8B87; --rule:#EADBD6;
+  --accent:#D42A1F; --accent-ink:#FFFFFF; --accent-soft:#FDE4E0;
+  --ok:#0B7A55; --ok-bg:#DDF5EC; --warn:#8A5A00; --warn-bg:#FBEFD2; --loss:#C0392B;
+  --ph:#3F4DB0; --ph-bg:#E6E9FB; color-scheme:light;
   --font:"Manrope",system-ui,sans-serif;
   --display:"Space Grotesk","Manrope",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
-  color-scheme:dark;
   --claim:var(--ph); --claim-bg:var(--ph-bg);
 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg:#110706; --card:#1F0F0C; --ink:#FFF3F0; --muted:#A59997; --faint:#706564; --rule:#2E2322;
+    --accent:#FF3B30; --accent-ink:#190A08; --accent-soft:#320E0C;
+    --ok:#6EF3C0; --ok-bg:#1C231C; --warn:#FAC94F; --warn-bg:#2D1F0F; --loss:#FF6B57;
+    --ph:#B3C0FF; --ph-bg:#282129; color-scheme:dark; }
+}
+:root[data-theme="dark"] { --bg:#110706; --card:#1F0F0C; --ink:#FFF3F0; --muted:#A59997; --faint:#706564; --rule:#2E2322;
+    --accent:#FF3B30; --accent-ink:#190A08; --accent-soft:#320E0C;
+    --ok:#6EF3C0; --ok-bg:#1C231C; --warn:#FAC94F; --warn-bg:#2D1F0F; --loss:#FF6B57;
+    --ph:#B3C0FF; --ph-bg:#282129; color-scheme:dark; }
 * { box-sizing:border-box; }
 body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 var(--font); }
 main { max-width:1280px; margin:0 auto; padding:28px 16px 64px; display:grid; gap:20px; }

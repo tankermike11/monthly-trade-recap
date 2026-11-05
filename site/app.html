@@ -11,24 +11,39 @@
 <style>
 /* Layout: a working desk for the team. A sticky bar with the views; each recap is shown as the
    printed email beside the evidence behind it (facts, Claude's draft, the checks).
-   Theme: Stox (STOX 2026-09-17), dark only like the brand file. */
+   Theme: Stox (STOX 2026-09-17). Light by default, dark when the system asks or the switch says so;
+   dark is the brand file's own look, light is our reading of it. */
 :root {
-  --bg:#110706; --card:#1F0F0C; --ink:#FFF3F0; --muted:#A59997; --faint:#706564; --rule:#2E2322;
-  --accent:#FF3B30; --accent-ink:#190A08; --accent-soft:#320E0C;
-  --ok:#6EF3C0; --ok-bg:#1C231C; --warn:#FAC94F; --warn-bg:#2D1F0F; --loss:#FF6B57;
-  --ph:#B3C0FF; --ph-bg:#282129;
+  --bg:#FFF6F3; --card:#FFFFFF; --ink:#1E0B08; --muted:#6E5F5B; --faint:#9A8B87; --rule:#EADBD6;
+  --accent:#D42A1F; --accent-ink:#FFFFFF; --accent-soft:#FDE4E0;
+  --ok:#0B7A55; --ok-bg:#DDF5EC; --warn:#8A5A00; --warn-bg:#FBEFD2; --loss:#C0392B;
+  --ph:#3F4DB0; --ph-bg:#E6E9FB; color-scheme:light;
   --font:"Manrope",system-ui,sans-serif;
   --display:"Space Grotesk","Manrope",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
-  color-scheme:dark;
 }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg:#110706; --card:#1F0F0C; --ink:#FFF3F0; --muted:#A59997; --faint:#706564; --rule:#2E2322;
+    --accent:#FF3B30; --accent-ink:#190A08; --accent-soft:#320E0C;
+    --ok:#6EF3C0; --ok-bg:#1C231C; --warn:#FAC94F; --warn-bg:#2D1F0F; --loss:#FF6B57;
+    --ph:#B3C0FF; --ph-bg:#282129; color-scheme:dark; }
+  :root:not([data-theme="light"]) .on-light { display:none; } :root:not([data-theme="light"]) .on-dark { display:block; }
+}
+:root[data-theme="dark"] { --bg:#110706; --card:#1F0F0C; --ink:#FFF3F0; --muted:#A59997; --faint:#706564; --rule:#2E2322;
+    --accent:#FF3B30; --accent-ink:#190A08; --accent-soft:#320E0C;
+    --ok:#6EF3C0; --ok-bg:#1C231C; --warn:#FAC94F; --warn-bg:#2D1F0F; --loss:#FF6B57;
+    --ph:#B3C0FF; --ph-bg:#282129; color-scheme:dark; }
+  :root[data-theme="dark"] .on-light { display:none; } :root[data-theme="dark"] .on-dark { display:block; }
+.on-light { display:block; } .on-dark { display:none; }
 * { box-sizing:border-box; }
 body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.55 var(--font); }
 a { color:var(--accent); }
 .bar { position:sticky; top:0; z-index:5; background:var(--card); border-bottom:1px solid var(--rule); }
 .bar-in { max-width:1180px; margin:0 auto; padding:10px 16px; display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center; }
 .brand { display:flex; align-items:center; gap:12px; margin-right:auto; font-family:var(--display); font-weight:700; }
-.brand img { display:block; height:22px; width:auto; }
+.brand img { height:22px; width:auto; }
+.theme-btn { font:inherit; font-size:14px; cursor:pointer; padding:6px 12px; border-radius:999px; border:1px solid var(--rule); background:transparent; color:var(--muted); }
+.theme-btn:hover { color:var(--ink); }
 .brand small { font-family:var(--font); color:var(--muted); font-weight:500; }
 nav { display:flex; gap:4px; flex-wrap:wrap; }
 nav button, .btn { font:inherit; cursor:pointer; padding:7px 12px; border-radius:6px; border:1px solid transparent; background:transparent; color:var(--ink); }
@@ -108,13 +123,14 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
 </head>
 <body>
 <div class="bar"><div class="bar-in">
-  <span class="brand"><img src="/stox-logo.png" alt="stox.com" width="128" height="22">Your Month Recap <small>team demo · sample data only</small></span>
+  <span class="brand"><img class="on-light" src="/stox-logo-light.png" alt="stox.com" width="128" height="22"><img class="on-dark" src="/stox-logo.png" alt="stox.com" width="128" height="22">Your Month Recap <small>team demo · sample data only</small></span>
   <nav aria-label="Views">
     <button type="button" data-view="try">Try your own</button>
     <button type="button" data-view="how">How it works</button>
     <button type="button" data-view="personas">Personas</button>
     <button type="button" data-view="gallery">Review gallery</button>
   </nav>
+  <button type="button" class="theme-btn" id="theme-btn" aria-label="Switch between light and dark">Dark</button>
   <a class="signout" href="/logout">Sign out</a>
 </div></div>
 
@@ -281,6 +297,27 @@ function show(view) {
   if (location.hash.slice(1) !== view) history.replaceState(null, "", "#" + view);
 }
 document.querySelectorAll("nav button").forEach((b) => b.addEventListener("click", () => { show(b.dataset.view); window.scrollTo({ top: 0 }); }));
+
+// ------------------------------------------------------------- light / dark
+// Follows the system until someone uses the switch; the choice is remembered in this browser only.
+const darkQuery = matchMedia("(prefers-color-scheme: dark)");
+function currentTheme() { return document.documentElement.dataset.theme || (darkQuery.matches ? "dark" : "light"); }
+function applyTheme(theme) {
+  if (theme) document.documentElement.dataset.theme = theme;
+  const t = currentTheme();
+  $("theme-btn").textContent = t === "dark" ? "Light" : "Dark";
+  try { $("gallery-frame").contentDocument.documentElement.dataset.theme = t; } catch (e) { /* not loaded yet */ }
+}
+let savedTheme = null;
+try { savedTheme = localStorage.getItem("recap-theme"); } catch (e) { /* storage blocked */ }
+applyTheme(savedTheme === "light" || savedTheme === "dark" ? savedTheme : null);
+$("theme-btn").addEventListener("click", () => {
+  const next = currentTheme() === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try { localStorage.setItem("recap-theme", next); } catch (e) { /* storage blocked */ }
+});
+darkQuery.addEventListener("change", () => applyTheme(null));
+$("gallery-frame").addEventListener("load", () => applyTheme(null));
 window.addEventListener("hashchange", () => show(location.hash.slice(1)));
 
 // ------------------------------------------------------------- one recap, as text plus its evidence

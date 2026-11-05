@@ -2,7 +2,9 @@
 
 - Every path except /login needs the session cookie, which only the site password
   (SITE_PASSWORD) can get; with no password configured, nobody gets in.
-- GET  /stox-logo.png        the logo (no sign-in needed: the sign-in page shows it)
+- GET  /stox-logo.png, /stox-logo-light.png
+                             the logo for dark and light backgrounds (no sign-in
+                             needed: the sign-in page shows it)
 - GET  /                     the app (site/app.html)
 - GET  /data/personas.json   persona recaps built ahead of time
 - GET  /gallery              the review gallery for the same recaps
@@ -105,8 +107,8 @@ class handler(BaseHTTPRequestHandler):  # noqa: N801  (Vercel looks for this nam
         path = urlparse(self.path).path
         if path == "/login":
             return self._file(SITE / "login.html")
-        if path == "/stox-logo.png":
-            return self._file(SITE / "stox-logo.png")
+        if path in ("/stox-logo.png", "/stox-logo-light.png"):
+            return self._file(SITE / path.removeprefix("/"))
         if path == "/logout":
             return self._redirect("/login", f"{COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax")
         if not self._authed():
