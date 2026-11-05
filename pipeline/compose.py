@@ -14,7 +14,7 @@ count instead of Claude's reading of the trade list.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from pipeline import display as D
 from pipeline.link import LinkResult
@@ -237,6 +237,7 @@ class Composed:
     tiles: list[Fact]
     results_line: str
     what_changed: str
+    story_ids: dict[str, str] = field(default_factory=dict)   # trade ref ("t3") -> story_id, for the gallery
 
     def code_written(self) -> dict:
         """What code already wrote, shown to the model so it does not repeat it."""
@@ -249,5 +250,7 @@ def compose(sheet: FactsSheet, linked: LinkResult) -> Composed:
     full = with_trades(sheet, extra + group_facts(linked))
     short = "low_activity" in sheet.flags
     sections = {k: [] for k in SENTENCES} if short else code_sections(sheet)
+    refs = {f"t{i}": s.story_id for i, s in
+            enumerate(sorted(linked.stories, key=lambda s: (s.opened_date, s.story_id)), start=1)}   # as trade_facts numbers them
     return Composed(full, briefs, sections, code_tiles(sheet)[:3] if short else code_tiles(sheet),
-                    code_results_line(sheet), code_what_changed(sheet))
+                    code_results_line(sheet), code_what_changed(sheet), refs)

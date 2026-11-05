@@ -206,3 +206,11 @@ def test_start_positions_without_an_opened_date_give_no_opening_date_in_the_reca
     ids = {f.id for f in undated.sheet.facts}
     assert not any(f"trade.{r}.opened" in ids or f"trade.{r}.held" in ids for r in carried)
     assert any(f.id.endswith(".opened") for f in dated.sheet.facts)    # dates given: still stated
+
+    # the prompt and the review gallery both handle a trade with no opening date
+    from pipeline.gallery import _trade_rows
+    from pipeline.write import user_turn
+    turn = json.loads(user_turn(undated))
+    assert any(d["opened"] == "before this month, date not given" for d in turn["trades_by_opening_day"])
+    rows, by_story = _trade_rows(undated)
+    assert len(rows) == len(undated.trades) and set(by_story.values()) == {t["ref"] for t in undated.trades}

@@ -57,8 +57,8 @@ def system_prompt(version: str) -> str:
 def trades_by_day(c: Composed) -> list[dict]:
     shown = {f.id: f.display for f in c.sheet.facts}
     days: dict[str, list[dict]] = {}
-    for t in c.trades:
-        days.setdefault(shown[f"trade.{t['ref']}.opened"], []).append(t)
+    for t in c.trades:   # a carried-in trade uploaded without its opening date has no opened fact
+        days.setdefault(shown.get(f"trade.{t['ref']}.opened", "before this month, date not given"), []).append(t)
     return [{"opened": day, "trades": ts} for day, ts in days.items()]
 
 

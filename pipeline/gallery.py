@@ -47,7 +47,7 @@ def _trade_rows(c: Composed) -> tuple[list[dict], dict[str, str]]:
     for t in c.trades:
         ref = t["ref"]
         g = lambda k: shown[f"trade.{ref}.{k}"].display if f"trade.{ref}.{k}" in shown else ""  # noqa: E731
-        sid = shown[f"trade.{ref}.opened"].sources[0].removeprefix("story:")
+        sid = c.story_ids[ref]
         by_story[sid] = ref
         rows.append({"ref": ref, "underlying": t["underlying"], "strategy": t["strategy_at_open"],
                      "strategy_end": t["strategy_at_end"], "opened": g("opened"), "ended": g("ended"),
