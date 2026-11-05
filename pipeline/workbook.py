@@ -633,7 +633,7 @@ def _build(acct: dict, tables: dict, has: dict, problems: list[str]) -> ImportRe
 README = [
     "Monthly trade recap: workbook template",
     "",
-    "Sample or made-up trades only. Never put real account data in this workbook.",
+    "Workbooks uploaded to the team site are processed in memory and are not stored.",
     "",
     "Required: the Account sheet (fill in the values next to each field) and the Trades sheet",
     "(one row per fill). Columns marked * are required; every other column and sheet is optional.",

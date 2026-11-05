@@ -53,6 +53,6 @@ Build a monthly pipeline that turns each customer's normalized trade data into a
 
 ## Demo site (site/, api/)
 
-- A team-only explainer on Vercel, behind a password (SITE_PASSWORD). Sample or made-up trades only: the upload page says so, and real account data must never be uploaded.
+- A team-only explainer and test site on Vercel, behind a password (SITE_PASSWORD). Decided 2026-11-05: the team may upload real trades for testing (for example the traders' published trade feed); the upload page no longer warns against it.
 - Uploaded workbooks are processed in memory and never stored or logged (counts only).
 - Secrets (ANTHROPIC_API_KEY, SITE_PASSWORD) live in Vercel project settings, never in the repo.
