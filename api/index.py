@@ -63,9 +63,10 @@ class handler(BaseHTTPRequestHandler):  # noqa: N801  (Vercel looks for this nam
         self.send_header("Content-Length", str(len(body)))
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "no-referrer")
-        self.send_header("X-Frame-Options", "DENY")
+        headers = dict(headers or {})
+        self.send_header("X-Frame-Options", headers.pop("X-Frame-Options", "DENY"))
         self.send_header("Cache-Control", "no-store")
-        for k, v in (headers or {}).items():
+        for k, v in headers.items():
             self.send_header(k, v)
         self.end_headers()
         if self.command != "HEAD":
@@ -113,7 +114,7 @@ class handler(BaseHTTPRequestHandler):  # noqa: N801  (Vercel looks for this nam
         if path == "/data/personas.json":
             return self._file(SITE / "data" / "personas.json")
         if path == "/gallery":
-            return self._file(SITE / "gallery.html")
+            return self._file(SITE / "gallery.html", {"X-Frame-Options": "SAMEORIGIN"})   # shown in the app's Review gallery tab
         if path.startswith("/downloads/"):
             name = path.removeprefix("/downloads/")
             if not SAFE_DOWNLOAD.match(name):

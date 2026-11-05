@@ -1,7 +1,7 @@
 """The HTML email (pipeline/render_email.py, templates/recap.html.j2, SPEC 5.1), offline.
 
 - every persona renders with no placeholder left, the required fine print, 640 px wide,
-  no images or scripts (email-safe);
+  no scripts and no image but the logo, which has a transparent background (email-safe);
 - everything Claude wrote is escaped;
 - a red month names its result once, beside the market;
 - charts come from code: bar widths add to 100, the dots match wins and losses;
@@ -40,12 +40,34 @@ def html_for(cases, p, copy=None):
 @pytest.mark.parametrize("p", PERSONA_IDS)
 def test_every_persona_renders_email_safe(cases, p):
     html = html_for(cases, p)
-    assert "{{" not in html and "<img" not in html.lower()
+    assert "{{" not in html
+    imgs = re.findall(r"<img\b[^>]*>", html, re.I)
+    assert len(imgs) == 1 and 'alt="Lossdog"' in imgs[0] and 'src="data:image/png;base64,' in imgs[0]
     assert len(re.findall(r"<script", html, re.I)) == 0
     assert 'width="640"' in html and "max-width:640px" in html
     for must in ("This isn't your account statement.", "How we counted.", "is not advice",
                  "[Required disclosures]", "Stop monthly recaps", 'name="color-scheme" content="dark"'):
         assert must in html, must
+
+
+def test_logo_has_a_transparent_background():
+    """The logo is an 8-bit palette PNG whose top-left pixel is fully transparent (read with
+    the standard library: the first byte of the first row is that pixel's palette index)."""
+    import struct  # noqa: PLC0415
+    import zlib  # noqa: PLC0415
+
+    data = E.LOGO.read_bytes()
+    assert data[:4] == b"\x89PNG"
+    chunks, i = {}, 8
+    while i < len(data):
+        n, kind = struct.unpack(">I4s", data[i:i + 8])
+        chunks[kind] = chunks.get(kind, b"") + data[i + 8:i + 8 + n]
+        i += 12 + n
+    _, _, depth, color_type = struct.unpack(">IIBB", chunks[b"IHDR"][:10])
+    assert (depth, color_type) == (8, 3) and b"tRNS" in chunks
+    corner = zlib.decompress(chunks[b"IDAT"])[1]
+    alpha = chunks[b"tRNS"]
+    assert corner < len(alpha) and alpha[corner] == 0
 
 
 def test_claude_text_is_escaped(cases):

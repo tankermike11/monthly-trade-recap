@@ -1,5 +1,7 @@
 """Stage 5c: the HTML email (SPEC 5.1), from the October Trader Recap design: dark, yellow
-accent, 640 px wide, email-safe (tables, inline styles, no images, no web fonts needed).
+accent, 640 px wide, email-safe (tables, inline styles, no web fonts needed). The only image
+is the Lossdog logo (templates/lossdog_logo.png, transparent background), embedded as a data
+URI by default; a send step can pass `logo_src` with a hosted URL instead.
 
 Same content as the plain-text recap: Claude's overall picture and observations (filled
 from the facts), and everything code writes (tiles, getting in / managing / getting out,
@@ -13,6 +15,7 @@ in the code-written results line beside the market move (the red-month rule).
 
 from __future__ import annotations
 
+import base64
 import re
 from pathlib import Path
 
@@ -32,7 +35,12 @@ ASSET_NAMES = {"stock_etf": "Stocks and funds", "equity_option": "Options on sto
                "index_option": "Index options", "future": "Futures", "future_option": "Options on futures",
                "crypto": "Crypto", "event_contract": "Event contracts"}
 ASSET_SHADES = ["#FFC800", "#B8901C", "#7A6A2E", "#5A5A60", "#3E3E44", "#2A2A2E", "#202024"]
+LOGO = REPO / "templates" / "lossdog_logo.png"
 DEFAULT_LINKS = {"trades": "[TRADES_URL]", "unsubscribe": "[UNSUBSCRIBE_URL]", "settings": "[EMAIL_SETTINGS_URL]"}
+
+
+def logo_data_uri() -> str:
+    return "data:image/png;base64," + base64.b64encode(LOGO.read_bytes()).decode("ascii")
 
 
 def _env() -> Environment:
@@ -116,7 +124,8 @@ def _without(lines: list[str], *shown: str | None) -> list[str]:
     return [ln for ln in lines if not any(k in ln for k in keys)]
 
 
-def context(copy: RecapCopy, sheet: FactsSheet, linked: LinkResult, links: dict | None = None) -> dict:
+def context(copy: RecapCopy, sheet: FactsSheet, linked: LinkResult, links: dict | None = None,
+            logo_src: str | None = None) -> dict:
     c = compose(sheet, linked)
     facts = {f.id: f for f in c.sheet.facts}
     s = lambda t: sentence(t, c.sheet)  # noqa: E731
@@ -148,11 +157,13 @@ def context(copy: RecapCopy, sheet: FactsSheet, linked: LinkResult, links: dict 
         "open": [o["underlying"] for o in open_list] if isinstance(open_list, list) else [],
         "what_changed": c.what_changed, "halves": halves(facts),
         "links": {**DEFAULT_LINKS, **(links or {})},
+        "logo_src": logo_src or logo_data_uri(),
     }
 
 
-def render_html(copy: RecapCopy, sheet: FactsSheet, linked: LinkResult, links: dict | None = None) -> str:
-    html = _env().get_template("recap.html.j2").render(**context(copy, sheet, linked, links))
+def render_html(copy: RecapCopy, sheet: FactsSheet, linked: LinkResult, links: dict | None = None,
+                logo_src: str | None = None) -> str:
+    html = _env().get_template("recap.html.j2").render(**context(copy, sheet, linked, links, logo_src))
     if PLACEHOLDER.search(html):
         raise UnknownPlaceholder("a placeholder survived rendering")
     return html

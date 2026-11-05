@@ -37,6 +37,7 @@ nav button[aria-current="page"] { background:var(--accent-soft); color:var(--acc
 .signout { color:var(--muted); font-size:14px; }
 main { max-width:1180px; margin:0 auto; padding:28px 16px 64px; display:grid; gap:28px; }
 section[hidden] { display:none; }
+.gallery-frame { display:block; width:100%; height:calc(100vh - 150px); min-height:520px; border:1px solid var(--rule); border-radius:10px; background:var(--card); }
 h1 { font-family:var(--serif); font-weight:600; font-size:clamp(28px,4vw,38px); line-height:1.15; margin:0; text-wrap:balance; }
 h2 { font-size:20px; margin:0; font-weight:600; text-wrap:balance; }
 h3 { font-size:15px; margin:0; font-weight:600; }
@@ -112,8 +113,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     <button type="button" data-view="try">Try your own</button>
     <button type="button" data-view="how">How it works</button>
     <button type="button" data-view="personas">Personas</button>
+    <button type="button" data-view="gallery">Review gallery</button>
   </nav>
-  <a class="signout" href="/gallery">Review gallery</a>
   <a class="signout" href="/logout">Sign out</a>
 </div></div>
 
@@ -221,6 +222,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline:2px solid v
     <div id="upload-status" aria-live="polite"></div>
     <div id="upload-result" class="stack"></div>
   </section>
+  <!-- ======================================================= REVIEW GALLERY (the /gallery page, framed so the top bar stays) -->
+  <section id="view-gallery" class="stack" hidden>
+    <iframe class="gallery-frame" id="gallery-frame" title="Review gallery" data-src="/gallery"></iframe>
+  </section>
 </main>
 
 <script>
@@ -268,8 +273,10 @@ function withPlaceholders(text, facts, mode) {
 
 // ------------------------------------------------------------- views
 function show(view) {
-  if (!["try", "how", "personas"].includes(view)) view = "try";
-  for (const v of ["how", "personas", "try"]) $("view-" + v).hidden = v !== view;
+  if (!["try", "how", "personas", "gallery"].includes(view)) view = "try";
+  for (const v of ["how", "personas", "try", "gallery"]) $("view-" + v).hidden = v !== view;
+  const frame = $("gallery-frame");
+  if (view === "gallery" && !frame.src) frame.src = frame.dataset.src;   // load it the first time the tab opens
   document.querySelectorAll("nav button").forEach((b) => b.setAttribute("aria-current", b.dataset.view === view ? "page" : "false"));
   if (location.hash.slice(1) !== view) history.replaceState(null, "", "#" + view);
 }

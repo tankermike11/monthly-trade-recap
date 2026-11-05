@@ -1,4 +1,4 @@
-{#- Email-safe: table layout, inline styles, no images, system fonts. Dark by design; the
+{#- Email-safe: table layout, inline styles, system fonts, one image (the logo). Dark by design; the
     color-scheme metas tell mail apps it is already dark so they do not invert it. -#}
 {% set bg = "#0B0B0C" %}{% set card = "#18181B" %}{% set ink = "#F4F4F5" %}{% set muted = "#A1A1AA" %}{% set rule = "#27272A" %}{% set gold = "#FFC800" %}
 {% set sans = "'Helvetica Neue', Helvetica, Arial, sans-serif" %}{% set heavy = "'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif" %}{% set mono = "Menlo, Consolas, 'Courier New', monospace" %}
@@ -33,8 +33,7 @@
   <tr><td class="px" style="padding:32px 40px 0 40px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
       <td style="vertical-align:middle;">
-        <span style="display:inline-block; width:32px; height:32px; line-height:32px; text-align:center; background:{{ gold }}; color:#111111; font-family:{{ heavy }}; font-weight:900; font-size:18px; border-radius:8px;">L</span>
-        <span style="font-family:{{ heavy }}; font-weight:900; font-size:18px; color:{{ ink }}; vertical-align:middle; margin-left:8px;">Lossdog</span>
+        <img src="{{ logo_src }}" width="140" height="54" alt="Lossdog" style="display:block; width:140px; height:auto; max-width:140px; border:0; outline:none; text-decoration:none; color:{{ gold }}; font-family:{{ heavy }}; font-weight:900; font-size:18px;">
       </td>
       <td align="right" style="font-size:13px; color:{{ muted }};">Monthly Trade Recap</td>
     </tr></table>
