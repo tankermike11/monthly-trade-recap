@@ -35,6 +35,7 @@ p { margin:0; }
 .filters button[aria-pressed="true"] { border-color:var(--accent); color:var(--accent); font-weight:600; }
 .card { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:18px; display:grid; gap:14px; }
 .card.review { border-left:4px solid var(--warn); }
+.card[hidden] { display:none; }   /* .card sets display, which would otherwise override [hidden] */
 .card-head { display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; }
 .pill { font-family:var(--mono); font-size:12px; padding:2px 10px; border-radius:999px; }
 .pill.ready { background:var(--accent-soft); color:var(--accent); }

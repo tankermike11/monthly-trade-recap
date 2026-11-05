@@ -10,6 +10,7 @@
 from __future__ import annotations
 
 import json
+import re
 
 import pytest
 
@@ -46,6 +47,13 @@ def test_every_persona_has_a_card_and_p10_needs_review(fresh, results):
     c10 = card(fresh / "raw", MONTH, "p10", results["p10"], CFG)
     assert c10["status"] == "needs review" and any(r.startswith("Data:") for r in c10["reasons"])
     assert card(fresh / "raw", MONTH, "p04", results["p04"], CFG)["status"] == "ready"
+
+
+def test_needs_review_filter_can_hide_cards(fresh, results):
+    """The filter hides cards with [hidden]; .card sets display, so it needs its own rule."""
+    html = build(MONTH, fresh / "raw", results)
+    assert 'data-filter="review"' in html and "c.hidden =" in html
+    assert re.search(r"\.card\[hidden\]\s*\{\s*display:\s*none", html)
 
 
 def test_missing_or_failed_recaps_need_review(fresh):
