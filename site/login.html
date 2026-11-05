@@ -7,25 +7,26 @@
 <title>Your Month Recap · Sign in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@700&display=swap">
 <style>
-:root { --bg:#f4f6f8; --card:#ffffff; --ink:#15212b; --muted:#5a6773; --rule:#d8dee4; --accent:#0d6b4f; --accent-ink:#ffffff; --warn:#9a3a1f;
-  --font:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; }
-@media (prefers-color-scheme: dark) { :root { --bg:#10161b; --card:#182128; --ink:#e4e9ed; --muted:#9aa7b1; --rule:#2b3640; --accent:#4fbf95; --accent-ink:#0b1712; --warn:#f0a080; color-scheme:dark; } }
+:root { --bg:#110706; --card:#1F0F0C; --ink:#FFF3F0; --muted:#A59997; --rule:#2E2322; --accent:#FF3B30; --accent-ink:#190A08; --warn:#FAC94F;
+  --font:"Manrope",system-ui,sans-serif; --display:"Space Grotesk","Manrope",system-ui,sans-serif; color-scheme:dark; }  /* Stox, dark only */
 * { box-sizing:border-box; }
 body { margin:0; min-height:100vh; display:grid; place-items:center; background:var(--bg); color:var(--ink); font:15px/1.5 var(--font); padding:16px; }
-main { width:100%; max-width:380px; background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:28px; display:grid; gap:16px; }
-h1 { margin:0; font-size:22px; font-weight:600; }
+main { width:100%; max-width:380px; background:var(--card); border:1px solid var(--rule); border-radius:14px; padding:28px; display:grid; gap:16px; }
+h1 { margin:0; font-family:var(--display); font-size:22px; font-weight:700; }
+.logo { display:block; height:24px; width:auto; }
 p { margin:0; color:var(--muted); }
 label { display:grid; gap:6px; font-weight:500; }
 input { font:inherit; padding:10px 12px; border:1px solid var(--rule); border-radius:6px; background:var(--bg); color:var(--ink); }
-button { font:inherit; font-weight:600; padding:10px 14px; border:0; border-radius:6px; background:var(--accent); color:var(--accent-ink); cursor:pointer; }
+button { font:inherit; font-weight:700; padding:10px 18px; border:0; border-radius:999px; background:var(--accent); color:var(--accent-ink); cursor:pointer; }
 input:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
 .err { color:var(--warn); }
 </style>
 </head>
 <body>
 <main>
+  <img class="logo" src="/stox-logo.png" alt="stox.com" width="140" height="24">
   <h1>Your Month Recap</h1>
   <p>A team demo of the monthly trade recap. Enter the team password to continue.</p>
   <p class="err" id="err" hidden></p>

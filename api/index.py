@@ -2,6 +2,7 @@
 
 - Every path except /login needs the session cookie, which only the site password
   (SITE_PASSWORD) can get; with no password configured, nobody gets in.
+- GET  /stox-logo.png        the logo (no sign-in needed: the sign-in page shows it)
 - GET  /                     the app (site/app.html)
 - GET  /data/personas.json   persona recaps built ahead of time
 - GET  /gallery              the review gallery for the same recaps
@@ -32,7 +33,7 @@ SITE = ROOT / "site"
 COOKIE = "recap_demo"
 MAX_UPLOAD = 4 * 1024 * 1024          # Vercel's request body limit is 4.5 MB
 SESSION_DAYS = 30
-TYPES = {".html": "text/html; charset=utf-8", ".json": "application/json; charset=utf-8",
+TYPES = {".html": "text/html; charset=utf-8", ".json": "application/json; charset=utf-8", ".png": "image/png",
          ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}
 SAFE_DOWNLOAD = re.compile(r"^[a-z0-9_\-]+(?:\.[a-z0-9_\-]+)*\.xlsx$")
 SAFE_EMAIL = re.compile(r"^p[0-9]{2}\.html$")
@@ -104,6 +105,8 @@ class handler(BaseHTTPRequestHandler):  # noqa: N801  (Vercel looks for this nam
         path = urlparse(self.path).path
         if path == "/login":
             return self._file(SITE / "login.html")
+        if path == "/stox-logo.png":
+            return self._file(SITE / "stox-logo.png")
         if path == "/logout":
             return self._redirect("/login", f"{COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax")
         if not self._authed():
