@@ -13,6 +13,7 @@ from pipeline.link import LinkResult, forget_open_dates, link
 from pipeline.metrics import build_facts
 from pipeline.render import render_text
 from pipeline.render_email import render_html
+from pipeline.storyview import render_story_view
 from pipeline.workbook import read_workbook
 from pipeline.write import Caller, ModelConfig, cost, write_recap
 from schemas.facts import FactsSheet
@@ -76,4 +77,6 @@ def run_upload(data: bytes, cfg: ModelConfig | None = None, call: Caller | None 
     out = payload(sheet, linked, result, cfg, imported.assumptions)
     # the HTML email for a recap that passed, sent back with the reply only (nothing is stored)
     out["email_html"] = render_html(result.recap, sheet, linked) if result.status == "passed" else None
+    # every story replayed order by order, for checking by eye (sent back whether or not the recap passed)
+    out["stories_html"] = render_story_view(raw, linked, sheet)
     return out

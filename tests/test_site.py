@@ -118,6 +118,7 @@ def test_upload_returns_a_recap_or_the_workbook_problems(server, monkeypatch, fr
     assert status == 200 and out["status"] == "passed" and out["first_name"] == "Riley"
     assert "down 4.1%" in out["recap_text"] and out["facts"] and out["assumptions"] == []
     assert out["email_html"].startswith("<!doctype html>") and "Riley" in out["email_html"]   # the email version
+    assert out["stories_html"].startswith("<!doctype html>") and "The steps add to" in out["stories_html"]
     status, _, body = req(server, "POST", "/api/recap", b"not a workbook", cookie=cookie, ctype="application/octet-stream")
     assert status == 400 and "not an Excel workbook" in json.loads(body)["problems"][0]
 

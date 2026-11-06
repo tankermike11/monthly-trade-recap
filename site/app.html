@@ -479,8 +479,10 @@ $("go").addEventListener("click", async () => {
     }
     status.replaceChildren(el("p", { class: "meta", text: `Done in ${Math.round((Date.now() - started) / 1000)} s.` }));
     // the email version comes back with the reply; it opens from this browser's memory, never from the server
-    const emailBtn = body.email_html ? el("div", { class: "dl" }, el("a", { href: "#", role: "button", text: "View the email",
-      onclick: (e) => { e.preventDefault(); const url = URL.createObjectURL(new Blob([body.email_html], { type: "text/html" })); window.open(url, "_blank", "noopener"); setTimeout(() => URL.revokeObjectURL(url), 60000); } })) : null;
+    const openHtml = (doc) => (e) => { e.preventDefault(); const url = URL.createObjectURL(new Blob([doc], { type: "text/html" })); window.open(url, "_blank", "noopener"); setTimeout(() => URL.revokeObjectURL(url), 60000); };
+    const links = [body.email_html ? el("a", { href: "#", role: "button", text: "View the email", onclick: openHtml(body.email_html) }) : null,
+                   body.stories_html ? el("a", { href: "#", role: "button", text: "View trade stories (chart and ledger)", onclick: openHtml(body.stories_html) }) : null].filter(Boolean);
+    const emailBtn = links.length ? el("div", { class: "dl" }, links) : null;
     result.replaceChildren(el("h2", { text: `${body.first_name} · ${body.month_name}` }), el("div", { class: "chips" }, body.flags.map((f) => el("span", { class: "chip" + (f === "losing month" ? " loss" : ""), text: f }))), emailBtn, recapView(body));
   } catch (e) {
     clearInterval(timer);
