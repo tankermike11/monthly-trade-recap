@@ -437,8 +437,8 @@ def _summary(raw: RawMonth, linked: LinkResult, sheet: FactsSheet | None) -> str
     f = _fact(sheet, "rolls_total")
     rows.append(row("Rolls, all stories added up", str(rolls),
                     (f"facts sheet says {esc(f.display)} " + tick(int(f.value) == rolls)) if f else ""))
-    rows.append(row("Rolls by kind (a roll can count in several)",
-                    esc(", ".join(f"{ROLL_WORDS[k]} {v}" for k, v in sorted(by_type.items())) or "none"), ""))
+    rows.append(row("Rolls by kind (a roll can count in several)", "",
+                    esc(", ".join(f"{ROLL_WORDS[k]} {v}" for k, v in sorted(by_type.items())) or "none")))
     rows.append(row("Fees in the data", "not given" if no_fees else esc(money(fees)), ""))
     rows.append(row("Account change (end - start - deposits + withdrawals)", esc(money(change, True)),
                     f"{esc(money(raw.account.start_value))} to {esc(money(raw.account.end_value))}"))
@@ -504,7 +504,7 @@ details.story>summary{cursor:pointer;padding:12px 16px;display:flex;flex-wrap:wr
 .ledger tr.roll td{background:color-mix(in srgb,var(--band) 55%,transparent)}
 .ledger tr.on td{outline:2px solid var(--accent);outline-offset:-2px}
 .rollnote{font-size:12px;color:var(--muted)}.checkline{margin:0}
-.sum td:first-child{width:46%}
+.sum td:first-child{width:40%;min-width:220px}.sum td:last-child{min-width:200px}
 """
 
 JS = """
